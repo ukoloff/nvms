@@ -29,6 +29,7 @@ After installation you should close command prompt (if any) and open new one to 
 
   * [Node.js](http://nodejs.org/)
   * [io.js](https://iojs.org/)
+  * [Windows Script Host](https://en.wikipedia.org/wiki/Windows_Script_Host)
   * [nvm](https://github.com/creationix/nvm)
   * [nvmw](https://github.com/hakobera/nvmw)
   * [nvm-windows](https://github.com/coreybutler/nvm-windows)
