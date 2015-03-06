@@ -15,7 +15,7 @@ If you have `git` installed:
 If you have got no `git` or don't like to use command prompt:
 
   * Download https://github.com/ukoloff/nvms/archive/master.zip
-  * Start downloaded `master.zip` (in Explorer)
+  * Start downloaded `nvms-master.zip` (in Explorer)
   * Click `setup.bat`
   * Windows will prompt to extract all files
   * Agree
