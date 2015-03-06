@@ -2,7 +2,9 @@
 
 Node Version for MS Windows.
 
-Inspired by `nvmw` and `nvm-windows` (and of course `nvm` itself),
+Inspired by [nvmw](https://github.com/hakobera/nvmw)
+and [nvm-windows](https://github.com/coreybutler/nvm-windows)
+(and of course [nvm](https://github.com/creationix/nvm) itself),
 but totally rewritten using Microsoft Scripting Host.
 
 ## Installation
@@ -26,6 +28,7 @@ After installation you should close command prompt (if any) and open new one to 
 ## Credits
 
   * [Node.js](http://nodejs.org/)
+  * [io.js](https://iojs.org/)
   * [nvm](https://github.com/creationix/nvm)
   * [nvmw](https://github.com/hakobera/nvmw)
   * [nvm-windows](https://github.com/coreybutler/nvm-windows)
