@@ -1,0 +1,30 @@
+{
+  "name": "nvms",
+  "version": "0.0.1",
+  "description": "Node Version for MS Windows",
+  "browser": "src/main",
+  "scripts": {
+    "start": "node node_modules/coffee418"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://ukoloff@github.com/ukoloff/nvms.git"
+  },
+  "keywords": [
+    "node",
+    "node.js",
+    "windows",
+    "misrosoft",
+    "jscript",
+    "nvm"
+  ],
+  "author": "Stas Ukolov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ukoloff/nvms/issues"
+  },
+  "homepage": "https://github.com/ukoloff/nvms",
+  "devDependencies": {
+    "coffee418": "0.0.1"
+  }
+}
