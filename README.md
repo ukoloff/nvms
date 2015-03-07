@@ -1,7 +1,5 @@
 # nvms
 
-[![NPM version](https://badge.fury.io/js/nvms.svg)](http://badge.fury.io/js/nvms)
-
 Node Version for MS Windows.
 
 Inspired by [nvmw](https://github.com/hakobera/nvmw)
