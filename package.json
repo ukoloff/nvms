@@ -4,7 +4,7 @@
   "description": "Node Version for MS Windows",
   "browser": "src/main",
   "scripts": {
-    "start": "node node_modules/coffee418"
+    "start": "node start"
   },
   "repository": {
     "type": "git",
