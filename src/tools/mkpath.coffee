@@ -1,6 +1,6 @@
 fs = require '../sys/fs'
 
-module.exports = (path)->
+module.exports = mkpath = (path)->
   q = []
   while !fs.FolderExists path
     q.push path
@@ -8,3 +8,6 @@ module.exports = (path)->
   fs.CreateFolder path while path = q.pop()
   path
 
+mkpath.dst = ->
+  mkpath path = require './install2'
+  path
