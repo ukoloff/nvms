@@ -1,2 +1,3 @@
-@cscript //NoLogo $0/../nvms.js setup
-@pause
+@echo off
+cscript //NoLogo $0/../nvms.js setup
+pause
