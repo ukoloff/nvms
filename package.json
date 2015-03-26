@@ -27,6 +27,6 @@
   },
   "homepage": "https://github.com/ukoloff/nvms",
   "devDependencies": {
-    "coffee418": "^0.1.0"
+    "coffee418": "^0.1.2"
   }
 }
