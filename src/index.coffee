@@ -9,3 +9,5 @@ ie = do require './sys/ie'
 ajax = do require './sys/ajax'
 
 WScript.Echo "Hello from #{ini.name} v#{ini.version}!"
+
+require './cmd'
