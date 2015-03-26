@@ -2,7 +2,7 @@
   "name": "nvms",
   "version": "0.0.1",
   "description": "Node Version for MS Windows",
-  "browser": "src/main",
+  "browser": "src",
   "scripts": {
     "start": "node start"
   },
