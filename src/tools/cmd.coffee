@@ -1,3 +1,4 @@
+echo = require '../sys/echo'
 
 module.exports = (cmd)->
-  WScript.Echo "Created command: #{cmd.name}"
+  echo "Created command:", cmd.name
