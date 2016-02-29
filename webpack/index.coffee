@@ -1,3 +1,5 @@
+commands = require './commands'
+
 values = (map)->
   v for k, v of map
 
@@ -16,3 +18,5 @@ module.exports =
         loader: "json-loader"
   resolve: 
     extensions: ["", ".js", ".json", ".coffee"]
+  plugins: values
+    commands: new commands

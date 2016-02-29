@@ -4,7 +4,7 @@
   "description": "Node Version for MS Windows",
   "browser": "src",
   "scripts": {
-    "start": "node_modules/.bin/webpack -d"
+    "start": "node_modules/.bin/webpack -d --watch"
   },
   "repository": {
     "type": "git",
