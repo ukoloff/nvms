@@ -7,6 +7,11 @@ values = (map)->
 brk = (s)->
   s.split ' '
 
+stringify = (rec)->
+  for k, v of rec when 'string'==typeof v
+    rec[k] = JSON.stringify v
+  rec
+
 @entry = "./src"
 
 @output =
@@ -18,14 +23,11 @@ brk = (s)->
     coffee:
       test: /[.]coffee$/
       loader: "coffee-loader"
-    json:
-      test: /[.]json$/
-      loader: "json-loader"
 
 @resolve =
-  extensions: brk " .js .json .coffee"
+  extensions: brk " .js .coffee"
 
 @plugins = values
   commands: new commands
   defines: new webpack.DefinePlugin
-    PACKAGE: require '../package'
+    PACKAGE: stringify require '../package'
