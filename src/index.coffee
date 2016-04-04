@@ -1,7 +1,6 @@
 #
 # Main entry point
 #
-ini = require '../package'
 
 # sh = require './sys/sh'
 # fs = require './sys/fs'
@@ -11,7 +10,7 @@ ini = require '../package'
 echo = require './sys/echo'
 mkpath = require './tools/mkpath'
 
-echo "Hello from #{ini.name} v#{ini.version}!"
+echo "Hello from #{PACKAGE.name} v#{PACKAGE.version}!"
 
 require './cmd'
 
