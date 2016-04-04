@@ -1,3 +1,4 @@
+webpack = require 'webpack'
 commands = require './commands'
 
 values = (map)->
@@ -26,3 +27,5 @@ brk = (s)->
 
 @plugins = values
   commands: new commands
+  defines: new webpack.DefinePlugin
+    PACKAGE: require '../package'
