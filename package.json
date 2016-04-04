@@ -1,9 +1,10 @@
 {
   "name": "nvms",
+  "private": true,
   "version": "0.1.0",
   "description": "Node Version for MS Windows",
   "scripts": {
-    "test": "node_modules/.bin/webpack --debug --output-pathinfo --watch",
+    "test": "node_modules/.bin/webpack -d --watch",
     "start": "node_modules/.bin/webpack -p"
   },
   "repository": {
