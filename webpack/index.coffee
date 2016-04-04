@@ -8,8 +8,12 @@ brk = (s)->
   s.split ' '
 
 stringify = (rec)->
-  for k, v of rec when 'string'==typeof v
-    rec[k] = JSON.stringify v
+  res = {}
+  for k, v of rec
+    rec[k] = if 'string'==typeof v
+      JSON.stringify v
+    else
+      v
   rec
 
 @entry = "./src"
@@ -23,9 +27,12 @@ stringify = (rec)->
     coffee:
       test: /[.]coffee$/
       loader: "coffee-loader"
+    litcoffee:
+      test: /[.](litcoffee|coffee[.]md)$/
+      loader: "coffee-loader?literate"
 
 @resolve =
-  extensions: brk " .js .coffee"
+  extensions: brk " .js .coffee .litcoffee .coffee.md"
 
 @plugins = values
   commands: new commands
