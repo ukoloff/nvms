@@ -10,11 +10,11 @@ brk = (s)->
 stringify = (rec)->
   res = {}
   for k, v of rec
-    rec[k] = if 'string'==typeof v
+    res[k] = if 'string'==typeof v
       JSON.stringify v
     else
       v
-  rec
+  res
 
 @entry = "./src"
 
