@@ -1,3 +1,4 @@
+abbrev = require 'abbrev'
 echo = require '../sys/echo'
 
 @list = (options, commands...)->

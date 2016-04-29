@@ -2,4 +2,4 @@
 
 @stage = 'pre'
 
-@title = "Install PACKAGE.name"
+@title = "Install #{PACKAGE.name}"
