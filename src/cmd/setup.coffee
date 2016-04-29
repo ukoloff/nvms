@@ -1,4 +1,5 @@
-cmd = require '../tools/cmd'
+@name = 'setup'
 
-cmd
-  name: 'setup'
+@stage = 'pre'
+
+@title = "Install PACKAGE.name"

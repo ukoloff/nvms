@@ -1,5 +1,3 @@
-cmd = require '../tools/cmd'
+@name = 'help'
 
-cmd
-  name:'help'
-  title: 'Show help for all or individual commands'
+@title = 'Show help for all or individual commands'
