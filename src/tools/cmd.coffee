@@ -20,10 +20,14 @@ lookup = {}
     lookup[k] = lookup[v]
   return
 
+nop = ->
+  # Fix for minified (???)
+
 @dispatch = ->
   unless cmd = lookup[argv[0]]
     do none
     exit 1
+  do nop
   cmd.cmd.call cmd, argv.slice 1
 
 @header =
