@@ -26,11 +26,15 @@ lookup = {}
     exit 1
   cmd.cmd.call cmd, argv.slice 1
 
-@none =
-none = ->
+@header =
+header = ->
   echo """
 #{PACKAGE.name} v#{PACKAGE.version}: #{PACKAGE.description}
 
-Run #{PACKAGE.name} help for instructions.
+"""
 
+none = ->
+  do header
+  echo """
+Run #{PACKAGE.name} help for instructions.
 """

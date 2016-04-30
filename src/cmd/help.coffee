@@ -12,6 +12,7 @@ Shows information on individual commands or #{PACKAGE.name} itself.
 """
 
 @cmd = (args)->
+  do cmd.header
   if x = cmd.lookup[args[0]]
     command x
   else

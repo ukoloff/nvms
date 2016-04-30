@@ -4,7 +4,7 @@ sh = require '../sys/sh'
 
 @title = 'Open homepage'
 
-@description = "Opens default browser onto #{PACKAGE.name} repository."
+@description = "Opens #{PACKAGE.name} repository in default browser."
 
 @cmd = ->
   sh.run PACKAGE.homepage
