@@ -1,4 +1,15 @@
-cmd = require '../tools/cmd'
+echo = require '../sys/echo'
+mkpath = require '../tools/mkpath'
 
-cmd
-  name: 'setup'
+@name = 'setup'
+
+@stage = 'pre'
+
+@title = "Install #{PACKAGE.name}"
+
+@description = """
+  Installs all files to <#{require '../tools/install2'}> and fiddles PATH.
+"""
+
+@cmd = ->
+  echo "Installation to", mkpath.dst()
