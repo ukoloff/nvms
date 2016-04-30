@@ -3,6 +3,7 @@ echo = require '../sys/echo'
 mkpath = require '../tools/mkpath'
 junction = require '../tools/junction'
 path = require '../tools/path'
+bat = require '../tools/bat'
 
 @name = 'setup'
 
@@ -19,4 +20,5 @@ path = require '../tools/path'
   fs.CopyFile WScript.ScriptName,
     fs.BuildPath dst, PACKAGE.name + '.js'
   fs.CopyFile junction.src(), junction.dst()
+  bat 'system'
   path.install()
