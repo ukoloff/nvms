@@ -15,7 +15,7 @@ path = ->
 # Rejected by:
 #   - CoffeeScript
 #   - Webpack
-#   - UglifyJS (?)
+#   # UglifyJS (Allowed!)
 #
 assign = new Function 'o,k,v', 'o(k)=v'
 
