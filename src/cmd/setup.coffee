@@ -7,5 +7,9 @@ mkpath = require '../tools/mkpath'
 
 @title = "Install #{PACKAGE.name}"
 
+@description = """
+  Installs all files to <#{require '../tools/install2'}> and fiddles PATH.
+"""
+
 @cmd = ->
-  echo mkpath.dst()
+  echo "Installation to", mkpath.dst()

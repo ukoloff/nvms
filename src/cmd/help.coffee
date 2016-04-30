@@ -5,7 +5,28 @@ echo = require '../sys/echo'
 
 @title = 'Show help for all or individual commands'
 
+@args = '[command]'
+
+@description = """
+Shows information on individual commands or #{PACKAGE.name} itself.
+"""
+
 @cmd = (args)->
+  if x = cmd.lookup[args[0]]
+    command x
+  else
+    do general
+
+command = (cmd)->
+  echo """
+#{PACKAGE.name} #{cmd.name}: #{cmd.title}
+
+Usage: #{PACKAGE.name} #{cmd.name} #{cmd.args or ''}
+
+#{cmd.description or ''}
+"""
+
+general = ->
   echo """
 Usage: #{PACKAGE.name} command [parameter(s)]
 
