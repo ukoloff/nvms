@@ -15,7 +15,7 @@ path.exists = ->
 @src =
 src = ->
   fs.BuildPath fs.GetParentFolderName(WScript.ScriptName),
-    fs.BuildPath 'sis', name
+    fs.BuildPath '../sis', name
 
 @dst =
 dst = ->
