@@ -7,4 +7,4 @@ module.exports = (folder)->
   mkpath path = fs.BuildPath install2, folder
   path = fs.BuildPath path, PACKAGE.name + '.bat'
   fs.CreateTextFile path, true
-  .WriteLine "@cscript //NoLogo \"%0\\..\\..\\#{PACKAGE.name}.js\" %*"
+  .WriteLine "@cscript //NoLogo \"%~dp0..\\#{PACKAGE.name}.js\" %*"
