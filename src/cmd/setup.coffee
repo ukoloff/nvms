@@ -2,6 +2,7 @@ fs = require '../sys/fs'
 echo = require '../sys/echo'
 mkpath = require '../tools/mkpath'
 junction = require '../tools/junction'
+path = require '../tools/path'
 
 @name = 'setup'
 
@@ -14,7 +15,8 @@ junction = require '../tools/junction'
 """
 
 @cmd = ->
-  echo "Installing to #{dst = mkpath.dst()}"
+  echo "Installing to <#{dst = mkpath.dst()}>..."
   fs.CopyFile WScript.ScriptName,
     fs.BuildPath dst, PACKAGE.name + '.js'
   fs.CopyFile junction.src(), junction.dst()
+  path.install()
