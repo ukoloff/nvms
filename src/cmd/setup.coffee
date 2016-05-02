@@ -18,8 +18,8 @@ bat = require '../tools/bat'
 
 @cmd = ->
   echo "Installing to <#{dst = mkpath.dst()}>..."
-  fs.CopyFile WScript.ScriptName,
-    fs.BuildPath dst, PACKAGE.name + '.js'
+  fs.CopyFile WScript.ScriptFullName,
+    fs.BuildPath dst, PACKAGE.name + '.bat'
   fs.CopyFile junction.src(), j = junction.dst()
   bat 'system'
   sh.exec """

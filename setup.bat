@@ -1,3 +1,3 @@
 @echo off
-cscript //NoLogo %~dp0dist/nvms.js setup
+call "%~dp0dist/nvms.bat" setup
 pause
