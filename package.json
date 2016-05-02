@@ -31,6 +31,7 @@
     "abbrev": "^1.0.7",
     "coffee-loader": "^0.7.2",
     "coffee-script": "^1.10.0",
+    "combined-stream2": "^1.1.2",
     "webpack": "^1.12.14"
   }
 }
