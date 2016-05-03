@@ -38,7 +38,7 @@ Commands:
     echo "\t#{x.name}\t#{x.title}"
   echo """
 
-Command names may abbreviated.
+Command names may be unambiguously abbreviated.
 
 Run #{PACKAGE.name} help <command> for more instructions.
 """

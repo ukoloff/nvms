@@ -1,17 +1,19 @@
 echo = require '../sys/echo'
 
-@name = 'use'
+@name = 'remove'
+
+@alias = 'uninstall'
 
 @stage = 'normal'
 
-@title = 'Use installed before Node.js version'
+@title = 'Remove Node.js'
 
 @args = require './install'
 .args
 
 @description = """
-Activate specified Node.js version
+Remove specified Node.js version
 """
 
 @cmd = ->
-  echo "U"
+  echo "R"
