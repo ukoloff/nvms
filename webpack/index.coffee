@@ -1,5 +1,6 @@
 webpack = require 'webpack'
 commands = require './commands'
+cmdize = require './cmdize'
 
 values = (map)->
   v for k, v of map
@@ -36,5 +37,6 @@ stringify = (rec)->
 
 @plugins = values
   commands: new commands
+  cmdize: new cmdize
   defines: new webpack.DefinePlugin
     PACKAGE: stringify require '../package'

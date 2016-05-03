@@ -29,7 +29,7 @@ Usage: #{PACKAGE.name} #{cmd.name} #{cmd.args or ''}
 
 general = ->
   echo """
-Usage: #{PACKAGE.name} command [parameter(s)]
+Usage: #{PACKAGE.name} <command> [parameter(s)]
 
 Commands:
 """
@@ -38,5 +38,7 @@ Commands:
 
   echo """
 
-Run #{PACKAGE.name} help command for more instructions.
+Command names may abbreviated.
+
+Run #{PACKAGE.name} help <command> for more instructions.
 """
