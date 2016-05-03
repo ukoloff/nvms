@@ -19,8 +19,9 @@ Shows information on individual commands or #{PACKAGE.name} itself.
     do general
 
 command = (cmd)->
+  echo "#{PACKAGE.name} #{cmd.name}: #{cmd.title}"
+  echo "\nAlias: #{cmd.alias.join ', '}" if cmd.alias.length
   echo """
-#{PACKAGE.name} #{cmd.name}: #{cmd.title}
 
 Usage: #{PACKAGE.name} #{cmd.name} #{cmd.args or ''}
 
@@ -35,7 +36,6 @@ Commands:
 """
   for x in cmd.all
     echo "\t#{x.name}\t#{x.title}"
-
   echo """
 
 Command names may abbreviated.

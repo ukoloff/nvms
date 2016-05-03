@@ -13,6 +13,10 @@ lookup = {}
   stage = options.stage
   names = []
   for cmd in commands when cmd.name and (!cmd.stage or cmd.stage==stage)
+    cmd.alias = if cmd.alias
+      cmd.alias.split /\s+/
+    else
+      []
     lookup[cmd.name] = cmd
     names.push cmd.name
     all.push cmd
