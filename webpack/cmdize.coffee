@@ -22,6 +22,7 @@ me::apply = (compiler)->
     x = z.create()
     x.append new Buffer js2bat
     x.append input = fs.createReadStream 'tmp/nvms.js'
+    x.append new Buffer "\n"
     x.pipe fs.createWriteStream 'tmp/nvms.bat'
 
     input.on 'end', ->
