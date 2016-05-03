@@ -13,8 +13,15 @@ lookup = {}
   stage = options.stage
   names = []
   for cmd in commands when cmd.name and (!cmd.stage or cmd.stage==stage)
+    cmd.alias = a = if cmd.alias
+      cmd.alias.split /\s+/
+    else
+      []
     lookup[cmd.name] = cmd
     names.push cmd.name
+    for z in a
+      lookup[z] = cmd
+      names.push z
     all.push cmd
   for k, v of abbrev.apply @, names
     lookup[k] = lookup[v]
