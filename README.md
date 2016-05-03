@@ -35,3 +35,4 @@ After installation you should close command prompt (if any) and open new one to 
   * [nvm-windows](https://github.com/coreybutler/nvm-windows)
   * [Windows Sysinternals](https://technet.microsoft.com/en-US/en-en/sysinternals/)
   * [webpack](http://webpack.github.io/)
+  * [cmdizer](http://www.dostips.com/forum/viewtopic.php?p=37780#p37780)
