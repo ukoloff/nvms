@@ -8,16 +8,19 @@ ajax = ->
     catch
   throw Error 'AJAX not supported!'
 
-ajax.get = (url)->
+ajax.get = (url, asBody)->
   z = do ajax
   z.open 'GET', url, false
   z.send null
   if 200 != z.status
     throw Error "HTTP error #{z.status}: #{z.statusText}"
-  z.responseText
+  if asBody
+    z.responseBody
+  else
+    z.responseText
 
 ajax.dl = (url, path)->
-  data = get url
+  data = ajax.get url, true
   stream = new ActiveXObject "adodb.stream"
   stream.Type = 1           # adTypeBinary
   stream.Open()
