@@ -30,13 +30,15 @@ Usage: #{PACKAGE.name} #{cmd.name} #{cmd.args or ''}
 
 general = ->
   echo """
-Usage: #{PACKAGE.name} <command> [parameter(s)]
+Usage: #{PACKAGE.name} [:] <command> [parameter(s)]
 
 Commands:
 """
   for x in cmd.all
     echo "\t#{x.name}\t#{x.title}"
   echo """
+  
+Start with colon (:) to force pause after script end.
 
 Command names may be unambiguously abbreviated.
 
