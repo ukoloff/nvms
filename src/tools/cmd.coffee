@@ -1,7 +1,7 @@
 abbrev = require 'abbrev'
 echo = require '../sys/echo'
 exit = require '../sys/exit'
-argv = require '../sys/argv'
+argv = require './argv'
 
 @all =
 all = []
