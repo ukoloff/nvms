@@ -5,6 +5,7 @@ mkpath = require '../tools/mkpath'
 junction = require '../tools/junction'
 path = require '../tools/path'
 bat = require '../tools/bat'
+cmd = require '../tools/cmd'
 
 @name = 'setup'
 
@@ -17,6 +18,7 @@ bat = require '../tools/bat'
 """
 
 @cmd = ->
+  do cmd.header
   echo "Installing to <#{dst = mkpath.dst()}>..."
   fs.CopyFile WScript.ScriptFullName,
     fs.BuildPath dst, PACKAGE.name + '.bat'

@@ -3,6 +3,3 @@
 #
 
 require './cmd'
-
-require './tools/cmd'
-.dispatch()

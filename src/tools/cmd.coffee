@@ -23,12 +23,13 @@ lookup = {}
     all.push cmd
   for k, v of abbrev.apply @, names
     lookup[k] = lookup[v]
-  return
+  do dispatch
 
 nop = ->
   # Fix for minified (???)
 
-@dispatch = ->
+@dispatch =
+dispatch = ->
   unless cmd = lookup[argv[0]]
     do none
     exit 1
