@@ -1,5 +1,3 @@
-abbrev = require 'abbrev'
-
 @all =
 all = []
 
