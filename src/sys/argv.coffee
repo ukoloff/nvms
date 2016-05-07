@@ -1,5 +1,3 @@
-each = require './each'
-
 module.exports =
 argv = []
 
