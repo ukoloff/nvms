@@ -1,7 +1,3 @@
-fs = require '../sys/fs'
-sh = require '../sys/sh'
-install2 = require './install2'
-
 key = 'Path'
 env = sh.Environment 'User'
 

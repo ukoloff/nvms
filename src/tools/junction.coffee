@@ -1,6 +1,3 @@
-fs = require '../sys/fs'
-install2 = require './install2'
-
 @name =
 name = 'junction.exe'
 

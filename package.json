@@ -11,6 +11,10 @@
     "type": "git",
     "url": "https://ukoloff@github.com/ukoloff/nvms.git"
   },
+  "dists": {
+    "node": "https://nodejs.org/dist/",
+    "iojs": "https://iojs.org/dist/"
+  },
   "keywords": [
     "node",
     "node.js",

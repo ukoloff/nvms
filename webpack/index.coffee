@@ -2,26 +2,14 @@ webpack = require 'webpack'
 commands = require './commands'
 cmdize = require './cmdize'
 
-values = (map)->
-  v for k, v of map
-
-brk = (s)->
-  s.split ' '
-
-stringify = (rec)->
-  res = {}
-  for k, v of rec
-    res[k] = if 'string'==typeof v
-      JSON.stringify v
-    else
-      v
-  res
-
 @entry = "./src"
 
 @output =
   path: "tmp",
   filename: "nvms.js"
+
+values = (map)->
+  v for k, v of map
 
 @module =
   loaders: values
@@ -32,11 +20,27 @@ stringify = (rec)->
       test: /[.](litcoffee|coffee[.]md)$/
       loader: "coffee-loader?literate"
 
+brk = (s)->
+  s.split ' '
+
 @resolve =
   extensions: brk " .js .coffee .litcoffee .coffee.md"
+
+stringify = (rec)->
+  res = {}
+  for k, v of rec
+    res[k] = switch typeof v
+      when 'string'
+        JSON.stringify v
+      when 'object'
+        stringify v
+      else
+        v
+  res
 
 @plugins = values
   commands: new commands
   cmdize: new cmdize
   defines: new webpack.DefinePlugin
     PACKAGE: stringify require '../package'
+  globals: new webpack.ProvidePlugin require './autoload'

@@ -1,12 +1,3 @@
-fs = require '../sys/fs'
-sh = require '../sys/sh'
-echo = require '../sys/echo'
-mkpath = require '../tools/mkpath'
-junction = require '../tools/junction'
-path = require '../tools/path'
-bat = require '../tools/bat'
-cmd = require '../tools/cmd'
-
 @name = 'setup'
 
 @stage = 'pre'
@@ -14,7 +5,7 @@ cmd = require '../tools/cmd'
 @title = "Install #{PACKAGE.name}"
 
 @description = """
-  Installs all files to <#{require '../tools/install2'}> and fiddles PATH.
+  Installs all files to <#{install2}> and fiddles PATH.
 """
 
 @cmd = ->

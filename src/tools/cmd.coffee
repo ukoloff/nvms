@@ -1,8 +1,3 @@
-abbrev = require 'abbrev'
-echo = require '../sys/echo'
-exit = require '../sys/exit'
-argv = require './argv'
-
 @all =
 all = []
 
@@ -17,9 +12,7 @@ lookup = {}
       cmd.alias.split /\s+/
     else
       []
-    lookup[cmd.name] = cmd
-    names.push cmd.name
-    for z in a
+    for z in a.concat cmd.name
       lookup[z] = cmd
       names.push z
     all.push cmd
