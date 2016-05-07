@@ -7,5 +7,5 @@ module.exports = mkpath = (path)->
   path
 
 mkpath.dst = ->
-  mkpath path = require './install2'
-  path
+  mkpath install2
+  install2
