@@ -1,5 +1,3 @@
-echo = require '../sys/echo'
-
 @name = 'install'
 
 @stage = 'normal'

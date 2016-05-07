@@ -1,5 +1,3 @@
-sh = require '../sys/sh'
-
 @name = 'www'
 
 @alias = 'repo'
