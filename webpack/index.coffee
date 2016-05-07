@@ -43,3 +43,4 @@ stringify = (rec)->
   cmdize: new cmdize
   defines: new webpack.DefinePlugin
     PACKAGE: stringify require '../package'
+  globals: new webpack.ProvidePlugin require './autoload'

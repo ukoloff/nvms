@@ -1,5 +1,3 @@
-fs = require '../sys/fs'
-
 module.exports = mkpath = (path)->
   q = []
   while !fs.FolderExists path

@@ -1,5 +1,3 @@
-echo = require '../sys/echo'
-
 @name = 'version'
 
 @title = 'Show version'
