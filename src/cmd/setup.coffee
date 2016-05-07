@@ -10,12 +10,10 @@
 
 @cmd = ->
   do cmd.header
-  echo "Installing to <#{dst = mkpath.dst()}>..."
+  echo "Installing to <#{mkpath.dst()}>..."
   fs.CopyFile WScript.ScriptFullName,
-    fs.BuildPath dst, PACKAGE.name + '.bat'
-  fs.CopyFile junction.src(), j = junction.dst()
+    fs.BuildPath install2, PACKAGE.name + '.bat'
+  fs.CopyFile junction.src(), junction.dst()
   bat 'system'
-  sh.exec """
-    "#{j}" "#{fs.BuildPath dst, 'current'}"  "#{fs.BuildPath dst, 'system'}"
-"""
+  junction.exec 'system', true
   path.install()
