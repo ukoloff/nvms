@@ -5,7 +5,7 @@
 @args = '[command]'
 
 @description = """
-Shows information on individual commands or #{PACKAGE.name} itself.
+Shows information on individual commands or #{PACKAGE.mingzi} itself.
 """
 
 @cmd = (args)->
@@ -16,18 +16,18 @@ Shows information on individual commands or #{PACKAGE.name} itself.
     do general
 
 command = (cmd)->
-  echo "#{PACKAGE.name} #{cmd.name}: #{cmd.title}"
+  echo "#{PACKAGE.mingzi} #{cmd.name}: #{cmd.title}"
   echo "\nAlias: #{cmd.alias.join ', '}" if cmd.alias.length
   echo """
 
-Usage: #{PACKAGE.name} #{cmd.name} #{cmd.args or ''}
+Usage: #{PACKAGE.mingzi} #{cmd.name} #{cmd.args or ''}
 
 #{cmd.description or ''}
 """
 
 general = ->
   echo """
-Usage: #{PACKAGE.name} [:] <command> [parameter(s)]
+Usage: #{PACKAGE.mingzi} [:] <command> [parameter(s)]
 
 Commands:
 """
@@ -39,5 +39,5 @@ Start with colon (:) to force pause after script end.
 
 Command names may be unambiguously abbreviated.
 
-Run #{PACKAGE.name} help <command> for more instructions.
+Run #{PACKAGE.mingzi} help <command> for more instructions.
 """

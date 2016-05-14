@@ -34,12 +34,12 @@ dispatch = ->
 @header =
 header = ->
   echo """
-#{PACKAGE.name} v#{PACKAGE.version}: #{PACKAGE.description}
+#{PACKAGE.mingzi} v#{PACKAGE.version}: #{PACKAGE.description}
 
 """
 
 none = ->
   do header
   echo """
-Run #{PACKAGE.name} help for instructions.
+Run #{PACKAGE.mingzi} help for instructions.
 """
