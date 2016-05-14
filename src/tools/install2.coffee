@@ -1,2 +1,2 @@
 module.exports =
-dst = fs.BuildPath sh.SpecialFolders('AppData'), PACKAGE.name
+dst = fs.BuildPath sh.SpecialFolders('AppData'), PACKAGE.mingzi

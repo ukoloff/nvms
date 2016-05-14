@@ -1,1 +1,1 @@
-@"%~dp0dist/nvms.bat" : setup
+@"%~dp0dist/nvm$.bat" : setup

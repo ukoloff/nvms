@@ -1,5 +1,6 @@
 {
   "name": "nvms",
+  "mingzi": "nvm$",
   "private": true,
   "version": "0.1.0",
   "description": "Node Version for MS Windows",

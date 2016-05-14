@@ -1,12 +1,13 @@
 webpack = require 'webpack'
 commands = require './commands'
 cmdize = require './cmdize'
+PACKAGE = require '../package'
 
 @entry = "./src"
 
 @output =
   path: "tmp",
-  filename: "nvms.js"
+  filename: "#{PACKAGE.mingzi}.js"
 
 values = (map)->
   v for k, v of map
