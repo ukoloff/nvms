@@ -2,7 +2,7 @@
 
 @stage = 'pre'
 
-@title = "Install #{PACKAGE.name}"
+@title = "Install #{PACKAGE.mingzi}"
 
 @description = """
   Installs all files to <#{install2}> and fiddles PATH.
@@ -12,7 +12,7 @@
   do cmd.header
   echo "Installing to <#{dst = mkpath.dst()}>..."
   fs.CopyFile WScript.ScriptFullName,
-    fs.BuildPath dst, PACKAGE.name + '.bat'
+    fs.BuildPath dst, PACKAGE.mingzi + '.bat'
   fs.CopyFile junction.src(), j = junction.dst()
   bat 'system'
   sh.exec """
