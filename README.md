@@ -1,6 +1,6 @@
-# nvms
+# nvm$
 
-Node Version for MS Windows.
+Node Version for M$ Windows.
 
 Inspired by [nvmw](https://github.com/hakobera/nvmw)
 and [nvm-windows](https://github.com/coreybutler/nvm-windows)
@@ -23,7 +23,7 @@ If you have got no `git` or don't like to use command prompt:
   * Agree
   * Click `setup.bat` again
 
-After installation you should close command prompt (if any) and open new one to use `nvms`.
+After installation you should close command prompt (if any) and open new one to use `nvm$`.
 
 ## Credits
 
