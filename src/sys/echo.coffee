@@ -1,2 +1,2 @@
 module.exports = ->
-  WScript.Echo [].slice.apply(arguments).join ' '
+  wsh.Echo [].slice.apply(arguments).join ' '

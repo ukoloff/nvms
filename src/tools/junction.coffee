@@ -3,7 +3,7 @@ name = 'junction.exe'
 
 @path =
 path = ->
-  fs.BuildPath fs.GetParentFolderName(WScript.ScriptFullName),
+  fs.BuildPath fs.GetParentFolderName(wsh.ScriptFullName),
     name
 
 path.exists = ->
@@ -11,7 +11,7 @@ path.exists = ->
 
 @src =
 src = ->
-  fs.BuildPath fs.GetParentFolderName(WScript.ScriptFullName),
+  fs.BuildPath fs.GetParentFolderName(wsh.ScriptFullName),
     fs.BuildPath '../sis', name
 
 @dst =

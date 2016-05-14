@@ -1,5 +1,5 @@
 module.exports =
 argv = []
 
-each WScript.Arguments, (a)->
+each wsh.Arguments, (a)->
   argv.push a

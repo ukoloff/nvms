@@ -11,7 +11,7 @@
 @cmd = ->
   do cmd.header
   echo "Installing to <#{mkpath.dst()}>..."
-  fs.CopyFile WScript.ScriptFullName,
+  fs.CopyFile wsh.ScriptFullName,
     fs.BuildPath install2, PACKAGE.mingzi + '.bat'
   fs.CopyFile junction.src(), junction.dst()
   bat 'system'

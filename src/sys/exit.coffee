@@ -1,2 +1,2 @@
 module.exports = (code = 0)->
-  WScript.Quit code
+  wsh.Quit code
