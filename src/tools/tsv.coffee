@@ -48,5 +48,5 @@ a2o = (arr)->
       continue
     res.push rec = {}
     for n, i in F
-      rec[F] = line[i]
+      rec[n] = line[i]
   res

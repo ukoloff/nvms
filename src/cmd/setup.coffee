@@ -10,12 +10,18 @@
 
 @cmd = ->
   do cmd.header
-  echo "Installing to <#{dst = mkpath.dst()}>..."
-  fs.CopyFile WScript.ScriptFullName,
-    fs.BuildPath dst, PACKAGE.mingzi + '.bat'
-  fs.CopyFile junction.src(), j = junction.dst()
+  echo "Installing to <#{install2}>..."
+  mkpath install2
+  echo "Copying files..."
+  fs.CopyFile wsh.ScriptFullName,
+    fs.BuildPath install2, PACKAGE.mingzi + '.bat'
+  fs.CopyFile junction.src(), junction.dst()
+  echo "Creating shortcuts..."
   bat 'system'
-  sh.exec """
-    "#{j}" "#{fs.BuildPath dst, 'current'}"  "#{fs.BuildPath dst, 'system'}"
-"""
+  junction.exec 'system', true
+  echo "Updating PATH..."
   path.install()
+  echo """
+  Installation complete.
+  Open new console and run '#{PACKAGE.mingzi} help' to start.
+  """
