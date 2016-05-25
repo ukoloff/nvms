@@ -25,6 +25,10 @@ If you have got no `git` or don't like to use command prompt:
 
 After installation you should close command prompt (if any) and open new one to use `nvm$`.
 
+## Update
+
+For new version of nvm$ to install just repeat installation steps above.
+
 ## Credits
 
   * [Node.js](http://nodejs.org/)
