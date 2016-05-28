@@ -2,10 +2,11 @@
 # Get available distributions list
 #
 
-@list = ->
+@list = (force)->
   r = []
   for k, v of dists
-    if cached f = fs.BuildPath cache, "#{k}.tsv"
+    f = fs.BuildPath cache, "#{k}.tsv"
+    if not force and cached f
       tab = fs.OpenTextFile f
       .ReadAll()
     else
