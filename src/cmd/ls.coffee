@@ -22,8 +22,20 @@ local = ->
   echo "L"
 
 remote = ->
-  x = remotes.list()
-  x = for z in x
-    "#{z.dist}-#{z.src.version}"
-  echo x.join ' '
+  list = []
+  for z in minors remotes.list()
+    if last and not semver.cmp last.major, z.major
+      last.minors.push z.minor
+    else
+      list.push last = z
+  for z in list
+    echo "#{z.dist} #{z.src.version}{#{z.minors.join ','}}"
   return
+
+# Split version to major.minor
+minors = (list)->
+  for z in list
+    major = z.major = z.id.slice()
+    major = major[0] = major[0].slice()
+    z.minors = [z.minor = major.pop()]
+  list

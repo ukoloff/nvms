@@ -16,7 +16,8 @@
     tab = for z in tsv tab
       parse z, k
     r = r.concat tab
-  r.sort compare
+  r.sort (a, b)->
+    semver.cmp a.id, b.id
 
 cached = (f)->
   fs.FileExists(f) and
@@ -28,32 +29,3 @@ parse = (line, dist)->
   id: [semver, [dist]]
   dist: dist
   src: line
-
-# Compare semvers (.id fields above)
-@compare =
-compare = (a, b)->
-  cmpArrays a.id, b.id, (a, b)->
-    cmpArrays a, b, (a, b)->
-      if a == b
-        0
-      else if a < b
-        -1
-      else
-        +1
-
-cmpArrays = (a, b, comparator)->
-  i = 0
-  la = a.length
-  lb = b.length
-  loop
-    switch Number(i<la) + 2 * Number(i<lb)
-      when 0
-        return 0
-      when 1
-        return -1
-      when 2
-        return +1
-      else
-        if v = comparator a[i], b[i]
-          return v
-    i++
