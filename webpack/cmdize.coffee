@@ -16,7 +16,7 @@ me::apply = (compiler)->
     for k, z of compilation.compilation.assets
       dst = z.existsAt
       continue unless /[.]js$/.test dst
-      fs.unlink dst
+      fs.unlink dst, ->
       dst = dst.replace /[.].*?$/, '.bat'
       fs.writeFile dst, """
 0</*! ::
