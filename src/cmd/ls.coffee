@@ -23,7 +23,7 @@ local = ->
 
 remote = ->
   x = remotes.list()
-  x = for x in x.reverse()
-    "#{x.dist}-#{x.src.version}"
+  x = for z in x
+    "#{z.dist}-#{z.src.version}"
   echo x.join ' '
   return
