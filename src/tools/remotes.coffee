@@ -16,8 +16,7 @@
     tab = for z in tsv tab
       parse z, k
     r = r.concat tab
-  r.sort (a, b)->
-    semver.cmp a.id, b.id
+  r.sort semver.cmpi
 
 cached = (f)->
   fs.FileExists(f) and

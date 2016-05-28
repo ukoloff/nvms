@@ -36,3 +36,6 @@ cmpa = (a, b, comparator)->
 cmp = (a, b)->
   cmpa a, b, (a, b)->
     cmpa a, b, cmpv
+
+@cmpi = (a, b)->
+  cmp a.id, b.id
