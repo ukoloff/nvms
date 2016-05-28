@@ -19,7 +19,8 @@ List already installed or all available to install Node.js versions
     do local
 
 local = ->
-  echo "L"
+  for z in locals.list()
+    echo "- #{z.path}"
 
 remote = ->
   list = []
