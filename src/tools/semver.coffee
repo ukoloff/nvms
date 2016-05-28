@@ -23,9 +23,9 @@ cmpa = (a, b, comparator)->
       when 0
         return 0
       when 1
-        return -1
-      when 2
         return +1
+      when 2
+        return -1
       else
         if v = comparator a[i], b[i]
           return v
