@@ -29,7 +29,7 @@ remote = ->
     else
       list.push last = z
   for z in list
-    echo "#{z.dist} #{z.src.version}{#{z.minors.join ','}}"
+    echo "#{z.dist} #{z.src.version}#{r2s ranges z.minors}"
   return
 
 # Split version to major.minor
@@ -39,3 +39,21 @@ minors = (list)->
     major = major[0] = major[0].slice()
     z.minors = [z.minor = major.pop()]
   list
+
+# Combine list of minors into list of ranges
+ranges = (list)->
+  res = []
+  for n in list
+    if last and last.b + 1 == n
+      last.b = n
+    else
+      res.push last =
+        a: n
+        b: n
+  res
+
+# Convert ranges list to string
+r2s = (ranges)->
+  r = for r, i in ranges
+    "#{if i then r.a else ''}#{if r.b > r.a then ' - ' + r.b else ''}"
+  r.join ', '
