@@ -29,7 +29,7 @@ remote = ->
     else
       list.push last = z
   for z in list
-    echo "#{z.dist} #{z.src.version}#{r2s ranges z.minors}"
+    echo "- #{z.dist} #{z.src.version}#{r2s ranges z.minors}"
   return
 
 # Split version to major.minor
