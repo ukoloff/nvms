@@ -20,7 +20,7 @@ List already installed or all available to install Node.js versions
 
 local = ->
   for z in locals.list()
-    echo "- #{z.path}"
+    echo "#{if z.active then '>' else '-'} #{z.path}"
 
 remote = ->
   list = []

@@ -4,6 +4,7 @@
 
 @list = ->
   list = []
+  x = rndFile()
   folders = fs.GetFolder install2
     .SubFolders
   each folders, (f)->
@@ -18,4 +19,15 @@
       dist: dist
       x64: x64
       path: f.Name
+      active: fs.FileExists fs.BuildPath f.Path, x.r if x
+  fs.DeleteFile x.p if x
   list.sort semver.cmpi
+
+rndFile = ->
+  i = 16
+  while --i
+    if fs.FileExists p = fs.BuildPath junction.link, r = rnd 15
+      continue
+    fs.CreateTextFile p, true
+    .Close()
+    return {p, r}
