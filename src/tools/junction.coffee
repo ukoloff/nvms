@@ -29,3 +29,9 @@ link = fs.BuildPath install2, 'current'
   sh.exec """
     "#{dst()}" "#{link}" "#{fs.BuildPath install2, folder}"
   """
+
+# Accept EULA
+@eula = ->
+  sh.RegWrite 'HKCU\\Software\\Sysinternals\\Junction\\EulaAccepted',
+    1,
+    'REG_DWORD'

@@ -18,6 +18,7 @@
   fs.CopyFile junction.src(), junction.dst()
   echo "Creating shortcuts..."
   bat 'system'
+  junction.eula()
   junction.exec 'system', true
   echo "Updating PATH..."
   path.install()
