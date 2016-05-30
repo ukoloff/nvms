@@ -15,7 +15,14 @@ Install specified Node.js version
 
 @cmd = ->
   z = parse()
-  echo dump z
+  for r in remotes.list() when semver.match r.id, z.z
+    x = r
+  throw Error 'Specified Node.js version not found!' unless x
+  ver = "#{x.dist}-#{x.src.version}-x#{if z.x64 then 64 else 86}"
+  uri  = "#{dists[x.dist]}#{x.src.version}/#{
+    if z.x64 and !x.id[0][0] then 'x64/' else ''
+    }#{ver}.msi"
+  echo uri
 
 # Parse version requirements
 @parse =
