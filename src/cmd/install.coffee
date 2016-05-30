@@ -4,7 +4,10 @@
 
 @title = 'Install Node.js'
 
-@args = '[node|io] [n[.n[.n]]] [x86|x64]'
+keys = for k of dists
+  k
+
+@args = "[#{keys.join '|'}] [n[.n[.n]]] [x86|x64]"
 
 @description = """
 Install specified Node.js version
