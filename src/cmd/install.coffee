@@ -14,17 +14,17 @@ Install specified Node.js version
 """
 
 @cmd = ->
-  z = parse()
-  z.x64 ?= x64
-  
-  for r in remotes.list() when semver.match r.id, z.z
+  filter = parse()
+  filter.x64 ?= x64
+
+  for r in remotes.list() when semver.match r.id, filter.z
     x = r
   throw Error 'Specified Node.js version not found!' unless x
 
-  ver = "#{x.dist}-#{x.src.version}-x#{if z.x64 then 64 else 86}"
+  ver = "#{x.dist}-#{x.src.version}-x#{if filter.x64 then 64 else 86}"
   msi = "#{ver}.msi"
   uri  = "#{dists[x.dist]}#{x.src.version}/#{
-    if z.x64 and !x.id[0][0] then 'x64/' else ''
+    if filter.x64 and !x.id[0][0] then 'x64/' else ''
     }#{msi}"
 
   echo "Fetching <#{uri}>..."
@@ -47,7 +47,7 @@ Install specified Node.js version
     fs.CopyFile fs.BuildPath(newPath, "#{x.dist}.exe"),
       fs.BuildPath(newPath, "node.exe")
 
-  echo "Adjusting NPM prefix"
+  echo "Adjusting NPM prefix..."
   npmrc = fs.OpenTextFile fs.BuildPath(newPath, 'node_modules/npm/npmrc'), 8
   npmrc.WriteLine """
 
@@ -74,4 +74,7 @@ parse = (args = argv.slice 1)->
       r.ver = for z in z.split /\D+/ when z.length
         Number z
   r.z = [r.ver or [], [r.dist]]
+  r.local = ->
+    @z[1].push @x64
+    @
   r
