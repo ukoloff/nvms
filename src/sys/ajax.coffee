@@ -3,9 +3,7 @@ Servers = ["Msxml2.XMLHTTP", "Microsoft.XMLHTTP"]
 module.exports =
 ajax = ->
   for x in Servers
-    try
-      return new ActiveXObject x
-    catch
+    try return new ActiveXObject x
   throw Error 'AJAX not supported!'
 
 ajax.get = (url, asBody)->

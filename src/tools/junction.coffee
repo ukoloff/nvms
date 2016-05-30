@@ -21,9 +21,11 @@ dst = ->
 src.exists = ->
   fs.FileExists do src
 
+@link =
+link = fs.BuildPath install2, 'current'
+
 @exec = (folder, optional)->
-  j = fs.BuildPath install2, 'current'
-  return if optional and fs.FolderExists j
+  return if optional and fs.FolderExists link
   sh.exec """
-"#{dst()}" "#{j}" "#{fs.BuildPath install2, folder}"
+    "#{dst()}" "#{link}" "#{fs.BuildPath install2, folder}"
   """
