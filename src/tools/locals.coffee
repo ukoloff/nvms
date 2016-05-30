@@ -29,6 +29,9 @@ rndFile = ->
   while --i
     if fs.FileExists p = fs.BuildPath junction.link, r = rnd 15
       continue
-    fs.CreateTextFile p, true
-    .Close()
-    return {p, r}
+    try
+      fs.CreateTextFile p, true
+      .Close()
+      return {p, r}
+    catch
+      return
