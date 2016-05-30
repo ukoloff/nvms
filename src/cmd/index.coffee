@@ -11,4 +11,5 @@ cmd.list
   require './setup'
   require './use'
   require './ver'
+  require './which'
   require './www'
