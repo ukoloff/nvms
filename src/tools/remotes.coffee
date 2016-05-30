@@ -31,4 +31,4 @@ parse = (line, dist)->
   src: line
 
 msi = (line)->
-  ~line.files.indexOf 'msi'
+  ~line.files.indexOf '-msi'
