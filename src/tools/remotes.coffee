@@ -14,7 +14,7 @@
       echo "Fetching <#{url}>..."
       fs.CreateTextFile f, true
       .WriteLine tab = ajax.get url
-    tab = for z in tsv tab
+    tab = for z in tsv tab when msi z
       parse z, k
     r = r.concat tab
   r.sort semver.cmpi
@@ -29,3 +29,6 @@ parse = (line, dist)->
   id: [semver, [dist]]
   dist: dist
   src: line
+
+msi = (line)->
+  ~line.files.indexOf 'msi'
