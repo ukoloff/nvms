@@ -24,4 +24,4 @@ Remove specified Node.js version
 
   echo "removing #{x.path}"
   fs.DeleteFolder fs.BuildPath install2, x.path
-  junction.exec 'system' if x.active
+  junction.exec 'none' if x.active
