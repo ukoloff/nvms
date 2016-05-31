@@ -10,7 +10,7 @@ Shows information on individual commands or #{PACKAGE.mingzi} itself.
 
 @cmd = (args)->
   do cmd.header
-  if x = cmd.lookup[args[0]]
+  if x = cmd.find args[0]
     command x
   else
     do general

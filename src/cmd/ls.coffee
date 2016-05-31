@@ -2,6 +2,8 @@ install = require './install'
 
 @name = 'ls'
 
+@alias = 'list'
+
 @stage = 'normal'
 
 @title = 'List available Node.js versions'
@@ -23,7 +25,7 @@ local = ->
   for z in locals.list() when semver.match z.id, filter.z
     echo "#{if z.active then '>' else '-'} #{z.path}"
   return
-  
+
 remote = ->
   filter = install.parse argv.slice 2
   list = []

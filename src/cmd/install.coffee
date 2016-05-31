@@ -28,10 +28,12 @@ Use `#{PACKAGE.mingzi} ls remote` to see available Node.js versions.
 # Parse version requirements
 @parse =
 parse = (args = argv.slice 1)->
-  ks = abbrev.apply abbrev, keys
+  ks = new abbrev
+  ks.add
+    words: keys
   r = {}
   for z in args
-    if x = ks[z]
+    if x = ks.is z
       r.dist = x
     else if /^x(\d)/.test z
       r.x64 = /^6/.test RegExp.$1
