@@ -6,7 +6,7 @@
 
 @description = """
   Installs all files to <#{install2}> and fiddles PATH.
-"""
+  """
 
 @cmd = ->
   do cmd.header
