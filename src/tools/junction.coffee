@@ -24,9 +24,13 @@ src.exists = ->
 @link =
 link = fs.BuildPath install2, 'current'
 
+wait = (child)->
+  until child.Status
+    wsh.Sleep 100
+
 @exec = (folder, optional)->
   return if optional and fs.FolderExists link
-  sh.exec """
+  wait sh.exec """
     "#{dst()}" -d "#{link}"
   """
   sh.exec """
