@@ -35,7 +35,7 @@ one = (args)->
   for r in locals.list() when semver.match r.id, filter
     remove r
     return
-  throw Error 'Specified Node.js version not installed!' unless x
+  throw Error 'Specified Node.js version not installed!'
 
 remove = (x)->
   echo "removing #{x.path}"
