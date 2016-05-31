@@ -13,6 +13,6 @@
 @cmd = ->
   for z in locals.list()
     if z.active
-      echo z.path
+      echo fs.BuildPath install2, z.path
       return
   echo junction.link

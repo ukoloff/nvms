@@ -11,7 +11,7 @@ install = require './install'
 @description = """
   Make specified Node.js version active for all processes of current user.
 
-  Only installed versions are used. Use `#{PACKAGE.mingzi} install` for new ones.
+  Only installed versions are used. Use #{PACKAGE.mingzi} install for new ones.
 
   Say `#{PACKAGE.mingzi} use none` to temporarily disable #{PACKAGE.mingzi}.
   """
