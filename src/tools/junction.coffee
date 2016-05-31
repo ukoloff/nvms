@@ -27,6 +27,9 @@ link = fs.BuildPath install2, 'current'
 @exec = (folder, optional)->
   return if optional and fs.FolderExists link
   sh.exec """
+    "#{dst()}" -d "#{link}"
+  """
+  sh.exec """
     "#{dst()}" "#{link}" "#{fs.BuildPath install2, folder}"
   """
 
