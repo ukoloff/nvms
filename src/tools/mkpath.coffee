@@ -4,3 +4,4 @@ module.exports = (path)->
     q.push path
     path = fs.GetParentFolderName path
   fs.CreateFolder path while path = q.pop()
+  return

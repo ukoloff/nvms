@@ -17,8 +17,9 @@
     fs.BuildPath install2, PACKAGE.mingzi + '.bat'
   fs.CopyFile junction.src(), junction.dst()
   echo "Creating shortcuts..."
-  bat 'system'
-  junction.exec 'system', true
+  bat 'none'
+  junction.eula()
+  junction.exec 'none', true
   echo "Updating PATH..."
   path.install()
   echo """

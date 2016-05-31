@@ -1,6 +1,4 @@
-@name = 'list'
-
-@alias = 'ls'
+@name = 'ls'
 
 @stage = 'normal'
 

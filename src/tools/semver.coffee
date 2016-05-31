@@ -39,3 +39,14 @@ cmp = (a, b)->
 
 @cmpi = (a, b)->
   cmp a.id, b.id
+
+matchArray = (test, pattern, eq)->
+  for z, i in pattern when z?
+    return false if !eq test[i], z
+  true
+
+# Match semver array
+@match = (test, pattern)->
+  matchArray test, pattern, (a, b)->
+    matchArray a, b, (a, b)->
+      a==b
