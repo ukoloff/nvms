@@ -6,13 +6,19 @@ install = require './install'
 
 @title = 'Use installed before Node.js version'
 
-@args = install.args
+@args = "[ none | #{install.args} ]"
 
 @description = """
-Make specified Node.js version active for all processes of current user
+Make specified Node.js version active for all processes of current user.
+
+Only installed versions are used. Use `#{PACKAGE.mingzi} install` for new ones.
+
+Say `#{PACKAGE.mingzi} use none` to temprarily disable #{PACKAGE.mingzi}.
 """
 
 @cmd = ->
+  if 'none' == argv[1]
+    return none()
   filter = install.parse().local().z
   for r in locals.list().reverse() when semver.match r.id, filter
     x = r
@@ -21,3 +27,7 @@ Make specified Node.js version active for all processes of current user
 
   echo "Using #{x.path}"
   junction.exec x.path
+
+none = ->
+  echo "Temporary disabling #{PACKAGE.mingzi}"
+  junction.exec 'none'
