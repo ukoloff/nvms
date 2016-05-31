@@ -15,8 +15,8 @@ Install specified Node.js version.
 Use `#{PACKAGE.mingzi} ls remote` to see available Node.js versions.
 """
 
-@cmd = ->
-  filter = parse()
+@cmd = (args)->
+  filter = parse args
 
   for r in remotes.list().reverse() when semver.match r.id, filter.z
     x = r
@@ -27,7 +27,7 @@ Use `#{PACKAGE.mingzi} ls remote` to see available Node.js versions.
 
 # Parse version requirements
 @parse =
-parse = (args = argv.slice 1)->
+parse = (args = [])->
   ks = new abbrev
   ks.add
     words: keys
