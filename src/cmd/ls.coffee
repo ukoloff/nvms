@@ -11,8 +11,8 @@ install = require './install'
 @args = "[remote] #{install.args}"
 
 @description = """
-List already installed or all available to install Node.js versions
-"""
+  List already installed or all available to install Node.js versions
+  """
 
 @cmd = (args)->
   if /^r/i.test args[0]

@@ -11,10 +11,10 @@ install = require './install'
 @args = "[all] #{install.args}"
 
 @description = """
-Remove specified Node.js version or all installed versions.
+  Remove specified Node.js version or all installed versions.
 
-NB: No additional confirmation(s) will be requested!
-"""
+  NB: No additional confirmation(s) will be requested!
+  """
 
 @cmd = (args)->
   if /^a/i.test args[0]

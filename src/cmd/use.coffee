@@ -9,12 +9,12 @@ install = require './install'
 @args = "[ none | #{install.args} ]"
 
 @description = """
-Make specified Node.js version active for all processes of current user.
+  Make specified Node.js version active for all processes of current user.
 
-Only installed versions are used. Use `#{PACKAGE.mingzi} install` for new ones.
+  Only installed versions are used. Use `#{PACKAGE.mingzi} install` for new ones.
 
-Say `#{PACKAGE.mingzi} use none` to temporarily disable #{PACKAGE.mingzi}.
-"""
+  Say `#{PACKAGE.mingzi} use none` to temporarily disable #{PACKAGE.mingzi}.
+  """
 
 @cmd = (args)->
   if 'none' == args[0]

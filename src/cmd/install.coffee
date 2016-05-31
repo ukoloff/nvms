@@ -10,10 +10,10 @@ keys = for k of dists
 @args = "[#{keys.join '|'}] [n[.n[.n]]] [x86|x64]"
 
 @description = """
-Install specified Node.js version.
+  Install specified Node.js version.
 
-Use `#{PACKAGE.mingzi} ls remote` to see available Node.js versions.
-"""
+  Use `#{PACKAGE.mingzi} ls remote` to see available Node.js versions.
+  """
 
 @cmd = (args)->
   filter = parse args
