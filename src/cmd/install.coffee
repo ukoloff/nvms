@@ -9,14 +9,14 @@ keys = for k of dists
 
 @args = "[#{keys.join '|'}] [n[.n[.n]]] [x86|x64]"
 
-@description = """
-Install specified Node.js version.
+@help = """
+  Install specified Node.js version.
 
-Use `#{PACKAGE.mingzi} ls remote` to see available Node.js versions.
-"""
+  Use `#{PACKAGE.mingzi} ls remote` to see available Node.js versions.
+  """
 
-@cmd = ->
-  filter = parse()
+@cmd = (args)->
+  filter = parse args
 
   for r in remotes.list().reverse() when semver.match r.id, filter.z
     x = r
@@ -27,11 +27,13 @@ Use `#{PACKAGE.mingzi} ls remote` to see available Node.js versions.
 
 # Parse version requirements
 @parse =
-parse = (args = argv.slice 1)->
-  ks = abbrev.apply abbrev, keys
+parse = (args = [])->
+  ks = new abbrev
+  ks.add
+    words: keys
   r = {}
   for z in args
-    if x = ks[z]
+    if x = ks.is z
       r.dist = x
     else if /^x(\d)/.test z
       r.x64 = /^6/.test RegExp.$1

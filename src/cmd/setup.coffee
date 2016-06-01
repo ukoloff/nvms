@@ -4,9 +4,9 @@
 
 @title = "Install #{PACKAGE.mingzi}"
 
-@description = """
+@help = """
   Installs all files to <#{install2}> and fiddles PATH.
-"""
+  """
 
 @cmd = ->
   do cmd.header

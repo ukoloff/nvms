@@ -8,18 +8,18 @@ install = require './install'
 
 @args = "[ none | #{install.args} ]"
 
-@description = """
-Make specified Node.js version active for all processes of current user.
+@help = """
+  Make specified Node.js version active for all processes of current user.
 
-Only installed versions are used. Use `#{PACKAGE.mingzi} install` for new ones.
+  Only installed versions are used. Use #{PACKAGE.mingzi} install for new ones.
 
-Say `#{PACKAGE.mingzi} use none` to temprarily disable #{PACKAGE.mingzi}.
-"""
+  Say `#{PACKAGE.mingzi} use none` to temporarily disable #{PACKAGE.mingzi}.
+  """
 
-@cmd = ->
-  if 'none' == argv[1]
+@cmd = (args)->
+  if 'none' == args[0]
     return none()
-  filter = install.parse().local().z
+  filter = install.parse(args).local().z
   for r in locals.list().reverse() when semver.match r.id, filter
     x = r
     break

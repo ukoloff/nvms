@@ -1,45 +1,45 @@
+#
+# Commands engine
+#
 @all =
 all = []
-
-@lookup =
+abr = new abbrev
 lookup = {}
 
 @list = (options, commands...)->
   stage = options.stage
-  names = []
   for cmd in commands when cmd.name and (!cmd.stage or cmd.stage==stage)
     cmd.alias = a = if cmd.alias
       cmd.alias.split /\s+/
     else
       []
-    for z in a.concat cmd.name
-      lookup[z] = cmd
-      names.push z
+    abr.add
+      word: cmd.name
+      aliases: a
+    lookup[cmd.name] = cmd
     all.push cmd
-  for k, v of abbrev.apply @, names
-    lookup[k] = lookup[v]
   do dispatch
 
-nop = ->
-  # Fix for minified (???)
+@find =
+find = (word)->
+  lookup[abr.is word]
 
 @dispatch =
 dispatch = ->
-  unless cmd = lookup[argv[0]]
+  unless cmd = find argv[0]
     do none
     exit 1
-  do nop
   cmd.cmd.call cmd, argv.slice 1
 
 @header =
 header = ->
   echo """
-#{PACKAGE.mingzi} v#{PACKAGE.version}: #{PACKAGE.description}
+    #{PACKAGE.mingzi} v#{PACKAGE.version}: #{PACKAGE.description}
 
-"""
+    """
 
 none = ->
   do header
   echo """
-Run #{PACKAGE.mingzi} help for instructions.
-"""
+    Run #{PACKAGE.mingzi} help for instructions.
+    """

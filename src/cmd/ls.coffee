@@ -2,30 +2,32 @@ install = require './install'
 
 @name = 'ls'
 
+@alias = 'list'
+
 @stage = 'normal'
 
 @title = 'List available Node.js versions'
 
 @args = "[remote] #{install.args}"
 
-@description = """
-List already installed or all available to install Node.js versions
-"""
+@help = """
+  List already installed or all available to install Node.js versions
+  """
 
-@cmd = ->
-  if /^r/i.test argv[1]
-    do remote
+@cmd = (args)->
+  if /^r/i.test args[0]
+    remote args.slice 1
   else
-    do local
+    local args
 
-local = ->
-  filter = install.parse().local()
+local = (args)->
+  filter = install.parse(args).local()
   for z in locals.list() when semver.match z.id, filter.z
     echo "#{if z.active then '>' else '-'} #{z.path}"
   return
-  
-remote = ->
-  filter = install.parse argv.slice 2
+
+remote = (args)->
+  filter = install.parse args
   list = []
   for z in minors remotes.list() when semver.match z.id, filter.z
     if last and not semver.cmp last.major, z.major

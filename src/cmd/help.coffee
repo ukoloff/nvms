@@ -4,13 +4,13 @@
 
 @args = '[command]'
 
-@description = """
-Shows information on individual commands or #{PACKAGE.mingzi} itself.
-"""
+@help = """
+  Shows information on individual commands or #{PACKAGE.mingzi} itself.
+  """
 
 @cmd = (args)->
   do cmd.header
-  if x = cmd.lookup[args[0]]
+  if x = cmd.find args[0]
     command x
   else
     do general
@@ -20,24 +20,24 @@ command = (cmd)->
   echo "\nAlias: #{cmd.alias.join ', '}" if cmd.alias.length
   echo """
 
-Usage: #{PACKAGE.mingzi} #{cmd.name} #{cmd.args or ''}
+    Usage: #{PACKAGE.mingzi} #{cmd.name} #{cmd.args or ''}
 
-#{cmd.description or ''}
-"""
+    #{cmd.help or ''}
+    """
 
 general = ->
   echo """
-Usage: #{PACKAGE.mingzi} [:] <command> [parameter(s)]
+    Usage: #{PACKAGE.mingzi} [:] <command> [parameter(s)]
 
-Commands:
-"""
+    Commands:
+    """
   for x in cmd.all
     echo "\t#{x.name}\t#{x.title}"
   echo """
 
-Start with colon (:) to force pause after script end.
+    Start with colon (:) to force pause after script end.
 
-Command names may be unambiguously abbreviated.
+    Command names may be unambiguously abbreviated.
 
-Run #{PACKAGE.mingzi} help <command> for more instructions.
-"""
+    Run #{PACKAGE.mingzi} help <command> for more instructions.
+    """

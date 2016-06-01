@@ -8,36 +8,49 @@ install = require './install'
 
 @title = 'Remove Node.js'
 
-@args = "[all] #{install.args}"
+@args = "[all] #{install.args} [.]"
 
-@description = """
-Remove specified Node.js version or all installed versions.
+@help = """
+  Remove specified Node.js version or all installed versions.
 
-NB: No additional confirmation(s) will be requested!
-"""
+  Without trailing dot command only shows candidate(s) to uninstall.
 
-@cmd = ->
-  if /^a/i.test argv[1]
-    all()
+  With trailing dot removing will proceed without additional confirmations!
+  """
+
+danger = false
+
+@cmd = (args)->
+  danger = '.' == args[args.length - 1]
+  if /^a/i.test args[0]
+    all args.slice 1
   else
-    one()
+    one args
+  return if danger
+  echo """
 
-all = ->
+    To actually uninstall say `#{PACKAGE.mingzi} #{argv.join ' '} .`
+    """
+
+all = (args)->
   n = 0
-  filter = install.parse(argv.slice 2).local().z
+  filter = install.parse(args).local().z
   for r in locals.list() when semver.match r.id, filter
     remove r
     n++
-  echo "Node.js versions found & uninstalled: #{n}"
+  echo "\nNode.js versions found & uninstalled: #{n}" if danger
 
-one = ->
-  filter = install.parse().local().z
+one = (args)->
+  filter = install.parse(args).local().z
   for r in locals.list() when semver.match r.id, filter
     remove r
     return
-  throw Error 'Specified Node.js version not installed!' unless x
+  throw Error 'Specified Node.js version not installed!'
 
 remove = (x)->
-  echo "removing #{x.path}"
+  unless danger
+    echo "Would remove #{x.path}."
+    return
+  echo "Removing #{x.path}"
   fs.DeleteFolder fs.BuildPath install2, x.path
   junction.exec 'none' if x.active
