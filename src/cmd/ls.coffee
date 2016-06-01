@@ -10,7 +10,7 @@ install = require './install'
 
 @args = "[remote] #{install.args}"
 
-@description = """
+@help = """
   List already installed or all available to install Node.js versions
   """
 

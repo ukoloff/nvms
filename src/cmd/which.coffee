@@ -6,7 +6,7 @@
 
 @title = 'Display path to current Node.js'
 
-@description = """
+@help = """
   Shows which folder with Node.js is active for all processes of current user
   """
 

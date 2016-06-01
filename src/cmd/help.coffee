@@ -4,7 +4,7 @@
 
 @args = '[command]'
 
-@description = """
+@help = """
   Shows information on individual commands or #{PACKAGE.mingzi} itself.
   """
 
@@ -22,7 +22,7 @@ command = (cmd)->
 
     Usage: #{PACKAGE.mingzi} #{cmd.name} #{cmd.args or ''}
 
-    #{cmd.description or ''}
+    #{cmd.help or ''}
     """
 
 general = ->

@@ -9,7 +9,7 @@ keys = for k of dists
 
 @args = "[#{keys.join '|'}] [n[.n[.n]]] [x86|x64]"
 
-@description = """
+@help = """
   Install specified Node.js version.
 
   Use `#{PACKAGE.mingzi} ls remote` to see available Node.js versions.

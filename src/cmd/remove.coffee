@@ -10,7 +10,7 @@ install = require './install'
 
 @args = "[all] #{install.args} [.]"
 
-@description = """
+@help = """
   Remove specified Node.js version or all installed versions.
 
   Without trailing dot command only shows candidate(s) to uninstall.

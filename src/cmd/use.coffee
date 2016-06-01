@@ -8,7 +8,7 @@ install = require './install'
 
 @args = "[ none | #{install.args} ]"
 
-@description = """
+@help = """
   Make specified Node.js version active for all processes of current user.
 
   Only installed versions are used. Use #{PACKAGE.mingzi} install for new ones.

@@ -2,7 +2,7 @@
 
 @title = 'Show version'
 
-@description = "Displays #{PACKAGE.mingzi} version."
+@help = "Displays #{PACKAGE.mingzi} version."
 
 @cmd = ->
   echo PACKAGE.version
