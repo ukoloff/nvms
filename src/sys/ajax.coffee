@@ -18,10 +18,4 @@ ajax.get = (url, asBody)->
     z.responseText
 
 ajax.dl = (url, path)->
-  data = ajax.get url, true
-  stream = new ActiveXObject "adodb.stream"
-  stream.Type = 1           # adTypeBinary
-  stream.Open()
-  stream.Write data
-  stream.SaveToFile path, 2 # adSaveCreateOverWrite
-  stream.Close()
+  binwrite path, ajax.get url, true
