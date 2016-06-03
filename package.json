@@ -5,8 +5,8 @@
   "version": "0.1.0",
   "description": "Node Version for MS Windows",
   "scripts": {
-    "test": "node_modules/.bin/webpack -d --watch",
-    "start": "node_modules/.bin/webpack -p"
+    "test": "webpack -d --watch",
+    "start": "webpack -p"
   },
   "repository": {
     "type": "git",
