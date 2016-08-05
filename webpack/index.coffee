@@ -1,5 +1,4 @@
 webpack = require 'webpack'
-commands = require './commands'
 cmdize = require './cmdize'
 PACKAGE = require '../package'
 
@@ -47,7 +46,6 @@ stringify = (rec)->
   res
 
 @plugins = values
-  # commands: new commands
   cmdize: new cmdize
   defines: new webpack.DefinePlugin
     PACKAGE: stringify require '../package'
