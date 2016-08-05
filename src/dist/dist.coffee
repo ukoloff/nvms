@@ -22,7 +22,7 @@ cp 'sis/junction.exe'
 cp "tmp/#{mingzi}.bat", 'dist'
 
 # Create setup.bat
-fs.writeFile path.join(root, 'setup.bat'),
+fs.writeFileSync path.join(root, 'setup.bat'),
   """@"%~dp0dist/#{mingzi}.bat" : setup"""
 
 # Git operations

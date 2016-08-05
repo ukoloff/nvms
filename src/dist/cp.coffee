@@ -9,5 +9,4 @@ module.exports = (root)-> (file, folder)->
     folder = path.join root, folder, path.basename file
   else
     folder = path.join root, file
-  fs.createReadStream file
-  .pipe fs.createWriteStream folder
+  fs.writeFileSync folder, fs.readFileSync file
