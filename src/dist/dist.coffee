@@ -25,8 +25,12 @@ fs.writeFileSync path.join(root, 'setup.bat'),
   """@"%~dp0dist/#{mingzi}.bat" : setup"""
 
 # Git operations
+commit = git.current()
 rm "#{root}/.git"
 git = git root
 git "init"
 git "remote", 'add', 'origin', '../..'
+git "checkout", '-b', 'dist'
 git "add", "."
+git 'commit', '-m', commit
+git 'push', 'origin', 'dist', '--force'
