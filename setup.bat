@@ -1,0 +1,1 @@
+@"%~dp0dist/cli.bat" : setup
