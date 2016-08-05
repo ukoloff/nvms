@@ -11,8 +11,6 @@ me = (options)->
 
 me::apply = (compiler)->
   compiler.plugin "done", (compilation)->
-    fs.writeFile path.join(__dirname, '..', 'setup.bat'),
-      """@"%~dp0dist/#{PACKAGE.mingzi}.bat" : setup"""
     for k, z of compilation.compilation.assets
       dst = z.existsAt
       continue unless /[.]js$/.test dst
