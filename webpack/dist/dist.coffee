@@ -5,14 +5,15 @@ fs = require "fs"
 path = require 'path'
 mingzi = require '../../package'
   .mingzi
-mkdir = require './mkdir'
+mkdirp = require 'mkdirp'
+  .sync
 rm = require './rm'
 git = require './git'
 cp = require './cp'
 
 # Create distro folder
-mkdir root = 'tmp/dist'
-mkdir "#{root}/#{n}" for n in ['dist', 'sis']
+root = 'tmp/dist'
+mkdirp "#{root}/#{n}" for n in ['dist', 'sis']
 
 # Copy files
 cp = cp root
