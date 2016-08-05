@@ -32,6 +32,7 @@ git = git root
 git "init"
 git "remote", 'add', 'origin', '../..'
 git "checkout", '-b', 'dist'
+git "push", 'origin', ':dist'	# Remove remote branch
 git "add", ".", '--force'
 git 'commit', '-m', commit
-git 'push', 'origin', 'dist', '--force'
+git 'push', 'origin', 'dist'
