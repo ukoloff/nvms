@@ -3,8 +3,7 @@
 #
 fs = require "fs"
 path = require 'path'
-mingzi = require '../../package'
-  .mingzi
+PACKAGE = require '../../package'
 mkdirp = require 'mkdirp'
   .sync
 rm = require './rm'
@@ -12,27 +11,27 @@ git = require './git'
 cp = require './cp'
 
 # Create distro folder
-root = 'tmp/dist'
-mkdirp "#{root}/#{n}" for n in ['dist', 'sis']
+repo = 'tmp/dist'
+mkdirp "#{repo}/#{n}" for n in ['dist', 'sis']
 
 # Copy files
-cp = cp root
+cp = cp repo
 cp 'README.md'
 cp 'sis/junction.exe'
-cp "tmp/#{mingzi}.bat", 'dist'
+cp "tmp/#{mingzi = PACKAGE.mingzi}.bat", 'dist'
 
 # Create setup.bat
-fs.writeFileSync path.join(root, 'setup.bat'),
+fs.writeFileSync path.join(repo, 'setup.bat'),
   """@"%~dp0dist/#{mingzi}.bat" : setup"""
 
 # Git operations
 commit = git.current()
-rm "#{root}/.git"
-git = git root
+rm "#{repo}/.git"
+git = git repo
 git "init"
 git "remote", 'add', 'origin', '../..'
 git "checkout", '-b', 'dist'
-git "push", 'origin', ':dist'	# Remove remote branch
 git "add", ".", '--force'
 git 'commit', '-m', commit
-git 'push', 'origin', 'dist'
+git 'tag', '-f', "v#{PACKAGE.version}"
+git 'push', '--tags', '--force', 'origin', 'dist'
