@@ -81,7 +81,7 @@ proto.prefix = ->
   npmrc.WriteLine """
 
     # <hack dirty src="#{PACKAGE.homepage}">
-    prefix=${APPDATA}\\nvm$\\current
+    prefix=${APPDATA}\\#{PACKAGE.mingzi}\\current
     # </hack>
     """
   npmrc.Close()
