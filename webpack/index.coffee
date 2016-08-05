@@ -1,5 +1,4 @@
 webpack = require 'webpack'
-commands = require './commands'
 cmdize = require './cmdize'
 PACKAGE = require '../package'
 
@@ -16,16 +15,23 @@ values = (map)->
   loaders: values
     coffee:
       test: /[.]coffee$/
-      loader: "coffee-loader"
+      loader: "coffee"
     litcoffee:
       test: /[.](litcoffee|coffee[.]md)$/
-      loader: "coffee-loader?literate"
+      loader: "coffee?literate"
+    cmd:
+      test: /[.]cmd$/
+      loader: 'coffee!cmd'
 
 brk = (s)->
   s.split ' '
 
 @resolve =
-  extensions: brk " .js .coffee .litcoffee .coffee.md"
+  extensions: brk " .js .coffee .litcoffee .coffee.md .cmd"
+
+@resolveLoader =
+  alias:
+    cmd: require.resolve './cmd'
 
 stringify = (rec)->
   res = {}
@@ -40,7 +46,6 @@ stringify = (rec)->
   res
 
 @plugins = values
-  commands: new commands
   cmdize: new cmdize
   defines: new webpack.DefinePlugin
     PACKAGE: stringify require '../package'
