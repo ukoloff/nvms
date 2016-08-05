@@ -11,13 +11,13 @@ but totally rewritten using Microsoft Scripting Host.
 
 If you have `git` installed:
 
-  * git clone https://github.com/ukoloff/nvms.git
+  * git clone https://github.com/ukoloff/nvms.git -b dist
   * nvms/setup
 
 If you have got no `git` or don't like to use command prompt:
 
-  * Download https://github.com/ukoloff/nvms/archive/master.zip
-  * Start downloaded `nvms-master.zip` (in Explorer)
+  * Download https://github.com/ukoloff/nvms/archive/dist.zip
+  * Start downloaded `nvms-dist.zip` (in Explorer)
   * Click `setup.bat`
   * Windows will prompt to extract all files
   * Agree
