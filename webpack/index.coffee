@@ -20,12 +20,19 @@ values = (map)->
     litcoffee:
       test: /[.](litcoffee|coffee[.]md)$/
       loader: "coffee?literate"
+    cmd:
+      test: /[.]cmd$/
+      loader: 'coffee!cmd'
 
 brk = (s)->
   s.split ' '
 
 @resolve =
-  extensions: brk " .js .coffee .litcoffee .coffee.md"
+  extensions: brk " .js .coffee .litcoffee .coffee.md .cmd"
+
+@resolveLoader =
+  alias:
+    cmd: require.resolve './cmd'
 
 stringify = (rec)->
   res = {}
@@ -40,7 +47,7 @@ stringify = (rec)->
   res
 
 @plugins = values
-  commands: new commands
+  # commands: new commands
   cmdize: new cmdize
   defines: new webpack.DefinePlugin
     PACKAGE: stringify require '../package'
