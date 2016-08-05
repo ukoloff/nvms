@@ -32,6 +32,6 @@ git = git root
 git "init"
 git "remote", 'add', 'origin', '../..'
 git "checkout", '-b', 'dist'
-git "add", "."
+git "add", ".", '--force'
 git 'commit', '-m', commit
 git 'push', 'origin', 'dist', '--force'
