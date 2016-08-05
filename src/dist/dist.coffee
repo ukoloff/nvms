@@ -13,7 +13,6 @@ cp = require './cp'
 # Create distro folder
 mkdir root = 'tmp/dist'
 mkdir "#{root}/#{n}" for n in ['dist', 'sis']
-rm "#{root}/.git"
 
 # Copy files
 cp = cp root
@@ -26,4 +25,8 @@ fs.writeFileSync path.join(root, 'setup.bat'),
   """@"%~dp0dist/#{mingzi}.bat" : setup"""
 
 # Git operations
-git "init", root
+rm "#{root}/.git"
+git = git root
+git "init"
+git "remote", 'add', 'origin', '../..'
+git "add", "."
