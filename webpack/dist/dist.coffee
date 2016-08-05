@@ -18,11 +18,11 @@ mkdirp "#{repo}/#{n}" for n in ['dist', 'sis']
 cp = cp repo
 cp 'README.md'
 cp 'sis/junction.exe'
-cp "tmp/#{mingzi = PACKAGE.mingzi}.bat", 'dist'
+cp "tmp/cli.bat", 'dist'
 
 # Create setup.bat
 fs.writeFileSync path.join(repo, 'setup.bat'),
-  """@"%~dp0dist/#{mingzi}.bat" : setup"""
+  """@"%~dp0dist/cli.bat" : setup"""
 
 # Git operations
 commit = git.current()

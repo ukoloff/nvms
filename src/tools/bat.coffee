@@ -6,5 +6,5 @@ module.exports = (folder)->
   path = fs.BuildPath path, PACKAGE.mingzi + '.bat'
   fs.CreateTextFile path, true
   .WriteLine """
-    @"%~dp0..\\#{PACKAGE.mingzi}.bat" %*
+    @"%~dp0..\\cli.bat" %*
     """
