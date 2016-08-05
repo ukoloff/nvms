@@ -16,10 +16,10 @@ values = (map)->
   loaders: values
     coffee:
       test: /[.]coffee$/
-      loader: "coffee-loader"
+      loader: "coffee"
     litcoffee:
       test: /[.](litcoffee|coffee[.]md)$/
-      loader: "coffee-loader?literate"
+      loader: "coffee?literate"
 
 brk = (s)->
   s.split ' '
