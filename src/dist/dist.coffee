@@ -12,8 +12,9 @@ mkdir root = 'tmp/dist'
 mkdir "#{root}/#{n}" for n in ['dist', 'sis']
 rm "#{root}/.git"
 
-cp 'README.md', root
-cp 'sis/junction.exe', root
-cp "tmp/#{mingzi}.bat", root, 'dist'
+cp = cp root
+cp 'README.md'
+cp 'sis/junction.exe'
+cp "tmp/#{mingzi}.bat", 'dist'
 
 git "init", root
