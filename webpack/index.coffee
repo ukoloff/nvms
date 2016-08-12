@@ -3,6 +3,7 @@ cmdize = require './cmdize'
 
 @entry =
   cli: "./src"
+  setup: "./src/setup"
 
 @output =
   path: "tmp",
