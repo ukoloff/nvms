@@ -22,7 +22,7 @@ src.exists = ->
   fs.FileExists do src
 
 @link =
-link = fs.BuildPath install2, 'current'
+link = fs.BuildPath install2, 'this'
 
 wait = (child)->
   until child.Status

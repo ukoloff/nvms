@@ -80,7 +80,7 @@ proto.prefix = ->
   npmrc.WriteLine """
 
     # <hack dirty src="#{PACKAGE.homepage}">
-    prefix=${APPDATA}\\#{PACKAGE.mingzi}\\current
+    prefix=${APPDATA}\\#{PACKAGE.mingzi}\\#{fs.GetBaseName junction.link}
     # </hack>
     """
   npmrc.Close()
