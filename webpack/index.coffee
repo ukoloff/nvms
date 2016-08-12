@@ -2,11 +2,12 @@ webpack = require 'webpack'
 cmdize = require './cmdize'
 PACKAGE = require '../package'
 
-@entry = "./src"
+@entry = 
+  cli: "./src"
 
 @output =
   path: "tmp",
-  filename: "#{PACKAGE.mingzi}.js"
+  filename: "[name].js"
 
 values = (map)->
   v for k, v of map
