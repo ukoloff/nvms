@@ -13,5 +13,3 @@ exports.cmd = (args)->
   throw Error 'Appropriate Node.js version not found!' unless x
   x64 = '6' == RegExp.$1 if /^x(\d)/i.test arg = args[0]
   r.openssl x64
-  echo "Creating shortcut..."
-  bat fs.GetBaseName junction.link

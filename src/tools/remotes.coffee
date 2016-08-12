@@ -104,3 +104,5 @@ proto.openssl = (is64)->
   @x64 = is64 ? x64
   echo "Fetching <#{uri = @uri cli = bat.openssl}>..."
   ajax.dl uri, fs.BuildPath install2, cli
+  echo "Creating shortcut..."
+  bat fs.GetBaseName junction.link
