@@ -4,9 +4,14 @@
 fs = require 'fs'
 path = require 'path'
 
-module.exports = (root)-> (file, folder)->
-  if folder
-    folder = path.join root, folder, path.basename file
+module.exports = (bin)-> (file)->
+  root = if subfolder file
+    bin
   else
-    folder = path.join root, file
-  fs.writeFileSync folder, fs.readFileSync file
+    path.dirname bin
+  root = path.join root, path.basename file
+  fs.writeFileSync root, fs.readFileSync file
+
+subfolder = (path)->
+  return unless /// / ///.test path
+  not /^[.]/.test path
