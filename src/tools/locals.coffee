@@ -2,7 +2,7 @@
 # List installed versions
 #
 
-@list = ->
+exports.list = ->
   list = []
   x = rndFile()
   folders = fs.GetFolder install2

@@ -1,16 +1,16 @@
 install = require './install'
 
-@alias = 'list'
+exports.alias = 'list'
 
-@title = 'List available Node.js versions'
+exports.title = 'List available Node.js versions'
 
-@args = "[remote] #{install.args}"
+exports.args = "[remote] #{install.args}"
 
-@help = """
+exports.help = """
   List already installed or all available to install Node.js versions
   """
 
-@cmd = (args)->
+exports.cmd = (args)->
   if /^r/i.test args[0]
     remote args.slice 1
   else

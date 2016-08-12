@@ -1,8 +1,8 @@
-@alias = 'repo'
+exports.alias = 'repo'
 
-@title = 'Open homepage'
+exports.title = 'Open homepage'
 
-@help = "Opens #{PACKAGE.mingzi} repository in default browser."
+exports.help = "Opens #{PACKAGE.mingzi} repository in default browser."
 
-@cmd = ->
+exports.cmd = ->
   sh.run PACKAGE.homepage

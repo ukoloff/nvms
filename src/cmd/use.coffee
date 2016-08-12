@@ -1,10 +1,10 @@
 install = require './install'
 
-@title = 'Use installed before Node.js version'
+exports.title = 'Use installed before Node.js version'
 
-@args = "[ none | #{install.args} ]"
+exports.args = "[ none | #{install.args} ]"
 
-@help = """
+exports.help = """
   Make specified Node.js version active for all processes of current user.
 
   Only installed versions are used. Use #{PACKAGE.mingzi} install for new ones.
@@ -12,7 +12,7 @@ install = require './install'
   Say `#{PACKAGE.mingzi} use none` to temporarily disable #{PACKAGE.mingzi}.
   """
 
-@cmd = (args)->
+exports.cmd = (args)->
   if 'none' == args[0]
     return none()
   filter = install.parse(args).local().z

@@ -1,12 +1,12 @@
-@alias = 'where'
+exports.alias = 'where'
 
-@title = 'Display path to current Node.js'
+exports.title = 'Display path to current Node.js'
 
-@help = """
+exports.help = """
   Shows which folder with Node.js is active for all processes of current user
   """
 
-@cmd = ->
+exports.cmd = ->
   for z in locals.list()
     if z.active
       echo fs.BuildPath install2, z.path

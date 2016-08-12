@@ -1,16 +1,16 @@
-@alias = 'boeing'
+exports.alias = 'boeing'
 
-@title = "Uninstall #{PACKAGE.mingzi}"
+exports.title = "Uninstall #{PACKAGE.mingzi}"
 
-@args = "[.]"
+exports.args = "[.]"
 
-@help = """
+exports.help = """
   Totally remove #{PACKAGE.mingzi} manager and all installed Node.js versions.
 
   Without trailing dot command does nothing.
   """
 
-@cmd = (args)->
+exports.cmd = (args)->
   unless period args
     echo """
 
@@ -26,4 +26,5 @@
 
     Fare thee well! and if for ever,
     Still for ever, fare thee well!
+
   """

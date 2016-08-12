@@ -1,23 +1,23 @@
-@name =
+exports.name = 
 name = 'junction.exe'
 
-@dst =
+exports.dst = 
 dst = ->
   fs.BuildPath install2, name
 
-@link =
+exports.link = 
 link = fs.BuildPath install2, 'this'
 
 wait = (child)->
   until child.Status
     wsh.Sleep 100
 
-@remove =
+exports.remove = 
 remove = ->
   wait sh.exec """
     "#{dst()}" -d "#{link}"
   """
-@exec = (folder, optional)->
+exports.exec = (folder, optional)->
   bat folder
   return if optional and fs.FolderExists link
   remove()
@@ -27,7 +27,7 @@ remove = ->
   """
 
 # Accept EULA
-@eula = ->
+exports.eula = ->
   sh.RegWrite 'HKCU\\Software\\Sysinternals\\Junction\\EulaAccepted',
     1,
     'REG_DWORD'

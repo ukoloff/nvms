@@ -2,7 +2,7 @@
 # Get available distributions list
 #
 
-@list = (force)->
+exports.list = (force)->
   r = []
   for k, v of dists
     f = fs.BuildPath cache, "#{k}.tsv"
@@ -104,3 +104,5 @@ proto.openssl = (is64)->
   @x64 = is64 ? x64
   echo "Fetching <#{uri = @uri cli = bat.openssl}>..."
   ajax.dl uri, fs.BuildPath install2, cli
+  echo "Creating shortcut..."
+  bat fs.GetBaseName junction.link

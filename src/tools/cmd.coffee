@@ -1,12 +1,12 @@
 #
 # Commands engine
 #
-@all =
+exports.all = 
 all = []
 abr = new abbrev
 lookup = {}
 
-@list = (commands)->
+exports.list = (commands)->
   for name, cmd of commands
     cmd.name = name
     cmd.alias = a = if cmd.alias
@@ -20,18 +20,18 @@ lookup = {}
     all.push cmd
   do dispatch
 
-@find =
+exports.find = 
 find = (word)->
   lookup[abr.is word]
 
-@dispatch =
+exports.dispatch = 
 dispatch = ->
   unless cmd = find argv[0]
     do none
     exit 1
   cmd.cmd.call cmd, argv.slice 1
 
-@header =
+exports.header = 
 header = ->
   echo """
     #{PACKAGE.mingzi} v#{PACKAGE.version}: #{PACKAGE.description}

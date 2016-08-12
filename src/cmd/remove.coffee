@@ -1,12 +1,12 @@
 install = require './install'
 
-@alias = 'uninstall'
+exports.alias = 'uninstall'
 
-@title = 'Remove Node.js'
+exports.title = 'Remove Node.js'
 
-@args = "[all] #{install.args} [.]"
+exports.args = "[all] #{install.args} [.]"
 
-@help = """
+exports.help = """
   Remove specified Node.js version or all installed versions.
 
   Without trailing dot command only shows candidate(s) to uninstall.
@@ -16,7 +16,7 @@ install = require './install'
 
 danger = false
 
-@cmd = (args)->
+exports.cmd = (args)->
   danger = period args
   if /^a/i.test args[0]
     all args.slice 1

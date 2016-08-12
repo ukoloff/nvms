@@ -3,7 +3,7 @@
 #
 
 # Compare values
-@cmpv =
+exports.cmpv = 
 cmpv = (a, b)->
   if a == b
     0
@@ -13,7 +13,7 @@ cmpv = (a, b)->
     +1
 
 # Compare Arrays
-@cmpa =
+exports.cmpa = 
 cmpa = (a, b, comparator)->
   i = 0
   la = a.length
@@ -32,12 +32,12 @@ cmpa = (a, b, comparator)->
     i++
 
 # Compare semver Arrays
-@cmp =
+exports.cmp = 
 cmp = (a, b)->
   cmpa a, b, (a, b)->
     cmpa a, b, cmpv
 
-@cmpi = (a, b)->
+exports.cmpi = (a, b)->
   cmp a.id, b.id
 
 matchArray = (test, pattern, eq)->
@@ -46,7 +46,7 @@ matchArray = (test, pattern, eq)->
   true
 
 # Match semver array
-@match = (test, pattern)->
+exports.match = (test, pattern)->
   matchArray test, pattern, (a, b)->
     matchArray a, b, (a, b)->
       a==b
