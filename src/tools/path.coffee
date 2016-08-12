@@ -16,7 +16,7 @@ path = ->
 assign = new Function 'o,k,v', 'o(k)=v'
 
 path.install = (add = true)->
-  bin = fs.BuildPath install2, 'current'
+  bin = junction.link
   x = for x in path() when x != bin
     x
   x.unshift bin if add

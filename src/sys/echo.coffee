@@ -1,2 +1,2 @@
-module.exports = ->
-  wsh.Echo [].slice.apply(arguments).join ' '
+module.exports = (args...)->
+  wsh.Echo args.join ' '
