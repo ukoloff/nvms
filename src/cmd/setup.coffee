@@ -1,6 +1,4 @@
-@name = 'setup'
-
-@stage = 'pre'
+# @name = 'setup'
 
 @title = "Install #{PACKAGE.mingzi}"
 

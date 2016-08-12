@@ -4,8 +4,6 @@ install = require './install'
 
 @alias = 'uninstall'
 
-@stage = 'normal'
-
 @title = 'Remove Node.js'
 
 @args = "[all] #{install.args} [.]"

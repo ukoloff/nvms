@@ -1,7 +1,5 @@
 @name = 'openssl'
 
-@stage = 'normal'
-
 @title = 'Install OpenSSL utility'
 
 @args = "[x86|x64]"

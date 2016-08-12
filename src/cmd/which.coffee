@@ -2,8 +2,6 @@
 
 @alias = 'where'
 
-@stage = 'normal'
-
 @title = 'Display path to current Node.js'
 
 @help = """

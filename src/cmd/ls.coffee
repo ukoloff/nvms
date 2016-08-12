@@ -4,8 +4,6 @@ install = require './install'
 
 @alias = 'list'
 
-@stage = 'normal'
-
 @title = 'List available Node.js versions'
 
 @args = "[remote] #{install.args}"

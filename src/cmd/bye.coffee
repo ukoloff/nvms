@@ -2,8 +2,6 @@
 
 @alias = 'boeing'
 
-@stage = 'normal'
-
 @title = "Uninstall #{PACKAGE.mingzi}"
 
 @args = "[.]"

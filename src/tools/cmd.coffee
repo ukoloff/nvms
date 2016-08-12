@@ -8,7 +8,7 @@ lookup = {}
 
 @list = (options, commands...)->
   stage = options.stage
-  for cmd in commands when cmd.name and (!cmd.stage or cmd.stage==stage)
+  for cmd in commands when cmd.name
     cmd.alias = a = if cmd.alias
       cmd.alias.split /\s+/
     else
