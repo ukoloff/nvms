@@ -17,9 +17,12 @@ install = require './install'
     local args
 
 local = (args)->
+  n = 0
   filter = install.parse(args).local()
-  for z in locals.list() when semver.match z.id, filter.z
+  for z in ll = locals.list() when semver.match z.id, filter.z
+    n++
     echo "#{if z.active then '>' else '-'} #{z.path}"
+  echo "Found: #{n} of #{ll.length} installed Node.js version" unless n
   return
 
 remote = (args)->
