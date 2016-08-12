@@ -1,8 +1,7 @@
 webpack = require 'webpack'
 cmdize = require './cmdize'
-PACKAGE = require '../package'
 
-@entry = 
+@entry =
   cli: "./src"
 
 @output =
