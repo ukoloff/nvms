@@ -8,5 +8,6 @@ module.exports = (src)->
   @cacheable()
   for f in fs.readdirSync @context
     f = path.parse f
-    src += "  #{f.name}: require './#{f.name}'\n"
+    if '.cmds' != f.ext
+      src += "  #{f.name}: require './#{f.name}'\n"
   src

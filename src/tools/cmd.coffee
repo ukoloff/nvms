@@ -7,7 +7,7 @@ abr = new abbrev
 lookup = {}
 
 @list = (commands)->
-  for name, cmd of commands when cmd.cmd
+  for name, cmd of commands
     cmd.name = name
     cmd.alias = a = if cmd.alias
       cmd.alias.split /\s+/
