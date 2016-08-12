@@ -46,10 +46,13 @@ proto.msi = (full)->
   else
     r
 
-proto.uri = ->
+proto.uri = (file = @msi false)->
   "#{dists[@dist]}#{@src.version}/#{
-    if @x64 and not @id[0][0] then 'x64/' else ''
-    }#{@msi false}"
+    if @x64 and not @id[0][0]
+      'x64/'
+    else
+      ''
+    }#{file}"
 
 proto.fetch = ->
   echo "Fetching <#{uri = @uri()}>..."
@@ -96,3 +99,8 @@ proto.install = (is64)->
   @shortcuts()
   @prefix()
   @use()
+
+proto.openssl = (is64)->
+  @x64 = is64 ? x64
+  echo "Fetching <#{uri = @uri cli = bat.openssl}>..."
+  ajax.dl uri, fs.BuildPath install2, cli
