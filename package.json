@@ -3,7 +3,7 @@
   "mingzi": "nvm$",
   "private": true,
   "version": "0.3.0",
-  "description": "Node Version for MS Windows",
+  "description": "Node Version Manager for M$ Windows",
   "scripts": {
     "test": "webpack -d --watch",
     "start": "webpack -p"
