@@ -7,6 +7,8 @@ and [nvm-windows](https://github.com/coreybutler/nvm-windows)
 (and of course [nvm](https://github.com/creationix/nvm) itself),
 but totally rewritten using Microsoft Scripting Host.
 
+It also provides simple way to install OpenSSL utility on Windows.
+
 ## Installation
 
 If you have `git` installed:
