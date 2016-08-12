@@ -22,9 +22,10 @@
   echo "Removing from PATH"
   path.install false
   echo "Removing files..."
+  junction.remove()
   fs.DeleteFolder install2
   echo """
-  
+
     Fare thee well! and if for ever,
     Still for ever, fare thee well!
   """
