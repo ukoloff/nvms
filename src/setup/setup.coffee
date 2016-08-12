@@ -6,8 +6,10 @@ echo "Installing #{PACKAGE.mingzi} v#{PACKAGE.version} to <#{install2}>..."
 
 mkpath install2
 echo "Copying files..."
-fs.CopyFolder fs.BuildPath(fs.GetParentFolderName(wsh.ScriptFullName), 'bin'),
-  install2
+src = fs.GetParentFolderName wsh.ScriptFullName
+fs.CopyFolder fs.BuildPath(src, 'bin'), install2
+rm = 'README.md'
+fs.CopyFile fs.BuildPath(src, rm), fs.BuildPath(install2, rm)
 echo "Creating shortcuts..."
 junction.eula()
 junction.exec 'none', true
