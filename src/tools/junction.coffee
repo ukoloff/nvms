@@ -29,6 +29,7 @@ wait = (child)->
     wsh.Sleep 100
 
 @exec = (folder, optional)->
+  bat folder
   return if optional and fs.FolderExists link
   wait sh.exec """
     "#{dst()}" -d "#{link}"

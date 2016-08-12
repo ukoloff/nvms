@@ -69,7 +69,6 @@ proto.extract = ->
 
 proto.shortcuts = ->
   echo "Creating shortcuts..."
-  bat @ver()
 
   if 'node' != @dist
     fs.CopyFile fs.BuildPath(@dst, "#{@dist}.exe"),

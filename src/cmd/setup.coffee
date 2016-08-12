@@ -16,7 +16,6 @@
   fs.CopyFile wsh.ScriptFullName, fs.BuildPath install2, 'cli.bat'
   fs.CopyFile junction.src(), junction.dst()
   echo "Creating shortcuts..."
-  bat 'none'
   junction.eula()
   junction.exec 'none', true
   echo "Updating PATH..."
