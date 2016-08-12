@@ -3,7 +3,8 @@ exports.title = 'Install Node.js'
 keys = for k of dists
   k
 
-exports.args = "[#{keys.join '|'}] [n[.n[.n]]] [x86|x64]"
+exports.args64 = args64 = "[x86|x64]"
+exports.args = "[#{keys.join '|'}] [n[.n[.n]]] #{args64}"
 
 exports.help = """
   Install specified Node.js version.
@@ -21,8 +22,14 @@ exports.cmd = (args)->
 
   x.install filter.x64
 
+# Parse x86|x64
+exports.x64 =
+x64 = (str)->
+  return unless /^x(\d)/.test str
+  '6' == RegExp.$1
+
 # Parse version requirements
-exports.parse = 
+exports.parse =
 parse = (args = [])->
   ks = new abbrev
   ks.add
@@ -31,8 +38,8 @@ parse = (args = [])->
   for z in args
     if x = ks.is z
       r.dist = x
-    else if /^x(\d)/.test z
-      r.x64 = '6' == RegExp.$1
+    else if (is64 = x64 z)?
+      r.x64 = is64
     else if /^\d/.test z
       r.ver = for z in z.split /\D+/ when z.length
         Number z
