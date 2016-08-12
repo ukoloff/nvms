@@ -1,11 +1,6 @@
 @name =
 name = 'junction.exe'
 
-@src =
-src = ->
-  fs.BuildPath fs.GetParentFolderName(wsh.ScriptFullName),
-    fs.BuildPath '../sis', name
-
 @dst =
 dst = ->
   fs.BuildPath install2, name
