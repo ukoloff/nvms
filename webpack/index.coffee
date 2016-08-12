@@ -1,18 +1,18 @@
 webpack = require 'webpack'
 cmdize = require './cmdize'
 
-@entry =
+exports.entry = 
   cli: "./src"
   setup: "./src/setup"
 
-@output =
+exports.output = 
   path: "tmp",
   filename: "[name].js"
 
 values = (map)->
   v for k, v of map
 
-@module =
+exports.module = 
   loaders: values
     coffee:
       test: /[.]coffee$/
@@ -27,10 +27,10 @@ values = (map)->
 brk = (s)->
   s.split ' '
 
-@resolve =
+exports.resolve = 
   extensions: brk " .js .coffee .litcoffee .coffee.md .cmds"
 
-@resolveLoader =
+exports.resolveLoader = 
   alias:
     cmds: require.resolve './cmds'
 
@@ -46,7 +46,7 @@ stringify = (rec)->
         v
   res
 
-@plugins = values
+exports.plugins = values
   cmdize: new cmdize
   defines: new webpack.DefinePlugin
     PACKAGE: stringify require '../package'

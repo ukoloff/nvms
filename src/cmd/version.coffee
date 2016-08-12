@@ -1,6 +1,6 @@
-@title = 'Show version'
+exports.title = 'Show version'
 
-@help = "Displays #{PACKAGE.mingzi} version."
+exports.help = "Displays #{PACKAGE.mingzi} version."
 
-@cmd = ->
+exports.cmd = ->
   echo PACKAGE.version

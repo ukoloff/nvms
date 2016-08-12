@@ -1,17 +1,17 @@
-@title = 'Install Node.js'
+exports.title = 'Install Node.js'
 
 keys = for k of dists
   k
 
-@args = "[#{keys.join '|'}] [n[.n[.n]]] [x86|x64]"
+exports.args = "[#{keys.join '|'}] [n[.n[.n]]] [x86|x64]"
 
-@help = """
+exports.help = """
   Install specified Node.js version.
 
   Use `#{PACKAGE.mingzi} ls remote` to see available Node.js versions.
   """
 
-@cmd = (args)->
+exports.cmd = (args)->
   filter = parse args
 
   for r in remotes.list().reverse() when semver.match r.id, filter.z
@@ -22,7 +22,7 @@ keys = for k of dists
   x.install filter.x64
 
 # Parse version requirements
-@parse =
+exports.parse = 
 parse = (args = [])->
   ks = new abbrev
   ks.add

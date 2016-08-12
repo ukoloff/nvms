@@ -1,12 +1,12 @@
-@title = 'Install OpenSSL utility'
+exports.title = 'Install OpenSSL utility'
 
-@args = "[x86|x64]"
+exports.args = "[x86|x64]"
 
-@help = """
+exports.help = """
   Install openssl.exe precompiled for Node.js project
   """
 
-@cmd = (args)->
+exports.cmd = (args)->
   for r in remotes.list().reverse() when semver.match r.id, [[0]]
     x = r
     break

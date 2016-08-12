@@ -1,12 +1,12 @@
-@title = 'Show help for all or individual commands'
+exports.title = 'Show help for all or individual commands'
 
-@args = '[command]'
+exports.args = '[command]'
 
-@help = """
+exports.help = """
   Shows information on individual commands or #{PACKAGE.mingzi} itself.
   """
 
-@cmd = (args)->
+exports.cmd = (args)->
   do cmd.header
   if x = cmd.find args[0]
     command x

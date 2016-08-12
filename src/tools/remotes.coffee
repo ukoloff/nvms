@@ -2,7 +2,7 @@
 # Get available distributions list
 #
 
-@list = (force)->
+exports.list = (force)->
   r = []
   for k, v of dists
     f = fs.BuildPath cache, "#{k}.tsv"
