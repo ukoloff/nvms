@@ -1,7 +1,5 @@
 install = require './install'
 
-@name = 'use'
-
 @title = 'Use installed before Node.js version'
 
 @args = "[ none | #{install.args} ]"

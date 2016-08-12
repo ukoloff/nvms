@@ -1,5 +1,3 @@
-@name = 'which'
-
 @alias = 'where'
 
 @title = 'Display path to current Node.js'

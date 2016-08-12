@@ -1,7 +1,5 @@
 install = require './install'
 
-@name = 'ls'
-
 @alias = 'list'
 
 @title = 'List available Node.js versions'

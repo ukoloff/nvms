@@ -1,7 +1,5 @@
 install = require './install'
 
-@name = 'remove'
-
 @alias = 'uninstall'
 
 @title = 'Remove Node.js'

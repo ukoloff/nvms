@@ -1,5 +1,3 @@
-@name = 'bye'
-
 @alias = 'boeing'
 
 @title = "Uninstall #{PACKAGE.mingzi}"
