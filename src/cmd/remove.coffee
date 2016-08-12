@@ -21,7 +21,7 @@ install = require './install'
 danger = false
 
 @cmd = (args)->
-  danger = '.' == args[args.length - 1]
+  danger = period args
   if /^a/i.test args[0]
     all args.slice 1
   else

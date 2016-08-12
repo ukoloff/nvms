@@ -36,7 +36,7 @@ parse = (args = [])->
     if x = ks.is z
       r.dist = x
     else if /^x(\d)/.test z
-      r.x64 = /^6/.test RegExp.$1
+      r.x64 = '6' == RegExp.$1
     else if /^\d/.test z
       r.ver = for z in z.split /\D+/ when z.length
         Number z

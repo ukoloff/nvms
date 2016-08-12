@@ -1,12 +1,12 @@
 webpack = require 'webpack'
 cmdize = require './cmdize'
-PACKAGE = require '../package'
 
-@entry = "./src"
+@entry =
+  cli: "./src"
 
 @output =
   path: "tmp",
-  filename: "#{PACKAGE.mingzi}.js"
+  filename: "[name].js"
 
 values = (map)->
   v for k, v of map
@@ -19,19 +19,19 @@ values = (map)->
     litcoffee:
       test: /[.](litcoffee|coffee[.]md)$/
       loader: "coffee?literate"
-    cmd:
-      test: /[.]cmd$/
-      loader: 'coffee!cmd'
+    cmds:
+      test: /[.]cmds$/
+      loader: 'coffee!cmds'
 
 brk = (s)->
   s.split ' '
 
 @resolve =
-  extensions: brk " .js .coffee .litcoffee .coffee.md .cmd"
+  extensions: brk " .js .coffee .litcoffee .coffee.md .cmds"
 
 @resolveLoader =
   alias:
-    cmd: require.resolve './cmd'
+    cmds: require.resolve './cmds'
 
 stringify = (rec)->
   res = {}

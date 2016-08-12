@@ -22,17 +22,22 @@ src.exists = ->
   fs.FileExists do src
 
 @link =
-link = fs.BuildPath install2, 'current'
+link = fs.BuildPath install2, 'this'
 
 wait = (child)->
   until child.Status
     wsh.Sleep 100
 
-@exec = (folder, optional)->
-  return if optional and fs.FolderExists link
+@remove =
+remove = ->
   wait sh.exec """
     "#{dst()}" -d "#{link}"
   """
+@exec = (folder, optional)->
+  bat folder
+  return if optional and fs.FolderExists link
+  remove()
+
   sh.exec """
     "#{dst()}" "#{link}" "#{fs.BuildPath install2, folder}"
   """
