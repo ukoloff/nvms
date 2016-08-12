@@ -1,22 +1,20 @@
-@name = 'bye'
-
 @alias = 'boeing'
-
-@stage = 'normal'
 
 @title = "Uninstall #{PACKAGE.mingzi}"
 
 @args = "[.]"
 
 @help = """
-  Totally remove #{PACKAGE.mingzi} manager and all installed Node.js version(s)
+  Totally remove #{PACKAGE.mingzi} manager and all installed Node.js versions.
+
+  Without trailing dot command does nothing.
   """
 
 @cmd = (args)->
   unless period args
     echo """
 
-      Say `#{PACKAGE.mingzi} #{argv.join ' '} .` to really remove everything.
+      Say #{period.cmd} to really remove everything.
     """
     exit 1
   echo "Removing from PATH"

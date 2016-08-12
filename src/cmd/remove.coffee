@@ -1,10 +1,6 @@
 install = require './install'
 
-@name = 'remove'
-
 @alias = 'uninstall'
-
-@stage = 'normal'
 
 @title = 'Remove Node.js'
 
@@ -29,7 +25,7 @@ danger = false
   return if danger
   echo """
 
-    To actually uninstall say `#{PACKAGE.mingzi} #{argv.join ' '} .`
+    To actually uninstall say #{period.cmd}
     """
 
 all = (args)->

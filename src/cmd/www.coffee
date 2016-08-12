@@ -1,5 +1,3 @@
-@name = 'www'
-
 @alias = 'repo'
 
 @title = 'Open homepage'

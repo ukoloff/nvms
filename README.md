@@ -1,6 +1,6 @@
 # nvm$
 
-Node Version for M$ Windows.
+Node Version Manager for M$ Windows.
 
 Inspired by [nvmw](https://github.com/hakobera/nvmw)
 and [nvm-windows](https://github.com/coreybutler/nvm-windows)

@@ -1,7 +1,3 @@
-@name = 'install'
-
-@stage = 'normal'
-
 @title = 'Install Node.js'
 
 keys = for k of dists

@@ -6,9 +6,9 @@ all = []
 abr = new abbrev
 lookup = {}
 
-@list = (options, commands...)->
-  stage = options.stage
-  for cmd in commands when cmd.name and (!cmd.stage or cmd.stage==stage)
+@list = (commands)->
+  for name, cmd of commands when cmd.cmd
+    cmd.name = name
     cmd.alias = a = if cmd.alias
       cmd.alias.split /\s+/
     else

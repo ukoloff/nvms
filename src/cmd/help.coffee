@@ -1,5 +1,3 @@
-@name = 'help'
-
 @title = 'Show help for all or individual commands'
 
 @args = '[command]'
@@ -27,15 +25,13 @@ command = (cmd)->
 
 general = ->
   echo """
-    Usage: #{PACKAGE.mingzi} [:] <command> [parameter(s)]
+    Usage: #{PACKAGE.mingzi} <command> [parameter(s)]
 
     Commands:
     """
   for x in cmd.all
     echo "\t#{x.name}\t#{x.title}"
   echo """
-
-    Start with colon (:) to force pause after script end.
 
     Command names may be unambiguously abbreviated.
 

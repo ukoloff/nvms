@@ -10,19 +10,14 @@ rm = require './rm'
 git = require './git'
 cp = require './cp'
 
-# Create distro folder
-repo = 'tmp/dist'
-mkdirp "#{repo}/#{n}" for n in ['dist', 'sis']
+mkdirp bin = path.join repo = 'tmp/dist', 'bin'
 
 # Copy files
-cp = cp repo
+cp = cp bin
 cp 'README.md'
 cp 'sis/junction.exe'
-cp "tmp/cli.bat", 'dist'
-
-# Create setup.bat
-fs.writeFileSync path.join(repo, 'setup.bat'),
-  """@"%~dp0dist/cli.bat" : setup"""
+cp "tmp/cli.bat"
+cp "./tmp/setup.bat"
 
 # Git operations
 commit = git.current()
