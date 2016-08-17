@@ -9,6 +9,7 @@ cmdize = require './cmdize'
 @output =
   path: "tmp",
   filename: "[name].js"
+  sourcePrefix: ''  # Fix for withOut
 
 values = (map)->
   v for k, v of map
