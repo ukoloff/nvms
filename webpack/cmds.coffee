@@ -1,5 +1,5 @@
 #
-# Loader for .cmd sources
+# Loader for .cmds sources
 #
 fs = require "fs"
 path = require "path"

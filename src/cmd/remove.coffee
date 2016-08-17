@@ -2,7 +2,7 @@ install = require './install'
 
 exports.alias = 'uninstall'
 
-exports.title = 'Remove Node.js'
+exports.title = 'Remove one or several Node.js version(s)'
 
 exports.args = "[all] #{install.args} [.]"
 
