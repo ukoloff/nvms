@@ -1,4 +1,4 @@
-exports.title = 'Install Node.js'
+exports.title = 'Install some version of Node.js'
 
 keys = for k of dists
   k
@@ -7,7 +7,7 @@ exports.args64 = args64 = "[x86|x64]"
 exports.args = "[#{keys.join '|'}] [n[.n[.n]]] #{args64}"
 
 exports.help = """
-  Install specified Node.js version.
+  Install specified Node.js version (latest matching filter).
 
   Use `#{PACKAGE.mingzi} ls remote` to see available Node.js versions.
   """
@@ -15,7 +15,7 @@ exports.help = """
 exports.cmd = (args)->
   filter = parse args
 
-  for r in remotes.list().reverse() when semver.match r.id, filter.z
+  for r in remotes().reverse() when semver.match r.id, filter.z
     x = r
     break
   throw Error 'Specified Node.js version not found!' unless x
