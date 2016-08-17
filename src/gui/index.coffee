@@ -5,3 +5,5 @@ dom.write html
   c: require './css'
   t: require './tabs'
 dom.close()
+
+evloop.start()
