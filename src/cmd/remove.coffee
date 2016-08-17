@@ -7,7 +7,7 @@ exports.title = 'Remove one or several Node.js version(s)'
 exports.args = "[all] #{install.args} [.]"
 
 exports.help = """
-  Remove specified Node.js version or all installed versions.
+  Remove single specified Node.js version or all version matching filter.
 
   Without trailing dot command only shows candidate(s) to uninstall.
 

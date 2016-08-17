@@ -1,6 +1,6 @@
 exports.alias = 'where'
 
-exports.title = 'Display path to current Node.js'
+exports.title = 'Display path to current Node.js version'
 
 exports.help = """
   Shows which folder with Node.js is active for all processes of current user
