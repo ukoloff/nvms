@@ -20,6 +20,8 @@ exports.cmd = (args)->
   echo "Removing from PATH"
   path.install false
   echo "Removing files..."
+  for z in shortcuts
+    try fs.DeleteFile z
   junction.remove()
   fs.DeleteFolder install2
   echo """

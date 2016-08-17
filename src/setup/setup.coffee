@@ -13,6 +13,7 @@ fs.CopyFile fs.BuildPath(src, rm), fs.BuildPath(install2, rm)
 echo "Creating shortcuts..."
 junction.eula()
 junction.exec 'none', true
+require './shortcuts'
 echo "Updating PATH..."
 path.install()
 echo """
