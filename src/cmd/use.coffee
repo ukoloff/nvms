@@ -16,7 +16,7 @@ exports.cmd = (args)->
   if 'none' == args[0]
     return none()
   filter = install.parse(args).local().z
-  for r in locals.list().reverse() when semver.match r.id, filter
+  for r in locals().reverse() when semver.match r.id, filter
     x = r
     break
   throw Error 'Specified Node.js version not installed!' unless x

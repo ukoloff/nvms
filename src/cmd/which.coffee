@@ -7,7 +7,7 @@ exports.help = """
   """
 
 exports.cmd = ->
-  for z in locals.list()
+  for z in locals()
     if z.active
       echo fs.BuildPath install2, z.path
       return

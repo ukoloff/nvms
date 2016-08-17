@@ -9,7 +9,7 @@ exports.help = """
   """
 
 exports.cmd = (args)->
-  for r in remotes.list().reverse() when semver.match r.id, [[0]]
+  for r in remotes().reverse() when semver.match r.id, [[0]]
     x = r
     break
   throw Error 'Appropriate Node.js version not found!' unless x

@@ -15,7 +15,7 @@ exports.help = """
 exports.cmd = (args)->
   filter = parse args
 
-  for r in remotes.list().reverse() when semver.match r.id, filter.z
+  for r in remotes().reverse() when semver.match r.id, filter.z
     x = r
     break
   throw Error 'Specified Node.js version not found!' unless x
