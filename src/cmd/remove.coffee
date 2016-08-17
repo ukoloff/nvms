@@ -31,14 +31,14 @@ exports.cmd = (args)->
 all = (args)->
   n = 0
   filter = install.parse(args).local().z
-  for r in locals.list() when semver.match r.id, filter
+  for r in locals() when semver.match r.id, filter
     remove r
     n++
   echo "\nNode.js versions found & uninstalled: #{n}" if danger
 
 one = (args)->
   filter = install.parse(args).local().z
-  for r in locals.list() when semver.match r.id, filter
+  for r in locals() when semver.match r.id, filter
     remove r
     return
   throw Error 'Specified Node.js version not installed!'
