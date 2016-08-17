@@ -7,5 +7,6 @@ dom.write html
 dom.close()
 
 require './homepage'
+require './xtabs'
 
 evloop.start()

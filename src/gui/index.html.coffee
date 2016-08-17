@@ -14,10 +14,9 @@ module.exports = without ->
       text " v#{PACKAGE.version}: #{PACKAGE.description}"
       div class: 'tabs', ->
         for k, v of @t
-          active = !!v.active
-          label class: active and 'active', ->
+          label ->
             input
               type: 'radio'
               name: 'tab'
-              checked: active
+              checked: v.active
             text ' ', k
