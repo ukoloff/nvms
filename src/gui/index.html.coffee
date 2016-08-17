@@ -9,6 +9,7 @@ module.exports = without ->
     body ->
       a
         href: PACKAGE.homepage
+        target: '_blank'
         PACKAGE.mingzi
       text " v#{PACKAGE.version}: #{PACKAGE.description}"
       div class: 'tabs', ->

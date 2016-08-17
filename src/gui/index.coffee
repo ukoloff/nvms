@@ -6,4 +6,6 @@ dom.write html
   t: require './tabs'
 dom.close()
 
+require './homepage'
+
 evloop.start()
