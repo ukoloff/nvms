@@ -3,6 +3,7 @@ cmdize = require './cmdize'
 
 @entry =
   cli: "./src"
+  gui: "./src/gui"
   setup: "./src/setup"
 
 @output =

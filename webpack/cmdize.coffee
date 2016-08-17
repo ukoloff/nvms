@@ -15,17 +15,21 @@ me::apply = (compiler)->
       continue unless /[.]js$/.test dst
       fs.unlink dst, ->
       dst = dst.replace /[.].*?$/, '.bat'
+      bin = if /gui/.test dst
+        'start wscript'
+      else
+        'cscript //nologo'
       pause = if /setup/.test k
         """
         pause
-        
+
         """
       else
         ''
       fs.writeFile dst, """
 0</*! ::
 @echo off
-cscript //nologo //e:javascript "%~f0" %*
+#{bin} //e:javascript "%~f0" %*
 #{pause}goto :EOF */0;
 #{do z.source}
 
