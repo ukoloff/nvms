@@ -13,9 +13,9 @@ me::apply = (compiler)->
     for k, z of compilation.compilation.assets
       dst = z.existsAt
       continue unless /[.]js$/.test dst
+      bat = RegExp.leftContext + '.bat'
       fs.unlink dst, ->
-      dst = dst.replace /[.].*?$/, '.bat'
-      bin = if /gui/.test dst
+      bin = if not compilation.compilation.options.debug and /gui/.test dst
         'start wscript'
       else
         'cscript //nologo'
@@ -26,7 +26,7 @@ me::apply = (compiler)->
         """
       else
         ''
-      fs.writeFile dst, """
+      fs.writeFile bat, """
 0</*! ::
 @echo off
 #{bin} //e:javascript "%~f0" %*
