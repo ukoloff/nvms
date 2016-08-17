@@ -8,6 +8,10 @@ bat = (folder)->
   .WriteLine """
     @"%~dp0..\\cli.bat" %*
     """
+  fs.CreateTextFile fs.BuildPath(path, PACKAGE.mingzi + 'gui.bat'), true
+  .WriteLine """
+    @"%~dp0..\\gui.bat" %*
+    """
   if fs.FileExists fs.BuildPath install2, openssl
     fs.CreateTextFile fs.BuildPath(path, 'openssl.bat'), true
     .WriteLine """

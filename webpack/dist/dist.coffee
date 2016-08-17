@@ -15,9 +15,10 @@ mkdirp bin = path.join repo = 'tmp/dist', 'bin'
 # Copy files
 cp = cp bin
 cp 'README.md'
+cp "./tmp/setup.bat"
 cp 'sis/junction.exe'
 cp "tmp/cli.bat"
-cp "./tmp/setup.bat"
+cp "tmp/gui.bat"
 
 # Git operations
 commit = git.current()
