@@ -21,6 +21,9 @@ values = (map)->
     litcoffee:
       test: /[.](litcoffee|coffee[.]md)$/
       loader: "coffee?literate"
+    styl:
+      test: /[.]styl$/
+      loader: 'raw!stylus?compress'
     cmds:
       test: /[.]cmds$/
       loader: 'coffee!cmds'
@@ -29,7 +32,7 @@ brk = (s)->
   s.split ' '
 
 @resolve =
-  extensions: brk " .js .coffee .litcoffee .coffee.md .cmds"
+  extensions: brk " .js .coffee .litcoffee .coffee.md .styl .cmds"
 
 @resolveLoader =
   alias:
