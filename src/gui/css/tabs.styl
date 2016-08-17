@@ -1,0 +1,18 @@
+.tabs
+  position: relative
+  -border: 1px solid                      // Old MSIE
+  border-bottom: 1px solid tabs-outline
+
+.tabs label
+  display: inline-block
+  position: relative
+  top: 1px
+  border: 1px solid tabs-outline
+  border-bottom: none
+  border-radius: tabs-radius tabs-radius 0 0
+  margin: tabs-margin
+  margin-bottom: 0
+  padding: tabs-padding
+
+.tabs label.active
+  border-bottom: 1px solid body-color

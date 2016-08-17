@@ -14,7 +14,7 @@ module.exports = without ->
       div class: 'tabs', ->
         for k, v of @t
           active = !!v.active
-          label class: active or 'active', ->
+          label class: active and 'active', ->
             input
               type: 'radio'
               name: 'tab'
