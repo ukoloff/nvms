@@ -31,6 +31,22 @@ After installation you should close command prompt (if any) and open new one to 
 
 For new version of nvm$ to install just repeat installation steps above.
 
+## How it works
+
+Fiddling environment variables may be tricky especially on Windows.
+So, nvm$ adds itself to PATH during setup and then simply switch
+folder referred to by PATH.
+
+Therefore all the processes of current user immediately see this change.
+There is the only Node.js version active at any moment of time
+(unlike nvm).
+
+nvm$ is always installed to a user, it cannot be installed system-wide.
+
+Technically, for switching Node.js version it uses NTFS junction point.
+As there is no standard ActiveX control for junction point manipulations,
+command line utility from Sysinternals suite is used.
+
 ## Credits
 
   * [Node.js](http://nodejs.org/)
