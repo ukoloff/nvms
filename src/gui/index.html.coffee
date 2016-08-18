@@ -18,5 +18,12 @@ module.exports = without ->
             input
               type: 'radio'
               name: 'tab'
+              value: k
               checked: v.active
             text ' ', k
+      div class: 'panes', ->
+        for k, v of @t
+          div
+            id: k
+            class: 'hide'
+            "= #{k} ="
