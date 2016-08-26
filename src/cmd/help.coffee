@@ -20,8 +20,11 @@ command = (cmd)->
 
     Usage: #{PACKAGE.mingzi} #{cmd.name} #{cmd.args or ''}
 
-    #{cmd.help or ''}
     """
+  if 'function' == typeof cmd.help
+    do cmd.help
+  else if cmd.help
+    echo cmd.help
 
 general = ->
   echo """
@@ -33,7 +36,7 @@ general = ->
     echo "\t#{x.name}\t#{x.title}"
   echo """
 
-    Command names may be unambiguously abbreviated.
+    Command names may be unambiguously abbreviated (See: #{PACKAGE.mingzi} a).
 
     Run #{PACKAGE.mingzi} help <command> for more instructions.
     """
