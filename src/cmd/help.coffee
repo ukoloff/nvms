@@ -33,7 +33,7 @@ general = ->
     echo "\t#{x.name}\t#{x.title}"
   echo """
 
-    Command names may be unambiguously abbreviated.
+    Command names may be unambiguously abbreviated (See: #{PACKAGE.mingzi} a).
 
     Run #{PACKAGE.mingzi} help <command> for more instructions.
     """
