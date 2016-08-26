@@ -20,4 +20,9 @@ exports.cmd = ->
     return if many
     delete rec[k] for k of rec
     rec['!'] = val
-  echo yaml.dump tree
+  do list = (tree, prefix = '')->
+    for k, v of tree
+      if '!' == k
+        echo "#{prefix}\t#{v}"
+      else
+        list v, prefix + k
