@@ -20,8 +20,11 @@ command = (cmd)->
 
     Usage: #{PACKAGE.mingzi} #{cmd.name} #{cmd.args or ''}
 
-    #{cmd.help or ''}
     """
+  if 'function' == typeof cmd.help
+    do cmd.help
+  else if cmd.help
+    echo cmd.help
 
 general = ->
   echo """

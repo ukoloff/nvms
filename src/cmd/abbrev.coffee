@@ -1,7 +1,6 @@
 exports.title = "Show available commands abbreviations"
 
-exports.alias = 'abbreviations'
-
+exports.help =
 exports.cmd = ->
   echo 'Available abbreviations:'
   tree = {}
@@ -24,6 +23,6 @@ exports.cmd = ->
   do list = (tree, prefix = '')->
     for k, v of tree
       if '!' == k
-        echo "#{prefix}\t#{v.name}\t#{v.title}"
+        echo "\t#{prefix}\t#{v.name}\t#{v.title}"
       else
         list v, prefix + k
