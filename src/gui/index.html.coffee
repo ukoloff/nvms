@@ -26,4 +26,3 @@ module.exports = without ->
           div
             id: k
             class: 'hide'
-            "= #{k} ="
