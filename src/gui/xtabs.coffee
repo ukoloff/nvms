@@ -1,6 +1,8 @@
 #
 # Animate tabs
 #
+all = require './tabs'
+
 tabs = $ '.tabs'
 .pop()
 
@@ -11,12 +13,13 @@ do click = ->
   for z in $ 'label', tabs
     radio =  $ 'input', z
     .pop()
-    exports[radio.value] =
-    pane = $ "##{radio.value}"
+    exports[tab = radio.value] =
+    pane = $ "##{tab}"
     .pop()
     if radio.checked
       z.className = 'active'
       pane.className = ''
+      all[tab].show? pane
     else
       z.className = ''
       pane.className = 'hide'
