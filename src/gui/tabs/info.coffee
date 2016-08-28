@@ -23,11 +23,10 @@ exports.show = (pane)->
     z[k] = n[v]
   z.Platform = if x64 then 'x64' else 'x86'
 
-
   pane.innerHTML = t z
 
 t = without ->
-  table border: true, ->
+  table ->
     for k, v of @
       tr ->
         td k
