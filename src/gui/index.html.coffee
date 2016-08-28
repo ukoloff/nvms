@@ -20,7 +20,7 @@ module.exports = without ->
               name: 'tab'
               value: k
               checked: v.active
-            text ' ', k
+            text ' ', k.replace /./, (s)->s.toUpperCase()
       div class: 'panes', ->
         for k, v of @t
           div
