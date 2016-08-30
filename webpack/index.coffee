@@ -1,5 +1,6 @@
 webpack = require 'webpack'
 cmdize = require './cmdize'
+ugly = require './ugly'
 
 @entry =
   cli: "./src"
@@ -47,6 +48,7 @@ stringify = (rec)->
   res
 
 @plugins = values
+  ugly: new ugly
   cmdize: new cmdize
   defines: new webpack.DefinePlugin
     PACKAGE: stringify require '../package'
