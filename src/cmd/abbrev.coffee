@@ -21,8 +21,13 @@ exports.cmd = ->
     delete rec[k] for k of rec
     rec['!'] = val
   do list = (tree, prefix = '')->
-    for k, v of tree
+    for k in keys(tree).sort()
+      v = tree[k]
       if '!' == k
-        echo "\t#{prefix}\t#{v.name}\t#{v.title}"
+        echo "  #{prefix}\t#{v.name}\t#{v.title}"
       else
         list v, prefix + k
+    return
+
+keys = (rec)->
+  k for k of rec
