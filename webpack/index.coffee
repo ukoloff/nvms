@@ -49,6 +49,8 @@ stringify = (rec)->
 
 @plugins = values
   ugly: new ugly
+    output:
+      max_line_len: 128
   cmdize: new cmdize
   defines: new webpack.DefinePlugin
     PACKAGE: stringify require '../package'
