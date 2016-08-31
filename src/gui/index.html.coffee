@@ -19,6 +19,7 @@ module.exports = without ->
               type: 'radio'
               name: 'tab'
               value: k
+              disabled: v.hide
               checked: v.active
             text ' ', k.replace /./, (s)->s.toUpperCase()
       div class: 'panes', ->

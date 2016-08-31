@@ -16,7 +16,10 @@ do click = ->
     exports[tab = radio.value] =
     pane = $ "##{tab}"
     .pop()
-    if radio.checked
+    if radio.disabled
+      z.className = 'hide'
+      pane.className = 'hide'
+    else if radio.checked
       z.className = 'active'
       pane.className = ''
       all[tab].show? pane

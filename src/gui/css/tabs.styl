@@ -4,25 +4,29 @@
   border-bottom: 1px solid tabs-outline
   margin-bottom: 1ex
 
-.tabs label
-  display: inline-block
-  position: relative
-  top: 1px
-  border: 1px solid tabs-outline
-  border-bottom: none
-  border-radius: tabs-radius tabs-radius 0 0
-  margin: tabs-margin
-  margin-bottom: 0
-  padding: tabs-padding
+  .hide
+    display: none
 
-.tabs label.active
-  border-bottom: 1px solid body-color
+  label
+    display: inline-block
+    position: relative
+    top: 1px
+    border: 1px solid tabs-outline
+    border-bottom: none
+    border-radius: tabs-radius tabs-radius 0 0
+    margin: tabs-margin
+    margin-bottom: 0
+    padding: tabs-padding
+
+    &.active
+      border-bottom: 1px solid body-color
 
 .panes div table
   width: 100%
 
-  tr:nth-child(even)
-    background: #ddd
+  tr
+    &:nth-child(even)
+      background: #ddd
 
-  tr:nth-child(odd)
-    background: #eee
+    &:nth-child(odd)
+      background: #eee
