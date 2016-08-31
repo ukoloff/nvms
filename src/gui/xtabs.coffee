@@ -13,7 +13,8 @@ do click = ->
   for z in $ 'label', tabs
     radio =  $ 'input', z
     .pop()
-    exports[tab = radio.value] =
+    tab = radio.value
+    all[tab].pane =
     pane = $ "##{tab}"
     .pop()
     if radio.disabled
