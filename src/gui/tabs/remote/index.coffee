@@ -18,8 +18,6 @@ log = (s)->
 
 list = ->
   remotes()
-  echo "Done."
-  # exports.pane.innerHTML = 'Done.'
 
 t = without ->
   div

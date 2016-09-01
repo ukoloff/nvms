@@ -19,7 +19,3 @@ init = ->
   pane.innerHTML = do t0
   container = pane.firstChild
   pane.innerHTML = ''
-
-N = 0
-exports.show = (s)->
-  echo "Hi ##{++N}!"
