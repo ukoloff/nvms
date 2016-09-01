@@ -5,4 +5,6 @@ exports.show = (pane)->
 
 t = without ->
   for local in @ by -1
-    div local.path
+    div
+      class: 'zebra'
+      local.path

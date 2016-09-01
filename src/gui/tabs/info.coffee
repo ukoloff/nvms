@@ -28,6 +28,6 @@ exports.show = (pane)->
 t = without ->
   table ->
     for k, v of @
-      tr ->
+      tr class: 'zebra', ->
         td k
         td v
