@@ -29,12 +29,20 @@ tTree = without ->
   empty = (rec)->
     return for k of rec
     true
+  single = (rec)->
+    for k of rec
+      return if result
+      result = k
+    result += ' ' if result
   do it = (tree = @, prefix = '')->
     for k, v of tree
       # WScript.Echo ">>>#{k}"
       div
         class: 'zebra'
-        prefix + k
+        -> label ->
+          input
+            type: 'checkbox'
+          text ' ', single(v.dists), prefix + k
       continue if empty v.down
       do div
       div
