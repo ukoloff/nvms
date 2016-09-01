@@ -21,3 +21,9 @@ t = without ->
         href: '#'
         title: "#{PACKAGE.mingzi} remove #{filter} ."
         'remove'
+  text 'Temporarily '
+  a
+    href: '#'
+    title: "#{PACKAGE.mingzi} use none"
+    'disable'
+  text '...'
