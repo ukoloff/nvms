@@ -10,5 +10,33 @@ show = ->
   finally
     delete echox.rem
 
+tree = {}
+
 list = ->
-  remotes()
+  for z in remotes().reverse()
+    t = tree
+    for n in z.id[0]
+      t = t[n] ||=
+        down: {}
+        remotes: []
+        dists: {}
+      t.remotes.push z
+      t.dists[z.dist] = 1
+      t = t.down
+  exports.pane.innerHTML = tTree tree
+
+tTree = without ->
+  empty = (rec)->
+    return for k of rec
+    true
+  do it = (tree = @, prefix = '')->
+    for k, v of tree
+      # WScript.Echo ">>>#{k}"
+      div
+        class: 'zebra'
+        prefix + k
+      continue if empty v.down
+      do div
+      div
+        class: 'indent'
+        -> it v.down, "#{prefix}#{k}."
