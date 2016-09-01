@@ -9,4 +9,6 @@ dom.close()
 require './homepage'
 require './xtabs'
 
+echo "#{PACKAGE.mingzi} started"
+
 evloop.start()

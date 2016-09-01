@@ -1,21 +1,22 @@
 echox.log = (s)->
-  z = tmp()
-  z.innerHTML = t s
-  exports.pane.appendChild x while x = z.firstChild
+  do init unless container
+  container.innerHTML = t s
+  exports.pane.appendChild x while x = container.firstChild
   return
 
 t = without (s)->
   div s
 
 t0 = without ->
-  div
-    class: 'hide'
+  do div
 
-tmp = ->
-  if t0
-    exports.pane.innerHTML = t0()
-    t0 = false
-  exports.pane.firstChild
+container = false
+
+init = ->
+  pane = exports.pane
+  pane.innerHTML = do t0
+  container = pane.firstChild
+  pane.innerHTML = ''
 
 N = 0
 exports.show = (s)->
