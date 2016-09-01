@@ -10,6 +10,12 @@ t = without ->
     filter = filter.join ' '
     div
       class: 'zebra'
+      -> input
+        type: 'radio'
+        name: 'local'
+        checked: local.active
+        disabled: true
+      ' '
       local.path
       ': '
       -> a
