@@ -4,8 +4,10 @@ echox.log = (s)->
   exports.pane.appendChild x while x = container.firstChild
   return
 
-t = without (s)->
-  div s
+t = without ->
+  div
+    class: 'zebra'
+    @
 
 t0 = without ->
   do div
