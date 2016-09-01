@@ -5,4 +5,31 @@ exports.show = (pane)->
 
 t = without ->
   for local in @ by -1
-    div local.path
+    filter = local.path.split '-'
+    filter[1] = filter[1].replace /^\D+/, ''
+    filter = filter.join ' '
+    div
+      class: 'zebra'
+      -> input
+        type: 'radio'
+        name: 'local'
+        checked: local.active
+        disabled: true
+      ' '
+      local.path
+      ': '
+      -> a
+        href: '#'
+        title: "#{PACKAGE.mingzi} use #{filter}"
+        'use'
+      ' or '
+      -> a
+        href: '#'
+        title: "#{PACKAGE.mingzi} remove #{filter} ."
+        'remove'
+  text 'Temporarily '
+  a
+    href: '#'
+    title: "#{PACKAGE.mingzi} use none"
+    'disable'
+  text '...'

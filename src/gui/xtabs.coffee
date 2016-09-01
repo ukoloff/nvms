@@ -3,30 +3,37 @@
 #
 all = require './tabs'
 
-tabs = $ '.tabs'
-.pop()
+# radio.onClick handler
+click = ->
+  for k, v of all
+    tab = v.tab
+    radio = v.rb
+    pane = v.pane
+    if radio.disabled
+      tab.className = 'hide'
+      pane.className = 'hide'
+    else if radio.checked
+      tab.className = 'active'
+      pane.className = ''
+      v.show? pane
+    else
+      tab.className = ''
+      pane.className = 'hide'
+  return
 
-panes = $ 'div'
-.pop()
-
-do click = ->
+# Initialize links to DOM
+do ->
+  tabs = $ '.tabs'
+  .pop()
   for z in $ 'label', tabs
     radio =  $ 'input', z
     .pop()
-    tab = radio.value
-    all[tab].pane =
-    pane = $ "##{tab}"
+    x = all[tab = radio.value]
+    x.tab = z
+    x.rb = radio
+    x.pane = $ "##{tab}"
     .pop()
-    if radio.disabled
-      z.className = 'hide'
-      pane.className = 'hide'
-    else if radio.checked
-      z.className = 'active'
-      pane.className = ''
-      all[tab].show? pane
-    else
-      z.className = ''
-      pane.className = 'hide'
-  true
+    radio.onclick = click
+  return
 
-z.onclick = click for z in $ 'input', tabs
+do click
