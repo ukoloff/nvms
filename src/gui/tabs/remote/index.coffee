@@ -36,7 +36,10 @@ render = ->
         div = div.parentNode
       if !cb.disabled
         cb.onclick = ->
-          echo "Open #{v.best.id[0].join '.'}"
+          z = div.nextSibling
+          c = z.className.split(/\s+/)[0]
+          c += " " + 'hide' unless @checked
+          z.className = c
       for a in $ 'a', div
         a.onclick = ->
           echo "Click #{v.best.id[0].join '.'}"

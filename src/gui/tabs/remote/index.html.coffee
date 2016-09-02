@@ -29,7 +29,7 @@ module.exports = without ->
               title: "#{PACKAGE.mingzi} openssl"
               'openssl'
       continue if leaf
-      do div
       div
-        class: 'indent'
+        class: 'indent hide'
         -> it v.down, "#{prefix}#{k}."
+      do div
