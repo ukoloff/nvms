@@ -15,14 +15,13 @@ show = ->
 tree = {}
 
 list = ->
-  for z in remotes().reverse()
+  for z in remotes() by -1
     t = tree
     for n in z.id[0]
       t = t[n] ||=
         down: {}
-        remotes: []
+        best: z
         dists: {}
-      t.remotes.push z
       t.dists[z.dist] = 1
       t = t.down
   exports.pane.innerHTML = tTree tree

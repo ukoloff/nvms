@@ -18,9 +18,9 @@ module.exports = without ->
           a
             href: '#'
             title: "#{PACKAGE.mingzi} install #{
-              v.remotes[0].dist} #{v.remotes[0].id[0].join '.'}"
+              v.best.dist} #{v.best.id[0].join '.'}"
             'install'
-          if !prefix and '0'==k
+          if 0 == v.best.id[0][0]
             text ' or '
             a
               href: '#'
