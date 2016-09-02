@@ -9,11 +9,13 @@ module.exports = without ->
     result += ' ' if result
   do it = (tree = @, prefix = '')->
     for k, v of tree
+      leaf = empty v.down
       div
         class: 'zebra'
         -> label ->
           input
             type: 'checkbox'
+            disabled: leaf
           text ' ', single(v.dists), prefix + k, ': '
           a
             href: '#'
@@ -26,7 +28,7 @@ module.exports = without ->
               href: '#'
               title: "#{PACKAGE.mingzi} openssl"
               'openssl'
-      continue if empty v.down
+      continue if leaf
       do div
       div
         class: 'indent'

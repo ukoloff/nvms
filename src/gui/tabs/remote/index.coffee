@@ -24,4 +24,22 @@ list = ->
         dists: {}
       t.dists[z.dist] = 1
       t = t.down
+  do render
+
+render = ->
   exports.pane.innerHTML = tTree tree
+  cbs = $ 'input', exports.pane
+  do listen = (tree)->
+    each tree, (k, v)->
+      div = cb = cbs.shift()
+      while div.tagName.toLowerCase() != 'div'
+        div = div.parentNode
+      if !cb.disabled
+        cb.onclick = ->
+          echo "Open #{v.best.id[0].join '.'}"
+      listen v.down
+
+each = (rec, fn)->
+  for k, v of rec
+    fn k, v
+  return
