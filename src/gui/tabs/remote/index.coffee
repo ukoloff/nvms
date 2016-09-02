@@ -37,6 +37,10 @@ render = ->
       if !cb.disabled
         cb.onclick = ->
           echo "Open #{v.best.id[0].join '.'}"
+      for a in $ 'a', div
+        a.onclick = ->
+          echo "Click #{v.best.id[0].join '.'}"
+          false
       listen v.down
 
 each = (rec, fn)->
