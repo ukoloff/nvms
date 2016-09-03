@@ -1,4 +1,4 @@
-tTree = require './index.html'
+tTree = require './html'
 
 exports.show = ->
   delete exports.show
