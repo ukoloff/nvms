@@ -17,19 +17,13 @@ t = without ->
         disabled: true
       ' '
       local.path
-      ': '
-      -> a
-        href: '#'
-        title: "#{PACKAGE.mingzi} use #{filter}"
-        'use'
-      ' or '
-      -> a
-        href: '#'
-        title: "#{PACKAGE.mingzi} remove #{filter} ."
-        'remove'
-  text 'Temporarily '
-  a
-    href: '#'
-    title: "#{PACKAGE.mingzi} use none"
-    'disable'
-  text '...'
+      ': ', -> span ->
+        a
+          href: '#'
+          title: "#{PACKAGE.mingzi} use #{filter}"
+          'use'
+        text ' or '
+        a
+          href: '#'
+          title: "#{PACKAGE.mingzi} remove #{filter} ."
+          'remove'

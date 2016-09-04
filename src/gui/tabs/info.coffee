@@ -31,9 +31,15 @@ t = without ->
       tr class: 'zebra', ->
         td k
         td v
-  text 'Completely '
-  a
-    href: '#'
-    title: "#{PACKAGE.mingzi} bye ."
-    'uninstall'
-  text '...'
+  span ->
+    text 'Temporarily '
+    a
+      href: '#'
+      title: "#{PACKAGE.mingzi} use none"
+      'disable'
+    text ' or completely '
+    a
+      href: '#'
+      title: "#{PACKAGE.mingzi} bye ."
+      'uninstall'
+    text '...'
