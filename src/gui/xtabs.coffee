@@ -33,7 +33,6 @@ do ->
     v.rb = radio = $ 'input', v.tab = tabs.shift()
     .pop()
     v.pane = panes.shift()
-    echo "pane = #{v.pane.outerHTML}"
     radio.onclick = click
   return
 
