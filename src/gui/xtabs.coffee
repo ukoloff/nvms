@@ -25,14 +25,15 @@ click = ->
 do ->
   tabs = $ '.tabs'
   .pop()
-  for z in $ 'label', tabs
-    radio =  $ 'input', z
+  tabs = $ 'label', tabs
+  panes = $ '.panes'
+  .pop()
+  panes = $ 'div', panes
+  for k, v of all
+    v.rb = radio = $ 'input', v.tab = tabs.shift()
     .pop()
-    x = all[tab = radio.value]
-    x.tab = z
-    x.rb = radio
-    x.pane = $ "##{tab}"
-    .pop()
+    v.pane = panes.shift()
+    echo "pane = #{v.pane.outerHTML}"
     radio.onclick = click
   return
 

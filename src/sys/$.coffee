@@ -8,7 +8,7 @@ $ = (selector, context = dom)->
     when '#'
       [context.getElementById selector.substring 1]
     when '.'
-      toArray context.getElementsByTagName selector.substring 1
+      toArray context.getElementsByClassName selector.substring 1
     else
       toArray context.getElementsByTagName selector
 
