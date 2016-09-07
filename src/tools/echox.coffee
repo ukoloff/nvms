@@ -2,7 +2,8 @@
 # GUI echo handler
 #
 stdout = echo.x (s)->
-  v s for k, v of exports
+  ts = new Date
+  v s, ts for k, v of exports
   return
 
 if DEBUG
