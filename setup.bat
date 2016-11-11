@@ -20,7 +20,7 @@ e.FileExists(e.BuildPath(i,o))?e.CreateTextFile(e.BuildPath(r,"openssl.bat"),!0)
 e(1)}}}).call(t,e(2),e(9))},function(n,t,e){(function(t,e){var i,r,o,l;o="Path",r=t.Environment("User"),n.exports=l=function(){return r(o).split(";");
 },i=new Function("o,k,v","o(k)=v"),l.install=function(n){var t,u;return null==n&&(n=!0),t=e.link,u=function(){var n,e,i,r;for(i=l(),
 r=[],n=0,e=i.length;e>n;n++)u=i[n],u!==t&&r.push(u);return r}(),n&&u.unshift(t),i(r,o,u=u.join(";"))}}).call(t,e(4),e(5))},,,,,,,,,,,,,,,,function(n,t,e){
-(function(n,t,e,i,r,o,l){var u,c;n("Installing nvm$ v0.4.1 to <"+t+">..."),e(t),n("Copying files..."),c=i.GetParentFolderName(r.ScriptFullName),
+(function(n,t,e,i,r,o,l){var u,c;n("Installing nvm$ v0.4.2 to <"+t+">..."),e(t),n("Copying files..."),c=i.GetParentFolderName(r.ScriptFullName),
 i.CopyFolder(i.BuildPath(c,"bin"),t),u="README.md",i.CopyFile(i.BuildPath(c,u),i.BuildPath(t,u)),n("Creating shortcuts..."),o.eula(),
 o.exec("none",!0),n("Updating PATH..."),l.install(),n("Installation complete.\nOpen new console and run 'nvm$ help' to start.")}).call(t,e(2),e(3),e(10),e(1),e(6),e(5),e(16));
 }]);

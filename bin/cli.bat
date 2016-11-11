@@ -34,14 +34,14 @@ var n,e,r;if(t.FolderExists(o.link))for(n=16;--n;)if(!t.FileExists(e=t.BuildPath
 r=0,e=new Enumerator(n);!e.atEnd();){if(i)i.push(e.item());else if(!1===t(e.item(),r++))return;e.moveNext()}return i}},function(n,t,e){
 (function(t,e,r,i){var o,s,a,l,u,c,f,h;s=[],o=new t,f={},n.exports=c=function(n){var t,e,r;for(r in n)e=n[r],e.name=r,e.alias=t=e.alias?e.alias.split(/\s+/):[],
 o.add({word:e.name,aliases:t}),f[e.name]=e,s.push(e);return a()},c.all=s,c.find=l=function(n){return f[o.is(n)]},a=function(){var n;
-return(n=l(e[0]))||(h(),r(1)),n.cmd.call(n,e.slice(1))},c.header=u=function(){return i("nvm$ v0.4.1: Node Version Manager for M$ Windows\n");
+return(n=l(e[0]))||(h(),r(1)),n.cmd.call(n,e.slice(1))},c.header=u=function(){return i("nvm$ v0.4.2: Node Version Manager for M$ Windows\n");
 },h=function(){return u(),i("Run nvm$ help for instructions.")}}).call(t,e(19),e(18),e(9),e(2))},function(n,t,e){(function(t,e){n.exports=function(n){
 var r,i;try{return n()}catch(i){return r=i,t("ERROR: "+r.message),e(1)}}}).call(t,e(2),e(9))},function(n,t,e){(function(t,e){var r,i,o,s;
 o="Path",i=t.Environment("User"),n.exports=s=function(){return i(o).split(";")},r=new Function("o,k,v","o(k)=v"),s.install=function(n){
 var t,a;return null==n&&(n=!0),t=e.link,a=function(){var n,e,r,i;for(r=s(),i=[],n=0,e=r.length;e>n;n++)a=r[n],a!==t&&i.push(a);return i;
 }(),n&&a.unshift(t),r(i,o,a=a.join(";"))}}).call(t,e(4),e(5))},function(n,t,e){(function(t,e,r,i,o,s,a,l,u,c,f,h,d){var v,p,m,g;n.exports=function(n){
 var l,u,c,f,h,d,g;c=[];for(u in t)d=t[u],l=e.BuildPath(r,u+".tsv"),!n&&p(l)?f=e.OpenTextFile(l).ReadAll():(h=d+"index.tab",i("Fetching <"+h+">..."),
-e.CreateTextFile(l,!0).WriteLine(f=o.get(h))),f=function(){var n,t,e,r;for(e=s(f),r=[],n=0,t=e.length;t>n;n++)g=e[n],m(g)&&r.push(new v(g,u));
+f=o.get(h),e.CreateTextFile(l,!0).WriteLine(f)),f=function(){var n,t,e,r;for(e=s(f),r=[],n=0,t=e.length;t>n;n++)g=e[n],m(g)&&r.push(new v(g,u));
 return r}(),c=c.concat(f);return c.sort(a.cmpi)},p=function(n){return e.FileExists(n)&&new Date-e.GetFile(n).DateLastModified<864e5;
 },m=function(n){return~n.files.indexOf("-msi")},v=function(n,t){var e,r;return e=function(){var t,e,i,o;for(i=n.version.split(/\D+/),
 o=[],t=0,e=i.length;e>t;t++)r=i[t],r.length&&o.push(Number(r));return o}(),this.id=[e,[t]],this.dist=t,this.src=n,this},g=v.prototype,
@@ -98,7 +98,7 @@ t.args="[ none | "+s.args+" ]",t.help="Make specified Node.js version active for
 t.cmd=function(t){var e,l,u,c,f,h;if("none"===t[0])return a();for(e=s.parse(t).local().z,f=n().reverse(),l=0,u=f.length;u>l;l++)if(c=f[l],
 r.match(c.id,e)){h=c;break}if(!h)throw Error("Specified Node.js version not installed!");return i("Using "+h.path),o.exec(h.path);
 },a=function(){return i("Temporary disabling nvm$"),o.exec("none")}}).call(t,e(12),e(7),e(2),e(5))},function(n,t,e){(function(n){
-t.title="Show version",t.help="Displays nvm$ version.",t.cmd=function(){return n("0.4.1")}}).call(t,e(2))},function(n,t,e){(function(n,e,r,i,o){
+t.title="Show version",t.help="Displays nvm$ version.",t.cmd=function(){return n("0.4.2")}}).call(t,e(2))},function(n,t,e){(function(n,e,r,i,o){
 t.alias="where",t.title="Display path to current Node.js version",t.help="Shows which folder with Node.js is active for all processes of current user",
 t.cmd=function(){var t,s,a,l;for(a=n(),t=0,s=a.length;s>t;t++)if(l=a[t],l.active)return void e(r.BuildPath(i,l.path));return e(o.link);
 }}).call(t,e(12),e(2),e(1),e(3),e(5))},function(n,t,e){(function(n){t.alias="repo",t.title="Open homepage",t.help="Opens nvm$ repository in default browser.",
