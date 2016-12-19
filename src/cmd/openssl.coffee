@@ -1,5 +1,5 @@
-install = require './install
-'
+install = require './install'
+
 exports.title = 'Install OpenSSL utility'
 
 exports.args = install.args64
