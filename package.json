@@ -41,6 +41,6 @@
     "stylus": "^0.54.5",
     "stylus-loader": "^2.3.0",
     "webpack": "^1.12.14",
-    "without": "^1.1.2"
+    "without": "^1.2.0"
   }
 }
