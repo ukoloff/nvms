@@ -1,6 +1,6 @@
-#
-# Run git commands
-#
+###
+Run git commands
+###
 spawn = require 'child_process'
   .spawnSync
 

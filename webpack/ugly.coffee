@@ -1,6 +1,6 @@
-#
-# Patch webpack's UglifyJS plugin
-#
+###
+Patch webpack's UglifyJS plugin
+###
 
 ujs = require 'webpack/lib/optimize/UglifyJsPlugin'
 

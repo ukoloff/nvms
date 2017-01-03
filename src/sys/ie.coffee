@@ -1,3 +1,6 @@
+###
+Start MSIE
+###
 module.exports = ->
   ie = new ActiveXObject "InternetExplorer.Application"
   ie.Visible = true

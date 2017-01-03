@@ -1,7 +1,7 @@
-#
-# Wrap .js into .bat
-# http://www.dostips.com/forum/viewtopic.php?p=37780#p37780
-#
+###
+Wrap .js into .bat
+http://www.dostips.com/forum/viewtopic.php?p=37780#p37780
+###
 fs = require "fs"
 path = require 'path'
 
@@ -18,7 +18,7 @@ me::apply = (compiler)->
       pause = if /setup/.test k
         """
         pause
-        
+
         """
       else
         ''

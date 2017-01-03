@@ -1,18 +1,21 @@
-exports.name = 
+###
+Working with Junction Point(s)
+###
+exports.name =
 name = 'junction.exe'
 
-exports.dst = 
+exports.dst =
 dst = ->
   fs.BuildPath install2, name
 
-exports.link = 
+exports.link =
 link = fs.BuildPath install2, 'this'
 
 wait = (child)->
   until child.Status
     wsh.Sleep 100
 
-exports.remove = 
+exports.remove =
 remove = ->
   wait sh.exec """
     "#{dst()}" -d "#{link}"
