@@ -1,6 +1,6 @@
-#
-# rm -rf
-#
+###
+rm -rf
+###
 fs = require 'fs'
 path = require 'path'
 

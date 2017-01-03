@@ -1,6 +1,6 @@
-#
-# Generate distribution and commit it to repository
-#
+###
+Generate distribution and commit it to repository
+###
 fs = require "fs"
 path = require 'path'
 PACKAGE = require '../../package'
