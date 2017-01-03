@@ -2,7 +2,7 @@
 Start MSIE
 ###
 module.exports = ->
-  ie = new ActiveXObject "InternetExplorer.Application"
+  ie = activeX "InternetExplorer.Application"
   ie.ToolBar = false
   ie.StatusBar = false
   ie.Visible = true
