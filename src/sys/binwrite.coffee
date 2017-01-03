@@ -1,6 +1,6 @@
-#
-# Save BLOB to file
-#
+###
+Save BLOB to file
+###
 module.exports = (file, blob)->
   stream = activeX "ADODB.Stream"
   stream.Type = 1	 # adTypeBinary

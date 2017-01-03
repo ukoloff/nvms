@@ -1,6 +1,6 @@
-#
-# Hand-made abbrev with aliases
-#
+###
+Hand-made abbrev with aliases
+###
 module.exports =
 abbrev = ()->
   unless @ instanceof abbrev

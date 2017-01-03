@@ -6,13 +6,13 @@ path = ->
   env key
   .split ';'
 
-#
-# MS specific syntax to assign OLE properties
-# Rejected by:
-#   - CoffeeScript
-#   - Webpack
-#   # UglifyJS (Allowed!)
-#
+###
+MS specific syntax to assign OLE properties
+Rejected by:
+  - CoffeeScript
+  - Webpack
+  # UglifyJS (Allowed!)
+###
 assign = new Function 'o,k,v', 'o(k)=v'
 
 path.install = (add = true)->

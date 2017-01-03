@@ -1,6 +1,6 @@
-#
-# Base64 Encode/Decode
-#
+###
+Base64 Encode/Decode
+###
 element = ->
   z = activeX "MSXML2.DOMDocument"
     .createElement 'tmp'

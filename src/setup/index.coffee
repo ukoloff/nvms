@@ -1,5 +1,5 @@
-#
-# Start setup operation
-#
+###
+Start setup operation
+###
 err ->
   require './setup'
