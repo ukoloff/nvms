@@ -1,3 +1,6 @@
+###
+Ensure folder exists (aka mkdirp)
+###
 module.exports = (path)->
   q = []
   while !fs.FolderExists path

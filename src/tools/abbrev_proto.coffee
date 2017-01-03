@@ -1,5 +1,5 @@
 ###
-Hand-made abbrev with aliases
+Methods of abbrev instance
 ###
 exports.add = (options)->
   @z ?= {}

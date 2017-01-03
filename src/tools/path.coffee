@@ -1,3 +1,6 @@
+###
+Updating user PATH variable
+###
 key = 'Path'
 env = sh.Environment 'User'
 

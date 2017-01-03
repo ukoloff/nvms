@@ -1,3 +1,6 @@
+###
+Inject some [pseudo-]local variables
+###
 fs = require 'fs'
 path = require 'path'
 ini = require '../package'
