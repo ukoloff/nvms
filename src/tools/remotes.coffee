@@ -1,6 +1,6 @@
-#
-# Get available distributions list
-#
+###
+Get available distributions list
+###
 
 module.exports = (force)->
   r = []
