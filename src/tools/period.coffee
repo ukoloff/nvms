@@ -1,6 +1,6 @@
-#
-# Trailing dot in command line parameters
-#
+###
+Trailing dot in command line parameters
+###
 
 module.exports =
 period =

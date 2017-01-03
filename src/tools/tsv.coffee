@@ -1,6 +1,6 @@
-#
-# TSV parser
-#
+###
+TSV parser
+###
 module.exports =
 tsv = (s)->
   a2o arrays s

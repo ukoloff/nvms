@@ -1,9 +1,9 @@
-#
-# Semver utilities
-#
+###
+Semver utilities
+###
 
 # Compare values
-exports.cmpv = 
+exports.cmpv =
 cmpv = (a, b)->
   if a == b
     0
@@ -13,7 +13,7 @@ cmpv = (a, b)->
     +1
 
 # Compare Arrays
-exports.cmpa = 
+exports.cmpa =
 cmpa = (a, b, comparator)->
   i = 0
   la = a.length
@@ -32,7 +32,7 @@ cmpa = (a, b, comparator)->
     i++
 
 # Compare semver Arrays
-exports.cmp = 
+exports.cmp =
 cmp = (a, b)->
   cmpa a, b, (a, b)->
     cmpa a, b, cmpv

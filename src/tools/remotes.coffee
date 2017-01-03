@@ -1,6 +1,6 @@
-#
-# Get available distributions list
-#
+###
+Get available distributions list
+###
 
 module.exports = (force)->
   r = []
@@ -16,7 +16,7 @@ module.exports = (force)->
       fs.CreateTextFile f, true
       .WriteLine tab
     tab = for z in tsv tab when msi z
-      new Item z, k
+      new Remote z, k
     r = r.concat tab
   r.sort semver.cmpi
 
@@ -27,83 +27,13 @@ cached = (f)->
 msi = (line)->
   ~line.files.indexOf '-msi'
 
-Item = (line, dist)->
+Remote = (line, dist)->
   semver = for z in line.version.split /\D+/ when z.length
     Number z
   @id = [semver, [dist]]
   @dist = dist
   @src = line
-  @
+  return
 
-proto = Item::
-
-proto.ver = ->
-  "#{@dist}-#{@src.version}-x#{if @x64 then 64 else 86}"
-
-proto.msi = (full)->
-  r = "#{@ver()}.msi"
-  if full
-    fs.BuildPath cache, r
-  else
-    r
-
-proto.uri = (file = @msi false)->
-  "#{dists[@dist]}#{@src.version}/#{
-    if @x64 and not @id[0][0]
-      'x64/'
-    else
-      ''
-    }#{file}"
-
-proto.fetch = ->
-  echo "Fetching <#{uri = @uri()}>..."
-  ajax.dl uri, @msi true
-
-proto.extract = ->
-  echo "Extracting #{@msi()}..."
-  if fs.FolderExists extract2 = fs.BuildPath cache, ver = @ver()
-    fs.DeleteFolder extract2
-  sh.Run """
-    msiexec /a "#{@msi true}" TARGETDIR=#{extract2} /passive
-    """, 1, true
-  if fs.FolderExists @dst = dst = fs.BuildPath install2, ver
-    fs.DeleteFolder dst
-  fs.MoveFolder each(fs.GetFolder(extract2).SubFolders).shift().Path, dst
-  fs.DeleteFolder extract2
-
-proto.shortcuts = ->
-  echo "Creating shortcuts..."
-
-  if 'node' != @dist
-    fs.CopyFile fs.BuildPath(@dst, "#{@dist}.exe"),
-      fs.BuildPath(@dst, "node.exe")
-
-proto.prefix = ->
-  echo "Adjusting NPM prefix..."
-  npmrc = fs.OpenTextFile fs.BuildPath(@dst, 'node_modules/npm/npmrc'), 8
-  npmrc.WriteLine """
-
-    # <hack dirty src="#{PACKAGE.homepage}">
-    prefix=${APPDATA}\\#{PACKAGE.mingzi}\\#{fs.GetBaseName junction.link}
-    # </hack>
-    """
-  npmrc.Close()
-
-proto.use = ->
-  echo "Using #{ver = @ver()}..."
-  junction.exec ver
-
-proto.install = (is64)->
-  @x64 = is64 ? x64
-  @fetch()
-  @extract()
-  @shortcuts()
-  @prefix()
-  @use()
-
-proto.openssl = (is64)->
-  @x64 = is64 ? x64
-  echo "Fetching <#{uri = @uri cli = bat.openssl}>..."
-  ajax.dl uri, fs.BuildPath install2, cli
-  echo "Creating shortcut..."
-  bat fs.GetBaseName junction.link
+for k, v of remote
+  Remote::[k] = v

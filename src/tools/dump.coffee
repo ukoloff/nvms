@@ -1,3 +1,6 @@
+###
+Debug print
+###
 module.exports =
 dump = (r)->
   s = ''
