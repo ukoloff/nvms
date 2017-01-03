@@ -1,1 +1,1 @@
-module.exports = new ActiveXObject "WScript.Shell"
+module.exports = activeX "WScript.Shell"

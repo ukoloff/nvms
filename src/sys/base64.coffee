@@ -2,7 +2,7 @@
 # Base64 Encode/Decode
 #
 element = ->
-  z = new ActiveXObject "MSXML2.DOMDocument"
+  z = activeX "MSXML2.DOMDocument"
     .createElement 'tmp'
   z.dataType = "bin.base64"
   z
