@@ -1,6 +1,6 @@
-#
-# Global error handler
-#
+###
+Global error handler
+###
 
 module.exports = (fn)->
   try

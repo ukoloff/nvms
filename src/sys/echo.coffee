@@ -1,6 +1,6 @@
-#
-# Print to stdout
-#
+###
+WScipt's console.log
+###
 module.exports =
 echo = (args...)->
   stdout args.join ' '

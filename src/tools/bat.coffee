@@ -1,6 +1,6 @@
-#
-# Create batch file
-#
+###
+Create batch file
+###
 module.exports =
 bat = (folder)->
   mkpath path = fs.BuildPath install2, folder

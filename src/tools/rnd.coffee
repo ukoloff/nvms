@@ -1,6 +1,6 @@
-#
-# Random string
-#
+###
+Random string
+###
 module.exports =
 rnd = (N = 12)->
   s = ''

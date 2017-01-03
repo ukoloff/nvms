@@ -1,6 +1,6 @@
-#
-# Simple file copy
-#
+###
+Simple file copy
+###
 fs = require 'fs'
 path = require 'path'
 

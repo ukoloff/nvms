@@ -1,6 +1,6 @@
-#
-# Start MSIE
-#
+###
+Start MSIE
+###
 module.exports = ->
   ie = new ActiveXObject "InternetExplorer.Application"
   ie.ToolBar = false
