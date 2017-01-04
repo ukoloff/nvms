@@ -20,3 +20,23 @@ exports.cmd = ->
   mkpath unpack
   shell.NameSpace unpack
   .copyHere zip.Items(), 0
+
+  unless bat = findBat fs.GetFolder unpack
+    echo "Setup not found. Exiting"
+    return
+  sh.Run """
+  "#{bat}"
+  """
+
+findBat = (folder)->
+  result = 0
+  each folder.Files, (file)->
+    return if 'bat' != fs.GetExtensionName file.Name
+    result = file.Path
+    false
+  return result if result
+  each folder.SubFolders, (folder)->
+    return unless file = findBat folder
+    result = file
+    false
+  result
