@@ -40,6 +40,8 @@ and open new one to use `nvm$`.
 For new version of nvm$ to install
 just repeat installation steps above.
 
+This can be done with `nvm$ upgrade` command.
+
 ## How it works
 
 Fiddling environment variables may be tricky especially on Windows.
