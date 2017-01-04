@@ -1,10 +1,8 @@
 ###
-Save BLOB to file
+Stream for BLOBs
 ###
 module.exports = (file, blob)->
   stream = activeX "ADODB.Stream"
   stream.Type = 1	 # adTypeBinary
   stream.Open()
-  stream.Write blob
-  stream.SaveToFile t = file, 2 # adSaveCreateOverWrite
-  stream.Close()
+  stream

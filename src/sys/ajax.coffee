@@ -21,4 +21,7 @@ ajax.get = (url, asBody)->
     z.responseText
 
 ajax.dl = (url, path)->
-  binwrite path, ajax.get url, true
+  stream = binstream()
+  stream.Write ajax.get url, true
+  stream.SaveToFile path, 2 # adSaveCreateOverWrite
+  stream.Close()
