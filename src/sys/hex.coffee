@@ -1,9 +1,9 @@
 ###
-Base64 Encode/Decode
+Hexadecimal Encode/Decode
 ###
 element = activeX "MSXML2.DOMDocument"
   .createElement 'tmp'
-element.dataType = "bin.base64"
+element.dataType = "bin.hex"
 
 exports.enc = (blob)->
   try
@@ -18,3 +18,15 @@ exports.dec = (str)->
     element.nodeTypedValue
   finally
     element.text = ''
+
+# Revert bytes
+exports.rev =
+rev = (str)->
+  str
+  .match(/../g)
+  .reverse()
+  .join ''
+
+# Get integer
+exports.i = (blob)->
+  parseInt rev(hex.enc blob), 16
