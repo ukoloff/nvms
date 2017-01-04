@@ -17,7 +17,7 @@ exports.cmd = (args)->
 local = (args)->
   n = 0
   filter = vfilter(args).local()
-  for z in ll = locals() when semver.match z.id, filter.z
+  for z in ll = locals() when filter.match z.id
     n++
     echo "#{if z.active then '>' else '-'} #{z.path}"
   echo "Found: #{n} of #{ll.length} installed Node.js version" unless n
@@ -26,7 +26,7 @@ local = (args)->
 remote = (args)->
   filter = vfilter args
   list = []
-  for z in minors remotes() when semver.match z.id, filter.z
+  for z in minors remotes() when filter.match z.id
     if last and not semver.cmp last.major, z.major
       last.minors.push z.minor
     else

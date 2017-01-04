@@ -15,7 +15,7 @@ exports.cmd = (args)->
   force = period args
   filter = vfilter args
 
-  for r in remotes().reverse() when semver.match r.id, filter.z
+  for r in remotes().reverse() when filter.match r.id
     x = r
     break
   throw Error 'Specified Node.js version not found!' unless x

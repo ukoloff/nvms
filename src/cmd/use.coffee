@@ -13,8 +13,8 @@ exports.help = """
 exports.cmd = (args)->
   if 'none' == args[0]
     return none()
-  filter = vfilter(args).local().z
-  for r in locals().reverse() when semver.match r.id, filter
+  filter = vfilter(args).local()
+  for r in locals().reverse() when filter.match r.id
     x = r
     break
   throw Error 'Specified Node.js version not installed!' unless x
