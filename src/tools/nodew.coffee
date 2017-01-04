@@ -13,7 +13,7 @@ module.exports = (path)->
 
   if check stream
     echo "Generating", dst
-    stream.Write hex.dec '02'         # CUI
+    stream.Write hex.dec '02'     # CUI
     stream.SaveToFile dst
   else
     echo "Invalid executable:", src
