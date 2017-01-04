@@ -58,8 +58,11 @@ exports.use = ->
   echo "Using #{ver = @ver()}..."
   junction.exec ver
 
-exports.install = (is64)->
+exports.set64= (is64)->
   @x64 = is64 ? x64
+
+exports.install = (is64)->
+  @set64 is64
   @fetch()
   @extract()
   @shortcuts()
@@ -67,8 +70,15 @@ exports.install = (is64)->
   @use()
 
 exports.openssl = (is64)->
-  @x64 = is64 ? x64
+  @set64 is64
   echo "Fetching <#{uri = @uri cli = bat.openssl}>..."
   ajax.dl uri, fs.BuildPath install2, cli
   echo "Creating shortcut..."
   bat fs.GetBaseName junction.link
+
+# Filter to find local installation
+exports.lfilter = ->
+  filter = @id.slice()
+  filter[1] = filter[1].slice()
+  filter[1].push @x64
+  filter
