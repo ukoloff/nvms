@@ -1,10 +1,8 @@
-install = require './install'
-
 exports.alias = 'list'
 
 exports.title = 'List available Node.js versions'
 
-exports.args = "[remote] #{install.args}"
+exports.args = "[remote] #{vfilter.$}"
 
 exports.help = """
   List already installed or all available to install Node.js versions
@@ -18,7 +16,7 @@ exports.cmd = (args)->
 
 local = (args)->
   n = 0
-  filter = install.parse(args).local()
+  filter = vfilter(args).local()
   for z in ll = locals() when semver.match z.id, filter.z
     n++
     echo "#{if z.active then '>' else '-'} #{z.path}"
@@ -26,7 +24,7 @@ local = (args)->
   return
 
 remote = (args)->
-  filter = install.parse args
+  filter = vfilter args
   list = []
   for z in minors remotes() when semver.match z.id, filter.z
     if last and not semver.cmp last.major, z.major

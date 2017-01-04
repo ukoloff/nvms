@@ -1,8 +1,6 @@
-install = require './install'
-
 exports.title = 'Install OpenSSL utility'
 
-exports.args = install.args64
+exports.args = vfilter.$6
 
 exports.help = """
   Install openssl.exe precompiled for Node.js project
@@ -13,4 +11,4 @@ exports.cmd = (args)->
     x = r
     break
   throw Error 'Appropriate Node.js version not found!' unless x
-  r.openssl install.x64 args[0]
+  r.openssl vfilter.x64 args[0]
