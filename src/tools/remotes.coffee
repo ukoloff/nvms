@@ -35,5 +35,4 @@ Remote = (line, dist)->
   @src = line
   return
 
-for k, v of remote
-  Remote::[k] = v
+Remote:: = require './remote.proto'
