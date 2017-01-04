@@ -1,9 +1,9 @@
 ###
-Base64 Encode/Decode
+Hexadecimal Encode/Decode
 ###
 element = activeX "MSXML2.DOMDocument"
   .createElement 'tmp'
-element.dataType = "bin.base64"
+element.dataType = "bin.hex"
 
 exports.enc = (blob)->
   try
