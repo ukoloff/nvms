@@ -5,13 +5,18 @@ exports.help = """
   """
 
 exports.cmd = ->
-  name = fs.GetFileName wsh.ScriptFullName
-  url = "#{PACKAGE.homepage}/raw/dist/bin/#{name}"
-  dst = fs.BuildPath install2, name
+  url = "#{PACKAGE.homepage}/archive/dist.zip"
+  zip = fs.BuildPath cache, "#{PACKAGE.mingzi}.zip"
   echo "Fetching:", url
-  ajax.dl url, dst
-  ver = sh.Exec """
-  "#{dst}" version
-  """
-  .StdOut.ReadAll().replace /^\s+|\s+$/g, ''
-  echo "#{PACKAGE.mingzi} upgraded to #{ver}"
+  ajax.dl url, zip
+
+  echo "Extracting..."
+  # https://github.com/hakobera/nvmw/blob/master/unzip.js
+  shell = activeX "Shell.Application"
+  zip = shell.NameSpace zip
+
+  if fs.FolderExists unpack = fs.BuildPath cache, PACKAGE.mingzi
+    fs.DeleteFolder unpack
+  mkpath unpack
+  shell.NameSpace unpack
+  .copyHere zip.Items(), 0
