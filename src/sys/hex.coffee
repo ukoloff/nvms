@@ -18,3 +18,9 @@ exports.dec = (str)->
     element.nodeTypedValue
   finally
     element.text = ''
+
+exports.le = (str)->
+  str
+  .match(/.{1,2}/g)
+  .reverse()
+  .join ''
