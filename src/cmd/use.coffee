@@ -19,9 +19,9 @@ exports.cmd = (args)->
     break
   throw Error 'Specified Node.js version not installed!' unless x
 
-  echo "Using #{x.path}"
+  echo "Using", x.path
   junction.exec x.path
 
 none = ->
-  echo "Temporary disabling #{PACKAGE.mingzi}"
+  echo "Temporary disabling", PACKAGE.mingzi
   junction.exec 'none'
