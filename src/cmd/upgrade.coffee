@@ -5,11 +5,8 @@ exports.help = """
   """
 
 exports.cmd = ->
-  # url = PACKAGE.homepage +
-  #   "/raw/dist/bin/" +
-  #   fs.GetFileName wsh.ScriptFullName
   name = fs.GetFileName wsh.ScriptFullName
-  url = 'https://raw.githubusercontent.com/ukoloff/nvms/dist/bin/' + name
+  url = "#{PACKAGE.homepage}/raw/dist/bin/#{name}"
   dst = fs.BuildPath install2, name
   echo "Fetching:", url
   ajax.dl url, dst
