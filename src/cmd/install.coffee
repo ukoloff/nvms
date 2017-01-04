@@ -34,4 +34,3 @@ findLocal = (remote)->
   for z in locals() by -1 when semver.match z.id, filter
     return z
   return
-

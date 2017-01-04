@@ -4,13 +4,16 @@ Parsing Node.js version in command line
 keys = for k of dists
   k
 
+Filter = ->
+Filter:: = require './vfilter.proto'
+
 # Parser itself
 module.exports =
 parse = (args = [])->
   ks = new abbrev
   ks.add
     words: keys
-  r = {}
+  r = new Filter
   for z in args
     if x = ks.is z
       r.dist = x
@@ -20,9 +23,6 @@ parse = (args = [])->
       r.ver = for z in z.split /\D+/ when z.length
         Number z
   r.z = [r.ver or [], [r.dist]]
-  r.local = ->
-    @z[1].push @x64
-    @
   r
 
 # Parse x86|x64
