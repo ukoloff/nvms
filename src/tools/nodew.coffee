@@ -14,22 +14,23 @@ module.exports = (path)->
     throw SyntaxError "Invalid executable: #{src}" unless ok
 
   readInt = (size)->
-    size = hex.le hex.enc stream.Read size
-    parseInt size, 16
+    hex.i stream.Read size
 
   stream = binstream()
   stream.LoadFromFile src
-  assert 0x5a4d == readInt 2
+  assert 0x5a4d == readInt 2        # MZ
   stream.Position = 60
   pe = readInt 4
   assert pe < stream.size
   stream.Position = pe
-  assert 0x4550 == readInt 4
+  assert 0x4550 == readInt 4        # PE
   stream.Position = pe + 20
-  assert 224 == readInt 2
-  stream.Position = flag = pe + (24 + 68)
-  assert 3 == readInt 2
-  stream.Position = flag
-  stream.Write hex.dec '02'
+  assert 0xF0 == 0x80 | readInt 2   # SizeOfOptionalHeader 0xE0/0xF0
+  readInt 2                         # Characteristics
+  assert 0x30b == 0x30 | readInt 2  # Magic 0x10B/0x20B
+  stream.Position = subsys = pe + (24 + 68)
+  assert 3 == readInt 2             # GUI
+  stream.Position = subsys
+  stream.Write hex.dec '02'         # CUI
   stream.SaveToFile dst, 2
   stream.Close()

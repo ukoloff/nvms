@@ -19,8 +19,14 @@ exports.dec = (str)->
   finally
     element.text = ''
 
-exports.le = (str)->
+# Revert bytes
+exports.rev =
+rev = (str)->
   str
-  .match(/.{1,2}/g)
+  .match(/../g)
   .reverse()
   .join ''
+
+# Get integer
+exports.i = (blob)->
+  parseInt rev(hex.enc blob), 16
