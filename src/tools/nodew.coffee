@@ -8,29 +8,40 @@ module.exports = (path)->
   if fs.FileExists dst = fs.BuildPath path, 'nodew.exe'
     return
 
-  echo "Generating", dst
+  stream = binstream()
+  stream.LoadFromFile src
 
-  assert = (ok)->
-    throw SyntaxError "Invalid executable: #{src}" unless ok
+  if check stream
+    echo "Generating", dst
+    stream.Write hex.dec '02'         # CUI
+    stream.SaveToFile dst
+  else
+    echo "Invalid executable:", src
+
+  stream.Close()
+
+# Validate PE header
+check = (stream)->
 
   readInt = (size)->
     hex.i stream.Read size
 
-  stream = binstream()
-  stream.LoadFromFile src
-  assert 0x5a4d == readInt 2        # MZ
+  if 0x5a4d != readInt 2          # MZ
+    return
   stream.Position = 60
   pe = readInt 4
-  assert pe < stream.size
+  if pe >= stream.size
+    return
   stream.Position = pe
-  assert 0x4550 == readInt 4        # PE
+  if 0x4550 != readInt 4          # PE
+    return
   stream.Position = pe + 20
-  assert 0xF0 == 0x80 | readInt 2   # SizeOfOptionalHeader 0xE0/0xF0
-  readInt 2                         # Characteristics
-  assert 0x30b == 0x30 | readInt 2  # Magic 0x10B/0x20B
+  if 0xF0 != (0x10 | readInt 2)   # SizeOfOptionalHeader: 0xE0/0xF0
+    return
+  readInt 2                       # Characteristics
+  if 0x30b != (0x300 | readInt 2) # Magic: 0x10B/0x20B
+    return
   stream.Position = subsys = pe + (24 + 68)
-  assert 3 == readInt 2             # GUI
+  if 3 != readInt 2               # GUI
+    return
   stream.Position = subsys
-  stream.Write hex.dec '02'         # CUI
-  stream.SaveToFile dst, 2
-  stream.Close()
