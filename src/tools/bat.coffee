@@ -13,5 +13,6 @@ bat = (folder)->
     .WriteLine """
       @"%~dp0..\\#{openssl}" %*
       """
+  nodew path
 
 bat.openssl = openssl = 'openssl-cli.exe'
