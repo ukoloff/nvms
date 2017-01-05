@@ -21,7 +21,7 @@ exports.uri = (file = @msi false)->
     }#{file}"
 
 exports.fetch = ->
-  echo "Fetching <#{uri = @uri()}>..."
+  echo "Fetching:", uri = @uri()
   ajax.dl uri, @msi true
 
 exports.extract = ->
@@ -37,11 +37,10 @@ exports.extract = ->
   fs.DeleteFolder extract2
 
 exports.shortcuts = ->
-  echo "Creating shortcuts..."
-
-  if 'node' != @dist
-    fs.CopyFile fs.BuildPath(@dst, "#{@dist}.exe"),
-      fs.BuildPath(@dst, "node.exe")
+  return if 'node' == @dist
+  echo "Creating shortcut..."
+  fs.CopyFile fs.BuildPath(@dst, "#{@dist}.exe"),
+    fs.BuildPath(@dst, "node.exe")
 
 exports.prefix = ->
   echo "Adjusting NPM prefix..."
@@ -55,7 +54,7 @@ exports.prefix = ->
   npmrc.Close()
 
 exports.use = ->
-  echo "Using #{ver = @ver()}..."
+  echo "Using:", ver = @ver()
   junction.exec ver
 
 exports.set64= (is64)->
