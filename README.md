@@ -42,6 +42,11 @@ just repeat installation steps above.
 
 This can be done with `nvm$ upgrade` command.
 
+So, the third way to install `nvm$` is\:
+- download https://github.com/ukoloff/nvms/raw/dist/bin/cli.bat
+- save it to any folder
+- run `path/to/cli up` from command prompt (eg `Win`+R)
+
 ## How it works
 
 Fiddling environment variables may be tricky especially on Windows.
