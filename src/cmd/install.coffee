@@ -28,6 +28,6 @@ exports.cmd = (args)->
 
 findLocal = (remote)->
   filter = remote.lfilter()
-  for z in locals() by -1 when semver.match z.id, filter
+  for z in locals() by -1 when semver.match z.$, filter
     return z
   return

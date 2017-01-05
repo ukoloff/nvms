@@ -11,7 +11,7 @@ module.exports = ->
     unless /^(\w+)-\D*(\d+(?:[.]\d+)*)-x(\d+)/.test f.Name
       return
     list.push
-      id: [
+      $: [
         (Number z for z in RegExp.$2.split '.'),
         [
           dist = RegExp.$1,

@@ -30,7 +30,7 @@ msi = (line)->
 Remote = (line, dist)->
   semver = for z in line.version.split /\D+/ when z.length
     Number z
-  @id = [semver, [dist]]
+  @$ = [semver, [dist]]
   @dist = dist
   @src = line
   return

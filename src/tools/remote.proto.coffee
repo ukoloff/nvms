@@ -14,7 +14,7 @@ exports.msi = (full)->
 
 exports.uri = (file = @msi false)->
   "#{dists[@dist]}#{@src.version}/#{
-    if @x64 and not @id[0][0]
+    if @x64 and not @$[0][0]
       'x64/'
     else
       ''
@@ -78,7 +78,7 @@ exports.openssl = (is64)->
 
 # Filter to find local installation
 exports.lfilter = ->
-  filter = @id.slice()
+  filter = @$.slice()
   filter[1] = filter[1].slice()
   filter[1].push @x64
   filter

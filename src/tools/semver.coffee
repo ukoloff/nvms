@@ -38,7 +38,7 @@ cmp = (a, b)->
     cmpa a, b, cmpv
 
 exports.cmpi = (a, b)->
-  cmp a.id, b.id
+  cmp a.$, b.$
 
 matchArray = (test, pattern, eq)->
   for z, i in pattern when z?

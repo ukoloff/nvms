@@ -42,7 +42,7 @@ remote = (args)->
 
 # Split version to major.minor
 minors = (remote)->
-  major = remote.major = remote.id.slice()
+  major = remote.major = remote.$.slice()
   major = major[0] = major[0].slice()
   remote.minors = [remote.minor = major.pop()]
 

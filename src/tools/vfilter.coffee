@@ -23,7 +23,7 @@ parse = (args = [])->
     else if /^\d/.test z
       r.ver = for z in z.split /\D+/ when z.length
         Number z
-  r.z = [r.ver or [], [r.dist]]
+  r.$ = [r.ver or [], [r.dist]]
   r
 
 # Parse x86|x64
