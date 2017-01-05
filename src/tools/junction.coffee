@@ -25,7 +25,8 @@ exists =  ->
   fs.FolderExists link
 
 # (re)Create Junction point and point to folder
-exports.exec = (folder = 'none')->
+exports.exec =
+exec = (folder = 'none')->
   bat folder
   remove() if exists()
   sh.exec """
