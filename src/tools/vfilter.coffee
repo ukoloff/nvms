@@ -8,23 +8,25 @@ ks = new abbrev
 ks.add
   words: keys
 
-Filter = ->
+Filter = (semver, dist, x64)->
+  @$ = [semver or [], [dist]]
+  @x64 = x64
+  return
+
 Filter:: = require './vfilter.proto'
 
 # Parser itself
 module.exports =
-parse = (args = [])->
-  r = new Filter
-  for z in args
-    if x = ks.$ z
-      r.dist = x
-    else if (is64 = x64 z)?
-      r.x64 = is64
-    else if /^\d/.test z
-      r.ver = for z in z.split /\D+/ when z.length
-        Number z
-  r.$ = [r.ver or [], [r.dist]]
-  r
+parse = (args)->
+  for arg in args
+    if x = ks.$ arg
+      dist = x
+    else if (is64 = x64 arg)?
+      $64 = is64
+    else if /^\d/.test arg
+      ver = for n in arg.split /\D+/ when n.length
+        Number n
+  new Filter ver, dist, $64
 
 # Parse x86|x64
 parse.x64 =
