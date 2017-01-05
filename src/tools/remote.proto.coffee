@@ -82,3 +82,8 @@ exports.lfilter = ->
   filter[1] = filter[1].slice()
   filter[1].push @x64
   filter
+
+# Duplicate filter ($)
+exports.$2 = ->
+  for z in @$
+    z.slice()

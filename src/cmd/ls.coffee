@@ -42,9 +42,8 @@ remote = (args)->
 
 # Split version to major.minor
 minors = (remote)->
-  major = remote.major = remote.$.slice()
-  major = major[0] = major[0].slice()
-  remote.minors = [remote.minor = major.pop()]
+  remote.major = $ = remote.$2()
+  remote.minors = [remote.minor = $[0].pop()]
 
 # Combine list of minors into list of ranges
 ranges = (list)->
