@@ -14,14 +14,14 @@ exports.msi = (full)->
 
 exports.uri = (file = @msi false)->
   "#{dists[@dist]}#{@src.version}/#{
-    if @x64 and not @id[0][0]
+    if @x64 and not @$[0][0]
       'x64/'
     else
       ''
     }#{file}"
 
 exports.fetch = ->
-  echo "Fetching <#{uri = @uri()}>..."
+  echo "Fetching:", uri = @uri()
   ajax.dl uri, @msi true
 
 exports.extract = ->
@@ -37,11 +37,10 @@ exports.extract = ->
   fs.DeleteFolder extract2
 
 exports.shortcuts = ->
-  echo "Creating shortcuts..."
-
-  if 'node' != @dist
-    fs.CopyFile fs.BuildPath(@dst, "#{@dist}.exe"),
-      fs.BuildPath(@dst, "node.exe")
+  return if 'node' == @dist
+  echo "Creating shortcut..."
+  fs.CopyFile fs.BuildPath(@dst, "#{@dist}.exe"),
+    fs.BuildPath(@dst, "node.exe")
 
 exports.prefix = ->
   echo "Adjusting NPM prefix..."
@@ -49,17 +48,20 @@ exports.prefix = ->
   npmrc.WriteLine """
 
     # <hack dirty src="#{PACKAGE.homepage}">
-    prefix=${APPDATA}\\#{PACKAGE.mingzi}\\#{fs.GetBaseName junction.link}
+    prefix=${APPDATA}\\#{PACKAGE.mingzi}\\#{fs.GetBaseName junction.link()}
     # </hack>
     """
   npmrc.Close()
 
 exports.use = ->
-  echo "Using #{ver = @ver()}..."
+  echo "Using:", ver = @ver()
   junction.exec ver
 
-exports.install = (is64)->
+exports.set64= (is64)->
   @x64 = is64 ? x64
+
+exports.install = (is64)->
+  @set64 is64
   @fetch()
   @extract()
   @shortcuts()
@@ -67,8 +69,20 @@ exports.install = (is64)->
   @use()
 
 exports.openssl = (is64)->
-  @x64 = is64 ? x64
+  @set64 is64
   echo "Fetching <#{uri = @uri cli = bat.openssl}>..."
   ajax.dl uri, fs.BuildPath install2, cli
   echo "Creating shortcut..."
-  bat fs.GetBaseName junction.link
+  bat fs.GetBaseName junction.link()
+
+# Duplicate filter ($)
+exports.$2 = ->
+  for z in @$
+    z.slice()
+
+# Find local version matching
+exports.local = (is64)->
+  @set64 is64
+  new vfilter.ctr @$[0], @dist, @x64
+  .local()
+  .last()

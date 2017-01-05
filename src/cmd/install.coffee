@@ -1,50 +1,26 @@
 exports.title = 'Install some version of Node.js'
 
-keys = for k of dists
-  k
-
-exports.args64 = args64 = "[x86|x64]"
-exports.args = "[#{keys.join '|'}] [n[.n[.n]]] #{args64}"
+exports.args = "#{vfilter.$} [.]"
 
 exports.help = """
   Install specified Node.js version (latest matching filter).
 
   Use `#{PACKAGE.mingzi} ls remote` to see available Node.js versions.
+
+  If specified version is already installed, it will be used
+  without installation. To force reinstallation - add . as last parameter.
   """
 
 exports.cmd = (args)->
-  filter = parse args
+  force = period args
+  filter = vfilter args
+  unless x = filter.last()
+    throw Error 'Specified Node.js version not found!'
 
-  for r in remotes().reverse() when semver.match r.id, filter.z
-    x = r
-    break
-  throw Error 'Specified Node.js version not found!' unless x
+  if not force
+    if local = x.local filter.x64
+      echo "#{local.path} is installed. To reinstall say: #{period.cmd}"
+      local.use()
+      return
 
   x.install filter.x64
-
-# Parse x86|x64
-exports.x64 =
-x64 = (str)->
-  return unless /^x(\d)/.test str
-  '6' == RegExp.$1
-
-# Parse version requirements
-exports.parse =
-parse = (args = [])->
-  ks = new abbrev
-  ks.add
-    words: keys
-  r = {}
-  for z in args
-    if x = ks.is z
-      r.dist = x
-    else if (is64 = x64 z)?
-      r.x64 = is64
-    else if /^\d/.test z
-      r.ver = for z in z.split /\D+/ when z.length
-        Number z
-  r.z = [r.ver or [], [r.dist]]
-  r.local = ->
-    @z[1].push @x64
-    @
-  r

@@ -1,7 +1,7 @@
 ###
 Base64 Encode/Decode
 ###
-element = activeX "MSXML2.DOMDocument"
+element = activeX "Msxml2.DOMDocument"
   .createElement 'tmp'
 element.dataType = "bin.base64"
 

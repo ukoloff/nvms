@@ -2,7 +2,6 @@
 Hand-made abbrev with aliases
 ###
 module.exports =
-abbrev = ->
+Abbrev = ->
 
-for k, v of abbrev_proto
-  abbrev::[k] = v
+Abbrev:: = abbrev.proto

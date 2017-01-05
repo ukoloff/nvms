@@ -1,10 +1,8 @@
-install = require './install'
-
 exports.alias = 'list'
 
 exports.title = 'List available Node.js versions'
 
-exports.args = "[remote] #{install.args}"
+exports.args = "[remote] #{vfilter.$}"
 
 exports.help = """
   List already installed or all available to install Node.js versions
@@ -18,17 +16,22 @@ exports.cmd = (args)->
 
 local = (args)->
   n = 0
-  filter = install.parse(args).local()
-  for z in ll = locals() when semver.match z.id, filter.z
+  locals =
+  vfilter args
+  .local()
+  .each (z)->
     n++
-    echo "#{if z.active then '>' else '-'} #{z.path}"
-  echo "Found: #{n} of #{ll.length} installed Node.js version" unless n
-  return
+    echo (if z.active then '>' else '-'), z.path
+  unless n
+    echo "Listed none of #{locals.length} installed Node.js version(s)"
 
 remote = (args)->
-  filter = install.parse args
   list = []
-  for z in minors remotes() when semver.match z.id, filter.z
+  last = 0
+
+  vfilter args
+  .each (z)->
+    minors z
     if last and not semver.cmp last.major, z.major
       last.minors.push z.minor
     else
@@ -38,12 +41,9 @@ remote = (args)->
   return
 
 # Split version to major.minor
-minors = (list)->
-  for z in list
-    major = z.major = z.id.slice()
-    major = major[0] = major[0].slice()
-    z.minors = [z.minor = major.pop()]
-  list
+minors = (remote)->
+  remote.major = $ = remote.$2()
+  remote.minors = [remote.minor = $[0].pop()]
 
 # Combine list of minors into list of ranges
 ranges = (list)->

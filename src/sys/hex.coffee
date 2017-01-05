@@ -1,7 +1,7 @@
 ###
 Hexadecimal Encode/Decode
 ###
-element = activeX "MSXML2.DOMDocument"
+element = activeX "Msxml2.DOMDocument"
   .createElement 'tmp'
 element.dataType = "bin.hex"
 

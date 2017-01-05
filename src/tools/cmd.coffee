@@ -11,6 +11,7 @@ list = (commands)->
     cmd.name = name
     cmd.alias = a = if cmd.alias
       cmd.alias.split /\s+/
+      .sort()
     else
       []
     abr.add
@@ -24,7 +25,7 @@ list.all = all
 
 list.find =
 find = (word)->
-  lookup[abr.is word]
+  lookup[abr.$ word]
 
 dispatch = ->
   unless cmd = find argv[0]
