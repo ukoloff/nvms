@@ -28,11 +28,13 @@ exports.cmd = (args)->
 
 all = (args)->
   n = 0
-  filter = vfilter(args).local()
-  for r in locals() when filter.match r.id
-    remove r
+  vfilter args
+  .local()
+  .each (z)->
+    remove z
     n++
-  echo "\nNode.js versions found & uninstalled: #{n}" if danger
+  if danger
+    echo "\nNode.js version(s) found & uninstalled:", n
 
 one = (args)->
   unless z = vfilter(args).local().first()
@@ -41,7 +43,7 @@ one = (args)->
 
 remove = (x)->
   unless danger
-    echo "Would remove #{x.path}."
+    echo "Would remove:", x.path
     return
   echo "Removing", x.path
   fs.DeleteFolder fs.BuildPath install2, x.path

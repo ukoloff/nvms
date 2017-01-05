@@ -27,3 +27,9 @@ exports.first = ->
 exports.last = ->
   for z in collection @ by -1 when @match z.id
     return z
+
+# Loop over, return full list
+exports.each = (fn)->
+  for z in list = collection @ when @match z.id
+    fn z
+  list
