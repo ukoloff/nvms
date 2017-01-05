@@ -4,18 +4,19 @@ Parsing Node.js version in command line
 keys = for k of dists
   k
 
+ks = new abbrev
+ks.add
+  words: keys
+
 Filter = ->
 Filter:: = require './vfilter.proto'
 
 # Parser itself
 module.exports =
 parse = (args = [])->
-  ks = new abbrev
-  ks.add
-    words: keys
   r = new Filter
   for z in args
-    if x = ks.is z
+    if x = ks.$ z
       r.dist = x
     else if (is64 = x64 z)?
       r.x64 = is64

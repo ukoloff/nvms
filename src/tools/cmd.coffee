@@ -24,7 +24,7 @@ list.all = all
 
 list.find =
 find = (word)->
-  lookup[abr.is word]
+  lookup[abr.$ word]
 
 dispatch = ->
   unless cmd = find argv[0]

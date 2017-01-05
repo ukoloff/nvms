@@ -15,7 +15,8 @@ exports.add = (options)->
       when 'aliases'
         @z[x] = word for x in v
 
-exports.is = (word)->
+# Lookup word
+exports.$ = (word)->
   return unless word and @z
   for k, v of @z
     continue unless word == k.substring 0, word.length
