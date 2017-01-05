@@ -21,4 +21,4 @@ exports.cmd = (args)->
 
 none = ->
   echo "Temporary disabling", PACKAGE.mingzi
-  junction.exec 'none'
+  junction.exec()

@@ -47,4 +47,4 @@ remove = (x)->
     return
   echo "Removing", x.path
   fs.DeleteFolder fs.BuildPath install2, x.path
-  junction.exec 'none' if x.active
+  junction.exec() if x.active

@@ -11,8 +11,7 @@ fs.CopyFolder fs.BuildPath(src, 'bin'), install2
 rm = 'README.md'
 fs.CopyFile fs.BuildPath(src, rm), fs.BuildPath(install2, rm)
 echo "Creating shortcuts..."
-junction.eula()
-junction.exec 'none', true
+junction.init()
 echo "Updating PATH..."
 path.install()
 echo """
