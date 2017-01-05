@@ -1,4 +1,4 @@
-exports.alias = 'uninstall'
+exports.alias = 'uninstall drop'
 
 exports.title = 'Remove one or several Node.js version(s)'
 

@@ -11,6 +11,7 @@ list = (commands)->
     cmd.name = name
     cmd.alias = a = if cmd.alias
       cmd.alias.split /\s+/
+      .sort()
     else
       []
     abr.add
