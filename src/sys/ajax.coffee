@@ -1,7 +1,11 @@
 ###
 HTTP request
 ###
-Servers = ["Msxml2.ServerXMLHTTP", "Msxml2.XMLHTTP", "Microsoft.XMLHTTP"]
+Servers = """
+  Msxml2.ServerXMLHTTP
+  Msxml2.XMLHTTP
+  Microsoft.XMLHTTP
+  """.split /\s+/
 
 module.exports =
 ajax = ->
