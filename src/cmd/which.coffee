@@ -8,6 +8,6 @@ exports.help = """
 
 exports.cmd = ->
   for z in locals() when z.active
-    echo fs.BuildPath install2, z.path
+    echo z.full()
     return
   echo junction.link

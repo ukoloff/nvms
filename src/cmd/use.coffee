@@ -12,13 +12,9 @@ exports.help = """
 
 exports.cmd = (args)->
   if 'none' == args[0]
-    return none()
-  unless x = vfilter(args).local().last()
+    echo "Temporary disabling", PACKAGE.mingzi
+    junction.exec()
+  else if x = vfilter(args).local().last()
+    x.use()
+  else
     throw Error 'Specified Node.js version not installed!'
-
-  echo "Using", x.path
-  junction.exec x.path
-
-none = ->
-  echo "Temporary disabling", PACKAGE.mingzi
-  junction.exec()

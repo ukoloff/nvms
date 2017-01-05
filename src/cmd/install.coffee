@@ -20,7 +20,7 @@ exports.cmd = (args)->
   if not force
     if local = x.local filter.x64
       echo "#{local.path} is installed. To reinstall say: #{period.cmd}"
-      x.use()
+      local.use()
       return
 
   x.install filter.x64

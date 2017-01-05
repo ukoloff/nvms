@@ -45,6 +45,4 @@ remove = (x)->
   unless danger
     echo "Would remove:", x.path
     return
-  echo "Removing", x.path
-  fs.DeleteFolder fs.BuildPath install2, x.path
-  junction.exec() if x.active
+  x.drop()
