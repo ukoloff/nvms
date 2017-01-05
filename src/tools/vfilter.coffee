@@ -1,13 +1,6 @@
 ###
 Parsing Node.js version in command line
 ###
-keys = for k of dists
-  k
-
-ks = new abbrev
-ks.add
-  words: keys
-
 Filter = (semver, dist, x64)->
   @$ = [semver or [], [dist]]
   @x64 = x64
@@ -15,9 +8,13 @@ Filter = (semver, dist, x64)->
 
 Filter:: = vfilter.proto
 
+keys = ->
+  k for k of dists
+
 # Parser itself
 module.exports =
 parse = (args)->
+  ks = new abbrev $: keys()
   for arg in args
     if x = ks.$ arg
       dist = x
@@ -39,4 +36,4 @@ x64 = (str)->
 
 # Help strings
 parse.$6 = $6 = "[x86|x64]"
-parse.$ = "[#{keys.join '|'}] [n[.n[.n]]] #{$6}"
+parse.$ = "[#{keys().join '|'}] [n[.n[.n]]] #{$6}"

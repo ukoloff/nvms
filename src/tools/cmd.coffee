@@ -15,8 +15,8 @@ list = (commands)->
     else
       []
     abr.add
-      word: cmd.name
-      aliases: a
+      $: cmd.name
+      _: a
     lookup[cmd.name] = cmd
     all.push cmd
   do dispatch
