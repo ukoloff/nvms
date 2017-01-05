@@ -35,11 +35,9 @@ all = (args)->
   echo "\nNode.js versions found & uninstalled: #{n}" if danger
 
 one = (args)->
-  filter = vfilter(args).local()
-  for r in locals() when filter.match r.id
-    remove r
-    return
-  throw Error 'Specified Node.js version not installed!'
+  unless z = vfilter(args).local().first()
+    throw Error 'Specified Node.js version not installed!'
+  remove z
 
 remove = (x)->
   unless danger

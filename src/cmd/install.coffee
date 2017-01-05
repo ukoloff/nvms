@@ -14,11 +14,8 @@ exports.help = """
 exports.cmd = (args)->
   force = period args
   filter = vfilter args
-
-  for r in remotes() by -1 when filter.match r.id
-    x = r
-    break
-  throw Error 'Specified Node.js version not found!' unless x
+  unless x = filter.last()
+    throw Error 'Specified Node.js version not found!'
 
   if not force
     x.set64 filter.x64
