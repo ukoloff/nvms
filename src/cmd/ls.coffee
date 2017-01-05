@@ -26,7 +26,8 @@ local = (args)->
 remote = (args)->
   filter = vfilter args
   list = []
-  for z in minors remotes() when filter.match z.id
+  for z in remotes() when filter.match z.id
+    minors z
     if last and not semver.cmp last.major, z.major
       last.minors.push z.minor
     else
@@ -36,12 +37,10 @@ remote = (args)->
   return
 
 # Split version to major.minor
-minors = (list)->
-  for z in list
-    major = z.major = z.id.slice()
-    major = major[0] = major[0].slice()
-    z.minors = [z.minor = major.pop()]
-  list
+minors = (remote)->
+  major = remote.major = remote.id.slice()
+  major = major[0] = major[0].slice()
+  remote.minors = [remote.minor = major.pop()]
 
 # Combine list of minors into list of ranges
 ranges = (list)->
