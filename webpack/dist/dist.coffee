@@ -17,6 +17,7 @@ cp = cp bin
 cp 'README.md'
 cp 'sis/junction.exe'
 cp "tmp/cli.bat"
+cp "tmp/upgrade.bat"
 cp "./tmp/setup.bat"
 
 # Git operations

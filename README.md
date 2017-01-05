@@ -25,12 +25,21 @@ If you have `git` installed:
 If you have got no `git`
 or don't like to use command prompt:
 
-  * Download https://github.com/ukoloff/nvms/archive/dist.zip
-  * Start downloaded `nvms-dist.zip` (in Explorer)
-  * Click `setup.bat`
-  * Windows will prompt to extract all files
-  * Agree
-  * Click `setup.bat` again
+- Download https://github.com/ukoloff/nvms/raw/dist/bin/upgrade.bat
+- Save it to any folder
+- Run it
+- It will download full distro, unpack and start installation
+
+Finally, if your browser doesn't allow to download
+batch files or run them afterwards,
+you can do the job of `upgrade.bat` yourself:
+
+- Download https://github.com/ukoloff/nvms/archive/dist.zip
+- Start downloaded `nvms-dist.zip` (in Explorer)
+- Click `setup.bat`
+- Windows will prompt to extract all files
+- Agree
+- Click `setup.bat` again
 
 After installation you should close command prompt (if any)
 and open new one to use `nvm$`.
@@ -41,11 +50,6 @@ For new version of nvm$ to install
 just repeat installation steps above.
 
 This can be done with `nvm$ upgrade` command.
-
-So, the third way to install `nvm$` is\:
-- download https://github.com/ukoloff/nvms/raw/dist/bin/cli.bat
-- save it to any folder
-- run `path/to/cli up` from command prompt (eg `Win`+R)
 
 ## How it works
 
