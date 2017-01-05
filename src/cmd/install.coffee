@@ -18,16 +18,9 @@ exports.cmd = (args)->
     throw Error 'Specified Node.js version not found!'
 
   if not force
-    x.set64 filter.x64
-    if local = findLocal x
+    if local = x.local filter.x64
       echo "#{local.path} is installed. To reinstall say: #{period.cmd}"
       x.use()
       return
 
   x.install filter.x64
-
-findLocal = (remote)->
-  filter = remote.lfilter()
-  for z in locals() by -1 when semver.match z.$, filter
-    return z
-  return

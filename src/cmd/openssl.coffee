@@ -7,8 +7,10 @@ exports.help = """
   """
 
 exports.cmd = (args)->
-  for r in remotes() by -1 when semver.match r.$, [[0]]
-    x = r
-    break
-  throw Error 'Appropriate Node.js version not found!' unless x
-  r.openssl vfilter.x64 args[0]
+  # Node.js v0.*.* contains OpenSSL binary
+  remote =
+  new vfilter.ctr [0]
+  .last()
+  unless remote
+    throw Error 'Appropriate Node.js version not found!'
+  remote.openssl vfilter.x64 args[0]

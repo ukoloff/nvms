@@ -28,6 +28,9 @@ parse = (args)->
         Number n
   new Filter ver, dist, $64
 
+# export constructor
+parse.ctr = Filter
+
 # Parse x86|x64
 parse.x64 =
 x64 = (str)->

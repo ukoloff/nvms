@@ -9,10 +9,10 @@ exports.local = ->
 
 # Get collection to iterate over
 collection = (filter)->
-  if filter.$[1].length > 1
-    locals()
+  do if filter.$[1].length > 1
+    require './locals'
   else
-    remotes()
+    require './remotes'
 
 # Check for match
 match = (self, ver)->

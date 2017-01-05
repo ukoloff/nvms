@@ -76,14 +76,14 @@ exports.openssl = (is64)->
   echo "Creating shortcut..."
   bat fs.GetBaseName junction.link
 
-# Filter to find local installation
-exports.lfilter = ->
-  filter = @$.slice()
-  filter[1] = filter[1].slice()
-  filter[1].push @x64
-  filter
-
 # Duplicate filter ($)
 exports.$2 = ->
   for z in @$
     z.slice()
+
+# Find local version matching
+exports.local = (is64)->
+  @set64 is64
+  new vfilter.ctr @$[0], @dist, @x64
+  .local()
+  .last()
