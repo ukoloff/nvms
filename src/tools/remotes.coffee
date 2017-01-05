@@ -35,4 +35,4 @@ Remote = (line, dist)->
   @src = line
   return
 
-Remote:: = require './remote.proto'
+Remote:: = remote.proto

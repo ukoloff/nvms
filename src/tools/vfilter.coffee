@@ -13,7 +13,7 @@ Filter = (semver, dist, x64)->
   @x64 = x64
   return
 
-Filter:: = require './vfilter.proto'
+Filter:: = vfilter.proto
 
 # Parser itself
 module.exports =

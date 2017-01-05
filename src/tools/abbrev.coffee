@@ -2,6 +2,6 @@
 Hand-made abbrev with aliases
 ###
 module.exports =
-abbrev = ->
+Abbrev = ->
 
-abbrev:: = require './abbrev.proto'
+Abbrev:: = abbrev.proto
