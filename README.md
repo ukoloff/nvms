@@ -5,7 +5,8 @@ Node Version Manager for M$ Windows.
 Inspired by [nvmw][]
 and [nvm-windows][]
 (and of course [nvm][] itself),
-but totally rewritten using [Microsoft Scripting Host][].
+but totally rewritten using
+[Microsoft Scripting Host][Windows Script Host].
 
 ## Advantages
 
