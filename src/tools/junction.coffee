@@ -7,7 +7,8 @@ dst = ->
   fs.BuildPath install2, name
 
 exports.link =
-link = fs.BuildPath install2, 'this'
+link = ->
+  fs.BuildPath install2, 'this'
 
 wait = (child)->
   until child.Status
@@ -17,12 +18,12 @@ wait = (child)->
 exports.remove =
 remove = ->
   wait sh.exec """
-    "#{dst()}" -d "#{link}"
+    "#{dst()}" -d "#{link()}"
   """
 
 # Whether Junction point exists?
 exists =  ->
-  fs.FolderExists link
+  fs.FolderExists link()
 
 # (re)Create Junction point and point to folder
 exports.exec =
@@ -30,7 +31,7 @@ exec = (folder = 'none')->
   bat folder
   remove() if exists()
   sh.exec """
-    "#{dst()}" "#{link}" "#{fs.BuildPath install2, folder}"
+    "#{dst()}" "#{link()}" "#{fs.BuildPath install2, folder}"
   """
 
 # Accept EULA

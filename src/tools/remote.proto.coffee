@@ -48,7 +48,7 @@ exports.prefix = ->
   npmrc.WriteLine """
 
     # <hack dirty src="#{PACKAGE.homepage}">
-    prefix=${APPDATA}\\#{PACKAGE.mingzi}\\#{fs.GetBaseName junction.link}
+    prefix=${APPDATA}\\#{PACKAGE.mingzi}\\#{fs.GetBaseName junction.link()}
     # </hack>
     """
   npmrc.Close()
@@ -73,7 +73,7 @@ exports.openssl = (is64)->
   echo "Fetching <#{uri = @uri cli = bat.openssl}>..."
   ajax.dl uri, fs.BuildPath install2, cli
   echo "Creating shortcut..."
-  bat fs.GetBaseName junction.link
+  bat fs.GetBaseName junction.link()
 
 # Duplicate filter ($)
 exports.$2 = ->

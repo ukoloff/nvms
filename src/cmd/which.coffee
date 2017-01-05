@@ -10,4 +10,4 @@ exports.cmd = ->
   for z in locals() when z.active
     echo z.full()
     return
-  echo junction.link
+  echo junction.link()

@@ -13,10 +13,10 @@ module.exports = ->
   list.sort semver.cmpi
 
 rndFile = ->
-  return unless fs.FolderExists junction.link
+  return unless fs.FolderExists junction.link()
   i = 16
   while --i
-    if fs.FileExists p = fs.BuildPath junction.link, r = rnd 15
+    if fs.FileExists p = fs.BuildPath junction.link(), r = rnd 15
       continue
     try
       fs.CreateTextFile p, true
