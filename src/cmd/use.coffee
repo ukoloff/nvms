@@ -14,7 +14,7 @@ exports.cmd = (args)->
   if 'none' == args[0]
     return none()
   filter = vfilter(args).local()
-  for r in locals().reverse() when filter.match r.id
+  for r in locals() by -1 when filter.match r.id
     x = r
     break
   throw Error 'Specified Node.js version not installed!' unless x
