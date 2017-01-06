@@ -19,20 +19,20 @@ exports.$ = (word)->
   if word of @z
     return @z[word] or word   # Exact match
   for k, v of @z when word == k.substring 0, word.length
-    x = v or k
-    return if res and res != x
-    res = x
+    v ||= k
+    return if res and res != v
+    res = v
   res
 
 # List all abbreviations
 exports._ = ->
   list = {}
   for k, v of @z
-    answer = v or k
+    v || = k
     i = 0
     while ++i <= k.length
-      if answer == @$ test = k.substring 0, i
-        list[test] = answer
+      if v == @$ test = k.substring 0, i
+        list[test] = v
         break
   result = {}
   for k in (k for k of list).sort()
