@@ -41,7 +41,7 @@ remote = (args)->
       list.push last = z
   .length
   for z in list
-    echo "- #{z.dist} #{z.src.version}#{r2s ranges z.minors}"
+    echo "- [#{z.minors.length}]\t#{z.dist} #{z.src.version}#{r2s ranges z.minors}"
   echo "Listed: #{list.length} line(s) of #{n} version(s) of #{total} total"
 
 # Split version to major.minor
