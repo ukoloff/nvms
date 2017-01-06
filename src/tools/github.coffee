@@ -9,5 +9,5 @@ api = ->
 
 # Return available tags
 module.exports = ->
-  for tag in json2 ajax.get api()
+  for tag in json2 ajax api()
     tag.name

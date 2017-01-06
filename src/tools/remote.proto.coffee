@@ -22,7 +22,7 @@ exports.uri = (file = @msi false)->
 
 exports.fetch = ->
   echo "Fetching:", uri = @uri()
-  ajax.dl uri, @msi true
+  ajax uri, @msi true
 
 exports.extract = ->
   echo "Extracting #{@msi()}..."
@@ -71,7 +71,7 @@ exports.install = (is64)->
 exports.openssl = (is64)->
   @set64 is64
   echo "Fetching <#{uri = @uri cli = bat.openssl}>..."
-  ajax.dl uri, fs.BuildPath install2, cli
+  ajax uri, fs.BuildPath install2, cli
   echo "Creating shortcut..."
   bat fs.GetBaseName junction.link()
 

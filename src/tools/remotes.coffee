@@ -12,7 +12,7 @@ module.exports = (force)->
     else
       url = "#{v}index.tab"
       echo "Fetching <#{url}>..."
-      tab = ajax.get url
+      tab = ajax url
       fs.CreateTextFile f, true
       .WriteLine tab
     tab = for z in tsv tab when msi z

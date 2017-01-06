@@ -5,7 +5,7 @@ module.exports = ->
   url = "#{PACKAGE.homepage}/archive/dist.zip"
   zip = fs.BuildPath cache, "#{PACKAGE.mingzi}.zip"
   echo "Fetching:", url
-  ajax.dl url, zip
+  ajax url, zip
 
   echo "Extracting..."
   # https://github.com/hakobera/nvmw/blob/master/unzip.js
