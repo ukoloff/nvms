@@ -16,7 +16,7 @@ collection = (filter)->
 
 # Check for match
 match = (self, ver)->
-  semver.match ver.$, self.$
+  semver ver.$, self.$
 
 # First matching element
 exports.first = ->
