@@ -6,10 +6,13 @@ Running copy of myself in background
 magic = ->
   "<#{PACKAGE.version}>"
 
+find = (cmd)->
+  require('./zogi')[cmd]
+
 # Run background process
 module.exports =
 fork = (cmd, args...)->
-  return unless zogi[cmd]
+  return unless find cmd
   args = [wsh.ScriptFullName, "version", magic(), cmd]
     .concat args
   for a, i in args
@@ -19,6 +22,6 @@ fork = (cmd, args...)->
 # See whether we are in the background
 fork.$ = (args)->
   return if magic() != args.shift()
-  return unless cmd = zogi[args.shift()]
-  cmd args
+  return unless cmd = find args.shift()
+  cmd.$ args
   do exit
