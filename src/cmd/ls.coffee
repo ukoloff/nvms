@@ -16,29 +16,33 @@ exports.cmd = (args)->
 
 local = (args)->
   n = 0
-  locals =
+  total =
   vfilter args
   .local()
   .each (z)->
     n++
     echo (if z.active then '>' else '-'), z.path
-  unless n
-    echo "Listed none of #{locals.length} installed Node.js version(s)"
+  .length
+  echo "Listed: #{n} of #{total} installed Node.js version(s)"
 
 remote = (args)->
   list = []
   last = 0
+  n = 0
 
+  total =
   vfilter args
   .each (z)->
+    n++
     minors z
     if last and not semver.cmp last.major, z.major
       last.minors.push z.minor
     else
       list.push last = z
+  .length
   for z in list
     echo "- #{z.dist} #{z.src.version}#{r2s ranges z.minors}"
-  return
+  echo "Listed: #{list.length} line(s) of #{n} version(s) of #{total} total"
 
 # Split version to major.minor
 minors = (remote)->

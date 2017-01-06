@@ -4,7 +4,7 @@ List installed versions
 
 module.exports = ->
   list = []
-  x = rndFile()
+  x = rndFile junction.$()
   each fs.GetFolder(install2).SubFolders, (f)->
     unless /^(\w+)-\D*(\d+(?:[.]\d+)*)-x(\d+)/.test f.Name
       return
@@ -12,11 +12,11 @@ module.exports = ->
   fs.DeleteFile x.p if x
   list.sort semver.cmp$
 
-rndFile = ->
-  return unless fs.FolderExists junction.link()
+rndFile = (folder)->
+  return unless fs.FolderExists folder
   i = 16
   while --i
-    if fs.FileExists p = fs.BuildPath junction.link(), r = rnd 15
+    if fs.FileExists p = fs.BuildPath folder, r = rnd 15
       continue
     try
       fs.CreateTextFile p, true

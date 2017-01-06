@@ -15,8 +15,8 @@ list = (commands)->
     else
       []
     abr.add
-      word: cmd.name
-      aliases: a
+      $: cmd.name
+      _: a
     lookup[cmd.name] = cmd
     all.push cmd
   do dispatch
@@ -61,3 +61,10 @@ none = ->
   echo """
     Run #{PACKAGE.mingzi} help for instructions.
     """
+
+# List abbreviations
+list.a = ->
+  list = {}
+  for k, v of abr._()
+    list[k] = lookup[v]
+  list

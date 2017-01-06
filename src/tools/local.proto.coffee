@@ -4,7 +4,7 @@ Methods for locally installed versions
 
 exports.use = ->
   echo "Using:", @path
-  junction.exec @path
+  junction @path
 
 exports.full = ->
   fs.BuildPath install2, @path
@@ -12,4 +12,4 @@ exports.full = ->
 exports.drop = ->
   echo "Removing:", @path
   fs.DeleteFolder @full()
-  junction.exec() if @active
+  junction() if @active
