@@ -10,10 +10,11 @@ but totally rewritten using [Microsoft Scripting Host][].
 ## Advantages
 
 - Written in JavaScript itself (well, JScript)
+- Adds single entry to PATH environment variable
 - Creates `node.exe` for iojs distributions (along with `iojs.exe`)
 - Generates console-less Node.js binary (`nodew.exe`)
 - Can optionally install OpenSSL binary
-- Adds single entry to PATH environment variable
+- Detects availability of new versions of Node.js and itself
 
 ## Installation
 
@@ -50,6 +51,15 @@ For new version of nvm$ to install
 just repeat installation steps above.
 
 This can be done with `nvm$ upgrade` command.
+
+`nvm$` will periodically check its repo
+to see whether new version exists
+and prompt to update in that case.
+
+To disable that check,
+find file `%AppData%\nvm$\that\.v`
+and insert into beginning some character
+like `#` or `;` or even `-`.
 
 ## How it works
 
