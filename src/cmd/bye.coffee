@@ -21,10 +21,15 @@ exports.cmd = (args)->
   path.install false
   echo "Removing files..."
   junction.drop()
-  fs.DeleteFolder install2
+  zog 'bye', ''
   echo """
 
     Fare thee well! and if for ever,
     Still for ever, fare thee well!
 
   """
+
+# ZOG command: remove folder
+exports._ = (folder)->
+  if fs.FolderExists folder = fs.BuildPath install2, folder[0]
+    fs.DeleteFolder folder

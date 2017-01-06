@@ -13,4 +13,4 @@ exports._ = ->
 exports.drop = ->
   echo "Removing:", @path
   junction() if @active
-  fs.DeleteFolder @_()
+  zog 'bye', @path
