@@ -3,11 +3,10 @@ Get available distributions list
 ###
 
 module.exports =
-exports = (force)->
+list = ->
   r = []
   for k, v of dists
-    f = fs.BuildPath cache, "#{k}.tsv"
-    if not force and cached f
+    if cached f = dpath k
       tab = fs.OpenTextFile f
       .ReadAll()
     else
@@ -19,26 +18,31 @@ exports = (force)->
     tab = for z in tsv tab when msi z
       new Remote z, k
     r = r.concat tab
-  store r.sort semver.cmpi
+  r.sort semver.cmpi
+
+dpath = (dist)->
+  fs.BuildPath cache, "#{dist}.tsv"
 
 cached = (f)->
   fs.FileExists(f) and
   new Date - fs.GetFile(f).DateLastModified < 1000*60*60*24
 
+cachedAll = ->
+  for k, v of dists when not cached dpath k
+    return
+  true
+
 msi = (line)->
   ~line.files.indexOf '-msi'
 
-latest = 0
-store = (list)->
-  if list and list.length
-    latest = list[list.length - 1]
-  list
-
 # Check for upgrade
-exports.$ = ->
-  return unless latest
-  return if local = latest.local '*'
-  latest.$[0].join '.'
+list.$ = ->
+  return unless cachedAll()
+  remote = list()
+  return unless remote and remote.length
+  remote = remote[remote.length - 1]
+  return if remote.local '*'
+  remote.$[0].join '.'
 
 Remote = (line, dist)->
   semver = for z in line.version.split /\D+/ when z.length
