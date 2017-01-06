@@ -3,7 +3,6 @@ exports.title = 'Show version'
 exports.help = "Displays #{PACKAGE.mingzi} version."
 
 exports.cmd = (args)->
-  run = try
+  echo PACKAGE.version
+  try
     upgrade.test args[0]
-  unless run
-    echo PACKAGE.version

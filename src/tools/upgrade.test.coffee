@@ -3,7 +3,7 @@ Check whether update is available
 ###
 
 module.exports = (arg)->
-  if false == arg
+  if true == arg
     do check
   else
     fetch arg
@@ -42,13 +42,14 @@ latest = ->
 
 # Save to file
 write = (version)->
-  fs.CreateTextFile path(), true
-  .WriteLine """
+  file = fs.CreateTextFile path(), true
+  file.WriteLine """
     #{version or ''}
 
     Start file from non-word character (eg # or ! or ; etc)
     to disable autodetection of #{PACKAGE.mingzi} new version available.
   """
+  file.Close()
 
 # Magic cookie to force version fetch
 key = ->
@@ -57,7 +58,8 @@ key = ->
 # Fetch latest version from GitHub & store
 fetch = (arg)->
   return if arg != key()
-  return unless read()
+  return unless autodetect()
+  touch()
   write latest()
   true
 
@@ -71,3 +73,38 @@ read = ->
   .split /\s+/, 2
   .shift()
   filter s unless /^\W/.test s
+
+# Run subprocess to fetch version
+spawn = ->
+  sh.Run """
+    "#{wsh.ScriptFullName}" version "#{key()}"
+  """, 0
+
+# Touch file
+touch = ->
+  if fs.FileExists f = path()
+    # Emulate touch
+    file = fs.OpenTextFile f
+    s = file.ReadAll()
+    file.Close()
+    file = fs.CreateTextFile f, true
+    file.Write s
+    file.Close()
+  else
+    write()
+
+# Is file old?
+expired = ->
+  unless fs.FileExists f = path()
+    return true
+  new Date - fs.GetFile(f).DateLastModified > 1000*60*60*24*3
+
+# Autodetection allowed
+autodetect = ->
+  expired() and read()
+
+check = ->
+  if autodetect()
+    spawn()
+  ver = read()
+  ver if ver and gt ver, filter PACKAGE.version
