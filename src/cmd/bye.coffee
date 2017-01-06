@@ -28,8 +28,3 @@ exports.cmd = (args)->
     Still for ever, fare thee well!
 
   """
-
-# ZOG command: remove folder
-exports._ = (folder)->
-  if fs.FolderExists folder = fs.BuildPath install2, folder[0]
-    fs.DeleteFolder folder

@@ -8,15 +8,13 @@ magic = ->
 
 # Find command
 command = (name)->
-  cmd = require './cmd'
-  c = cmd.find name
-  c if c and c.name == name and c._
+  zog.commands[name]
 
 # Run background process
 module.exports =
 fork = (cmd, args...)->
-  return unless cmd = command cmd
-  args = [wsh.ScriptFullName, "version", magic(), cmd.name]
+  return unless command cmd
+  args = [wsh.ScriptFullName, "version", magic(), cmd]
     .concat args
   for a, i in args
     args[i] = '"' + a + '"'
@@ -26,5 +24,5 @@ fork = (cmd, args...)->
 fork.$ = (args)->
   return if magic() != args.shift()
   return unless cmd = command args.shift()
-  cmd._ args
+  cmd args
   do exit
