@@ -20,7 +20,7 @@ exports.cmd = (args)->
   echo "Removing from PATH"
   path.install false
   echo "Removing files..."
-  junction.remove()
+  junction.drop()
   fs.DeleteFolder install2
   echo """
 

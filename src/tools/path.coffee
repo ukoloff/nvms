@@ -19,7 +19,7 @@ Rejected by:
 assign = new Function 'o,k,v', 'o(k)=v'
 
 path.install = (add = true)->
-  bin = junction.link()
+  bin = junction.$()
   x = for x in path() when x != bin
     x
   x.unshift bin if add

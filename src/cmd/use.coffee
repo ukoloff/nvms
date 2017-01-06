@@ -13,7 +13,7 @@ exports.help = """
 exports.cmd = (args)->
   if 'none' == args[0]
     echo "Temporary disabling", PACKAGE.mingzi
-    junction.exec()
+    junction()
   else if x = vfilter(args).local().last()
     x.use()
   else
