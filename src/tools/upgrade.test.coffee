@@ -29,7 +29,7 @@ filter = (str)->
   new vfilter.ctr n
 
 gt = (left, right)->
-  0 < semver.cmpi left, right
+  0 < semver.cmp$ left, right
 
 # Get most fresh tag from GitHub
 latest = ->

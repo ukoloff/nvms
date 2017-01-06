@@ -10,7 +10,7 @@ module.exports = ->
       return
     list.push new Local if x then fs.FileExists fs.BuildPath f.Path, x.r
   fs.DeleteFile x.p if x
-  list.sort semver.cmpi
+  list.sort semver.cmp$
 
 rndFile = ->
   return unless fs.FolderExists junction.link()

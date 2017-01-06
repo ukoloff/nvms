@@ -18,7 +18,7 @@ list = ->
     tab = for z in tsv tab when msi z
       new Remote z, k
     r = r.concat tab
-  r.sort semver.cmpi
+  r.sort semver.cmp$
 
 dpath = (dist)->
   fs.BuildPath cache, "#{dist}.tsv"

@@ -3,7 +3,6 @@ Semver utilities
 ###
 
 # Compare values
-exports.cmpv =
 cmpv = (a, b)->
   if a == b
     0
@@ -13,7 +12,6 @@ cmpv = (a, b)->
     +1
 
 # Compare Arrays
-exports.cmpa =
 cmpa = (a, b, comparator)->
   i = 0
   la = a.length
@@ -37,7 +35,7 @@ cmp = (a, b)->
   cmpa a, b, (a, b)->
     cmpa a, b, cmpv
 
-exports.cmpi = (a, b)->
+exports.cmp$ = (a, b)->
   cmp a.$, b.$
 
 matchArray = (test, pattern, eq)->
