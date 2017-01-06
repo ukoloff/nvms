@@ -2,11 +2,20 @@
 Check whether update is available
 ###
 
-module.exports = (arg)->
-  if true == arg
-    do check
-  else
-    fetch arg
+module.exports =
+detect = ->
+  if autodetect()
+    zog 'upgrade'
+  ver = read()
+  if ver and gt ver, filter PACKAGE.version
+    ver.$[0].join '.'
+
+# Fetch latest version from GitHub & store
+detect.$ =
+fetch = ->
+  return unless autodetect()
+  touch()
+  write latest()
 
 # Path to file with latest version
 path = ->
@@ -51,18 +60,6 @@ write = (version)->
   """
   file.Close()
 
-# Magic cookie to force version fetch
-key = ->
-  ">#{PACKAGE.version}?"
-
-# Fetch latest version from GitHub & store
-fetch = (arg)->
-  return if arg != key()
-  return unless autodetect()
-  touch()
-  write latest()
-  true
-
 # Read version from file
 read = ->
   s = ''
@@ -73,12 +70,6 @@ read = ->
   .split /\s+/, 2
   .shift()
   filter s unless /^\W/.test s
-
-# Run subprocess to fetch version
-spawn = ->
-  sh.Run """
-    "#{wsh.ScriptFullName}" version "#{key()}"
-  """, 0
 
 # Touch file
 touch = ->
@@ -102,10 +93,3 @@ expired = ->
 # Autodetection allowed
 autodetect = ->
   expired() and read()
-
-check = ->
-  if autodetect()
-    spawn()
-  ver = read()
-  if ver and gt ver, filter PACKAGE.version
-    ver.$[0].join '.'
