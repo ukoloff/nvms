@@ -57,5 +57,17 @@ key = ->
 # Fetch latest version from GitHub & store
 fetch = (arg)->
   return if arg != key()
+  return unless read()
   write latest()
   true
+
+# Read version from file
+read = ->
+  s = ''
+  if fs.FileExists f = path()
+    s = fs.OpenTextFile f
+    .ReadLine()
+  s = s.replace /^\s+/, ''
+  .split /\s+/, 2
+  .shift()
+  filter s unless /^\W/.test s
