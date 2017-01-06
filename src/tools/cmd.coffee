@@ -29,7 +29,7 @@ find = (word)->
 
 autoupgrade = ->
   x = {}
-  if v = upgrade.test true
+  if v = upgrade.test()
     x.upgrade = "New version v#{v}"
   if v = remotes.$()
     x.install = "Node.js version v#{v}"
