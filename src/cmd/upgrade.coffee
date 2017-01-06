@@ -5,7 +5,3 @@ exports.help = """
   """
 
 exports.cmd = upgrade
-
-# ZOG command: fetch latest version from GitHub
-exports._ = ->
-  do upgrade.test.$
