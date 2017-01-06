@@ -1,8 +1,13 @@
 ###
 GitHub API
 ###
-exports.api = ->
+api = ->
   "#{PACKAGE.homepage
   .replace /// // ///, '$&api.'
   .replace /// \w/ ///, '$&repos/'
   }/tags?per_page=8"
+
+# Return available tags
+module.exports = ->
+  for tag in json2 ajax.get api()
+    tag.name
