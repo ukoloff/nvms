@@ -1,6 +1,8 @@
 ###
-GitHub API
+Check whether update is available
 ###
+
+# GitHub API URI
 api = ->
   "#{PACKAGE.homepage
   .replace /// // ///, '$&api.'
@@ -8,6 +10,6 @@ api = ->
   }/tags?per_page=8"
 
 # Return available tags
-module.exports = ->
+tags = ->
   for tag in json2 ajax api()
     tag.name
