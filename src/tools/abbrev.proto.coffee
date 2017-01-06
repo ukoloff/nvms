@@ -16,10 +16,25 @@ exports.add = (options)->
 # Lookup word
 exports.$ = (word)->
   return unless word and @z
-  for k, v of @z
-    continue unless word == k.substring 0, word.length
+  if word of @z
+    return @z[word] or word   # Exact match
+  for k, v of @z when word == k.substring 0, word.length
     x = v or k
-    return x if word == k
     return if res and res != x
     res = x
   res
+
+# List all abbreviations
+exports._ = ->
+  list = {}
+  for k, v of @z
+    answer = v or k
+    i = 0
+    while ++i <= k.length
+      if answer == @$ test = k.substring 0, i
+        list[test] = answer
+        break
+  result = {}
+  for k in (k for k of list).sort()
+    result[k] = list[k]
+  result

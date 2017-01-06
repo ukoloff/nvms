@@ -45,3 +45,10 @@ none = ->
   echo """
     Run #{PACKAGE.mingzi} help for instructions.
     """
+
+# List abbreviations
+list.a = ->
+  list = {}
+  for k, v of abr._()
+    list[k] = lookup[v]
+  list
