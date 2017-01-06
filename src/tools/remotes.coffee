@@ -28,7 +28,7 @@ cached = (f)->
   new Date - fs.GetFile(f).DateLastModified < 1000*60*60*24
 
 cachedAll = ->
-  for k, v of dists when not cached dpath k
+  for k of dists when not cached dpath k
     return
   true
 
