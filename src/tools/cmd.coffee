@@ -27,11 +27,21 @@ list.find =
 find = (word)->
   lookup[abr.$ word]
 
+autoupgrade = ->
+  unless v = upgrade.test true
+    return
+  echo """
+
+  // Update: new version v#{v} available. Upgrade with: #{PACKAGE.mingzi} upgrade
+  """
+
 dispatch = ->
   unless cmd = find argv[0]
     do none
+    autoupgrade()
     exit 1
   cmd.cmd.call cmd, argv.slice 1
+  autoupgrade()
 
 list.header =
 header = ->

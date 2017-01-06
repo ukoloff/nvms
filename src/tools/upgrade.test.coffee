@@ -107,4 +107,5 @@ check = ->
   if autodetect()
     spawn()
   ver = read()
-  ver if ver and gt ver, filter PACKAGE.version
+  if ver and gt ver, filter PACKAGE.version
+    ver.$[0].join '.'
