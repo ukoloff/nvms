@@ -25,7 +25,7 @@ exports.fetch = ->
   ajax uri, @msi true
 
 exports.extract = ->
-  echo "Extracting #{@msi()}..."
+  echo "Extracting:", @msi()
   if fs.FolderExists extract2 = fs.BuildPath cache, ver = @ver()
     fs.DeleteFolder extract2
   sh.Run """
@@ -70,7 +70,7 @@ exports.install = (is64)->
 
 exports.openssl = (is64)->
   @set64 is64
-  echo "Fetching <#{uri = @uri cli = bat.openssl}>..."
+  echo "Fetching:", uri = @uri cli = bat.openssl
   ajax uri, fs.BuildPath install2, cli
   echo "Creating shortcut..."
   bat fs.GetBaseName junction.$()

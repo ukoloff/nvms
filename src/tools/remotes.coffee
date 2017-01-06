@@ -11,7 +11,7 @@ list = ->
       .ReadAll()
     else
       url = "#{v}index.tab"
-      echo "Fetching <#{url}>..."
+      echo "Fetching:", url
       tab = ajax url
       fs.CreateTextFile f, true
       .WriteLine tab

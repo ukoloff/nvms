@@ -8,6 +8,6 @@ exports.help = """
 
 exports.cmd = ->
   for z in locals() when z.active
-    echo z.full()
+    echo z._()
     return
   echo junction.$()
