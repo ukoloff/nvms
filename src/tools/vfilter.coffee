@@ -18,7 +18,7 @@ parse = (args)->
   for arg in args
     if x = ks.$ arg
       dist = x
-    else if (is64 = x64 arg)?
+    else if (is64 = parse64 arg)?
       $64 = is64
     else if /^\d/.test arg
       ver = for n in arg.split /\D+/ when n.length
@@ -29,7 +29,8 @@ parse = (args)->
 parse.ctr = Filter
 
 # Parse x86|x64
-parse.x64 = (str)->
+parse.x64 =
+parse64 = (str)->
   return unless /^x(\d)/.test str
   '6' == RegExp.$1
 
