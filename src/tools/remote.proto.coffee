@@ -58,7 +58,7 @@ exports.use = ->
   junction.exec ver
 
 exports.set64= (is64)->
-  @x64 = is64 ? x64
+  @x64 = if '*' == is64 then null else is64 ? x64
 
 exports.install = (is64)->
   @set64 is64

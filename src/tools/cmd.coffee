@@ -28,12 +28,18 @@ find = (word)->
   lookup[abr.$ word]
 
 autoupgrade = ->
-  unless v = upgrade.test true
-    return
-  echo """
+  x = {}
+  if v = upgrade.test true
+    x.upgrade = "New version v#{v}"
+  if v = remotes.$()
+    x.install = "Node.js version v#{v}"
 
-  // Update: new version v#{v} available. Upgrade with: #{PACKAGE.mingzi} upgrade
-  """
+  for k, v of x
+    unless updates
+      echo()
+      updates = true
+    echo "// Update: #{v} available. Upgrade with: #{PACKAGE.mingzi} #{k}"
+  return
 
 dispatch = ->
   unless cmd = find argv[0]

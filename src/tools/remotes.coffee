@@ -2,7 +2,8 @@
 Get available distributions list
 ###
 
-module.exports = (force)->
+module.exports =
+exports = (force)->
   r = []
   for k, v of dists
     f = fs.BuildPath cache, "#{k}.tsv"
@@ -18,7 +19,7 @@ module.exports = (force)->
     tab = for z in tsv tab when msi z
       new Remote z, k
     r = r.concat tab
-  r.sort semver.cmpi
+  store r.sort semver.cmpi
 
 cached = (f)->
   fs.FileExists(f) and
@@ -26,6 +27,18 @@ cached = (f)->
 
 msi = (line)->
   ~line.files.indexOf '-msi'
+
+latest = 0
+store = (list)->
+  if list and list.length
+    latest = list[list.length - 1]
+  list
+
+# Check for upgrade
+exports.$ = ->
+  return unless latest
+  return if local = latest.local '*'
+  latest.$[0].join '.'
 
 Remote = (line, dist)->
   semver = for z in line.version.split /\D+/ when z.length
