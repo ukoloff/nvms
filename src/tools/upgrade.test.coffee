@@ -2,6 +2,16 @@
 Check whether update is available
 ###
 
+module.exports = (arg)->
+  if false == arg
+    do check
+  else
+    fetch arg
+
+# Path to file with latest version
+path = ->
+  fs.BuildPath cache, '.v'
+
 # GitHub API URI
 api = ->
   "#{PACKAGE.homepage
@@ -11,8 +21,7 @@ api = ->
 
 # Return available tags
 tags = ->
-  for tag in json2 ajax api() by -1
-    tag.name
+  json2 ajax api()
 
 filter = (str)->
   n = for n in str.split /\D+/ when n.length
@@ -22,12 +31,31 @@ filter = (str)->
 gt = (left, right)->
   0 < semver.cmpi left, right
 
+# Get most fresh tag from GitHub
 latest = ->
-  me = filter PACKAGE.version
   max = 0
   for tag in tags() by -1
-    tag = filter tag
-    continue unless gt tag, me
+    tag = filter tag.name
     if !max or gt tag, max
       max = tag
   max.$[0].join '.' if max
+
+# Save to file
+write = (version)->
+  fs.CreateTextFile path(), true
+  .WriteLine """
+    #{version or ''}
+
+    Start file from non-word character (eg # or ! or ; etc)
+    to disable autodetection of #{PACKAGE.mingzi} new version available.
+  """
+
+# Magic cookie to force version fetch
+key = ->
+  ">#{PACKAGE.version}?"
+
+# Fetch latest version from GitHub & store
+fetch = (arg)->
+  return if arg != key()
+  write latest()
+  true
