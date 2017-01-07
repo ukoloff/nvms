@@ -10,20 +10,17 @@ exe = ->
 module.exports =
 run = (folder = 'none')->
   bat folder
-  wait drop() if exists()
-  sh.exec """
+  drop() if exists()
+  sh.run """
     "#{exe()}" "#{link()}" "#{fs.BuildPath install2, folder}"
-  """
-
-wait = (child)->
-  wsh.Sleep 100 until child.Status
+  """, 0, true
 
 # Remove Junction point
 run.drop =
 drop = ->
-  sh.exec """
+  sh.run """
     "#{exe()}" -d "#{link()}"
-  """
+  """, 0, true
 
 # Path to link
 run.$ =
