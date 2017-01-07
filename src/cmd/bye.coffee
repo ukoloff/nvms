@@ -18,7 +18,7 @@ exports.cmd = (args)->
     """
     exit 1
   echo "Removing from PATH"
-  path.install false
+  addpath()
   echo "Removing files..."
   junction.drop()
   zog 'bye', ''

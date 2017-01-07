@@ -13,7 +13,7 @@ fs.CopyFile fs.BuildPath(src, rm), fs.BuildPath(install2, rm)
 echo "Creating shortcuts..."
 junction.init()
 echo "Updating PATH..."
-path.install()
+addpath true
 echo """
 Installation complete.
 Open new console and run '#{PACKAGE.mingzi} help' to start.
