@@ -32,6 +32,6 @@ git 'commit', '-m', commit
 git 'tag', '-f', vX = "v#{PACKAGE.version}"
 git 'push', '--tags', '--force', 'origin'
 git 'fetch'
-git 'checkout', '-f', 'dist2'
+git 'checkout', '-f', 'dist'
 git 'merge', '-X', 'theirs', vX, '-m', vX
 git 'push'
