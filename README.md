@@ -75,9 +75,17 @@ There is the only Node.js version active at any moment of time
 nvm$ is always installed to a user,
 it cannot be installed system-wide.
 
+If Node.js is also normally installed
+(for all users),
+`nvm$` works,
+but is in fact unusable
+(system `node.exe` is always preferred),
+so don't install them both.
+
 Technically, for switching Node.js version
-it uses NTFS junction point.
-As there is no standard ActiveX control for junction point manipulations,
+[NTFS junction point][] is used.
+As there is no standard ActiveX control
+for junction point manipulations,
 command line utility from
 [Sysinternals suite][Windows Sysinternals] is used.
 
@@ -135,3 +143,4 @@ latest 64-bit version.
 [Windows Sysinternals]: https://technet.microsoft.com/en-US/en-en/nternals/
 [webpack]: http://webpack.github.io/
 [cmdizer]: http://www.dostips.com/forum/viewtopic.php?p=37780#p37780
+[NTFS junction point]: https://en.wikipedia.org/wiki/NTFS_junction_point
