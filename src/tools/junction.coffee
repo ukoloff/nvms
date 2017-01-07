@@ -1,36 +1,33 @@
 ###
 Working with Junction Point(s)
 ###
-exports.name =
 name = 'junction.exe'
 
-exports.dst =
-dst = ->
+exe = ->
   fs.BuildPath install2, name
 
-exports.link =
-link = fs.BuildPath install2, 'this'
-
-wait = (child)->
-  until child.Status
-    wsh.Sleep 100
-
-exports.remove =
-remove = ->
-  wait sh.exec """
-    "#{dst()}" -d "#{link}"
-  """
-exports.exec = (folder, optional)->
+# (re)Create Junction point and point it to folder
+module.exports =
+run = (folder = 'none')->
   bat folder
-  return if optional and fs.FolderExists link
-  remove()
+  drop() if exists()
+  sh.run """
+    "#{exe()}" "#{link()}" "#{fs.BuildPath install2, folder}"
+  """, 0, true
 
-  sh.exec """
-    "#{dst()}" "#{link}" "#{fs.BuildPath install2, folder}"
-  """
+# Remove Junction point
+run.drop =
+drop = ->
+  sh.run """
+    "#{exe()}" -d "#{link()}"
+  """, 0, true
 
-# Accept EULA
-exports.eula = ->
-  sh.RegWrite 'HKCU\\Software\\Sysinternals\\Junction\\EulaAccepted',
-    1,
-    'REG_DWORD'
+# Path to link
+run.$ =
+link = ->
+  fs.BuildPath install2, 'this'
+
+# Whether Junction point exists?
+run._ =
+exists =  ->
+  fs.FolderExists link()

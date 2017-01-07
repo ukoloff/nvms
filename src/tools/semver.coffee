@@ -2,8 +2,19 @@
 Semver utilities
 ###
 
+matchArray = (test, pattern, eq)->
+  for z, i in pattern when z?
+    return false if !eq test[i], z
+  true
+
+# Match semver array
+module.exports =
+match = (test, pattern)->
+  matchArray test, pattern, (a, b)->
+    matchArray a, b, (a, b)->
+      a==b
+
 # Compare values
-exports.cmpv =
 cmpv = (a, b)->
   if a == b
     0
@@ -13,7 +24,6 @@ cmpv = (a, b)->
     +1
 
 # Compare Arrays
-exports.cmpa =
 cmpa = (a, b, comparator)->
   i = 0
   la = a.length
@@ -32,21 +42,10 @@ cmpa = (a, b, comparator)->
     i++
 
 # Compare semver Arrays
-exports.cmp =
+match.cmp =
 cmp = (a, b)->
   cmpa a, b, (a, b)->
     cmpa a, b, cmpv
 
-exports.cmpi = (a, b)->
-  cmp a.id, b.id
-
-matchArray = (test, pattern, eq)->
-  for z, i in pattern when z?
-    return false if !eq test[i], z
-  true
-
-# Match semver array
-exports.match = (test, pattern)->
-  matchArray test, pattern, (a, b)->
-    matchArray a, b, (a, b)->
-      a==b
+match.cmp$ = (a, b)->
+  cmp a.$, b.$

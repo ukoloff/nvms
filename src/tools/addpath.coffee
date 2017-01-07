@@ -4,8 +4,7 @@ Updating user PATH variable
 key = 'Path'
 env = sh.Environment 'User'
 
-module.exports =
-path = ->
+get = ->
   env key
   .split ';'
 
@@ -18,9 +17,9 @@ Rejected by:
 ###
 assign = new Function 'o,k,v', 'o(k)=v'
 
-path.install = (add = true)->
-  bin = junction.link
-  x = for x in path() when x != bin
+module.exports = (add)->
+  bin = junction.$()
+  x = for x in get() when x != bin
     x
   x.unshift bin if add
-  assign env, key, x = x.join ';'
+  assign env, key, x.join ';'

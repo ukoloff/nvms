@@ -18,10 +18,10 @@ exports.cmd = (args)->
     """
     exit 1
   echo "Removing from PATH"
-  path.install false
+  addpath()
   echo "Removing files..."
-  junction.remove()
-  fs.DeleteFolder install2
+  junction.drop()
+  zog 'bye', ''
   echo """
 
     Fare thee well! and if for ever,

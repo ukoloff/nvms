@@ -5,6 +5,7 @@ ugly = require './ugly'
 @entry =
   cli: "./src"
   setup: "./src/setup"
+  upgrade: "./src/setup/upgrade"
 
 @output =
   path: "tmp",

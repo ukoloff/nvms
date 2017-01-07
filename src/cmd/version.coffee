@@ -2,5 +2,6 @@ exports.title = 'Show version'
 
 exports.help = "Displays #{PACKAGE.mingzi} version."
 
-exports.cmd = ->
+exports.cmd = (args)->
   echo PACKAGE.version
+  zog.$ args

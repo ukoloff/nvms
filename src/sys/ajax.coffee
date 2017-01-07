@@ -1,24 +1,31 @@
 ###
 HTTP request
 ###
-Servers = ["Msxml2.XMLHTTP", "Microsoft.XMLHTTP"]
+Servers = """
+  Msxml2.ServerXMLHTTP
+  Msxml2.XMLHTTP
+  Microsoft.XMLHTTP
+  """.split /\s+/
 
-module.exports =
-ajax = ->
+xhr = ->
   for x in Servers
     try return activeX x
   throw Error 'AJAX not supported!'
 
-ajax.get = (url, asBody)->
-  z = do ajax
+# Perform GET request
+module.exports = (url, saveAs)->
+  z = do xhr
   z.open 'GET', url, false
   z.send null
   if 200 != z.status
     throw Error "HTTP error #{z.status}: #{z.statusText}"
-  if asBody
-    z.responseBody
-  else
-    z.responseText
 
-ajax.dl = (url, path)->
-  binwrite path, ajax.get url, true
+  return z.responseText unless saveAs
+
+  z = z.responseBody
+  if "string" == typeof saveAs
+    stream = binstream()
+    stream.Write z
+    stream.SaveToFile saveAs, 2   # adSaveCreateOverWrite
+    stream.Close()
+  z

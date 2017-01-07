@@ -1,10 +1,8 @@
-install = require './install'
-
-exports.alias = 'uninstall'
+exports.alias = 'uninstall drop'
 
 exports.title = 'Remove one or several Node.js version(s)'
 
-exports.args = "[all] #{install.args} [.]"
+exports.args = "[all] #{vfilter.$} [.]"
 
 exports.help = """
   Remove single specified Node.js version or all version matching filter.
@@ -30,23 +28,21 @@ exports.cmd = (args)->
 
 all = (args)->
   n = 0
-  filter = install.parse(args).local().z
-  for r in locals() when semver.match r.id, filter
-    remove r
+  vfilter args
+  .local()
+  .each (z)->
+    remove z
     n++
-  echo "\nNode.js versions found & uninstalled: #{n}" if danger
+  if danger
+    echo "\nNode.js version(s) found & uninstalled:", n
 
 one = (args)->
-  filter = install.parse(args).local().z
-  for r in locals() when semver.match r.id, filter
-    remove r
-    return
-  throw Error 'Specified Node.js version not installed!'
+  unless z = vfilter(args).local().first()
+    throw Error 'Specified Node.js version not installed!'
+  remove z
 
 remove = (x)->
   unless danger
-    echo "Would remove #{x.path}."
+    echo "Would remove:", x.path
     return
-  echo "Removing #{x.path}"
-  fs.DeleteFolder fs.BuildPath install2, x.path
-  junction.exec 'none' if x.active
+  x.drop()

@@ -11,11 +11,12 @@ list = (commands)->
     cmd.name = name
     cmd.alias = a = if cmd.alias
       cmd.alias.split /\s+/
+      .sort()
     else
       []
     abr.add
-      word: cmd.name
-      aliases: a
+      $: cmd.name
+      _: a
     lookup[cmd.name] = cmd
     all.push cmd
   do dispatch
@@ -24,13 +25,29 @@ list.all = all
 
 list.find =
 find = (word)->
-  lookup[abr.is word]
+  lookup[abr.$ word]
+
+autoupgrade = ->
+  x = {}
+  if v = upgrade.test()
+    x.upgrade = "New version v#{v}"
+  if v = remotes.$()
+    x.install = "Node.js version v#{v}"
+
+  for k, v of x
+    unless updates
+      echo()
+      updates = true
+    echo "// Update: #{v} available. Upgrade with: #{PACKAGE.mingzi} #{k}"
+  return
 
 dispatch = ->
   unless cmd = find argv[0]
     do none
+    autoupgrade()
     exit 1
   cmd.cmd.call cmd, argv.slice 1
+  autoupgrade()
 
 list.header =
 header = ->
@@ -44,3 +61,10 @@ none = ->
   echo """
     Run #{PACKAGE.mingzi} help for instructions.
     """
+
+# List abbreviations
+list.a = ->
+  list = {}
+  for k, v of abr._()
+    list[k] = lookup[v]
+  list
