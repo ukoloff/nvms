@@ -31,14 +31,20 @@ exports.age = (age)->
   else
     mtime
 
+# Call ActiveX method with arbitrary arguments
+varargs = (name, path, args)->
+  s = ""
+  for a, i in args
+    s += ",a[#{i}]"
+  (new Function 'x,f,a', "return x.#{name}(f#{s})") fs, path, args
+
+
 # fs.OpenTextFile
 # args: IOMode, Create, Format
-exports.open = (args...)->
-  args.unshift @
-  fs.OpenTextFile.apply fs, args
+exports.open = ->
+  varargs 'OpenTextFile', @, arguments
 
 # fs.CreateTextFile
 # args: Overwrite, Unicode
-exports.open = (args...)->
-  args.unshift @
-  fs.CreateTextFile.apply fs, args
+exports.create = ->
+  varargs 'CreateTextFile', @, arguments
