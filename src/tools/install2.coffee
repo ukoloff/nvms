@@ -1,4 +1,6 @@
 ###
 Path to install
 ###
-module.exports = fs.BuildPath sh.SpecialFolders('AppData'), PACKAGE.mingzi
+module.exports =
+  folder sh.SpecialFolders('AppData'), PACKAGE.mingzi + 2
+  .mk()

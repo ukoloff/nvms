@@ -4,7 +4,7 @@ Working with Junction Point(s)
 name = 'junction.exe'
 
 exe = ->
-  fs.BuildPath install2, name
+  file install2, name
 
 # (re)Create Junction point and point it to folder
 module.exports =
@@ -25,9 +25,9 @@ drop = ->
 # Path to link
 run.$ =
 link = ->
-  fs.BuildPath install2, 'this'
+  folder install2, 'this'
 
 # Whether Junction point exists?
 run.y =
 exists =  ->
-  fs.FolderExists link()
+  link().y()
