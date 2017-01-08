@@ -38,16 +38,20 @@ exports.mk = ->
 exports.$ = ->
   fs.GetFolder @
 
-exports.files = ->
-  file = require './file'
-  res = []
-  each @$().Files, (f)->
-    res.push file f.Path
+# map = false: return ActiveX objects
+# map = string: return paths
+children = (list, map)->
+  res = each list
+  if false == res
+    return res
+  if 'string' == typeof map
+    map = (x)->Path
+  for z, i in res by -1
+    res[i] = map z, i, res
   res
 
-exports.folders = ->
-  folder = require './folder'
-  res = []
-  each @$().SubFolders, (f)->
-    res.push folder f.Path
-  res
+exports.files = (map)->
+  children @$().Files, map ? require './file'
+
+exports.folders = (map)->
+  children @$().SubFolders, map ? require './folder'
