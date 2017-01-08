@@ -7,8 +7,9 @@ exports.y = ->
   fs.FolderExists @
 
 # rmdir
-exports.rm = ->
-  fs.DeleteFolder @
+exports.rm = (ensure)->
+  unless ensure and not @y()
+    fs.DeleteFolder @
 
 # copy
 exports.cp = (to)->

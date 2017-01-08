@@ -7,8 +7,9 @@ exports.y = ->
   fs.FileExists @
 
 # rm
-exports.rm = ->
-  fs.DeleteFile @
+exports.rm = (ensure)->
+  unless ensure and not @y()
+    fs.DeleteFile @
 
 # copy
 exports.cp = (to)->
