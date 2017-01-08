@@ -8,10 +8,13 @@ exports.help = """
 
 exports.cmd = (args)->
   do cmd.header
-  if x = cmd.find args[0]
+  unless args[0]
+    do general
+  else if x = cmd.find args[0]
     command x, args.slice 1
   else
-    do general
+    require './abbrev'
+    .cmd args
 
 command = (cmd, args)->
   echo "#{PACKAGE.mingzi} #{cmd.name}: #{cmd.title}"
