@@ -1,10 +1,10 @@
-exports.alias = 'uninstall drop'
+exports.q = 'uninstall drop'
 
-exports.title = 'Remove one or several Node.js version(s)'
+exports.t = 'Remove one or several Node.js version(s)'
 
-exports.args = "[all] #{vfilter.$} [.]"
+exports._ = "[all] #{vfilter.$} [.]"
 
-exports.help = """
+exports.h = """
   Remove single specified Node.js version or all version matching filter.
 
   Without trailing dot command only shows candidate(s) to uninstall.

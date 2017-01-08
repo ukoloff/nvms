@@ -5,19 +5,22 @@ all = []
 abr = new abbrev
 lookup = {}
 
+aliases = (str)->
+  unless str
+    return []
+  str
+  .split /\s+/
+  .sort()
+
 module.exports =
 list = (commands)->
   for name, cmd of commands
-    cmd.name = name
-    cmd.alias = a = if cmd.alias
-      cmd.alias.split /\s+/
-      .sort()
-    else
-      []
+    cmd.n = name
+    cmd.q = alias = aliases cmd.q
     abr.add
-      $: cmd.name
-      _: a
-    lookup[cmd.name] = cmd
+      $: name
+      _: alias
+    lookup[name] = cmd
     all.push cmd
   do dispatch
 

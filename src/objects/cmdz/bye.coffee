@@ -1,10 +1,10 @@
-exports.alias = 'boeing'
+exports.q = 'boeing'
 
-exports.title = "Uninstall #{PACKAGE.mingzi}"
+exports.t = "Uninstall #{PACKAGE.mingzi}"
 
-exports.args = "[.]"
+exports._ = "[.]"
 
-exports.help = """
+exports.h = """
   Totally remove #{PACKAGE.mingzi} manager and all installed Node.js versions.
 
   Without trailing dot command does nothing.

@@ -1,8 +1,8 @@
-exports.alias = 'repo'
+exports.q = 'repo'
 
-exports.title = 'Open homepage'
+exports.t = 'Open homepage'
 
-exports.help = "Opens #{PACKAGE.mingzi} repository in default browser."
+exports.h = "Opens #{PACKAGE.mingzi} repository in default browser."
 
 exports.$ = ->
   sh.run PACKAGE.homepage

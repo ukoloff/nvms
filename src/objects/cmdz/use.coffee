@@ -1,8 +1,8 @@
-exports.title = 'Use (set default) already installed Node.js version'
+exports.t = 'Use (set default) already installed Node.js version'
 
-exports.args = "[ none | #{vfilter.$} ]"
+exports._ = "[ none | #{vfilter.$} ]"
 
-exports.help = """
+exports.h = """
   Make specified Node.js version active for all processes of current user.
 
   Only installed versions are used. Use `#{PACKAGE.mingzi} install` for new ones.

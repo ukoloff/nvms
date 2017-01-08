@@ -1,6 +1,6 @@
-exports.title = "Upgrade #{PACKAGE.mingzi} itself"
+exports.t = "Upgrade #{PACKAGE.mingzi} itself"
 
-exports.help = """
+exports.h = """
   Download and install latest version of #{PACKAGE.mingzi}
   """
 

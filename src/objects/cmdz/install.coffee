@@ -1,8 +1,8 @@
-exports.title = 'Install some version of Node.js'
+exports.t = 'Install some version of Node.js'
 
-exports.args = "#{vfilter.$} [.]"
+exports._ = "#{vfilter.$} [.]"
 
-exports.help = """
+exports.h = """
   Install specified Node.js version (latest matching filter).
 
   Use `#{PACKAGE.mingzi} ls remote` to see available Node.js versions.

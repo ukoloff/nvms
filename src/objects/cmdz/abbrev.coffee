@@ -1,9 +1,9 @@
-exports.title = "Show available commands abbreviations"
+exports.t = "Show available commands abbreviations"
 
-exports.args = '[word]'
+exports._ = '[word]'
 
-exports.help =
+exports.h =
 exports.$ = (args)->
   echo 'Available abbreviations:'
   for k, v of cmd.a args[0]
-    echo "  #{k}\t#{v.name}\t#{v.title}"
+    echo "  #{k}\t#{v.n}\t#{v.t}"

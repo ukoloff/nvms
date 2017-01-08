@@ -1,8 +1,8 @@
-exports.title = 'Install OpenSSL utility'
+exports.t = 'Install OpenSSL utility'
 
-exports.args = vfilter.$6
+exports._ = vfilter.$6
 
-exports.help = """
+exports.h = """
   Install openssl.exe precompiled for Node.js project
   """
 

@@ -1,6 +1,6 @@
-exports.title = 'Show version'
+exports.t = 'Show version'
 
-exports.help = "Displays #{PACKAGE.mingzi} version."
+exports.h = "Displays #{PACKAGE.mingzi} version."
 
 exports.$ = (args)->
   echo PACKAGE.version

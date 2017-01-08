@@ -1,10 +1,10 @@
-exports.alias = 'list'
+exports.q = 'list'
 
-exports.title = 'List available Node.js versions'
+exports.t = 'List available Node.js versions'
 
-exports.args = "[remote] #{vfilter.$}"
+exports._ = "[remote] #{vfilter.$}"
 
-exports.help = """
+exports.h = """
   List already installed or all available to install Node.js versions
   """
 
