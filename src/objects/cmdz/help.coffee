@@ -1,4 +1,4 @@
-exports.title = 'Show help for all or individual commands'
+exports.title = 'Show help for all or individual command(s)'
 
 exports.args = '[command]'
 
@@ -7,7 +7,7 @@ exports.help = """
   """
 
 exports.$ = (args)->
-  do cmd.header
+  do header
   unless args[0]
     do general
   else if x = cmd.find args[0]
@@ -42,4 +42,16 @@ general = ->
     Command names may be unambiguously abbreviated (See: #{PACKAGE.mingzi} a).
 
     Run #{PACKAGE.mingzi} help <command> for more instructions.
+    """
+
+header = ->
+  echo """
+    #{PACKAGE.mingzi} v#{PACKAGE.version}: #{PACKAGE.description}
+
+    """
+
+exports.i = ->
+  do header
+  echo """
+    Run #{PACKAGE.mingzi} help for instructions.
     """

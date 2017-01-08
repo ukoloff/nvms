@@ -43,24 +43,12 @@ autoupgrade = ->
 
 dispatch = ->
   unless cmd = find argv[0]
-    do none
+    find 'help'
+    .i()
     autoupgrade()
     exit 1
   cmd.$ argv.slice 1
   autoupgrade()
-
-list.header =
-header = ->
-  echo """
-    #{PACKAGE.mingzi} v#{PACKAGE.version}: #{PACKAGE.description}
-
-    """
-
-none = ->
-  do header
-  echo """
-    Run #{PACKAGE.mingzi} help for instructions.
-    """
 
 # List abbreviations
 list.a = (beginning)->
