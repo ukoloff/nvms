@@ -35,7 +35,7 @@ tags = ->
 filter = (str)->
   n = for n in str.split /\D+/ when n.length
     Number n
-  new vfilter.ctr n
+  new vfilter._ n
 
 gt = (left, right)->
   0 < semver.cmp$ left, right

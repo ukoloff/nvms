@@ -26,7 +26,7 @@ parse = (args)->
   new Filter ver, dist, $64
 
 # export constructor
-parse.ctr = Filter
+parse._ = Filter
 
 # Parse x86|x64
 parse.x64 =

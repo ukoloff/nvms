@@ -79,6 +79,6 @@ exports.O = (is64)->
 # Find local version matching
 exports.local = (is64)->
   set64 @, is64
-  new vfilter.ctr @$[0], @dist, @x64
+  new vfilter._ @$[0], @dist, @x64
   .local()
   .last()
