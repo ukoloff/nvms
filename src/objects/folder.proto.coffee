@@ -20,4 +20,11 @@ exports.mv = (to)->
 
 # mkdir -p
 exports.mk = ->
-  mkpath @abs()
+  q = []
+  f = @abs()
+  until f.y()
+    q.push f
+    f = f.up()
+  while f = q.pop()
+    fs.CreateFolder f
+  @
