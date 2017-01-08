@@ -9,7 +9,7 @@ exports.h = """
 exports.$ = (args)->
   # Node.js v0.*.* contains OpenSSL binary
   remote =
-  new vfilter.ctr [0]
+  new vfilter._ [0]
   .last()
   unless remote
     throw Error 'Appropriate Node.js version not found!'
