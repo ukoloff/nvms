@@ -2,49 +2,49 @@
 Methods of remote [Node.js version]
 ###
 
-exports.ver = ->
-  "#{@dist}-#{@src.version}-x#{if @x64 then 64 else 86}"
+ver = (self)->
+  "#{self.dist}-#{self.src.version}-x#{if self.x64 then 64 else 86}"
 
-exports.msi = (full)->
-  r = "#{@ver()}.msi"
+msi = (self, full)->
+  out = "#{ver self}.msi"
   if full
-    fs.BuildPath cache, r
+    fs.BuildPath cache, out
   else
-    r
+    out
 
-exports.uri = (file = @msi false)->
-  "#{dists[@dist]}#{@src.version}/#{
-    if @x64 and not @$[0][0]
+uri = (self, file = msi self, false)->
+  "#{dists[self.dist]}#{self.src.version}/#{
+    if self.x64 and not self.$[0][0]
       'x64/'
     else
       ''
     }#{file}"
 
-exports.fetch = ->
-  echo "Fetching:", uri = @uri()
-  ajax uri, @msi true
+fetch = (self)->
+  echo "Fetching:", url = uri self
+  ajax url, msi self, true
 
-exports.extract = ->
-  echo "Extracting:", @msi()
-  if fs.FolderExists extract2 = fs.BuildPath cache, ver = @ver()
+extract = (self)->
+  echo "Extracting:", msi self
+  if fs.FolderExists extract2 = fs.BuildPath cache, v = ver self
     fs.DeleteFolder extract2
   sh.Run """
-    msiexec /a "#{@msi true}" TARGETDIR=#{extract2} /passive
+    msiexec /a "#{msi self, true}" TARGETDIR=#{extract2} /passive
     """, 1, true
-  if fs.FolderExists @dst = dst = fs.BuildPath install2, ver
+  if fs.FolderExists self.dst = dst = fs.BuildPath install2, v
     fs.DeleteFolder dst
   fs.MoveFolder each(fs.GetFolder(extract2).SubFolders).shift().Path, dst
   fs.DeleteFolder extract2
 
-exports.shortcuts = ->
-  return if 'node' == @dist
+iojs = (self)->
+  return if 'node' == self.dist
   echo "Creating shortcut..."
-  fs.CopyFile fs.BuildPath(@dst, "#{@dist}.exe"),
-    fs.BuildPath(@dst, "node.exe")
+  fs.CopyFile fs.BuildPath(self.dst, "#{self.dist}.exe"),
+    fs.BuildPath(self.dst, "node.exe")
 
-exports.prefix = ->
+prefix = (self)->
   echo "Adjusting NPM prefix..."
-  npmrc = fs.OpenTextFile fs.BuildPath(@dst, 'node_modules/npm/npmrc'), 8
+  npmrc = fs.OpenTextFile fs.BuildPath(self.dst, 'node_modules/npm/npmrc'), 8
   npmrc.WriteLine """
 
     # <hack dirty src="#{PACKAGE.homepage}">
@@ -53,32 +53,32 @@ exports.prefix = ->
     """
   npmrc.Close()
 
-exports.use = ->
-  echo "Using:", ver = @ver()
-  junction ver
+use = (self)->
+  echo "Using:", v = ver self
+  junction v
 
-exports.set64= (is64)->
-  @x64 = if '*' == is64 then null else is64 ? x64
+set64= (self, is64)->
+  self.x64 = if '*' == is64 then null else is64 ? x64
 
 exports.install = (is64)->
-  @set64 is64
-  @fetch()
-  @extract()
-  @shortcuts()
-  @prefix()
-  @use()
+  set64 @, is64
+  fetch @
+  extract @
+  iojs @
+  prefix @
+  use @
 
 # Install OpenSSL binary
 exports.O = (is64)->
-  @set64 is64
-  echo "Fetching:", uri = @uri cli = bat.O
-  ajax uri, fs.BuildPath install2, cli
+  set64 @, is64
+  echo "Fetching:", url = uri @, cli = bat.O
+  ajax url, fs.BuildPath install2, cli
   echo "Creating shortcut..."
   bat fs.GetBaseName junction.$()
 
 # Find local version matching
 exports.local = (is64)->
-  @set64 is64
+  set64 @, is64
   new vfilter.ctr @$[0], @dist, @x64
   .local()
   .last()
