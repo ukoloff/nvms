@@ -28,6 +28,6 @@ link = ->
   fs.BuildPath install2, 'this'
 
 # Whether Junction point exists?
-run._ =
+run.y =
 exists =  ->
   fs.FolderExists link()
