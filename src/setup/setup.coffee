@@ -4,7 +4,6 @@ Perform installation
 
 echo "Installing #{PACKAGE.mingzi} v#{PACKAGE.version} to <#{install2}>..."
 
-mkpath install2
 echo "Copying files..."
 src = fs.GetParentFolderName wsh.ScriptFullName
 fs.CopyFolder fs.BuildPath(src, 'bin'), install2

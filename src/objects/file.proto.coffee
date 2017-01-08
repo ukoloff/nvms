@@ -48,3 +48,17 @@ exports.open = ->
 # args: Overwrite, Unicode
 exports.create = ->
   varargs 'CreateTextFile', @, arguments
+
+# Read file
+exports.load = ->
+  f = @open 1
+  s = f.ReadAll()
+  f.Close()
+  s
+
+# Save to file
+exports.save = ->
+  f = @create true
+  for s in arguments
+    f.Write s
+  f.Close()
