@@ -8,7 +8,14 @@ ini = require '../package'
 for f of ini.devDependencies when /^[$\w]+$/.test f
   exports[f] = f
 
-for f in ['sys', 'tools', 'objects']
-  fs.readdirSync folder = path.join __dirname, '../src', f
-  .forEach (src)->
-    exports[path.parse(src).name] = path.join folder, src
+for lib in fs.readdirSync src = path.join __dirname, '../src'
+  continue unless fs.statSync lib = path.join src, lib
+    .isDirectory()
+  z = {}
+  for file in fs.readdirSync lib
+    if 'index' == name = path.parse(file).name
+      z = {}
+      break
+    z[name] = path.join lib, file
+  for k, v of z
+    exports[k] = v
