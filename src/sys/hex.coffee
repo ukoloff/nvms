@@ -20,7 +20,6 @@ exports.dec = (str)->
     element.text = ''
 
 # Revert bytes
-exports.rev =
 rev = (str)->
   str
   .match(/../g)
