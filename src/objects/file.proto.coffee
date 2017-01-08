@@ -1,5 +1,5 @@
 ###
-File object proto
+File object methods
 ###
 
 # Exists ?
