@@ -35,19 +35,21 @@ remote = (args)->
   .each (z)->
     n++
     minors z
-    if last and not semver.cmp last.major, z.major
-      last.minors.push z.minor
+    if last and not semver.cmp last.mjr, z.mjr
+      last.mnr.push z.mnr[0]
     else
       list.push last = z
   .length
   for z in list
-    echo "- [#{z.minors.length}]\t#{z.dist} #{z.src.version}#{r2s ranges z.minors}"
+    echo "- [#{z.mnr.length}]\t#{z.dist} #{z.src.version}#{r2s ranges z.mnr}"
   echo "Listed: #{list.length} line(s) of #{n} version(s) of #{total} total"
 
 # Split version to major.minor
 minors = (remote)->
-  remote.major = $ = remote.$2()
-  remote.minors = [remote.minor = $[0].pop()]
+  remote.mjr = $ = []
+  for arr in remote.$
+    $.push arr.slice()
+  remote.mnr = [$[0].pop()]
 
 # Combine list of minors into list of ranges
 ranges = (list)->

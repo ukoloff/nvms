@@ -76,11 +76,6 @@ exports.O = (is64)->
   echo "Creating shortcut..."
   bat fs.GetBaseName junction.$()
 
-# Duplicate filter ($)
-exports.$2 = ->
-  for z in @$
-    z.slice()
-
 # Find local version matching
 exports.local = (is64)->
   @set64 is64
