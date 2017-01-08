@@ -42,12 +42,12 @@ exports.$ = ->
 # map = string: return paths
 children = (list, map)->
   res = each list
-  if false == res
+  if false == map
     return res
   if 'string' == typeof map
     map = (x)->Path
   for z, i in res by -1
-    res[i] = map z, i, res
+    res[i] = map z
   res
 
 exports.files = (map)->

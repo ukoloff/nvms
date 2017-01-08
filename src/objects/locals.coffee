@@ -2,28 +2,27 @@
 List installed versions
 ###
 
+re = /^(\w+)-\D*(\d+(?:[.]\d+)*)-x(\d+)/
+
 module.exports = ->
   list = []
-  x = rndFile junction.$()
-  each fs.GetFolder(install2).SubFolders, (f)->
-    unless /^(\w+)-\D*(\d+(?:[.]\d+)*)-x(\d+)/.test f.Name
-      return
-    list.push new Local if x then fs.FileExists fs.BuildPath f.Path, x.r
-  fs.DeleteFile x.p if x
+  tmp = rndFile junction.$()
+  for f in install2.folders() when re.test f.bn()
+    list.push new Local if tmp then file(f, tmp.bn()).y()
+  tmp?.rm()
   list.sort semver.cmp$
 
-rndFile = (folder)->
-  return unless fs.FolderExists folder
+rndFile = (path)->
+  return unless path.y()
   i = 16
   while --i
-    if fs.FileExists p = fs.BuildPath folder, r = rnd 15
+    p = file path, r = rnd 15
+    if p.y()
       continue
     try
-      fs.CreateTextFile p, true
+      p.create true
       .Close()
-      return {p, r}
-    catch
-      return
+      return p
 
 # Most data passed via RegExp
 Local = (active)->
