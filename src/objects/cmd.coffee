@@ -30,28 +30,14 @@ list.find =
 find = (word)->
   lookup[abr.$ word]
 
-autoupgrade = ->
-  x = {}
-  if v = upgrade.test()
-    x.upgrade = "New version v#{v}"
-  if v = remotes.$()
-    x.install = "Node.js version v#{v}"
-
-  for k, v of x
-    unless updates
-      echo()
-      updates = true
-    echo "// Update: #{v} available. Upgrade with: #{PACKAGE.mingzi} #{k}"
-  return
-
 dispatch = ->
   unless cmd = find argv[0]
     find 'help'
     .i()
-    autoupgrade()
+    upgrade.hint()
     exit 1
   cmd.$ argv.slice 1
-  autoupgrade()
+  upgrade.hint()
 
 # List abbreviations
 list.a = (beginning)->
