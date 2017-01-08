@@ -17,3 +17,7 @@ exports.cp = (to)->
 # move
 exports.mv = (to)->
   fs.MoveFile @, to
+
+# ActiveX File object
+exports.$ = ->
+  fs.GetFile @

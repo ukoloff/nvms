@@ -28,3 +28,21 @@ exports.mk = ->
   while f = q.pop()
     fs.CreateFolder f
   @
+
+# ActiveX Folder object
+exports.$ = ->
+  fs.GetFolder @
+
+exports.files = ->
+  file = require './file'
+  res = []
+  each @$().Files, (f)->
+    res.push file f.Path
+  res
+
+exports.folders = ->
+  folder = require './folder'
+  res = []
+  each @$().SubFolders, (f)->
+    res.push folder f.Path
+  res

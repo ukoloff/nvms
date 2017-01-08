@@ -4,11 +4,10 @@ Wrapper around WSH's fs module
 exports.toString = ->
   @_ ? ''
 
-folder = ->
-  require './folder'
-
+# Make path absolute
 exports.abs = ->
-  folder() fs.GetAbsolutePathName @
+  @_ = fs.GetAbsolutePathName @
+  @
 
 # Initialize path by joining components
 exports.j = (components)->
@@ -22,7 +21,8 @@ exports.j = (components)->
 
 # Parent folder
 exports.up = ->
-  folder() fs.GetParentFolderName @
+  folder = require './folder'
+  folder fs.GetParentFolderName @
 
 # Base name (name + ext)
 exports.bn = ->
