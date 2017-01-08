@@ -11,12 +11,10 @@ exports.abs = ->
 
 # Initialize path by joining components
 exports.j = (components)->
+  path = ''
   for z in components
-    path = if path
-      fs.BuildPath path, z
-    else
-      z
-  @_ = path.toString()
+    path = fs.BuildPath path, z
+  @_ = path
   return
 
 # Parent folder
