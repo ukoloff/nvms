@@ -9,11 +9,11 @@ exports.help = """
 exports.cmd = (args)->
   do cmd.header
   if x = cmd.find args[0]
-    command x
+    command x, args.slice 1
   else
     do general
 
-command = (cmd)->
+command = (cmd, args)->
   echo "#{PACKAGE.mingzi} #{cmd.name}: #{cmd.title}"
   echo "\nAlias: #{cmd.alias.join ', '}" if cmd.alias.length
   echo """
@@ -22,7 +22,7 @@ command = (cmd)->
 
     """
   if 'function' == typeof cmd.help
-    do cmd.help
+    cmd.help args
   else if cmd.help
     echo cmd.help
 

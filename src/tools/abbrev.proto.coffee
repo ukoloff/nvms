@@ -25,16 +25,28 @@ exports.$ = (word)->
   res
 
 # List all abbreviations
-exports._ = ->
+exports.a = (beginning)->
+  begins = ->
+    unless beginning
+      return true
+    for w in arguments by -1
+      if w and beginning == w.substring 0, beginning.length
+        return true
+    return
+
   list = {}
-  for k, v of @z
+  keys = []
+  for k, v of @z when begins k, v
     v || = k
     i = 0
     while ++i <= k.length
       if v == @$ test = k.substring 0, i
+        keys.push test
         list[test] = v
         break
+  return unless keys.length
   result = {}
-  for k in (k for k of list).sort()
+  keys.sort().reverse()
+  for k in keys by -1
     result[k] = list[k]
   result

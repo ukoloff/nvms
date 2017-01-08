@@ -63,8 +63,7 @@ none = ->
     """
 
 # List abbreviations
-list.a = ->
-  list = {}
-  for k, v of abr._()
-    list[k] = lookup[v]
+list.a = (beginning)->
+  for k of list = abr.a(beginning) or abr.a()
+    list[k] = lookup[list[k]]
   list
