@@ -13,4 +13,4 @@ exports.cmd = (args)->
   .last()
   unless remote
     throw Error 'Appropriate Node.js version not found!'
-  remote.openssl vfilter.x64 args[0]
+  remote.O vfilter.x64 args[0]

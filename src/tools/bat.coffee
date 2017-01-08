@@ -8,11 +8,13 @@ bat = (folder)->
   .WriteLine """
     @"%~dp0..\\cli.bat" %*
     """
-  if fs.FileExists fs.BuildPath install2, openssl
+  if fs.FileExists fs.BuildPath install2, OpenSSL
     fs.CreateTextFile fs.BuildPath(path, 'openssl.bat'), true
     .WriteLine """
-      @"%~dp0..\\#{openssl}" %*
+      @"%~dp0..\\#{OpenSSL}" %*
       """
   nodew path
 
-bat.openssl = openssl = 'openssl-cli.exe'
+# Name of OpenSSL binary
+bat.O =
+OpenSSL = 'openssl-cli.exe'

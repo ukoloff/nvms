@@ -68,9 +68,10 @@ exports.install = (is64)->
   @prefix()
   @use()
 
-exports.openssl = (is64)->
+# Install OpenSSL binary
+exports.O = (is64)->
   @set64 is64
-  echo "Fetching:", uri = @uri cli = bat.openssl
+  echo "Fetching:", uri = @uri cli = bat.O
   ajax uri, fs.BuildPath install2, cli
   echo "Creating shortcut..."
   bat fs.GetBaseName junction.$()
