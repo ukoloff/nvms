@@ -19,7 +19,8 @@ exports.j = (components)->
 
 # Parent folder
 exports.up = ->
-  fs.GetParentFolderName @
+  folder = require './folder'
+  folder fs.GetParentFolderName @
 
 # Base name (name + ext)
 exports.bn = ->

@@ -8,4 +8,4 @@ module.exports = ->
 Folder = (paths)->
   @j paths
 
-File:: = pathname folder.proto
+Folder:: = pathname folder.proto
