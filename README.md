@@ -135,7 +135,7 @@ installations.
 
 List Node.js (and io.js) versions available
 (fetches their lists from respective sites).
-`nvm$ l r 4` will list all 4.*.* versions available.
+`nvm$ l r 4` will list all 4.\*.\* versions available.
 
 ### install
 
@@ -194,7 +194,7 @@ a minute or two after this command finished.
 
 #### openssl
 
-Node.js versions 0.*.* contains `openssl` binary.
+Node.js versions 0.\*.\* contains `openssl` binary.
 `nvm$` can download it and install
 into its PATH.
 
