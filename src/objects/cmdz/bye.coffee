@@ -10,7 +10,7 @@ exports.help = """
   Without trailing dot command does nothing.
   """
 
-exports.cmd = (args)->
+exports.$ = (args)->
   unless period args
     echo """
 

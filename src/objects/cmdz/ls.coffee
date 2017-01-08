@@ -8,7 +8,7 @@ exports.help = """
   List already installed or all available to install Node.js versions
   """
 
-exports.cmd = (args)->
+exports.$ = (args)->
   if /^r/i.test args[0]
     remote args.slice 1
   else

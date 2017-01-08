@@ -6,7 +6,7 @@ exports.help = """
   Shows information on individual commands or #{PACKAGE.mingzi} itself.
   """
 
-exports.cmd = (args)->
+exports.$ = (args)->
   do cmd.header
   unless args[0]
     do general
@@ -14,7 +14,7 @@ exports.cmd = (args)->
     command x, args.slice 1
   else
     require './abbrev'
-    .cmd args
+    .$ args
 
 command = (cmd, args)->
   echo "#{PACKAGE.mingzi} #{cmd.name}: #{cmd.title}"

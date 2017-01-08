@@ -14,7 +14,7 @@ exports.help = """
 
 danger = false
 
-exports.cmd = (args)->
+exports.$ = (args)->
   danger = period args
   if /^a/i.test args[0]
     all args.slice 1

@@ -10,7 +10,7 @@ exports.help = """
   Say `#{PACKAGE.mingzi} use none` to temporarily disable #{PACKAGE.mingzi}.
   """
 
-exports.cmd = (args)->
+exports.$ = (args)->
   if 'none' == args[0]
     echo "Temporary disabling", PACKAGE.mingzi
     junction()

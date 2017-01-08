@@ -6,7 +6,7 @@ exports.help = """
   Shows which folder with Node.js is active for all processes of current user
   """
 
-exports.cmd = ->
+exports.$ = ->
   for z in locals() when z.active
     echo z._()
     return

@@ -46,7 +46,7 @@ dispatch = ->
     do none
     autoupgrade()
     exit 1
-  cmd.cmd.call cmd, argv.slice 1
+  cmd.$ argv.slice 1
   autoupgrade()
 
 list.header =

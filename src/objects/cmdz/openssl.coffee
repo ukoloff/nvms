@@ -6,7 +6,7 @@ exports.help = """
   Install openssl.exe precompiled for Node.js project
   """
 
-exports.cmd = (args)->
+exports.$ = (args)->
   # Node.js v0.*.* contains OpenSSL binary
   remote =
   new vfilter.ctr [0]

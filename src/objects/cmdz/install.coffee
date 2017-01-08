@@ -11,7 +11,7 @@ exports.help = """
   without installation. To force reinstallation - add . as last parameter.
   """
 
-exports.cmd = (args)->
+exports.$ = (args)->
   force = period args
   filter = vfilter args
   unless x = filter.last()
