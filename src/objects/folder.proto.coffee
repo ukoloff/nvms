@@ -21,13 +21,17 @@ exports.mv = (to)->
 # mkdir -p
 exports.mk = ->
   q = []
-  f = @abs()
-  until f.y()
-    q.push f
-    f = f.up()
-  while f = q.pop()
-    fs.CreateFolder f
-  @
+  _ = @_
+  try
+    f = @abs()
+    until f.y()
+      q.push f
+      f = f.up()
+    while f = q.pop()
+      fs.CreateFolder f
+    @
+  finally
+    @_ = _
 
 # ActiveX Folder object
 exports.$ = ->
