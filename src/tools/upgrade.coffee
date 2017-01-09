@@ -7,7 +7,6 @@ module.exports = ->
 
   echo "Extracting..."
   # https://github.com/hakobera/nvmw/blob/master/unzip.js
-  shell = activeX "Shell.Application"
 
   unpack = folder cache, PACKAGE.mingzi
   .rm true
