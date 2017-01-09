@@ -33,3 +33,8 @@ exports.n = ->
 # Extension
 exports.ext = ->
   fs.GetExtensionName @
+
+# Shell NameSpace
+exports.ns = ->
+  activeX "Shell.Application"
+  .NameSpace @_
