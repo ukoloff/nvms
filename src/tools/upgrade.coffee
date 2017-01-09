@@ -19,6 +19,7 @@ module.exports = ->
 
   unless bat = findBat unpack
     echo "Setup not found. Exiting"
+    try unpack.rm()
     return
   sh.Run """
   "#{bat}"
