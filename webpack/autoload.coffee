@@ -8,8 +8,8 @@ ini = require '../package'
 for f of ini.devDependencies when /^[$\w]+$/.test f
   exports[f] = f
 
-for lib in fs.readdirSync src = path.join __dirname, '../src'
-  continue unless fs.statSync lib = path.join src, lib
+for libname in fs.readdirSync src = path.join __dirname, '../src'
+  continue unless fs.statSync lib = path.join src, libname
     .isDirectory()
   z = {}
   for file in fs.readdirSync lib
@@ -18,4 +18,5 @@ for lib in fs.readdirSync src = path.join __dirname, '../src'
       break
     z[name] = path.join lib, file
   for k, v of z
+    exports["#{libname}.#{k}"] =
     exports[k] = v
