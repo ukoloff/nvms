@@ -25,4 +25,4 @@ Installation complete.
 Open new console and run '#{PACKAGE.mingzi} help' to start.
 """
 
-suicide?()
+try suicide?()
