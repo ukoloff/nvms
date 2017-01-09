@@ -2,7 +2,7 @@
 Create Junction point for the 1st time (unless exists)
 ###
 module.exports = ->
-  return if junction.y()
+  return if junction.$().y()
   do eula
   do junction
 

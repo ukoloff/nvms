@@ -20,7 +20,7 @@ exports.cmd = (args)->
   echo "Removing from PATH"
   addpath()
   echo "Removing files..."
-  junction.drop()
+  junction false
   zog 'bye', ''
   echo """
 
