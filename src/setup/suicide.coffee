@@ -25,8 +25,8 @@ module.exports = ->
 
 prepare = ->
   tmp = folder cache, "#{magic}-#{rnd 8}"
-  .rm true
-  .mk()
+  .mk true
+
   argv0.cp me2 = file tmp, argv0.bn()
   file "#{me2}#{ext}"
   .save src

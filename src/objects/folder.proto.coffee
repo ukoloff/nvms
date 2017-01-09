@@ -20,8 +20,9 @@ exports.cp = (to)->
 exports.mv = (to)->
   fs.MoveFolder @, to
 
-# mkdir -p
-exports.mk = ->
+# mkdir -p with optional cleaning
+exports.mk = (clean)->
+  @rm clean if clean
   q = []
   _ = @_
   try

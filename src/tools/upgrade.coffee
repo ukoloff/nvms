@@ -9,8 +9,7 @@ module.exports = ->
   # https://github.com/hakobera/nvmw/blob/master/unzip.js
 
   unpack = folder cache, PACKAGE.mingzi
-  .rm true
-  .mk()
+  .mk true
 
   unpack.ns().copyHere zip.ns().Items(), 0
 
