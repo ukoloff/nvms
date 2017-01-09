@@ -3,15 +3,15 @@ Working with Junction Point(s)
 ###
 
 module.exports =
-run = (folder = 'none')->
+run = (id = 'none')->
   sh.run """
     "#{bin = file install2, 'junction.exe'}" -d "#{me = link()}"
   """, 0, true
-  if false == folder
+  if false == id
     return
-  bat folder
+  bat id
   sh.run """
-    "#{bin}" "#{me}" "#{fs.BuildPath install2, folder}"
+    "#{bin}" "#{me}" "#{folder install2, id}"
   """, 0, true
 
 # Path to link

@@ -2,11 +2,11 @@
 Create batch file
 ###
 module.exports =
-bat = (vfolder)->
-  path = folder install2, vfolder
+bat = (id)->
+  id = folder install2, id
   .mk()
 
-  file path, PACKAGE.mingzi + '.bat'
+  file id, PACKAGE.mingzi + '.bat'
   .save """
     @"%~dp0..\\cli.bat" %*
 
@@ -14,12 +14,12 @@ bat = (vfolder)->
 
   if file install2, OpenSSL
   .y()
-    file path, 'openssl.bat'
+    file id, 'openssl.bat'
     .save """
       @"%~dp0..\\#{OpenSSL}" %*
 
       """
-  nodew path
+  nodew id
 
 # Name of OpenSSL binary
 bat.O =
