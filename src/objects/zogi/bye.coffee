@@ -1,4 +1,4 @@
 # Remove folder
-exports.$ = (folder)->
-  if fs.FolderExists folder = fs.BuildPath install2, folder[0]
-    fs.DeleteFolder folder
+exports.$ = (path)->
+  folder install2, path[0]
+  .rm true
