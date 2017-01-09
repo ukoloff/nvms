@@ -7,25 +7,20 @@ list = ->
   r = []
   for k, v of dists
     if cached f = dpath k
-      tab = fs.OpenTextFile f
-      .ReadAll()
+      tab = f.load()
     else
-      url = "#{v}index.tab"
-      echo "Fetching:", url
-      tab = ajax url
-      fs.CreateTextFile f, true
-      .WriteLine tab
+      echo "Fetching:", url = "#{v}index.tab"
+      f.save tab = ajax url
     tab = for z in tsv tab when msi z
       new Remote z, k
     r = r.concat tab
   r.sort semver.cmp$
 
 dpath = (dist)->
-  fs.BuildPath cache, "#{dist}.tsv"
+  file cache, "#{dist}.tsv"
 
 cached = (f)->
-  fs.FileExists(f) and
-  new Date - fs.GetFile(f).DateLastModified < 1000*60*60*24
+  f.ok 1000*60*60*24
 
 cachedAll = ->
   for k of dists when not cached dpath k
@@ -38,9 +33,7 @@ msi = (line)->
 # Check for upgrade
 list.$ = ->
   return unless cachedAll()
-  remote = list()
-  return unless remote and remote.length
-  remote = remote[remote.length - 1]
+  return unless remote = list().pop()
   return if remote.local '*'
   remote.$[0].join '.'
 

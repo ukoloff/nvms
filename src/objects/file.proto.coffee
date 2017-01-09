@@ -10,6 +10,7 @@ exports.y = ->
 exports.rm = (ensure)->
   unless ensure and not @y()
     fs.DeleteFile @
+  @
 
 # copy
 exports.cp = (to)->
@@ -30,6 +31,10 @@ exports.age = (age)->
     new Date - mtime > age
   else
     mtime
+
+# Not expired
+exports.ok = (age)->
+  @y() and not @age age
 
 # Call ActiveX method with arbitrary arguments
 varargs = (name, path, args)->

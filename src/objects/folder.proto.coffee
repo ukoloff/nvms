@@ -10,6 +10,7 @@ exports.y = ->
 exports.rm = (ensure)->
   unless ensure and not @y()
     fs.DeleteFolder @
+  @
 
 # copy
 exports.cp = (to)->
