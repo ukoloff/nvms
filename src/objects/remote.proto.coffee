@@ -59,14 +59,16 @@ use = (self)->
 
 set64= (self, is64)->
   self.x64 = if '*' == is64 then null else is64 ? x64
+  return
 
 exports.install = (is64)->
-  set64 @, is64
-  fetch @
-  extract @
-  iojs @
-  prefix @
-  use @
+  set64 self = @, is64
+  fetch self
+  extract self
+  iojs self
+  prefix self
+  use self
+  return
 
 # Install OpenSSL binary
 exports.O = (is64)->
