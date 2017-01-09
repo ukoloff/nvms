@@ -36,5 +36,5 @@ exports.ext = ->
 
 # Shell NameSpace
 exports.ns = ->
-  activeX "Shell.Application"
-  .NameSpace @_
+  # Requires string, not object!
+  sh.app.NameSpace @_

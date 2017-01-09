@@ -9,7 +9,7 @@ module.exports = ->
   # https://github.com/hakobera/nvmw/blob/master/unzip.js
   shell = activeX "Shell.Application"
 
-  unpack = folder cache, "#{PACKAGE.name}-setup"
+  unpack = folder cache, PACKAGE.mingzi
   .rm true
   .mk()
 
