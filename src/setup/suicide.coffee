@@ -16,10 +16,10 @@ module.exports = ->
 
   wsh.Sleep 3000
   # Actual remove
-  folder me2 = ini.load()
-  .rm true
+  try src.rm true
 
-  src.rm true
+  folder ini.load()
+  .rm true
 
   exit 0
 
@@ -32,4 +32,4 @@ prepare = ->
   .save src
   sh.Run """
     "#{me2}"
-  """, 1
+  """, 0
