@@ -15,7 +15,7 @@ mkdirp bin = path.join repo = 'tmp/dist', 'bin'
 # Copy files
 cp = cp bin
 cp 'README.md'
-cp 'sis/junction.exe'
+cp 'bin/linkd.exe'
 cp "tmp/cli.bat"
 cp "tmp/upgrade.bat"
 cp "./tmp/setup.bat"
