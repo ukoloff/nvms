@@ -22,8 +22,7 @@ me::apply = (compiler)->
       x = path.parse dst = z.existsAt
       continue if '.js' != x.ext
       fs.unlink dst, ->
-      x.ext = '.bat'
-      delete x.base
+      x.base = x.name + '.bat'
 
       for q in dup [x.name, ':*'], debug
         if bat = yml[q]
@@ -50,10 +49,8 @@ sword = (s)->
 
 readYML = ->
   z = path.parse __filename
-  delete z.basename
-  z.ext = '.yml'
+  z.base = z.name + '.yml'
   z.dir = path.join z.dir, '../src'
-  delete z.base
   yaml.safeLoad fs.readFileSync path.format z
 
 dup = (array, debug)->
