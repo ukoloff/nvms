@@ -30,8 +30,8 @@ me::apply = (compiler)->
           break
 
       fs.writeFile path.format(x), """
-        #{prolog}#{sword bat.command}"%~f0"#{word bat.args}
-        #{yml[':epilog']}#{do z.source}
+        #{prolog}#{bat.before or ''}#{sword bat.command}"%~f0"#{word bat.args}
+        #{bat.after or ''}#{yml[':epilog']}#{do z.source}
 
         """, ->
     return

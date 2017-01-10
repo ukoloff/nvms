@@ -20,3 +20,10 @@
 # Wildcard
 :*:
   <<: *cli
+
+# Specific commands
+setup:
+  <<: *cli
+  before:
+  after: |
+    pause
