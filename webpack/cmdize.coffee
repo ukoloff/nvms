@@ -5,29 +5,62 @@ http://www.dostips.com/forum/viewtopic.php?p=37780#p37780
 fs = require "fs"
 path = require 'path'
 
+yaml = require 'js-yaml'
+
+ini = require '../package'
+
 module.exports =
-me = (options)->
+me = ->
 
 me::apply = (compiler)->
   compiler.plugin "done", (compilation)->
+    yml = readYML()
+    debug = compilation.compilation.options.debug
+    prolog = yml[':prolog'].replace '#{homepage}', ini.homepage
+
     for k, z of compilation.compilation.assets
-      dst = z.existsAt
-      continue unless /[.]js$/.test dst
+      x = path.parse dst = z.existsAt
+      continue if '.js' != x.ext
       fs.unlink dst, ->
-      dst = dst.replace /[.].*?$/, '.bat'
-      pause = if /setup/.test k
-        """
-        pause
+      x.ext = '.bat'
+      delete x.base
 
-        """
-      else
-        ''
-      fs.writeFile dst, """
-0</*! ::
-@echo off
-cscript //nologo //e:javascript "%~f0" %*
-#{pause}goto :EOF */0;
-#{do z.source}
+      for q in dup [x.name, ':*'], debug
+        if bat = yml[q]
+          break
 
-      """
+      fs.writeFile path.format(x), """
+        #{prolog}#{sword bat.command}"%~f0"#{word bat.args}
+        #{yml[':epilog']}#{do z.source}
+
+        """, ->
     return
+
+word = (s)->
+  if s
+    " #{s}"
+  else
+    ''
+
+sword = (s)->
+  if s
+    "#{s} "
+  else
+    ''
+
+readYML = ->
+  z = path.parse __filename
+  delete z.basename
+  z.ext = '.yml'
+  z.dir = path.join z.dir, '../src'
+  delete z.base
+  yaml.safeLoad fs.readFileSync path.format z
+
+dup = (array, debug)->
+  unless debug
+    return array
+  res = []
+  for s in array
+    res.push "#{s}:debug"
+    res.push s
+  res
