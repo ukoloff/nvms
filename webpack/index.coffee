@@ -25,6 +25,9 @@ values = (map)->
     cmds:
       test: /[.]cmds$/
       loader: 'coffee!cmds'
+    yml:
+      test: /[.]ya?ml$/
+      loader: 'yaml'
 
 brk = (s)->
   s.split ' '
@@ -35,6 +38,7 @@ brk = (s)->
 @resolveLoader =
   alias:
     cmds: require.resolve './cmds'
+    yaml: require.resolve './yaml'
 
 stringify = (rec)->
   res = {}
