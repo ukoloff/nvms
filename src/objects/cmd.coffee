@@ -32,7 +32,7 @@ find = (word)->
 
 dispatch = ->
   unless cmd = find argv[0]
-    find 'help'
+    find 'h'  # help command
     .i()
     upgrade.hint()
     exit 1
