@@ -13,7 +13,8 @@ file src, rm = 'README.md'
 .cp file install2, rm
 
 echo "Creating shortcuts..."
-junction.init()
+unless junction.$.y()
+  do junction
 
 echo "Updating PATH..."
 addpath true
