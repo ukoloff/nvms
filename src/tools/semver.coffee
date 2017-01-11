@@ -13,8 +13,7 @@ matchArray = (test, pattern, eq)->
   true
 
 # Match semver array
-parse.m =
-match = (value, pattern)->
+parse.m = (value, pattern)->
   matchArray value, pattern, (a, b)->
     matchArray a, b, (a, b)->
       a==b
