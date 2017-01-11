@@ -28,3 +28,5 @@ exports.cmd = (args)->
     Still for ever, fare thee well!
 
   """
+  exit 0
+  return  # NOOP
