@@ -6,7 +6,7 @@ re = /^(\w+)-\D*(\d+(?:[.]\d+)*)-x(\d+)/
 
 module.exports = ->
   list = []
-  tmp = rndFile junction.$()
+  tmp = rndFile junction.$
   for f in install2.folders() when re.test f.bn()
     list.push new Local if tmp then file(f, tmp.bn()).y()
   tmp?.rm()

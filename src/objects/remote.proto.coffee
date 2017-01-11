@@ -51,7 +51,7 @@ prefix = (self)->
   npmrc.WriteLine """
 
     # <hack dirty src="#{PACKAGE.homepage}">
-    prefix=${APPDATA}\\#{PACKAGE.mingzi}\\#{junction.$().bn()}
+    prefix=${APPDATA}\\#{PACKAGE.mingzi}\\#{junction.$.bn()}
     # </hack>
     """
   npmrc.Close()
@@ -79,7 +79,8 @@ exports.O = (is64)->
   echo "Fetching:", url = uri @, cli = bat.O
   ajax url, file install2, cli
   echo "Creating shortcut..."
-  bat  junction.$().bn()
+  bat junction.$.bn()
+  return
 
 # Find local version matching
 exports.local = (is64)->
