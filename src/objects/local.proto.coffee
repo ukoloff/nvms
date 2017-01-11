@@ -8,7 +8,7 @@ exports.use = ->
 
 # Full path to local folder
 exports._ = ->
-  fs.BuildPath install2, @path
+  folder install2, @path
 
 exports.drop = ->
   echo "Removing:", @path

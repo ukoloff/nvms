@@ -20,7 +20,7 @@ exports.$ = (args)->
   echo "Removing from PATH"
   addpath()
   echo "Removing files..."
-  junction.drop()
+  junction false
   zog 'bye', ''
   echo """
 
@@ -28,3 +28,5 @@ exports.$ = (args)->
     Still for ever, fare thee well!
 
   """
+  exit 0
+  return  # NOOP

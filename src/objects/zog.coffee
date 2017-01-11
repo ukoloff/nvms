@@ -13,7 +13,7 @@ find = (cmd)->
 module.exports =
 fork = (cmd, args...)->
   return unless find cmd
-  args = [wsh.ScriptFullName, "version", magic(), cmd]
+  args = [argv0, "version", magic(), cmd]
     .concat args
   for a, i in args
     args[i] = '"' + a + '"'

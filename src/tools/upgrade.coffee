@@ -2,38 +2,31 @@
 Perform self upgrade
 ###
 module.exports = ->
-  url = "#{PACKAGE.homepage}/archive/dist.zip"
-  zip = fs.BuildPath cache, "#{PACKAGE.mingzi}.zip"
-  echo "Fetching:", url
-  ajax url, zip
+  echo "Fetching:", url = "#{PACKAGE.homepage}/archive/dist.zip"
+  ajax url, zip = file cache, "#{PACKAGE.mingzi}.zip"
 
   echo "Extracting..."
   # https://github.com/hakobera/nvmw/blob/master/unzip.js
-  shell = activeX "Shell.Application"
-  zip = shell.NameSpace zip
 
-  if fs.FolderExists unpack = fs.BuildPath cache, PACKAGE.mingzi
-    fs.DeleteFolder unpack
-  mkpath unpack
-  shell.NameSpace unpack
-  .copyHere zip.Items(), 0
+  unpack = folder cache, PACKAGE.mingzi
+  .mk true
 
-  unless bat = findBat fs.GetFolder unpack
+  unpack.ns().copyHere zip.ns().Items(), 0
+
+  zip.rm()
+
+  unless bat = findBat unpack
     echo "Setup not found. Exiting"
+    try unpack.rm()
     return
   sh.Run """
   "#{bat}"
   """
 
-findBat = (folder)->
-  result = 0
-  each folder.Files, (file)->
-    return if 'bat' != fs.GetExtensionName file.Name
-    result = file.Path
-    false
-  return result if result
-  each folder.SubFolders, (folder)->
-    return unless file = findBat folder
-    result = file
-    false
-  result
+findBat = (at)->
+  for f in at.files() by -1
+    if 'bat' == f.ext()
+      return f
+  for f in at.folders() by -1
+    if f = findBat f
+      return f

@@ -19,7 +19,7 @@ fetch = ->
 
 # Path to file with latest version
 path = ->
-  fs.BuildPath cache, '.v'
+  file cache, '.v'
 
 # GitHub API URI
 api = ->
@@ -49,21 +49,20 @@ latest = ->
 
 # Save to file
 write = (version)->
-  file = fs.CreateTextFile path(), true
-  file.WriteLine """
-    #{version or ''}
+  path().save version or '', """
+
 
     Start file from non-word character (eg # or ! or ; etc)
     to disable autodetection of #{PACKAGE.mingzi} new version available.
+
   """
-  file.Close()
 
 # Read version from file
 read = ->
   s = ''
-  if fs.FileExists f = path()
-    s = fs.OpenTextFile f
-    .ReadLine()
+  f = path()
+  if f.y()
+    s = f.load()
   s = s.replace /^\s+/, ''
   .split /\s+/, 2
   .shift()
@@ -71,22 +70,16 @@ read = ->
 
 # Touch file
 touch = ->
-  if fs.FileExists f = path()
-    # Emulate touch
-    file = fs.OpenTextFile f
-    s = file.ReadAll()
-    file.Close()
-    file = fs.CreateTextFile f, true
-    file.Write s
-    file.Close()
-  else
+  f = path()
+  unless f.y()
     write()
+    return
+  # Emulate touch
+  f.save f.load()
 
 # Is file old?
 expired = ->
-  unless fs.FileExists f = path()
-    return true
-  new Date - fs.GetFile(f).DateLastModified > 1000*60*60*24*3
+  !path().ok 1000*60*60*24*3
 
 # Autodetection allowed
 autodetect = ->

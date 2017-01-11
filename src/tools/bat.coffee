@@ -2,18 +2,24 @@
 Create batch file
 ###
 module.exports =
-bat = (folder)->
-  mkpath path = fs.BuildPath install2, folder
-  fs.CreateTextFile fs.BuildPath(path, PACKAGE.mingzi + '.bat'), true
-  .WriteLine """
+bat = (id)->
+  id = folder install2, id
+  .mk()
+
+  file id, PACKAGE.mingzi + '.bat'
+  .save """
     @"%~dp0..\\cli.bat" %*
+
     """
-  if fs.FileExists fs.BuildPath install2, OpenSSL
-    fs.CreateTextFile fs.BuildPath(path, 'openssl.bat'), true
-    .WriteLine """
+
+  if file install2, OpenSSL
+  .y()
+    file id, 'openssl.bat'
+    .save """
       @"%~dp0..\\#{OpenSSL}" %*
+
       """
-  nodew path
+  nodew id
 
 # Name of OpenSSL binary
 bat.O =

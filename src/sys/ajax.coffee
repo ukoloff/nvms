@@ -22,10 +22,7 @@ module.exports = (url, saveAs)->
 
   return z.responseText unless saveAs
 
-  z = z.responseBody
-  if "string" == typeof saveAs
-    stream = binstream()
-    stream.Write z
-    stream.SaveToFile saveAs, 2   # adSaveCreateOverWrite
-    stream.Close()
-  z
+  stream = binstream()
+  stream.Write z.responseBody
+  stream.SaveToFile saveAs, 2   # adSaveCreateOverWrite
+  stream.Close()
