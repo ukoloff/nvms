@@ -16,7 +16,7 @@ exports.$ = (args)->
 
       Say #{period.cmd} to really remove everything.
     """
-    exit 1
+    exit()
   echo "Removing from PATH"
   addpath()
   echo "Removing files..."
@@ -28,5 +28,5 @@ exports.$ = (args)->
     Still for ever, fare thee well!
 
   """
-  exit 0
+  exit()
   return  # NOOP

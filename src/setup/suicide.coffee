@@ -23,7 +23,8 @@ module.exports = ->
 
   src.rm true
 
-  exit 0
+  exit()
+  return
 
 prepare = ->
   tmp = folder cache, "#{magic}-#{rnd 8}"
@@ -35,3 +36,4 @@ prepare = ->
   sh.Run """
     "#{me2}"
   """, 0
+  return

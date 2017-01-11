@@ -23,6 +23,8 @@ list = (commands)->
     lookup[name] = cmd
     all.push cmd
   do dispatch
+  do upgrade.hint
+  return
 
 list.all = all
 
@@ -31,13 +33,13 @@ find = (word)->
   lookup[abr.$ word]
 
 dispatch = ->
-  unless cmd = find argv[0]
-    find 'h'  # help command
-    .i()
-    upgrade.hint()
-    exit 1
-  cmd.$ argv.slice 1
-  upgrade.hint()
+  if cmd = find argv[0]
+    cmd.$ argv.slice 1
+    return
+  # Unknown or no command
+  find 'h'  # help command
+  .i()
+  return
 
 # List abbreviations
 list.a = (beginning)->

@@ -13,6 +13,7 @@ run = (id = 'none')->
   sh.run """
     "#{bin}" "#{link}" "#{folder install2, id}"
   """, 0, true
+  return
 
 # Path to link
 run.$ =

@@ -24,4 +24,5 @@ fork.$ = (args)->
   return if magic() != args.shift()
   return unless cmd = find args.shift()
   cmd.$ args
-  do exit
+  exit()
+  return
