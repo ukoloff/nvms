@@ -16,10 +16,12 @@ module.exports = ->
 
   wsh.Sleep 3000
   # Actual remove
-  try src.rm true
 
-  folder ini.load()
-  .rm true
+  try
+    folder ini.load()
+    .rm true
+
+  src.rm true
 
   exit 0
 
