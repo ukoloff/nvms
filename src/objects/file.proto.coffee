@@ -43,7 +43,6 @@ varargs = (name, path, args)->
     s += ",a[#{i}]"
   (new Function 'x,f,a', "return x.#{name}TextFile(f#{s})") fs, path, args
 
-
 # fs.OpenTextFile
 # args: IOMode, Create, Format
 exports.open = ->
