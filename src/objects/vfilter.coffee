@@ -21,8 +21,7 @@ parse = (args)->
     else if (is64 = parse64 arg)?
       $64 = is64
     else if /^\d/.test arg
-      ver = for n in arg.split /\D+/ when n.length
-        Number n
+      ver = semver arg
   new Filter ver, dist, $64
 
 # export constructor

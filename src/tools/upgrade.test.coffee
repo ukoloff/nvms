@@ -33,12 +33,10 @@ tags = ->
   json2 ajax api()
 
 filter = (str)->
-  n = for n in str.split /\D+/ when n.length
-    Number n
-  new vfilter._ n
+  new vfilter._ semver str
 
 gt = (left, right)->
-  0 < semver.cmp$ left, right
+  0 < semver.$ left, right
 
 # Get most fresh tag from GitHub
 latest = ->
