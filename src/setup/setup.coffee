@@ -1,9 +1,6 @@
 ###
 Perform installation
 ###
-
-suicide = try do require './suicide'
-
 echo "Installing #{PACKAGE.mingzi} v#{PACKAGE.version} to <#{install2}>..."
 
 echo "Copying files..."
@@ -24,5 +21,3 @@ echo """
 Installation complete.
 Open new console and run '#{PACKAGE.mingzi} help' to start.
 """
-
-try suicide?()

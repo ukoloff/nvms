@@ -3,4 +3,4 @@ Main entry point
 ###
 
 err ->
-  require './objects/cmdz'
+  require '../objects/cmdz'

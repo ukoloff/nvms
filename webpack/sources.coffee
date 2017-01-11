@@ -5,18 +5,28 @@ fs = require 'fs'
 path = require 'path'
 ini = require '../package'
 
-for f of ini.devDependencies when /^[$\w]+$/.test f
-  exports[f] = f
+@root =
+root = path.join __dirname, '../src'
 
-for libname in fs.readdirSync src = path.join __dirname, '../src'
-  continue unless fs.statSync lib = path.join src, libname
+@entry =
+entry   = {}
+
+@globals =
+globals = {}
+
+for f of ini.devDependencies when /^[$\w]+$/.test f
+  globals[f] = f
+
+for libname in fs.readdirSync root
+  continue unless fs.statSync lib = path.join root, libname
     .isDirectory()
   z = {}
   for file in fs.readdirSync lib
     if 'index' == name = path.parse(file).name
+      entry[libname] = "./src/#{libname}"
       z = {}
       break
     z[name] = path.join lib, file
   for k, v of z
-    exports["#{libname}.#{k}"] =
-    exports[k] = v
+    globals["#{libname}.#{k}"] =
+    globals[k] = v

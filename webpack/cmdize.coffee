@@ -8,6 +8,7 @@ path = require 'path'
 yaml = require 'js-yaml'
 
 ini = require '../package'
+sources = require './sources'
 
 module.exports =
 me = ->
@@ -48,10 +49,7 @@ sword = (s)->
     ''
 
 readYML = ->
-  z = path.parse __filename
-  z.base = z.name + '.yml'
-  z.dir = path.join z.dir, '../src'
-  yaml.safeLoad fs.readFileSync path.format z
+  yaml.safeLoad fs.readFileSync path.join sources.root, path.parse(__filename).name + '.yml'
 
 dup = (array, debug)->
   unless debug

@@ -1,11 +1,10 @@
 webpack = require 'webpack'
+
+sources = require './sources'
 cmdize = require './cmdize'
 ugly = require './ugly'
 
-@entry =
-  cli: "./src"
-  setup: "./src/setup"
-  upgrade: "./src/setup/upgrade"
+@entry = sources.entry
 
 @output =
   path: "tmp",
@@ -61,4 +60,4 @@ stringify = (rec)->
   cmdize: new cmdize
   defines: new webpack.DefinePlugin
     PACKAGE: stringify require '../package'
-  globals: new webpack.ProvidePlugin require './autoload'
+  globals: new webpack.ProvidePlugin sources.globals
