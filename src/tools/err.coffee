@@ -6,6 +6,7 @@ module.exports = (fn)->
   try
     do fn
   catch error
-    throw error if DEBUG
+    throw error if DEBUG or not error.message
     echo "ERROR:", error.message
-    exit 1
+    exit()
+    return
