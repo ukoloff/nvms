@@ -10,7 +10,7 @@ module.exports = ->
   for f in install2.folders() when re.test f.bn()
     list.push new Local if tmp then file(f, tmp.bn()).y()
   tmp?.rm()
-  list.sort semver.cmp$
+  list.sort semver.$
 
 rndFile = (path)->
   return unless path.y()

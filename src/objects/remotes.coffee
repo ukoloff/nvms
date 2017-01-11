@@ -14,7 +14,7 @@ list = ->
     tab = for z in tsv tab when msi z
       new Remote z, k
     r = r.concat tab
-  r.sort semver.cmp$
+  r.sort semver.$
 
 dpath = (dist)->
   file cache, "#{dist}.tsv"
@@ -38,9 +38,8 @@ list.$ = ->
   remote.$[0].join '.'
 
 Remote = (line, dist)->
-  semver = for z in line.version.split /\D+/ when z.length
-    Number z
-  @$ = [semver, [dist]]
+  ver = semver line.version
+  @$ = [ver, [dist]]
   @dist = dist
   @src = line
   return

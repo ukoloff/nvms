@@ -2,15 +2,20 @@
 Semver utilities
 ###
 
+module.exports =
+parse = (str)->
+  for z in str.split /\D+/ when z.length
+    Number z
+
 matchArray = (test, pattern, eq)->
   for z, i in pattern when z?
     return false if !eq test[i], z
   true
 
 # Match semver array
-module.exports =
-match = (test, pattern)->
-  matchArray test, pattern, (a, b)->
+parse.m =
+match = (value, pattern)->
+  matchArray value, pattern, (a, b)->
     matchArray a, b, (a, b)->
       a==b
 
@@ -42,10 +47,11 @@ cmpa = (a, b, comparator)->
     i++
 
 # Compare semver Arrays
-match.cmp =
+parse.cmp =
 cmp = (a, b)->
   cmpa a, b, (a, b)->
     cmpa a, b, cmpv
 
-match.cmp$ = (a, b)->
+# Compare .$ members
+parse.$ = (a, b)->
   cmp a.$, b.$
