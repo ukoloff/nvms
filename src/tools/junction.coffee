@@ -5,7 +5,7 @@ Working with Junction Point(s)
 module.exports =
 run = (id = 'none')->
   sh.run """
-    "#{bin = file install2, 'junction.exe'}" -d "#{me = link()}"
+    "#{bin = file install2, 'linkd.exe'}" "#{me = link()}" /D
   """, 0, true
   if false == id
     return

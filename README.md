@@ -86,8 +86,10 @@ Technically, for switching Node.js version
 [NTFS junction point][] is used.
 As there is no standard ActiveX control
 for junction point manipulations,
-command line utility from
-[Sysinternals suite][Windows Sysinternals] is used.
+command line utility `linkd`
+from
+Windows Server 2003 Resource Kit Tools
+is used.
 
 ## Specifying Node.js version
 
