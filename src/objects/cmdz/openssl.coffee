@@ -14,3 +14,4 @@ exports.$ = (args)->
   unless remote
     throw Error 'Appropriate Node.js version not found!'
   remote.O vfilter.x64 args[0]
+  return

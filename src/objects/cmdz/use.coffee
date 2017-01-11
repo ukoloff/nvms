@@ -18,3 +18,4 @@ exports.$ = (args)->
     x.use()
   else
     throw Error 'Specified Node.js version not installed!'
+  return

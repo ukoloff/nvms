@@ -3,7 +3,7 @@ Running copy of myself in background
 ###
 
 # Magic cookie
-magic = ->
+magic =
   "<#{PACKAGE.version}>"
 
 find = (cmd)->
@@ -13,15 +13,12 @@ find = (cmd)->
 module.exports =
 fork = (cmd, args...)->
   return unless find cmd
-  args = [argv0, "version", magic(), cmd]
-    .concat args
-  for a, i in args
-    args[i] = '"' + a + '"'
-  sh.Run args.join(' '), 0
+  run.apply @, [0, argv0, "version", magic, cmd].concat args
+  return
 
 # See whether we are in the background
 fork.$ = (args)->
-  return if magic() != args.shift()
+  return if magic != args.shift()
   return unless cmd = find args.shift()
   cmd.$ args
   exit()

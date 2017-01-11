@@ -15,6 +15,7 @@ exports.$ = (args)->
   else
     require './abbrev'
     .$ args
+  return
 
 command = (cmd, args)->
   echo "#{PACKAGE.mingzi} #{cmd.n}: #{cmd.t}"
@@ -28,6 +29,7 @@ command = (cmd, args)->
     cmd.h args
   else if cmd.h
     echo cmd.h
+  return
 
 general = ->
   echo """
@@ -43,15 +45,18 @@ general = ->
 
     Run #{PACKAGE.mingzi} help <command> for more instructions.
     """
+  return
 
 header = ->
   echo """
     #{PACKAGE.mingzi} v#{PACKAGE.version}: #{PACKAGE.description}
 
     """
+  return
 
 exports.i = ->
   do header
   echo """
     Run #{PACKAGE.mingzi} help for instructions.
     """
+  return

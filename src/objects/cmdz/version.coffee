@@ -6,3 +6,4 @@ exports.$ = (args)->
   echo PACKAGE.version
   zog.$ args
   exit()
+  return

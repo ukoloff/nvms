@@ -33,7 +33,6 @@ prepare = ->
   argv0.cp me2 = file tmp, argv0.bn()
   file "#{me2}#{ext}"
   .save src
-  sh.Run """
-    "#{me2}"
-  """, 0
+  run 0, me2
+
   return

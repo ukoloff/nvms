@@ -19,9 +19,7 @@ module.exports = ->
     echo "Setup not found. Exiting"
     try unpack.rm()
     return
-  sh.Run """
-  "#{bat}"
-  """
+  sh.Run bat
 
 findBat = (at)->
   for f in at.files() by -1

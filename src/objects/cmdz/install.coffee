@@ -24,3 +24,4 @@ exports.$ = (args)->
       return
 
   x.install filter.x64
+  return

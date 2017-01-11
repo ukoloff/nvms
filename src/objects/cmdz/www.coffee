@@ -5,4 +5,5 @@ exports.t = 'Open homepage'
 exports.h = "Opens #{PACKAGE.mingzi} repository in default browser."
 
 exports.$ = ->
-  sh.run PACKAGE.homepage
+  run PACKAGE.homepage
+  return

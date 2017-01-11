@@ -13,6 +13,7 @@ exports.$ = (args)->
     remote args.slice 1
   else
     local args
+  return
 
 local = (args)->
   n = 0
@@ -24,6 +25,7 @@ local = (args)->
     echo (if z.active then '>' else '-'), z.path
   .length
   echo "Listed: #{n} of #{total} installed Node.js version(s)"
+  return
 
 remote = (args)->
   list = []
@@ -43,6 +45,7 @@ remote = (args)->
   for z in list
     echo "- [#{z.mnr.length}]\t#{z.dist} #{z.src.version}#{r2s ranges z.mnr}"
   echo "Listed: #{list.length} line(s) of #{n} version(s) of #{total} total"
+  return
 
 # Split version to major.minor
 minors = (remote)->

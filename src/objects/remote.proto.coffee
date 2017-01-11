@@ -29,9 +29,7 @@ extract = (self)->
   v = ver self
   extract2 = folder cache, v
   .rm true
-  sh.Run """
-    msiexec /a "#{msi self, true}" TARGETDIR=#{extract2} /passive
-    """, 1, true
+  run 1, true, 'msiexec', '/a', msi(self, true), "TARGETDIR=#{extract2}", '/passive'
   self.dst = dst = folder install2, v
   .rm true
   extract2.folders().shift().mv dst

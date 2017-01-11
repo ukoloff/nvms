@@ -25,6 +25,7 @@ exports.$ = (args)->
 
     To actually uninstall say #{period.cmd}
     """
+  return
 
 all = (args)->
   n = 0
@@ -35,14 +36,17 @@ all = (args)->
     n++
   if danger
     echo "\nNode.js version(s) found & uninstalled:", n
+  return
 
 one = (args)->
   unless z = vfilter(args).local().first()
     throw Error 'Specified Node.js version not installed!'
   remove z
+  return
 
 remove = (x)->
   unless danger
     echo "Would remove:", x.path
     return
   x.drop()
+  return
