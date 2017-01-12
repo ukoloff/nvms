@@ -1,9 +1,8 @@
 ###
 Commands engine
 ###
-all = []
-abr = new abbrev
-lookup = {}
+lookup = 0
+abr = abbrev()
 
 aliases = (str)->
   unless str
@@ -14,19 +13,14 @@ aliases = (str)->
 
 module.exports =
 list = (commands)->
+  list._ = lookup = commands
   for name, cmd of commands
-    cmd.n = name
-    cmd.q = alias = aliases cmd.q
     abr.add
-      $: name
-      _: alias
-    lookup[name] = cmd
-    all.push cmd
+      $: cmd.n = name
+      _: cmd.q = aliases cmd.q
   do dispatch
   do upgrade.hint
   return
-
-list.all = all
 
 list.find =
 find = (word)->
@@ -43,6 +37,6 @@ dispatch = ->
 
 # List abbreviations
 list.a = (beginning)->
-  for k of list = abr.a(beginning) or abr.a()
-    list[k] = lookup[list[k]]
-  list
+  for k of res = abr.a(beginning) or abr.a()
+    res[k] = lookup[res[k]]
+  res

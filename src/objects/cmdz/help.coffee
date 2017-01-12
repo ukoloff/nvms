@@ -37,8 +37,8 @@ general = ->
 
     Commands:
     """
-  for x in cmd.all
-    echo "\t#{x.n}\t#{x.t}"
+  for k, v of cmd._
+    echo "\t#{k}\t#{v.t}"
   echo """
 
     Command names may be unambiguously abbreviated (See: #{PACKAGE.mingzi} a).
