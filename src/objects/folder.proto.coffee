@@ -15,10 +15,12 @@ exports.rm = (ensure)->
 # copy
 exports.cp = (to)->
   fs.CopyFolder @, to
+  return
 
 # move
 exports.mv = (to)->
   fs.MoveFolder @, to
+  return
 
 # mkdir -p with optional cleaning
 exports.mk = (clean)->

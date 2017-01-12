@@ -23,6 +23,7 @@ uri = (self, file = msi self)->
 fetch = (self)->
   echo "Fetching:", url = uri self
   ajax url, msi self, true
+  return
 
 extract = (self)->
   echo "Extracting:", msi self
@@ -34,12 +35,14 @@ extract = (self)->
   .rm true
   extract2.folders().shift().mv dst
   extract2.rm()
+  return
 
 iojs = (self)->
   return if 'node' == self.dist
   echo "Creating shortcut..."
   file self.dst, "#{self.dist}.exe"
   .cp file self.dst, "node.exe"
+  return
 
 prefix = (self)->
   echo "Adjusting NPM prefix..."
@@ -53,10 +56,12 @@ prefix = (self)->
     # </hack>
     """
   npmrc.Close()
+  return
 
 use = (self)->
   echo "Using:", v = ver self
   junction v
+  return
 
 set64= (self, is64)->
   self.x64 = if '*' == is64 then null else is64 ? x64

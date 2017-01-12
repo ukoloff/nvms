@@ -15,10 +15,12 @@ exports.rm = (ensure)->
 # copy
 exports.cp = (to)->
   fs.CopyFile @, to
+  return
 
 # move
 exports.mv = (to)->
   fs.MoveFile @, to
+  return
 
 # ActiveX File object
 exports.$ = ->
