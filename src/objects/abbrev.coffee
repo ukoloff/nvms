@@ -1,9 +1,7 @@
 ###
 Hand-made abbrev with aliases
 ###
-module.exports = (options)->
-  new Abbrev options
-
+module.exports =
 Abbrev = (options)->
   @add options if options
   return

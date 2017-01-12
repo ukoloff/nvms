@@ -2,7 +2,7 @@
 Commands engine
 ###
 lookup = 0
-abr = abbrev()
+abr = new abbrev
 
 aliases = (str)->
   unless str
