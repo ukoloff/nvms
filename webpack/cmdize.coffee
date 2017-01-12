@@ -31,7 +31,7 @@ me::apply = (compiler)->
 
       fs.writeFile path.format(x), """
         #{prolog}#{bat.before or ''}#{sword bat.command}"%~f0"#{word bat.args}
-        #{bat.after or ''}#{yml[':epilog']}#{do z.source}
+        #{bat.after or ''}#{yml[':epilog']}#{reexport debug, z.source()}
 
         """, ->
     return
@@ -59,3 +59,11 @@ dup = (array, debug)->
     res.push "#{s}:debug"
     res.push s
   res
+
+reexport = (debug, text)->
+  if debug
+    text
+  else
+    text
+    .replace /[.]exports\b/g, '.X'
+    .replace /exports/, 'X'       # First: module = {exports: {}, ...}
