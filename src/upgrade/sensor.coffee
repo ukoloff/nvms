@@ -2,19 +2,23 @@
 Check whether update is available
 ###
 
-module.exports =
-exports = ->
-  if autodetect()
-    zog 'upgrade'
+module.exports = exports = ->
+  # Allow to ping for new version?
+  expired() and read()
+
+# Is new version available?
+exports.v = ->
   ver = read()
   if ver and gt ver, filter PACKAGE.version
     ver.$[0].join '.'
 
-# Fetch latest version from GitHub & store
-exports.$ = ->
-  return unless autodetect()
+# Ping for new version
+# To be run in the backgroung
+exports.p = ->
+  return unless exports()
   touch()
   write latest()
+  return
 
 # Path to file with latest version
 path = ->
@@ -76,11 +80,8 @@ touch = ->
     return
   # Emulate touch
   f.save f.load()
+  return
 
 # Is file old?
 expired = ->
   !path().ok 1000*60*60*24*3
-
-# Autodetection allowed
-autodetect = ->
-  expired() and read()

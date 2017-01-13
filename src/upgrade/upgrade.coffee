@@ -23,8 +23,8 @@ findBat = (at)->
     if f = findBat f
       return f
 
-if bat = findBat unpack
-  sh.Run bat
-else
+unless bat = findBat unpack
   try unpack.rm()
   throw Error "Setup not found"
+
+sh.Run bat

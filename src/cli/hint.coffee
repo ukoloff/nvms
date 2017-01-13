@@ -2,10 +2,15 @@
 Check all updates
 ###
 
+sensor = require 'self/upgrade/sensor'
+
+if sensor()
+  zog 'upgrade'
+
 x = {}
-if v = do require './test'
+if v = sensor.v()
   x.upgrade = "New version v#{v}"
-if v = remotes.$()
+if v = remotes.v()
   x.install = "Node.js version v#{v}"
 
 for k, v of x
