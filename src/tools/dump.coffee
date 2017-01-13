@@ -1,8 +1,7 @@
 ###
 Debug print
 ###
-module.exports =
-dump = (r)->
+module.exports = (r)->
   s = ''
   for k, v of r
     s += "\n#{k} = #{v}"

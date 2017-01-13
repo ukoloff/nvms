@@ -11,13 +11,13 @@ find = (cmd)->
 
 # Run background process
 module.exports =
-fork = (cmd, args...)->
+exports = (cmd, args...)->
   return unless find cmd
   run.apply @, [0, argv0, "version", magic, cmd].concat args
   return
 
 # See whether we are in the background
-fork.$ = (args)->
+exports.$ = (args)->
   return if magic != args.shift()
   return unless cmd = find args.shift()
   cmd.$ args

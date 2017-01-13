@@ -13,7 +13,7 @@ keys = ->
 
 # Parser itself
 module.exports =
-parse = (args)->
+exports = (args)->
   ks = new abbrev $: keys()
   for arg in args
     if x = ks.$ arg
@@ -25,10 +25,10 @@ parse = (args)->
   new Filter ver, dist, $64
 
 # export constructor
-parse._ = Filter
+exports._ = Filter
 
 # Parse x86|x64
-parse.x64 =
+exports.x64 =
 parse64 = (str)->
   return unless /^x(\d)/.test str
   '6' == RegExp.$1
@@ -37,8 +37,8 @@ parse64 = (str)->
 alt = (arr)->
   "[#{arr.join '|'}]"
 
-parse.$6 = $6 = do ->
+exports.$6 = $6 = do ->
   x = ['x86','x64']
   alt if x64 then x.reverse() else x
 
-parse.$ = "#{alt keys()} [n[.n[.n]]] #{$6}"
+exports.$ = "#{alt keys()} [n[.n[.n]]] #{$6}"

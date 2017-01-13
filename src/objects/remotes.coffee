@@ -3,7 +3,7 @@ Get available distributions list
 ###
 
 module.exports =
-list = ->
+exports = ->
   r = []
   for k, v of dists
     if cached f = dpath k
@@ -31,9 +31,9 @@ msi = (line)->
   ~line.files.indexOf '-msi'
 
 # Check for upgrade
-list.$ = ->
+exports.$ = ->
   return unless cachedAll()
-  return unless remote = list().pop()
+  return unless remote = exports().pop()
   return if remote.local '*'
   remote.$[0].join '.'
 

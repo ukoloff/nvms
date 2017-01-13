@@ -2,9 +2,7 @@
 Trailing dot in command line parameters
 ###
 
-module.exports =
-period =
-(args)->
+module.exports = (args)->
   if '.' == args[args.length - 1]
     args.pop()
     true

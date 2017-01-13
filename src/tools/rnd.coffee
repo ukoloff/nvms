@@ -1,8 +1,7 @@
 ###
 Random string
 ###
-module.exports =
-rnd = (N = 12)->
+module.exports = (N = 12)->
   s = ''
   s += chr() while s.length < N
   s

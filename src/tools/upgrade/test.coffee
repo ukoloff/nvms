@@ -3,7 +3,7 @@ Check whether update is available
 ###
 
 module.exports =
-detect = ->
+exports = ->
   if autodetect()
     zog 'upgrade'
   ver = read()
@@ -11,7 +11,7 @@ detect = ->
     ver.$[0].join '.'
 
 # Fetch latest version from GitHub & store
-detect.$ = ->
+exports.$ = ->
   return unless autodetect()
   touch()
   write latest()

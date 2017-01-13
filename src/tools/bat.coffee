@@ -2,7 +2,7 @@
 Create batch file
 ###
 module.exports =
-bat = (id)->
+exports = (id)->
   id = folder install2, id
   .mk()
 
@@ -22,5 +22,5 @@ bat = (id)->
   nodew id
 
 # Name of OpenSSL binary
-bat.O =
+exports.O =
 OpenSSL = 'openssl-cli.exe'

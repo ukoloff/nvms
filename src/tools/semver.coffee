@@ -3,7 +3,7 @@ Semver utilities
 ###
 
 module.exports =
-parse = (str)->
+exports = (str)->
   for z in str.split /\D+/ when z.length
     Number z
 
@@ -13,7 +13,7 @@ matchArray = (test, pattern, eq)->
   true
 
 # Match semver array
-parse.m = (value, pattern)->
+exports.m = (value, pattern)->
   matchArray value, pattern, (a, b)->
     matchArray a, b, (a, b)->
       a==b
@@ -46,11 +46,11 @@ cmpa = (a, b, comparator)->
     i++
 
 # Compare semver Arrays
-parse.cmp =
+exports.cmp =
 cmp = (a, b)->
   cmpa a, b, (a, b)->
     cmpa a, b, cmpv
 
 # Compare .$ members
-parse.$ = (a, b)->
+exports.$ = (a, b)->
   cmp a.$, b.$

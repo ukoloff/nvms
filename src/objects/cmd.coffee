@@ -12,8 +12,8 @@ aliases = (str)->
   .sort()
 
 module.exports =
-list = (commands)->
-  list._ = lookup = commands
+exports = (commands)->
+  exports._ = lookup = commands
   for name, cmd of commands
     abr.add
       $: cmd.n = name
@@ -21,7 +21,7 @@ list = (commands)->
   do dispatch
   return
 
-list.find =
+exports.find =
 find = (word)->
   lookup[abr.$ word]
 
@@ -35,7 +35,7 @@ dispatch = ->
   return
 
 # List abbreviations
-list.a = (beginning)->
+exports.a = (beginning)->
   for k of res = abr.a(beginning) or abr.a()
     res[k] = lookup[res[k]]
   res
