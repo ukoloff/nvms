@@ -50,5 +50,5 @@ remove = (x)->
     return
   echo "Removing:", x.path
   junction() if x.active
-  zog 'bye', x.path
+  (require '../zog') 'bye', x.path
   return

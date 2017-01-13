@@ -5,7 +5,7 @@ Check all updates
 sensor = require 'self/upgrade/sensor'
 
 if sensor()
-  zog 'upgrade'
+  (require './zog') 'upgrade'
 
 x = {}
 if v = sensor.v()
