@@ -2,8 +2,7 @@
 Working with Junction Point(s)
 ###
 
-module.exports =
-junction = (id = 'none')->
+module.exports = exports = (id = 'none')->
   run 0, true, (bin = file install2, 'linkd.exe'), link, '/D'
   if false == id
     return
@@ -12,6 +11,6 @@ junction = (id = 'none')->
   return
 
 # Path to link
-junction.$ =
+exports.$ =
 link =
   folder install2, 'this'

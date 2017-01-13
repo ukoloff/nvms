@@ -2,8 +2,7 @@
 Semver utilities
 ###
 
-module.exports =
-exports = (str)->
+module.exports = exports = (str)->
   for z in str.split /\D+/ when z.length
     Number z
 
