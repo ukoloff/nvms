@@ -10,7 +10,7 @@ exports.$ = (args)->
   do header
   unless args[0]
     do general
-  else if x = cmd.find args[0]
+  else if x = (require '../cmd').f args[0]
     command x, args.slice 1
   else
     require './abbrev'
@@ -37,7 +37,7 @@ general = ->
 
     Commands:
     """
-  for k, v of cmd._
+  for k, v of require '.'
     echo "\t#{k}\t#{v.t}"
   echo """
 

@@ -30,8 +30,8 @@ cachedAll = ->
 msi = (line)->
   ~line.files.indexOf '-msi'
 
-# Check for upgrade
-exports.$ = ->
+# Latest version available to upgrade to
+exports.v = ->
   return unless cachedAll()
   return unless remote = exports().pop()
   return if remote.local '*'

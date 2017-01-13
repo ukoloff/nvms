@@ -21,9 +21,10 @@ values = (map)->
     litcoffee:
       test: /[.](litcoffee|coffee[.]md)$/
       loader: "coffee?literate"
-    cmds:
-      test: /[.]cmds$/
-      loader: 'coffee!cmds'
+    glob:
+      # coffee above will also apply after this
+      test: /[\/\\]index[.]coffee$/
+      loader: "glob"
     yml:
       test: /[.]ya?ml$/
       loader: 'yaml'
@@ -38,8 +39,8 @@ brk = (s)->
 
 @resolveLoader =
   alias:
-    cmds: require.resolve './cmds'
     yaml: require.resolve './yaml'
+    glob: require.resolve './glob'
 
 stringify = (rec)->
   res = {}
