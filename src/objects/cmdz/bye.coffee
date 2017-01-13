@@ -14,7 +14,7 @@ exports.$ = (args)->
   unless period args
     echo """
 
-      Say #{period.cmd} to really remove everything.
+      Say #{period.$} to really remove everything.
     """
     exit()
   echo "Removing from PATH"

@@ -23,7 +23,7 @@ exports.$ = (args)->
   return if danger
   echo """
 
-    To actually uninstall say #{period.cmd}
+    To actually uninstall say #{period.$}
     """
   return
 
