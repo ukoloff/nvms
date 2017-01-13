@@ -48,5 +48,7 @@ remove = (x)->
   unless danger
     echo "Would remove:", x.path
     return
-  x.drop()
+  echo "Removing:", x.path
+  junction() if x.active
+  zog 'bye', x.path
   return
