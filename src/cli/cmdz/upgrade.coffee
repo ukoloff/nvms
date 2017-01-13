@@ -4,4 +4,5 @@ exports.h = """
   Download and install latest version of #{PACKAGE.mingzi}
   """
 
-exports.$ = upgrade
+exports.$ = ->
+  require 'self/upgrade/upgrade'
