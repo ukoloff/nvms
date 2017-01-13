@@ -26,3 +26,4 @@ module.exports = (url, saveAs)->
   stream.Write z.responseBody
   stream.SaveToFile saveAs, 2   # adSaveCreateOverWrite
   stream.Close()
+  return

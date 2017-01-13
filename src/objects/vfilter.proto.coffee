@@ -30,6 +30,7 @@ exports.last = ->
 
 # Loop over, return full list
 exports.each = (fn)->
-  for z in list = collection @ when match @, z
+  list = collection @
+  for z in list when match @, z
     fn z
   list
