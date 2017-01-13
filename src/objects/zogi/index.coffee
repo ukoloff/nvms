@@ -1,4 +1,3 @@
 ###
 ZOG commands
 ###
-module.exports =
