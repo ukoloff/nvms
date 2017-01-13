@@ -1,2 +1,3 @@
 # Fetch latest version from GitHub
-exports.$ = upgrade.test.$
+exports.$ = require '../../tools/upgrade/test'
+  .$

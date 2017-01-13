@@ -19,7 +19,6 @@ list = (commands)->
       $: cmd.n = name
       _: cmd.q = aliases cmd.q
   do dispatch
-  do upgrade.hint
   return
 
 list.find =

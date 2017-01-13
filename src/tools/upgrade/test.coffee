@@ -11,8 +11,7 @@ detect = ->
     ver.$[0].join '.'
 
 # Fetch latest version from GitHub & store
-detect.$ =
-fetch = ->
+detect.$ = ->
   return unless autodetect()
   touch()
   write latest()
@@ -56,6 +55,7 @@ write = (version)->
     to disable autodetection of #{PACKAGE.mingzi} new version available.
 
   """
+  return
 
 # Read version from file
 read = ->
