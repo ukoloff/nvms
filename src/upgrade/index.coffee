@@ -1,6 +1,7 @@
 ###
 Quick install/upgrade
 ###
-err ->
-  echo "Installing/upgrading #{PACKAGE.mingzi} v#{PACKAGE.version}..."
-  upgrade()
+require('../tools/err') ->
+  require('../sys/echo') "Installing/upgrading #{PACKAGE.mingzi} v#{PACKAGE.version}..."
+  require '../tools/upgrade'
+  return

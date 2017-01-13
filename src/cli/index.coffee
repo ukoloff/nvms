@@ -2,7 +2,7 @@
 Main entry point
 ###
 
-err ->
+require('../tools/err') ->
   require '../objects/cmdz'
   require '../tools/upgrade/hint'
   return

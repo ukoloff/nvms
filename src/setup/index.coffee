@@ -1,7 +1,8 @@
 ###
 Start setup operation
 ###
-err ->
-  suicide = try do require './suicide'
+require('../tools/err') ->
+  try suicide = do require './suicide'
   require './setup'
   try suicide?()
+  return
