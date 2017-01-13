@@ -3,6 +3,6 @@ Main entry point
 ###
 
 require('self/tools/err') ->
-  require './cmdz'
+  require './cmd'
   require 'self/tools/upgrade/hint'
   return

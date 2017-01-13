@@ -1,4 +1,4 @@
 ###
 Stub for commands list
 ###
-cmd
+module.exports =
