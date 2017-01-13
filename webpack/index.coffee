@@ -33,6 +33,8 @@ brk = (s)->
 
 @resolve =
   extensions: brk " .js .coffee .litcoffee .coffee.md .cmds"
+  alias:
+    self: sources.root
 
 @resolveLoader =
   alias:
