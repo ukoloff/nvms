@@ -1,7 +1,7 @@
 ###
 Add folder content to source
 
-Source must content multiline comment only
+Source must contain multiline (triple #) comment only
 ###
 fs = require "fs"
 path = require "path"
@@ -30,4 +30,4 @@ only3 = (src)->
   unless /^#{3}/.test x=lines.shift()
     console.log "Not started", x
     return
-  return ('##' + '#') == lines.pop()
+  return '###' == lines.pop()
