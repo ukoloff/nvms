@@ -33,7 +33,7 @@ brk = (s)->
   s.split ' '
 
 @resolve =
-  extensions: brk " .js .coffee .litcoffee .coffee.md .cmds"
+  extensions: brk " .js .coffee .litcoffee .coffee.md"
   alias:
     self: sources.root
 

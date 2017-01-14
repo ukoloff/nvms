@@ -20,5 +20,5 @@ echo "Updating PATH..."
 addpath true
 echo """
 Installation complete.
-Open new console and run '#{PACKAGE.mingzi} help' to start.
+Open new console and run '#{PACKAGE.mingzi} ?' to start.
 """

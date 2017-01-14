@@ -2,9 +2,16 @@
 Running copy of myself in background
 ###
 
+hash = (s)->
+  n = 0
+  i = s.length
+  while i--
+    n = ~(n + (i & 0xFF ^ s.charCodeAt i))
+  n & 0xFFFF
+
 # Magic cookie
 magic =
-  "<#{PACKAGE.version}>"
+  "<#{hash do argv0.load}>"
 
 find = (cmd)->
   require('./zogi')[cmd]
