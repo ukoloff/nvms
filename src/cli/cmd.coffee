@@ -19,7 +19,11 @@ for name, cmd of cmdz
 
 #Dispatch
 if cmd = cmdz[abr.$ argv[0]]
-  cmd.$ argv.slice 1
+  if /^h/.test argv[1]
+    require './cmdz/help'
+      .$ [argv[0]].concat argv.slice 2
+  else
+    cmd.$ argv.slice 1
 else
   # Unknown or no command
   require './cmdz/help'
