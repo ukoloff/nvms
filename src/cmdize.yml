@@ -18,12 +18,16 @@
   command:  start wscript.exe //e:javascript
 
 # Wildcard
-:*:
+:*: &any
+  <<: *cli
+  args:
+
+cli:
   <<: *cli
 
 # Specific commands
 setup:
-  <<: *cli
+  <<: *any
   before:
   after: |
     pause
