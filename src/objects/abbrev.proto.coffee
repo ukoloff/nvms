@@ -1,17 +1,22 @@
 ###
 Methods of abbrev instance
 ###
-exports.add = (options)->
+
+arr = (a)->
+  return unless a
+    []
+  else if 'string' == typeof a
+    [a]
+  else
+    a
+
+exports.add = (words, aliases)->
   @z ?= {}
-  for k, v of options
-    if 'string' == typeof v
-      v = [v]
-    for x in v by -1
-      if '$' == k
-        @z[word = x] = 0  # Word
-      else
-        @z[x] = word      # Alias
-  @
+  for w in arr words by -1
+    @z[w] = 0
+  for a in arr aliases by -1
+    @z[a] = w or a
+  return
 
 # Lookup word
 exports.$ = (word)->

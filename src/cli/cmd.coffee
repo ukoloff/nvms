@@ -4,16 +4,6 @@ Commands engine
 abr = new abbrev
 cmdz  = require './cmdz'
 
-exports.f =
-find = (word)->
-  cmdz[abr.$ word]
-
-# List abbreviations
-exports.a = (beginning)->
-  for k of res = abr.a(beginning) or abr.a()
-    res[k] = cmdz[res[k]]
-  res
-
 # Convert aliases member to array
 aliases = (str)->
   unless str
@@ -24,14 +14,17 @@ aliases = (str)->
 
 # Initialize abbreviations
 for name, cmd of cmdz
-  abr.add
-    $: cmd.n = name
-    _: cmd.q = aliases cmd.q
+  cmd.A = abr   # Give command access to abbreviations
+  abr.add name, cmd.q = aliases cmd.q
 
 #Dispatch
-if cmd = find argv[0]
-  cmd.$ argv.slice 1
+if cmd = cmdz[abr.$ argv[0]]
+  if /^[h?]/.test argv[1]
+    require './cmdz/help'
+      .$ [argv[0]].concat argv.slice 2
+  else
+    cmd.$ argv.slice 1
 else
   # Unknown or no command
-  find 'h'  # help command
-  .i()
+  require './cmdz/help'
+    .i()

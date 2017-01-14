@@ -1,8 +1,7 @@
 ###
 Create batch file
 ###
-module.exports =
-exports = (id)->
+module.exports = exports = (id)->
   id = folder install2, id
   .mk()
 

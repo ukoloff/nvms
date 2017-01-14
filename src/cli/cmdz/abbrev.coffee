@@ -5,6 +5,9 @@ exports._ = '[word]'
 exports.h =
 exports.$ = (args)->
   echo 'Available abbreviations:'
-  for k, v of (require '../cmd').a args[0]
-    echo "  #{k}\t#{v.n}\t#{v.t}"
+  cmdz = require '.'
+  a = exports.A
+  a = a.a(args[0]) or a.a()
+  for k, v of a
+    echo "  #{k}\t#{v}\t#{cmdz[v].t}"
   return

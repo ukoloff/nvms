@@ -14,7 +14,7 @@ keys = ->
 # Parser itself
 module.exports =
 exports = (args)->
-  ks = new abbrev $: keys()
+  ks = new abbrev keys()
   for arg in args
     if x = ks.$ arg
       dist = x
