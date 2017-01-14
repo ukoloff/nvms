@@ -1,3 +1,4 @@
+exports.q = '?'
 exports.t = 'Show help for all or individual command(s)'
 
 exports._ = '[command]'
@@ -45,7 +46,7 @@ general = (commands)->
 
     Command names may be unambiguously abbreviated (See: #{PACKAGE.mingzi} a).
 
-    Run #{PACKAGE.mingzi} help <command> for more instructions.
+    Run #{PACKAGE.mingzi} ? <command> for more instructions.
     """
   return
 
@@ -59,6 +60,6 @@ header = ->
 exports.i = ->
   do header
   echo """
-    Run #{PACKAGE.mingzi} help for instructions.
+    Run #{PACKAGE.mingzi} ? for instructions.
     """
   return
