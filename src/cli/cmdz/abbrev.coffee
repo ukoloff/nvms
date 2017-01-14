@@ -6,6 +6,8 @@ exports.h =
 exports.$ = (args)->
   echo 'Available abbreviations:'
   cmdz = require '.'
-  for k, v of exports.A.a args[0]
+  a = exports.A
+  a = a.a(args[0]) or a.a()
+  for k, v of a
     echo "  #{k}\t#{v}\t#{cmdz[v].t}"
   return

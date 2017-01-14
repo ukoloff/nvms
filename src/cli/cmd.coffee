@@ -15,9 +15,7 @@ aliases = (str)->
 # Initialize abbreviations
 for name, cmd of cmdz
   cmd.A = abr   # Give command access to abbreviations
-  abr.add
-    $: name
-    _: cmd.q = aliases cmd.q
+  abr.add name, cmd.q = aliases cmd.q
 
 #Dispatch
 if cmd = cmdz[abr.$ argv[0]]
