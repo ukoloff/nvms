@@ -11,7 +11,7 @@ exports.add = (options)->
         @z[word = x] = 0  # Word
       else
         @z[x] = word      # Alias
-  @
+  return
 
 # Lookup word
 exports.$ = (word)->

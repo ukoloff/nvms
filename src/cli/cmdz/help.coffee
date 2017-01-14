@@ -7,22 +7,24 @@ exports.h = """
   """
 
 exports.$ = (args)->
-  do header
+  header()
+  cmdz = require '.'
   unless args[0]
-    do general
-  else if x = (require '../cmd').f args[0]
-    command x, args.slice 1
-  else
-    require './abbrev'
+    general cmdz
+    return
+  if cmd = exports.A.$ args[0]
+    command cmd, cmdz[cmd], args.slice 1
+    return
+  require './abbrev'
     .$ args
   return
 
-command = (cmd, args)->
-  echo "#{PACKAGE.mingzi} #{cmd.n}: #{cmd.t}"
+command = (name, cmd, args)->
+  echo "#{PACKAGE.mingzi} #{name}: #{cmd.t}"
   echo "\nAlias: #{cmd.q.join ', '}" if cmd.q.length
   echo """
 
-    Usage: #{PACKAGE.mingzi} #{cmd.n} #{cmd._ or ''}
+    Usage: #{PACKAGE.mingzi} #{name} #{cmd._ or ''}
 
     """
   if 'function' == typeof cmd.h
@@ -31,13 +33,13 @@ command = (cmd, args)->
     echo cmd.h
   return
 
-general = ->
+general = (commands)->
   echo """
     Usage: #{PACKAGE.mingzi} <command> [parameter(s)]
 
     Commands:
     """
-  for k, v of require '.'
+  for k, v of commands
     echo "\t#{k}\t#{v.t}"
   echo """
 
