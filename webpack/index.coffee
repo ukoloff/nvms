@@ -50,12 +50,12 @@ stringify = (rec)->
   res
 
 @plugins = values
-  ugly: new ugly
+  ugly: ugly
     output:
       max_line_len: 128
     compress:
       warnings: false
-  cmdize: new cmdize
+  cmdize: cmdize()
   defines: new webpack.DefinePlugin
     PACKAGE: stringify require '../package'
   globals: new webpack.ProvidePlugin sources.globals

@@ -10,31 +10,29 @@ yaml = require 'js-yaml'
 ini = require '../package'
 sources = require './sources'
 
-module.exports =
-me = ->
+module.exports = ->
+  apply: (compiler)->
+    compiler.plugin "done", (compilation)->
+      yml = readYML()
+      debug = compilation.compilation.options.debug
+      prolog = yml[':prolog'].replace '#{homepage}', ini.homepage
 
-me::apply = (compiler)->
-  compiler.plugin "done", (compilation)->
-    yml = readYML()
-    debug = compilation.compilation.options.debug
-    prolog = yml[':prolog'].replace '#{homepage}', ini.homepage
+      for k, z of compilation.compilation.assets
+        x = path.parse dst = z.existsAt
+        continue if '.js' != x.ext
+        fs.unlink dst, ->
+        x.base = x.name + '.bat'
 
-    for k, z of compilation.compilation.assets
-      x = path.parse dst = z.existsAt
-      continue if '.js' != x.ext
-      fs.unlink dst, ->
-      x.base = x.name + '.bat'
+        for q in dup [x.name, ':*'], debug
+          if bat = yml[q]
+            break
 
-      for q in dup [x.name, ':*'], debug
-        if bat = yml[q]
-          break
+        fs.writeFile path.format(x), """
+          #{prolog}#{bat.before or ''}#{sword bat.command}"%~f0"#{word bat.args}
+          #{bat.after or ''}#{yml[':epilog']}#{reexport debug, z.source()}
 
-      fs.writeFile path.format(x), """
-        #{prolog}#{bat.before or ''}#{sword bat.command}"%~f0"#{word bat.args}
-        #{bat.after or ''}#{yml[':epilog']}#{reexport debug, z.source()}
-
-        """, ->
-    return
+          """, ->
+      return
 
 word = (s)->
   if s
