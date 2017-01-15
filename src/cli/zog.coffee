@@ -17,8 +17,7 @@ find = (cmd)->
   require('./cmdz')[cmd]?.z
 
 # Run background process
-module.exports =
-exports = (cmd, args...)->
+module.exports = exports = (cmd, args...)->
   return unless find cmd
   # Run version command with special parameters
   run.apply @, [0, argv0, "v", magic, cmd].concat args
