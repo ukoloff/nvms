@@ -2,16 +2,18 @@
 Running copy of myself in background
 ###
 
-hash = (s)->
-  n = 0
+adler32 = (s)->
+  a = 1
+  b = 0
   i = s.length
   while i--
-    n = ~(n + (i & 0xFF ^ s.charCodeAt i))
-  n & 0xFFFF
+    a = (a + s.charCodeAt i) % 65521
+    b = (b + a) % 65521
+  b << 16 + a
 
 # Magic cookie
 magic =
-  "<#{hash do argv0.load}>"
+  "<#{adler32 do argv0.load}>"
 
 find = (cmd)->
   require('./cmdz')[cmd]?.z
