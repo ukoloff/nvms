@@ -10,7 +10,7 @@ yaml = require 'js-yaml'
 ini = require '../package'
 sources = require './sources'
 
-module.exports = class
+module.exports = ->
   apply: (compiler)->
     compiler.plugin "done", (compilation)->
       yml = readYML()
