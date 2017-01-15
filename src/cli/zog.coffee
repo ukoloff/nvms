@@ -14,19 +14,20 @@ magic =
   "<#{hash do argv0.load}>"
 
 find = (cmd)->
-  require('./zogi')[cmd]
+  require('./cmdz')[cmd]?.z
 
 # Run background process
 module.exports =
 exports = (cmd, args...)->
   return unless find cmd
-  run.apply @, [0, argv0, "version", magic, cmd].concat args
+  # Run version command with special parameters
+  run.apply @, [0, argv0, "v", magic, cmd].concat args
   return
 
 # See whether we are in the background
 exports.$ = (args)->
   return if magic != args.shift()
   return unless cmd = find args.shift()
-  cmd.$ args
+  cmd args
   exit()
   return
