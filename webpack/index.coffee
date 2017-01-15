@@ -24,10 +24,10 @@ values = (map)->
     glob:
       # coffee above will also apply after this
       test: /[\/\\]index[.]coffee$/
-      loader: "glob"
+      loader: require.resolve './glob'
     yml:
       test: /[.]ya?ml$/
-      loader: 'yaml'
+      loader: require.resolve './yaml'
 
 brk = (s)->
   s.split ' '
@@ -36,11 +36,6 @@ brk = (s)->
   extensions: brk " .js .coffee .litcoffee .coffee.md"
   alias:
     self: sources.root
-
-@resolveLoader =
-  alias:
-    yaml: require.resolve './yaml'
-    glob: require.resolve './glob'
 
 stringify = (rec)->
   res = {}
