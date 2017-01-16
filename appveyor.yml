@@ -1,0 +1,27 @@
+version: 1.0.{build}-{branch}
+
+cache:
+  - node_modules
+
+install:
+  - npm install
+
+build: off
+
+before_test:
+  - node -v
+  - npm -v
+
+test_script:
+
+after_test:
+  - node_modules/.bin/wepack -d
+  - node webpack/dist
+  - 7z a -r nvm$dev.zip ./tmp/dist/*
+  - node_modules/.bin/wepack -p
+  - node webpack/dist
+  - 7z a -r nvm$.zip ./tmp/dist/*
+
+artifacts:
+  - path: "*.zip"
+    name: Distro package(s)
