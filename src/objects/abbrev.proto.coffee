@@ -42,7 +42,7 @@ exports.a = (beginning)->
   list = {}
   keys = []
   for k, v of @z when begins k, v
-    v || = k
+    v ||= k
     i = 0
     while ++i <= k.length
       if v == @$ test = k.substring 0, i
