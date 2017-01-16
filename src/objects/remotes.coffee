@@ -9,15 +9,15 @@ exports = ->
     if cached f = dpath k
       tab = f.load()
     else
-      echo "Fetching:", url = "#{v}index.tab"
+      echo "Fetching:", url = "#{v}index.json"
       f.save tab = ajax url
-    tab = for z in tsv tab when msi z
+    tab = for z in json2 tab when msi z
       new Remote z, k
     r = r.concat tab
   r.sort semver.$
 
 dpath = (dist)->
-  file cache, "#{dist}.tsv"
+  file cache, "#{dist}.json"
 
 cached = (f)->
   f.ok 1000*60*60*24
@@ -28,7 +28,7 @@ cachedAll = ->
   true
 
 msi = (line)->
-  ~line.files.indexOf '-msi'
+  ~line.files.join('!').indexOf '-msi'
 
 # Latest version available to upgrade to
 exports.v = ->
