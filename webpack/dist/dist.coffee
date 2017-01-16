@@ -7,10 +7,11 @@ PACKAGE = require '../../package'
 mkdirp = require 'mkdirp'
   .sync
 rm = require './rm'
-git = require './git'
 cp = require './cp'
 
-mkdirp bin = path.join repo = 'tmp/dist', 'bin'
+console.log "Creating distro at", path.resolve repo = 'tmp/dist'
+rm repo
+mkdirp bin = path.join repo, 'bin'
 
 # Copy files
 cp = cp bin
@@ -20,7 +21,12 @@ cp "tmp/cli.bat"
 cp "tmp/upgrade.bat"
 cp "./tmp/setup.bat"
 
+unless process.argv[2]
+  process.exit 0
+
 # Git operations
+git = require './git'
+
 commit = git.current()
 rm "#{repo}/.git"
 git = git repo
