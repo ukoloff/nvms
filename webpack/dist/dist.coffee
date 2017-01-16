@@ -26,8 +26,12 @@ rm "#{repo}/.git"
 git = git repo
 git "init"
 git "remote", 'add', 'origin', '../..'
-git "checkout", '-b', 'dist'
+git "checkout", '-b', 'release'
 git "add", ".", '--force'
 git 'commit', '-m', commit
-git 'tag', '-f', "v#{PACKAGE.version}"
-git 'push', '--tags', '--force', 'origin', 'dist'
+git 'tag', '-f', vX = "v#{PACKAGE.version}"
+git 'push', '--tags', '--force', 'origin'
+git 'fetch'
+git 'checkout', '-f', 'dist'
+git 'merge', '-X', 'theirs', vX, '-m', vX
+git 'push'
