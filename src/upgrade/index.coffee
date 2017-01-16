@@ -1,7 +1,7 @@
 ###
 Quick install/upgrade
 ###
-require('self/tools/err') ->
+require('self/tools/guard') ->
   require './header'
   require './upgrade'
   return
