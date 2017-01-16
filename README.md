@@ -1,5 +1,7 @@
 # nvm$
 
+[![Build status](https://ci.appveyor.com/api/projects/status/6o64oaxelmvrs25k?svg=true)](https://ci.appveyor.com/project/ukoloff/nvms)
+
 Node Version Manager for M$ Windows.
 
 Inspired by [nvmw][]
@@ -246,6 +248,7 @@ for actual files removal
   * [Windows Sysinternals][]
   * [webpack][]
   * [cmdizer][]
+  * [AppVeyor][]
 
 [Node.js]: http://nodejs.org/
 [io.js]: https://iojs.org/
@@ -257,3 +260,4 @@ for actual files removal
 [webpack]: http://webpack.github.io/
 [cmdizer]: http://www.dostips.com/forum/viewtopic.php?p=37780#p37780
 [NTFS junction point]: https://en.wikipedia.org/wiki/NTFS_junction_point
+[AppVeyor]: http://www.appveyor.com/
