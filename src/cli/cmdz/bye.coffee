@@ -30,3 +30,8 @@ exports.$ = (args)->
   """
   exit()
   return  # NOOP
+
+# ZOG command: Remove folder
+exports.z = (path)->
+  folder install2, path[0]
+  .rm true
