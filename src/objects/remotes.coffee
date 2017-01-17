@@ -28,7 +28,7 @@ cachedAll = ->
   true
 
 msi = (line)->
-  ~line.files.join('!').indexOf '-msi'
+  ~line.files.join().indexOf '-msi'
 
 # Latest version available to upgrade to
 exports.v = ->
