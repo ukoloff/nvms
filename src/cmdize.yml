@@ -9,13 +9,13 @@
 
 # CLI
 :cli: &cli
-  command: cscript.exe //nologo //e:javascript
+  command: cscript.exe //Nologo //E:JScript
   args:    "%*"
 
 # GUI
 :gui: &gui
   <<:       *cli
-  command:  start wscript.exe //e:javascript
+  command:  start wscript.exe //E:JScript
 
 # Wildcard
 :*: &any
