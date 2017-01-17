@@ -24,7 +24,7 @@ magic =
 
 # Install handlers
 for k of cmdz when cmdz[k].z
-  exports[k] = do (k)-> (args...)->
+  exports[k.charAt 0] = do (k)-> (args...)->
     # Run version command with special parameters
     run.apply @, [0, argv0, "v", magic, k].concat args
     return

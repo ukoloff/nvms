@@ -22,7 +22,8 @@ exports.$ = (args)->
   echo "Removing files..."
   junction false
   require '../zog'
-    .bye ''
+    # ZOG::bye
+    .b ''
   echo """
 
     Fare thee well! and if for ever,

@@ -6,7 +6,8 @@ sensor = require 'self/upgrade/sensor'
 
 if sensor()
   require './zog'
-    .upgrade()
+    # ZOG::upgrade
+    .u()
 
 x = {}
 if v = sensor.v()

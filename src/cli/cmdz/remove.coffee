@@ -51,5 +51,6 @@ remove = (x)->
   echo "Removing:", x.path
   junction() if x.active
   require '../zog'
-    .bye x.path
+    # ZOG::bye
+    .b x.path
   return
