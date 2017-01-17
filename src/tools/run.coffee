@@ -16,7 +16,7 @@ module.exports = (args...)->
         when 'number'
           show = a
         else
-          if /[\s<|>]/.test a
+          if /[\s^<|>]/.test a
             a = '"' + a + '"'
           if cmdline
             cmdline += ' '
