@@ -10,15 +10,19 @@ module.exports = exports = ->
 exports.v = ->
   ver = read()
   if ver and 0 < semver.$ ver, filter PACKAGE.version
-    ver.$[0].join '.'
+    vvv ver
 
 # Ping for new version
 # To be run in the backgroung
 exports.p = ->
   return unless exports()
-  touch()
+  write() # Emulate touch
   write latest()
   return
+
+# Is file old?
+expired = ->
+  !path().ok 1000*60*60*24*3
 
 # Path to file with latest version
 path = ->
@@ -31,20 +35,21 @@ api = ->
   .replace /// \w/ ///, '$&repos/'
   }/tags?per_page=8"
 
+# Build vfilter from string
 filter = (str)->
   new vfilter._ semver str
+
+# Convert vfilter back to string
+vvv = (filter)->
+  if filter
+    filter.$[0].join '.'
 
 # Get most fresh tag from GitHub
 latest = ->
   tags = json2 ajax api()
   for tag, i in tags by -1
     tags[i] = filter tag.name
-  tag =
-  tags.
-  sort semver.$
-  .pop()
-  if tag
-    tag.$[0].join '.'
+  vvv tags.sort(semver.$).pop()
 
 # Save to file
 write = (version)->
@@ -66,18 +71,5 @@ read = ->
   s = s.replace /^\s+/, ''
   .split /\s+/, 2
   .shift()
-  filter s unless /^\W/.test s
-
-# Touch file
-touch = ->
-  f = path()
-  unless f.y()
-    write()
-    return
-  # Emulate touch
-  f.save f.load()
-  return
-
-# Is file old?
-expired = ->
-  !path().ok 1000*60*60*24*3
+  unless /^\W/.test s
+    filter s
