@@ -5,7 +5,8 @@ cmdz = require './cmdz'
 
 module.exports = exports = (args)->
   if args.shift() == magic
-    (cmdz[args.shift()].z)? args
+    # Allow to die on unknown ZOG command
+    cmdz[args.shift()].z args
   exit()
   return
 
