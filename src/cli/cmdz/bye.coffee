@@ -21,7 +21,8 @@ exports.$ = (args)->
   addpath()
   echo "Removing files..."
   junction false
-  (require '../zog') 'bye', ''
+  require '../zog'
+    .bye ''
   echo """
 
     Fare thee well! and if for ever,

@@ -1,6 +1,13 @@
 ###
 Running copy of myself in background
 ###
+cmdz = require './cmdz'
+
+module.exports = exports = (args)->
+  if args.shift() == magic
+    (cmdz[args.shift()].z)? args
+  exit()
+  return
 
 adler32 = (s)->
   a = 1
@@ -15,20 +22,9 @@ adler32 = (s)->
 magic =
   "<#{adler32 do argv0.load}>"
 
-find = (cmd)->
-  require('./cmdz')[cmd]?.z
-
-# Run background process
-module.exports = exports = (cmd, args...)->
-  return unless find cmd
-  # Run version command with special parameters
-  run.apply @, [0, argv0, "v", magic, cmd].concat args
-  return
-
-# See whether we are in the background
-exports.$ = (args)->
-  return if magic != args.shift()
-  return unless cmd = find args.shift()
-  cmd args
-  exit()
-  return
+# Install handlers
+for k of cmdz when cmdz[k].z
+  exports[k] = do (k)-> (args...)->
+    # Run version command with special parameters
+    run.apply @, [0, argv0, "v", magic, k].concat args
+    return

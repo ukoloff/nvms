@@ -4,8 +4,6 @@ exports.h = "Displays #{PACKAGE.mingzi} version."
 
 exports.$ = (args)->
   echo PACKAGE.version
-  if args.length
-    require '../zog'
-      .$ args
+  (require '../zog') args if args.length
   exit()
   return
