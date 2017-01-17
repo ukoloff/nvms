@@ -21,6 +21,21 @@ after_test:
   - node_modules/.bin/webpack -p
   - node webpack/dist
   - 7z a -r nvm$.zip ./tmp/dist/*
+  - tmp\cli v
+  - copy /b bin\* %APPDATA%\nvm$
+  - tmp\cli use none
+  - tmp\cli ls
+  - tmp\cli ls r
+  - tmp\cli ls i
+  - tmp\cli ls
+  - tmp\cli o
+  - tmp\cli i 0 x86
+  - tmp\cli ls
+  - tmp\cli d
+  - tmp\cli d .
+  - tmp\cli ls
+  - tmp\cli b
+  - tmp\cli b .
 
 artifacts:
   - path: "*.zip"
