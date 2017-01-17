@@ -23,16 +23,22 @@ after_test:
   - 7z a -r nvm$.zip ./tmp/dist/*
   - tmp\cli v
   - copy /b bin\* %APPDATA%\nvm$
-  - tmp\cli use none
+  - tmp\cli ?
   - tmp\cli ls
+  - tmp\cli a
   - tmp\cli ls r
-  - tmp\cli ls i
+  - tmp\cli i
   - tmp\cli ls
-  - tmp\cli o
   - tmp\cli i 0 x86
   - tmp\cli ls
+  - tmp\cli which
+  - tmp\cli use none
+  - tmp\cli ls
+  - tmp\cli where
   - tmp\cli d
   - tmp\cli d .
+  - tmp\cli ls
+  - tmp\cli o
   - tmp\cli ls
   - tmp\cli b
   - tmp\cli b .
