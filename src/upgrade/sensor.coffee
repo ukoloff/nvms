@@ -9,7 +9,7 @@ module.exports = exports = ->
 # Is new version available?
 exports.v = ->
   ver = read()
-  if ver and gt ver, filter PACKAGE.version
+  if ver and 0 < semver.$ ver, filter PACKAGE.version
     ver.$[0].join '.'
 
 # Ping for new version
@@ -24,31 +24,27 @@ exports.p = ->
 path = ->
   file cache, '.v'
 
-# GitHub API URI
+# GitHub API URI to fetch tags list
 api = ->
   "#{PACKAGE.homepage
   .replace /// // ///, '$&api.'
   .replace /// \w/ ///, '$&repos/'
   }/tags?per_page=8"
 
-# Return available tags
-tags = ->
-  json2 ajax api()
-
 filter = (str)->
   new vfilter._ semver str
 
-gt = (left, right)->
-  0 < semver.$ left, right
-
 # Get most fresh tag from GitHub
 latest = ->
-  max = 0
-  for tag in tags() by -1
-    tag = filter tag.name
-    if !max or gt tag, max
-      max = tag
-  max.$[0].join '.' if max
+  tags = json2 ajax api()
+  for tag, i in tags by -1
+    tags[i] = filter tag.name
+  tag =
+  tags.
+  sort semver.$
+  .pop()
+  if tag
+    tag.$[0].join '.'
 
 # Save to file
 write = (version)->
