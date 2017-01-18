@@ -31,3 +31,10 @@ setup:
   before:
   after: |
     pause
+
+gui:
+  <<: *gui
+  args:
+
+gui:debug:
+  <<: *any
