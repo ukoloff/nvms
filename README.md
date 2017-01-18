@@ -1,5 +1,7 @@
 # nvm$
 
+[![Build status](https://ci.appveyor.com/api/projects/status/6o64oaxelmvrs25k?svg=true)](https://ci.appveyor.com/project/ukoloff/nvms)
+
 Node Version Manager for M$ Windows.
 
 Inspired by [nvmw][]
@@ -48,7 +50,7 @@ and open new one to use `nvm$`.
 
 ## Update
 
-For new version of nvm$ to install
+For new version of `nvm$` to install
 just repeat installation steps above.
 
 This can be done with `nvm$ upgrade` command.
@@ -65,14 +67,14 @@ like `#` or `;` or even `-`.
 ## How it works
 
 Fiddling environment variables may be tricky especially on Windows.
-So, nvm$ adds itself to PATH during setup
+So, `nvm$` adds itself to PATH during setup
 and then simply switch folder referred to by PATH.
 
 Therefore all the processes of current user immediately see this change.
 There is the only Node.js version active at any moment of time
-(unlike nvm).
+(unlike `nvm`).
 
-nvm$ is always installed to a user,
+`nvm$` is always installed to a user,
 it cannot be installed system-wide.
 
 If Node.js is also normally installed
@@ -86,8 +88,10 @@ Technically, for switching Node.js version
 [NTFS junction point][] is used.
 As there is no standard ActiveX control
 for junction point manipulations,
-command line utility from
-[Sysinternals suite][Windows Sysinternals] is used.
+command line utility `linkd`
+from
+Windows Server 2003 Resource Kit Tools
+is used.
 
 ## Specifying Node.js version
 
@@ -122,6 +126,117 @@ with default platform just type `nvm$ i`,
 while `nvm$ i x6` installs
 latest 64-bit version.
 
+## Commands
+
+### ls
+
+List installed Node.js versions.
+Filters apply, as mentioned earlier,
+so `nvm$ l x8` will list only x86
+installations.
+
+### ls remote
+
+List Node.js (and io.js) versions available
+(fetches their lists from respective sites).
+`nvm$ l r 4` will list all 4.\*.\* versions available.
+
+### install
+
+Install latest of specified Node.js versions.
+One can select platform (`x86` or `x64`)
+or default will be used.
+
+If specified version is installed,
+it will be [used](#use),
+so it is safe to run `nvm$ i`
+to ensure the latest version in installed.
+
+To force reinstallation, add `.`
+to the end of command,
+eg `nvm$ i .` will reinstall
+latest version unconditionally.
+
+### use
+
+Switch to latest of installed versions
+(filters apply).
+Eg `nvm$ use` means switch to latest of all,
+while `nvm$ use i` to latest of iojs.
+
+Run `nvm$ use none` to temporarily make node.exe
+unavailable,
+you can switch back at any moment later.
+
+### which
+
+Shows path to active version,
+or path to Junction point
+in case `nvm$ use none` was fired.
+
+### remove
+
+Remove oldest of installed versions
+considering command line filter.
+
+For security reasons,
+`.` must occur at the end of
+this command,
+or else it will refuse to proceed.
+
+Eg, `nvm$ d .` (`drop` is alias for `remove`)
+will remove one (minimal) version.
+`nvm$ d all i .` will remove all iojs versions.
+
+Actual removing of files
+can take much time,
+so it is performed in background.
+Don't logoff or turn off your computer
+a minute or two after this command finished.
+
+### Additional commands
+
+#### openssl
+
+Node.js versions 0.\*.\* contains `openssl` binary.
+`nvm$` can download it and install
+into its PATH.
+
+Like `install` command,
+platform can be specified.
+Other filters (version number for instance)
+are meaningless and ignored.
+
+#### abbrev
+
+Helps to find comman abbreviation(s).
+Eg, run `nvm$ a w` to see all commands,
+starting with `w` and their alternatives.
+
+Plain `nvm$ a` shows *all* abbreviations.
+
+#### upgrade
+
+Downloads latest version of `nvm$` itself
+and installs it.
+
+To upgrade Node.js, run `nvm$ i` (for [install](#install)).
+
+#### www
+
+Opens `nvm$` repository in default browser.
+
+#### bye
+
+Fully uninstall `nvm$` itself along with
+all Node.js versions.
+
+Like [remove](#remove) command,
+requires `.` to proceed
+and take some (*more*) time
+for actual files removal
+(may be 10 minutes or so).
+
 ## Credits
 
   * [Node.js][]
@@ -133,6 +248,7 @@ latest 64-bit version.
   * [Windows Sysinternals][]
   * [webpack][]
   * [cmdizer][]
+  * [AppVeyor][]
 
 [Node.js]: http://nodejs.org/
 [io.js]: https://iojs.org/
@@ -144,3 +260,4 @@ latest 64-bit version.
 [webpack]: http://webpack.github.io/
 [cmdizer]: http://www.dostips.com/forum/viewtopic.php?p=37780#p37780
 [NTFS junction point]: https://en.wikipedia.org/wiki/NTFS_junction_point
+[AppVeyor]: http://www.appveyor.com/
