@@ -1,0 +1,5 @@
+#
+# Binary distributions
+#
+node: https://nodejs.org/dist/
+iojs: https://iojs.org/dist/

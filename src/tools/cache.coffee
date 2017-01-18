@@ -2,4 +2,6 @@
 Path to cache folder
 ###
 
-mkpath module.exports = fs.BuildPath install2, 'that'
+module.exports =
+  folder install2, 'that'
+  .mk()

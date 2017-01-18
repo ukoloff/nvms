@@ -1,11 +1,10 @@
 webpack = require 'webpack'
+
+sources = require './sources'
 cmdize = require './cmdize'
 ugly = require './ugly'
 
-@entry =
-  cli: "./src"
-  setup: "./src/setup"
-  upgrade: "./src/setup/upgrade"
+@entry = sources.entry
 
 @output =
   path: "tmp",
@@ -22,19 +21,21 @@ values = (map)->
     litcoffee:
       test: /[.](litcoffee|coffee[.]md)$/
       loader: "coffee?literate"
-    cmds:
-      test: /[.]cmds$/
-      loader: 'coffee!cmds'
+    glob:
+      # coffee above will also apply after this
+      test: /[\/\\]index[.]coffee$/
+      loader: require.resolve './glob'
+    yml:
+      test: /[.]ya?ml$/
+      loader: require.resolve './yaml'
 
 brk = (s)->
   s.split ' '
 
 @resolve =
-  extensions: brk " .js .coffee .litcoffee .coffee.md .cmds"
-
-@resolveLoader =
+  extensions: brk " .js .coffee .litcoffee .coffee.md"
   alias:
-    cmds: require.resolve './cmds'
+    self: sources.root
 
 stringify = (rec)->
   res = {}
@@ -49,12 +50,12 @@ stringify = (rec)->
   res
 
 @plugins = values
-  ugly: new ugly
+  ugly: ugly
     output:
       max_line_len: 128
     compress:
       warnings: false
-  cmdize: new cmdize
+  cmdize: cmdize()
   defines: new webpack.DefinePlugin
     PACKAGE: stringify require '../package'
-  globals: new webpack.ProvidePlugin require './autoload'
+  globals: new webpack.ProvidePlugin sources.globals

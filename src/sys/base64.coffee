@@ -6,15 +6,13 @@ element = activeX "Msxml2.DOMDocument"
 element.dataType = "bin.base64"
 
 exports.enc = (blob)->
-  try
-    element.nodeTypedValue = blob
-    element.text
-  finally
-    element.text = ''
+  element.nodeTypedValue = blob
+  res = element.text
+  element.text = ''
+  res
 
 exports.dec = (str)->
-  try
-    element.text = str
-    element.nodeTypedValue
-  finally
-    element.text = ''
+  element.text = str
+  res = element.nodeTypedValue
+  element.text = ''
+  res

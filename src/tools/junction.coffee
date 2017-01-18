@@ -1,33 +1,16 @@
 ###
 Working with Junction Point(s)
 ###
-name = 'junction.exe'
 
-exe = ->
-  fs.BuildPath install2, name
-
-# (re)Create Junction point and point it to folder
-module.exports =
-run = (folder = 'none')->
-  bat folder
-  drop() if exists()
-  sh.run """
-    "#{exe()}" "#{link()}" "#{fs.BuildPath install2, folder}"
-  """, 0, true
-
-# Remove Junction point
-run.drop =
-drop = ->
-  sh.run """
-    "#{exe()}" -d "#{link()}"
-  """, 0, true
+module.exports = exports = (id = 'none')->
+  run 0, true, (bin = file install2, 'linkd.exe'), link, '/D'
+  if false == id
+    return
+  bat id
+  run 0, true, bin, link, folder install2, id
+  return
 
 # Path to link
-run.$ =
-link = ->
-  fs.BuildPath install2, 'this'
-
-# Whether Junction point exists?
-run._ =
-exists =  ->
-  fs.FolderExists link()
+exports.$ =
+link =
+  folder install2, 'this'

@@ -5,29 +5,63 @@ http://www.dostips.com/forum/viewtopic.php?p=37780#p37780
 fs = require "fs"
 path = require 'path'
 
-module.exports =
-me = (options)->
+yaml = require 'js-yaml'
 
-me::apply = (compiler)->
-  compiler.plugin "done", (compilation)->
-    for k, z of compilation.compilation.assets
-      dst = z.existsAt
-      continue unless /[.]js$/.test dst
-      fs.unlink dst, ->
-      dst = dst.replace /[.].*?$/, '.bat'
-      pause = if /setup/.test k
-        """
-        pause
+ini = require '../package'
+sources = require './sources'
 
-        """
-      else
-        ''
-      fs.writeFile dst, """
-0</*! ::
-@echo off
-cscript //nologo //e:javascript "%~f0" %*
-#{pause}goto :EOF */0;
-#{do z.source}
+module.exports = ->
+  apply: (compiler)->
+    compiler.plugin "done", (compilation)->
+      yml = readYML()
+      debug = compilation.compilation.options.debug
+      prolog = yml[':prolog'].replace '#{homepage}', ini.homepage
 
-      """
-    return
+      for k, z of compilation.compilation.assets
+        x = path.parse dst = z.existsAt
+        continue if '.js' != x.ext
+        fs.unlink dst, ->
+        x.base = x.name + '.bat'
+
+        for q in dup [x.name, ':*'], debug
+          if bat = yml[q]
+            break
+
+        fs.writeFile path.format(x), """
+          #{prolog}#{bat.before or ''}#{sword bat.command}"%~f0"#{word bat.args}
+          #{bat.after or ''}#{yml[':epilog']}#{reexport debug, z.source()}
+
+          """, ->
+      return
+
+word = (s)->
+  if s
+    " #{s}"
+  else
+    ''
+
+sword = (s)->
+  if s
+    "#{s} "
+  else
+    ''
+
+readYML = ->
+  yaml.safeLoad fs.readFileSync path.join sources.root, path.parse(__filename).name + '.yml'
+
+dup = (array, debug)->
+  unless debug
+    return array
+  res = []
+  for s in array
+    res.push "#{s}:debug"
+    res.push s
+  res
+
+reexport = (debug, text)->
+  if debug
+    text
+  else
+    text
+    .replace /[.]exports\b/g, '.X'
+    .replace /exports/, 'X'       # First: module = {exports: {}, ...}
