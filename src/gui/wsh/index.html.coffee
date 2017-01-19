@@ -6,6 +6,6 @@ module.exports = without ->
   html ->
     head ->
       title "#{PACKAGE.mingzi}@#{PACKAGE.version}"
-      style()
+      style -> raw @
       script "document.$=window"
     body -> div "#{PACKAGE.mingzi} session terminated..."

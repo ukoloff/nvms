@@ -2,10 +2,13 @@
 Run under WScript
 ###
 
+t = require './index.html'
+css = require '../css/minimal'
+
 others.d =
 d = msie().Document
 d.open()
-d.write do require './index.html'
+d.write t css
 d.close()
 d.body.innerHTML = ''
 
