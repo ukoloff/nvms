@@ -2,8 +2,15 @@
 Real HTML body
 ###
 module.exports = without ->
+  keys = (r)->
+    k for k of r
+
   div id: 'head', ->
-    label -> raw '&hellip;'
+    label ->
+      raw '&hellip;'
+      div class: 'hide', ->
+        for k in keys @ by -1
+          a href: "#", k
     n = 0
     for k of @
       n++
