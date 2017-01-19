@@ -1,0 +1,25 @@
+#head
+  position: fixed
+  top: 0
+  -position: absolute
+  -top: expression(eval(document\.documentElement\.scrollTop))
+  width: 100%
+  white-space: nowrap
+  background: sky-down
+  background: linear-gradient(to top, sky-down, sky-up)
+  border-bottom: solid tabs-b-color tabs-b-width
+
+  label
+    display: inline-block
+    position: relative
+    top: tabs-b-width
+    background: body-color
+    border: solid tabs-b-color tabs-b-width
+    border-radius: tabs-radius tabs-radius 0 0
+    margin: tabs-margin
+    margin-bottom: 0
+    padding: tabs-padding
+
+    &.active
+      border-bottom: solid body-color tabs-b-width
+      padding-top: tabs-active-padding

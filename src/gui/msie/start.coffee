@@ -2,7 +2,9 @@ wnd.onunload = ->
   echo 'Bye!' if DEBUG
   exit 0
 
+t = require './body.html'
 css = require "../css"
+tabs = require '../tabs'
 
 style = $ 'style'
   .shift()
@@ -13,4 +15,4 @@ else
   style.innerHTML = ''
   style.appendChild dom.createTextNode css
 
-dom.body.innerHTML = do require './body.html'
+dom.body.innerHTML = t tabs
