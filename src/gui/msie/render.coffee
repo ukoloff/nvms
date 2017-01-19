@@ -6,8 +6,7 @@ t = require './body.html'
 css = require "../css"
 tabs = require '../tabs'
 
-style = $ 'style'
-  .shift()
+style = $('style')[0]
 
 if style.styleSheet
   style.styleSheet.cssText = css

@@ -7,17 +7,14 @@ module.exports = without ->
     n = 0
     for k of @
       n++
-      label class: 1 == n and 'active', ->
+      label for: ".#{n}", ->
         input
           id: ".#{n}"
           type: 'radio'
           name: '.'
           value: n
-          checked: 1 == n
         text ' ', k.replace /./, (s)-> s.toUpperCase()
   div id: 'main', ->
     n = 0
     for k of @
-      div
-        class: n++ and 'hide'
-        -> center k
+      div -> h1 -> center k

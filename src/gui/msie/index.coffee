@@ -9,4 +9,5 @@ try
 catch
   document.$ = others.x
 
-require './start'
+require './render'
+require './tabs'
