@@ -22,7 +22,9 @@ module.exports = without ->
           value: n
         text ' ', k.replace /./, (s)-> s.toUpperCase()
         notag ' ', span
+    return
   div id: 'main', ->
     n = 0
     for k of @
-      div -> h1 -> center k
+      div()
+    return
