@@ -27,4 +27,5 @@ exports.a = ->
 
   container.innerHTML = t n: n
   d.appendChild z for z in container.children
+  z?.scrollIntoView()
   return
