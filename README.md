@@ -261,3 +261,5 @@ for actual files removal
 [cmdizer]: http://www.dostips.com/forum/viewtopic.php?p=37780#p37780
 [NTFS junction point]: https://en.wikipedia.org/wiki/NTFS_junction_point
 [AppVeyor]: http://www.appveyor.com/
+[distro]: https://ci.appveyor.com/api/projects/ukoloff/nvms/artifacts/nvm%24.zip?branch=master
+[dev-distro]: https://ci.appveyor.com/api/projects/ukoloff/nvms/artifacts/nvm%24dev.zip?branch=master
