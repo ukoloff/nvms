@@ -77,10 +77,13 @@ exports.install = (is64)->
   return
 
 # Install OpenSSL binary
-exports.O = (is64)->
+exports.O = (is64, force)->
+  dst = file install2, bat.O
+  if !force and dst.y()
+    return false
   set64 @, is64
-  echo "Fetching:", url = uri @, cli = bat.O
-  ajax url, file install2, cli
+  echo "Fetching:", url = uri @, dst.bn()
+  ajax url, dst
   echo "Creating shortcut..."
   bat junction.$.bn()
   return
