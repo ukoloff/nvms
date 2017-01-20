@@ -15,11 +15,13 @@ onclick = ->
       v.$l.className = 'active'
       v.$d.className = ''
       r.blur()
+      v.a?()
     else
       v.$l.className = ''
       v.$d.className = 'hide'
       if v.c
         v.$d.innerHTML = ''
+  return
 
 for k, v of tabs
   radios2.unshift v.$r = rb = radios.shift()
