@@ -17,6 +17,8 @@ tHint = without ->
 
 # on active
 exports.a = ->
+  if exports.v
+    return
   d = exports.$d
   unless container
     d.innerHTML = do without -> div()

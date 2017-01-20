@@ -11,7 +11,7 @@ panes = $ 'div', $('#main')[0]
 
 onclick = ->
   for k, v of tabs
-    if (r = v.$r).checked
+    if checked = (r = v.$r).checked
       v.$l.className = 'active'
       v.$d.className = ''
       r.blur()
@@ -21,6 +21,7 @@ onclick = ->
       v.$d.className = 'hide'
       if v.c
         v.$d.innerHTML = ''
+    v.v = checked
   return
 
 for k, v of tabs
