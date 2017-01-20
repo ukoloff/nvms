@@ -15,7 +15,7 @@ onclick = ->
       v.$l.className = 'active'
       v.$d.className = ''
       r.blur()
-      v.a?()
+      try v.a?()
     else
       v.$l.className = ''
       v.$d.className = 'hide'
