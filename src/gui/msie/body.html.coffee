@@ -10,7 +10,7 @@ module.exports = without ->
       raw '&hellip;'
       div class: 'hide', ->
         for k in keys @ by -1
-          a href: "#", k
+          a href: "#", k.replace /./, (s)-> s.toUpperCase()
     n = 0
     for k of @
       n++
