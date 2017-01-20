@@ -21,6 +21,7 @@ module.exports = without ->
           name: '.'
           value: n
         text ' ', k.replace /./, (s)-> s.toUpperCase()
+        notag ' ', span
   div id: 'main', ->
     n = 0
     for k of @

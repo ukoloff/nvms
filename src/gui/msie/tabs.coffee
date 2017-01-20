@@ -18,12 +18,15 @@ onclick = ->
     else
       v.$l.className = ''
       v.$d.className = 'hide'
+      if v.c
+        v.$d.innerHTML = ''
 
 for k, v of tabs
   radios2.unshift v.$r = rb = radios.shift()
-  v.$l = rb.parentElement
+  v.$l = label = rb.parentElement
   v.$d = panes.shift()
-
+  v.$i = $ 'span', label
+    .pop()
   rb.onclick = onclick
 
 radio.click()
