@@ -6,4 +6,4 @@ Abbrev = (words, aliases)->
   @add words, aliases
   return
 
-Abbrev:: = abbrev.proto
+Abbrev:: = require './abbrev.proto'

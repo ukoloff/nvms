@@ -26,13 +26,11 @@ rndFile = (path)->
 
 # Most data passed via RegExp
 Local = (active)->
+  @active = active
   @path = RegExp.$_
   @dist = dist = RegExp.$1
-  semver = for n in RegExp.$2.split '.'
-    Number n
-  @x64 = x64 = /^6/.test RegExp.$3
-  @$ = [semver, [dist, x64]]
-  @active = active
+  ver = semver RegExp.$2
+  @$ = [ver, [dist, @x64 = /^6/.test RegExp.$3]]
   return
 
 Local:: = local.proto
