@@ -16,7 +16,7 @@ rndFile = (path)->
   return unless path.y()
   i = 16
   while --i
-    p = file path, r = rnd 15
+    p = file path,  rnd 15
     if p.y()
       continue
     try
