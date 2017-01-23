@@ -2,7 +2,7 @@
 List installed versions
 ###
 
-re = /^(\w+)-\D*(\d+(?:[.]\d+)*)-x(\d+)/
+re = /^(\w+)-\D*(\d+(?:[.]\d+)+)-x(\d)/
 
 module.exports = ->
   list = []
@@ -29,8 +29,8 @@ Local = (active)->
   @active = active
   @path = RegExp.$_
   @dist = dist = RegExp.$1
-  ver = semver RegExp.$2
-  @$ = [ver, [dist, @x64 = /^6/.test RegExp.$3]]
+  @x64 = x64 = '6' == RegExp.$3
+  @$ = [semver(RegExp.$2), [dist, x64]]
   return
 
 Local:: = local.proto
