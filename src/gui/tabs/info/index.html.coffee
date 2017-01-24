@@ -9,7 +9,10 @@ module.exports = without -> table ->
     tr.apply tr, list
   row ->
     th PACKAGE.mingzi
-    td PACKAGE.description
+    td -> a
+      href: PACKAGE.homepage
+      target: '_blank'
+      PACKAGE.description
   row ->
     th 'Version'
     td PACKAGE.version
@@ -21,15 +24,48 @@ module.exports = without -> table ->
         checked: true
       text ' ', name
 
-  hdr 'Windows'
-  row ->
-    th 'Version'
-    td @sh.RegRead "HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\ProductName"
-  row ->
-    th 'Path'
-    td @sh.ExpandEnvironmentStrings '%windir%'
-  row ->
-    th 'Platform'
-    td 'x', @x64 and 64 or 86
+  platform = (x64)->
+    td "x", x64 and 64 or 86
 
   hdr 'Node.js'
+  for z in @l when z.active
+    active = z
+    break
+  row ->
+    th 'Active'
+    td active?.$[0].join('.') or '-'
+  if active
+    row ->
+      th 'Flavour'
+      td -> (if url = @d[active.dist] then a else notag)
+        href: url.replace /// (\w)/.* ///, '$1'
+        target: '_blank'
+        active.dist
+    row ->
+      th 'Platform'
+      platform active.x64
+  row ->
+    th 'Path'
+    td '', active?._() or @$
+    # alert active?._()
+  hdr 'OS'
+  key = "HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\"
+  row ->
+    th 'Name'
+    td @sh.RegRead "#{key}ProductName"
+  row ->
+    th 'Version'
+    td @sh.RegRead "#{key}CurrentVersion"
+  row ->
+    th 'SP'
+    td @sh.RegRead "#{key}CSDVersion"
+  row ->
+    th 'Platform'
+    platform @x64
+  row ->
+    th 'Owner'
+    td @sh.RegRead "#{key}RegisteredOwner"
+  row ->
+    th 'Path'
+    td @sh.RegRead "#{key}SystemRoot"
+
