@@ -2,7 +2,7 @@
 List installed versions
 ###
 
-re = /^(\w+)-\D*(\d+(?:[.]\d+)*)-x(\d+)/
+re = /^(\w+)-\D*(\d+(?:[.]\d+)+)-x(\d)/
 
 module.exports = ->
   list = []
@@ -16,7 +16,7 @@ rndFile = (path)->
   return unless path.y()
   i = 16
   while --i
-    p = file path, r = rnd 15
+    p = file path,  rnd 15
     if p.y()
       continue
     try
@@ -26,13 +26,11 @@ rndFile = (path)->
 
 # Most data passed via RegExp
 Local = (active)->
+  @active = active
   @path = RegExp.$_
   @dist = dist = RegExp.$1
-  semver = for n in RegExp.$2.split '.'
-    Number n
-  @x64 = x64 = /^6/.test RegExp.$3
-  @$ = [semver, [dist, x64]]
-  @active = active
+  @x64 = x64 = '6' == RegExp.$3
+  @$ = [semver(RegExp.$2), [dist, x64]]
   return
 
 Local:: = local.proto

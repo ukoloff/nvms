@@ -1,30 +1,30 @@
 ###
-Wrapper around WSH's fs module
+Wrapper around WSH's fso module
 ###
 exports.toString = ->
   @_ ? ''
 
 # Make path absolute
 exports.abs = ->
-  @_ = fs.GetAbsolutePathName @
+  @_ = fso.GetAbsolutePathName @
   @
 
 # Parent folder
 exports.up = ->
   folder = require './folder'
-  folder fs.GetParentFolderName @
+  folder fso.GetParentFolderName @
 
 # Base name (name + ext)
 exports.bn = ->
-  fs.GetFileName @
+  fso.GetFileName @
 
 # Name (without extension)
 exports.n = ->
-  fs.GetBaseName @
+  fso.GetBaseName @
 
 # Extension
 exports.ext = ->
-  fs.GetExtensionName @
+  fso.GetExtensionName @
 
 # Shell NameSpace
 exports.ns = ->

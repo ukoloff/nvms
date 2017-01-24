@@ -34,11 +34,11 @@ or don't like to use command prompt:
 - Run it
 - It will download full distro, unpack and start installation
 
-Finally, if your browser doesn't allow to download
+Finally, if your browser won't agree to download
 batch files or run them afterwards,
 you can do the job of `upgrade.bat` yourself:
 
-- Download https://github.com/ukoloff/nvms/archive/dist.zip
+- Download https://github.com/ukoloff/nvms/archive/dist.zip ([mirror][distro])
 - Start downloaded `nvms-dist.zip` (in Explorer)
 - Click `setup.bat`
 - Windows will prompt to extract all files
@@ -261,3 +261,5 @@ for actual files removal
 [cmdizer]: http://www.dostips.com/forum/viewtopic.php?p=37780#p37780
 [NTFS junction point]: https://en.wikipedia.org/wiki/NTFS_junction_point
 [AppVeyor]: http://www.appveyor.com/
+[distro]: https://ci.appveyor.com/api/projects/ukoloff/nvms/artifacts/nvm%24.zip?branch=master
+[dev-distro]: https://ci.appveyor.com/api/projects/ukoloff/nvms/artifacts/nvm%24dev.zip?branch=master

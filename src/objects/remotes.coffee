@@ -38,10 +38,7 @@ exports.v = ->
   remote.$[0].join '.'
 
 Remote = (line, dist)->
-  ver = semver line.version
-  @$ = [ver, [dist]]
-  @dist = dist
-  @src = line
+  @$ = [semver((@src = line).version), [@dist = dist]]
   return
 
 Remote:: = remote.proto

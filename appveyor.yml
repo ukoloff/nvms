@@ -44,7 +44,7 @@ after_test:
   - tmp\cli ls
   - tmp\cli o x86
   - tmp\cli o x64
-  - tmp\cli o
+  - tmp\cli o .
   - tmp\cli ls
   - dir %APPDATA%\nvm$
   - dir %APPDATA%\nvm$\that

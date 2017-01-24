@@ -4,27 +4,27 @@ File object methods
 
 # Exists ?
 exports.y = ->
-  fs.FileExists @
+  fso.FileExists @
 
 # rm
 exports.rm = (ensure)->
   unless ensure and not @y()
-    fs.DeleteFile @
+    fso.DeleteFile @
   @
 
 # copy
 exports.cp = (to)->
-  fs.CopyFile @, to
+  fso.CopyFile @, to
   return
 
 # move
 exports.mv = (to)->
-  fs.MoveFile @, to
+  fso.MoveFile @, to
   return
 
 # ActiveX File object
 exports.$ = ->
-  fs.GetFile @
+  fso.GetFile @
 
 # mtime or older than...
 exports.age = (age)->
@@ -43,14 +43,14 @@ varargs = (name, path, args)->
   s = ""
   for a, i in args
     s += ",a[#{i}]"
-  (new Function 'x,f,a', "return x.#{name}TextFile(f#{s})") fs, path, args
+  (new Function 'x,f,a', "return x.#{name}TextFile(f#{s})") fso, path, args
 
-# fs.OpenTextFile
+# fso.OpenTextFile
 # args: IOMode, Create, Format
 exports.open = ->
   varargs 'Open', @, arguments
 
-# fs.CreateTextFile
+# fso.CreateTextFile
 # args: Overwrite, Unicode
 exports.create = ->
   varargs 'Create', @, arguments
