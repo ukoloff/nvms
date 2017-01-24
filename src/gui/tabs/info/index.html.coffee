@@ -17,18 +17,18 @@ module.exports = without -> table ->
     th 'Version'
     td PACKAGE.version
 
-  hdr = (name)->
+  hdr = (name, content)->
     tbody -> row -> td colspan: 2, -> label ->
       input
         type: 'checkbox'
         checked: true
       text ' ', name
+    tbody content
 
   platform = (x64)->
     td "x", if x64 then 64 else 86
 
-  hdr 'Node.js'
-  tbody ->
+  hdr 'Node.js', ->
     for z in @l when z.active
       active = z
       break
@@ -50,8 +50,7 @@ module.exports = without -> table ->
       td '', active?._() or @$
       # alert active?._()
 
-  hdr 'OS'
-  tbody ->
+  hdr 'OS', ->
     key = "HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\"
     row ->
       th 'Name'
@@ -71,4 +70,15 @@ module.exports = without -> table ->
     row ->
       th 'Path'
       td @sh.RegRead "#{key}SystemRoot"
+
+  hdr 'Names', ->
+    row ->
+      th 'Host'
+      td @n.ComputerName
+    row ->
+      th 'User'
+      td @n.UserName
+    row ->
+      th 'Domain'
+      td @n.UserDomain
 
