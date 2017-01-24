@@ -7,8 +7,8 @@ tHint = require './hint.html'
 # Clear on hide
 exports.c = 1
 
-exports.a = ->
-  exports.$d.innerHTML = t list = locals()
+exports.a = (pane)->
+  pane.innerHTML = t list = locals()
   showCount list
   return
 

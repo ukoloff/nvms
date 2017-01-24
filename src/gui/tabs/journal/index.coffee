@@ -8,18 +8,17 @@ n = 0
 container = 0
 
 # on active
-exports.a = ->
+exports.a = (pane)->
   if exports.v
     return
-  d = exports.$d
   unless container
-    d.innerHTML = do without -> div()
-    container = d.firstChild
-    d.innerHTML = ''
+    pane.innerHTML = do without -> div()
+    container = pane.firstChild
+    pane.innerHTML = ''
 
   exports.$i.innerHTML = tHint ++n
 
   container.innerHTML = t n: n
-  d.appendChild z for z in container.children
+  pane.appendChild z for z in container.children
   z?.scrollIntoView()
   return
