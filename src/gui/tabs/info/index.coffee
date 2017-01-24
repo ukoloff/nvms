@@ -19,7 +19,7 @@ exports.a = (pane)->
 
   for z in $ 'a', pane
     z.onclick = ->
-      sh.run @href
+      run @href
       false
 
   for z in $ 'input', pane
