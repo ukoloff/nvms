@@ -16,3 +16,10 @@ exports.a = (pane)->
 
   require '../local'
     .i list
+
+  for a in $ 'a', pane
+    a.onclick = ->
+      sh.run @href
+      false
+
+  return
