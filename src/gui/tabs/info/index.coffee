@@ -17,9 +17,15 @@ exports.a = (pane)->
   require '../local'
     .i list
 
-  for a in $ 'a', pane
-    a.onclick = ->
+  for z in $ 'a', pane
+    z.onclick = ->
       sh.run @href
       false
+
+  for z in $ 'input', pane
+    z.onclick = ->
+      z = @
+      z = z.parentElement until 'TBODY' == z.tagName
+      z.nextSibling.className = if @checked then '' else 'hide'
 
   return
