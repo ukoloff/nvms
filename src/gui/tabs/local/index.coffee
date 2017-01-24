@@ -2,14 +2,16 @@
 Locals tab
 ###
 t = require './html'
+tHint = require './hint.html'
 
-tHint = without ->
-  span
-    class: 'hint'
-    @
-
+# Clear on hide
 exports.c = 1
 
 exports.a = ->
   exports.$d.innerHTML = t list = locals()
-  exports.$i.innerHTML = tHint list.length
+  showCount list
+  return
+
+exports.i = showCount = (locals)->
+  exports.$i.innerHTML = tHint locals.length
+  return

@@ -1,19 +1,11 @@
 ###
 Journal tab
 ###
+t = require './row.html'
+tHint = require '../local/hint.html'
+
 n = 0
-
 container = 0
-
-t = without ->
-  div class: @n & 1 and 'odd' or 'even', ->
-    b @n
-    text '. ', new Date
-
-tHint = without ->
-  span
-    class: 'hint'
-    @
 
 # on active
 exports.a = ->
