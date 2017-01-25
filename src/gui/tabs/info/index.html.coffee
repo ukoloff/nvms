@@ -51,25 +51,22 @@ module.exports = without -> table ->
       # alert active?._()
 
   hdr 'OS', ->
-    key = "HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\"
-    row ->
-      th 'Name'
-      td @sh.RegRead "#{key}ProductName"
-    row ->
-      th 'Version'
-      td @sh.RegRead "#{key}CurrentVersion"
-    row ->
-      th 'SP'
-      td @sh.RegRead "#{key}CSDVersion"
+    keyvals = (rec)->
+      for k, v of rec
+        row ->
+          th k
+          td @sh.RegRead "HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\#{v}"
+      return
+    keyvals
+      Name: 'ProductName'
+      Version: 'CurrentVersion'
+      SP: 'CSDVersion'
     row ->
       th 'Platform'
       platform @x64
-    row ->
-      th 'Owner'
-      td @sh.RegRead "#{key}RegisteredOwner"
-    row ->
-      th 'Path'
-      td @sh.RegRead "#{key}SystemRoot"
+    keyvals
+      Owner: 'RegisteredOwner'
+      Path: 'SystemRoot'
 
   hdr 'Names', ->
     row ->
