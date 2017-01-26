@@ -19,6 +19,5 @@ cp "tmp/cli.bat"
 cp "tmp/upgrade.bat"
 cp "./tmp/setup.bat"
 
-switch process.argv[2]
-  when 'tag'
-    require './tag'
+if process.argv[2] in['tag', 'sfx']
+  require "./#{process.argv[2]}"
