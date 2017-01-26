@@ -9,14 +9,16 @@ mkdirp = require 'mkdirp'
   .sync
 
 PACKAGE = require '../../package'
+rm = require './rm'
 
 console.log "Creating sfx at", dst = path.resolve 'tmp/sfx'
+rm dst
 mkdirp dst
 
-zip = new yazl.ZipFile
-zip.outputStream.pipe fs.createWriteStream path.join dst, "#{PACKAGE.mingzi}.zip"
-
-zipTree = (zip, from)->
+zipTree = (name, from)->
+  console.log "Packing:", name += '.zip'
+  zip = new yazl.ZipFile
+  zip.outputStream.pipe fs.createWriteStream path.join dst, name
   do folder = (relative = '')->
     fs.readdirSync path.join from, relative
     .forEach (file)->
@@ -27,4 +29,4 @@ zipTree = (zip, from)->
       zip.addFile full, short
   zip.end()
 
-zipTree zip, require './repo'
+zipTree PACKAGE.mingzi, require './repo'
