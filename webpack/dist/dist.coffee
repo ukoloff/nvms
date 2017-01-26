@@ -2,8 +2,10 @@
 Generate distro
 ###
 path = require 'path'
+
 mkdirp = require 'mkdirp'
   .sync
+
 rm = require './rm'
 cp = require './cp'
 
