@@ -1,4 +1,6 @@
 ###
 Unpack SFX files
 ###
-echo "SFX extractor for #{PACKAGE.mingzi} v#{PACKAGE.version}"
+require('self/tools/guard') ->
+  require './sfx'
+  return
