@@ -17,6 +17,18 @@ console.log "Creating sfx at", dst = path.resolve 'tmp/sfx'
 rm dst
 mkdirp dst
 
+install2 = path.join process.env.APPDATA, PACKAGE.mingzi
+
+openssl = (at)->
+  exe = path.join at, cli = 'openssl-cli.exe'
+  fs.stat exe, (err)->
+    return if err
+    console.log "Copying OpenSSL"
+    fs.createReadStream exe
+    .pipe fs.createWriteStream path.join dst, cli
+
+openssl install2
+
 nodes = require './ls'
 nodesII = nodes.slice()
 
@@ -55,7 +67,7 @@ zipNext = ->
   unless local = nodes.pop()
     do zipped
     return
-  zipTree local, path.join process.env.APPDATA, PACKAGE.mingzi, local
+  zipTree local, path.join install2, local
 
 # Everything is zipped. Pack using iexpress
 zipped = ->
