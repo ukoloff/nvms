@@ -29,6 +29,8 @@ after_test:
   - tmp\cli ls r
   - tmp\cli i
   - tmp\cli ls
+  - tmp\cli i x86
+  - tmp\cli ls
   - tmp\cli i i
   - tmp\cli ls
   - tmp\cli i 0 x86
@@ -42,12 +44,16 @@ after_test:
   - tmp\cli d
   - tmp\cli d .
   - tmp\cli ls
+  - tmp\cli use x86
+  - tmp\cli o x86
+  - node webpack\dist sfx
+  - copy /b tmp\sfx\*.exe .\nvm$86.exe
+  - tmp\cli o x64
+  - tmp\cli o x64 .
+  - tmp\cli use
+  - tmp\cli ls
   - node webpack\dist sfx
   - copy /b tmp\sfx\*.exe .\nvm$64.exe
-  - tmp\cli o x86
-  - tmp\cli o x64
-  - tmp\cli o .
-  - tmp\cli ls
   - dir %APPDATA%\nvm$
   - dir %APPDATA%\nvm$\that
   - tmp\cli b
