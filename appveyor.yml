@@ -47,13 +47,13 @@ after_test:
   - tmp\cli use x86
   - tmp\cli o x86
   - node webpack\dist sfx
-  - copy /b tmp\sfx\*.exe .\nvm$86.exe
+  - copy /b tmp\sfx\nvm$.exe .\nvm$86.exe
   - tmp\cli o x64
   - tmp\cli o x64 .
   - tmp\cli use
   - tmp\cli ls
   - node webpack\dist sfx
-  - copy /b tmp\sfx\*.exe .\nvm$64.exe
+  - copy /b tmp\sfx\nvm$.exe .\nvm$64.exe
   - dir %APPDATA%\nvm$
   - dir %APPDATA%\nvm$\that
   - tmp\cli b
