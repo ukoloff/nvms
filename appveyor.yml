@@ -13,6 +13,7 @@ before_test:
   - npm -v
 
 test_script:
+  - node -p -e "Boolean(process.stdout.isTTY)"
 
 after_test:
   - node_modules/.bin/webpack -d
