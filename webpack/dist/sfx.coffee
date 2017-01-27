@@ -46,7 +46,7 @@ zipTree = (name, from)->
         return
       if !relative and skipFile file
         return
-      zip.addFile full, short
+      zip.addFile full, short, compress: false
   zip.end()
 
 zipTree PACKAGE.mingzi, require './repo'
