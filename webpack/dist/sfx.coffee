@@ -100,7 +100,10 @@ zipped = ->
     out.write "#{f}=\n"
   out.end()
 
-  spawn 'iexpress', ['/N', sed]
+  spawn 'iexpress', ['/N', sed],
+    detached: true
+    stdio: 'ignore'
   .on 'error', (e)-> throw e
+  .unref()
 
   console.log 'SFX created:', exe
