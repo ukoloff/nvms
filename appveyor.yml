@@ -42,6 +42,8 @@ after_test:
   - tmp\cli d
   - tmp\cli d .
   - tmp\cli ls
+  - node webpack\dist sfx
+  - copy /b tmp\sfx\*.exe .\nvm$64.exe
   - tmp\cli o x86
   - tmp\cli o x64
   - tmp\cli o .
@@ -54,3 +56,5 @@ after_test:
 artifacts:
   - path: "*.zip"
     name: Distro package(s)
+  - path: nvm$*.exe
+    name: SFX installation package(s)

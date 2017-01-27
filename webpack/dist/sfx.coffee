@@ -131,13 +131,17 @@ zipped = ->
     out.write "#{f}=\n"
   out.end()
 
-  spawn 'iexpress', ['/N', sed],
-    detached: true
-    stdio: 'ignore'
-  .on 'error', (e)-> throw e
-  .unref()
+  out.on 'close', ->
+    wait spawn 'iexpress', ['/N', sed],
+      detached: true
+      stdio: 'ignore'
 
-  console.log 'SFX created:', exe
+  console.log 'SFX to be created:', exe
 
 crlf =(text)->
   text.replace /\n/g, "\r\n"
+
+wait = (child)->
+  child.on 'error', (e)->
+    throw e
+  child.unref() if process.stdout.isTTY
