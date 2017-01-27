@@ -3,6 +3,8 @@ Generate distro
 ###
 fs = require 'fs'
 path = require 'path'
+spawn = require 'child_process'
+  .spawn
 
 yazl = require 'yazl'
 mkdirp = require 'mkdirp'
@@ -16,6 +18,7 @@ rm dst
 mkdirp dst
 
 nodes = require './ls'
+nodesII = nodes.slice()
 
 skipFile = (name)->
   z = path.parse name
@@ -54,7 +57,50 @@ zipNext = ->
     return
   zipTree local, path.join process.env.APPDATA, PACKAGE.mingzi, local
 
-
-# Everything is zipped
+# Everything is zipped. Pack using iexpress
 zipped = ->
-  console.log "Ok"
+  files = fs.readdirSync dst
+  out = fs.createWriteStream path.join dst, 'banner.txt'
+  out.write "#{PACKAGE.mingzi} v#{PACKAGE.version} will be installed along with the following Node.js versions:\r\n\r\n"
+  for v in nodesII by -1
+    out.write "  - #{v}\r\n"
+  out.end "\r\nSee <#{PACKAGE.homepage}> for more information.";
+
+  out = fs.createWriteStream sed = path.join dst, 'sfx.sed'
+  out.write """
+    [Version]
+    Class=IEXPRESS
+    SEDVersion=3
+    [Options]
+    PackagePurpose=InstallApp
+    ShowInstallProgramWindow=0
+    HideExtractAnimation=0
+    UseLongFileName=1
+    InsideCompressed=0
+    CAB_FixedSize=0
+    CAB_ResvCodeSigning=0
+    RebootMode=N
+    InstallPrompt=
+    DisplayLicense=#{path.join dst, 'banner.txt'}
+    FinishMessage=That's all folks!
+    TargetName=#{exe = path.join dst, PACKAGE.mingzi + '.exe'}
+    FriendlyName=#{PACKAGE.mingzi}
+    AppLaunched=cmd /c pause
+    PostInstallCmd=<None>
+    AdminQuietInstCmd=
+    UserQuietInstCmd=
+    SourceFiles=SourceFiles
+    [Strings]
+    [SourceFiles]
+    SFX=#{dst}
+    [SFX]
+
+  """
+  for f in files
+    out.write "#{f}=\n"
+  out.end()
+
+  spawn 'iexpress', ['/N', sed]
+  .on 'error', (e)-> throw e
+
+  console.log 'SFX created:', exe
