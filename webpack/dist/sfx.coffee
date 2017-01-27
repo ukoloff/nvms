@@ -76,10 +76,26 @@ zipNext = ->
 zipped = ->
   files = fs.readdirSync dst
   out = fs.createWriteStream path.join dst, 'banner.txt'
-  out.write "#{PACKAGE.mingzi} v#{PACKAGE.version} will be installed along with the following Node.js versions:\r\n\r\n"
+  out.write crlf """
+    The following software will be installed:
+
+      > #{PACKAGE.mingzi} (#{PACKAGE.description})
+
+        - v#{PACKAGE.version}
+
+      > Node.js
+
+
+  """
+
+  unless nodesII.length
+    nodesII.push 'none'
   for v in nodesII by -1
-    out.write "  - #{v}\r\n"
-  out.end "\r\nSee <#{PACKAGE.homepage}> for more information.";
+    out.write crlf "    - #{v}\n"
+  out.end crlf """
+
+    See <#{PACKAGE.homepage}> for more information.
+  """
 
   out = fs.createWriteStream sed = path.join dst, 'sfx.sed'
   out.write """
@@ -122,3 +138,6 @@ zipped = ->
   .unref()
 
   console.log 'SFX created:', exe
+
+crlf =(text)->
+  text.replace /\n/g, "\r\n"
