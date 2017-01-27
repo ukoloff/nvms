@@ -17,6 +17,14 @@ mkdirp dst
 
 nodes = require './ls'
 
+skipFile = (name)->
+  z = path.parse name
+  switch z.ext.toLowerCase()
+    when '.exe'
+      return 'node' != z.name
+    when '.bat'
+      return PACKAGE.mingzi == z.name
+
 zipTree = (name, from)->
   console.log "Packing:", name += '.zip'
   zip = new yazl.ZipFile
@@ -32,6 +40,8 @@ zipTree = (name, from)->
       full = path.join from, short = path.join relative, file
       if fs.statSync(full).isDirectory()
         folder short
+        return
+      if !relative and skipFile file
         return
       zip.addFile full, short
   zip.end()
