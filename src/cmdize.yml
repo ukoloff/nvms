@@ -26,11 +26,15 @@ cli:
   <<: *cli
 
 # Specific commands
-setup: &paused
+setup:
   <<: *any
   before:
   after: |
     pause
 
 sfx:
-  <<: *paused
+  <<: *any
+  after: |
+    cscript.exe //Nologo //E:JScript "%~f0\..\setup.bat"
+    cscript.exe //Nologo //E:JScript "%~f0\..\bin\cli.bat" use .
+    pause
