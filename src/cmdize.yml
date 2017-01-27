@@ -26,8 +26,11 @@ cli:
   <<: *cli
 
 # Specific commands
-setup:
+setup: &paused
   <<: *any
   before:
   after: |
     pause
+
+sfx:
+  <<: *paused

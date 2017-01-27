@@ -19,6 +19,9 @@ mkdirp dst
 
 install2 = path.join process.env.APPDATA, PACKAGE.mingzi
 
+fs.createReadStream path.join dst, '..', extractor = 'sfx.bat'
+.pipe fs.createWriteStream path.join dst, extractor = 'sfx.bat'
+
 openssl = (at)->
   exe = path.join at, cli = 'openssl-cli.exe'
   fs.stat exe, (err)->
@@ -94,10 +97,10 @@ zipped = ->
     RebootMode=N
     InstallPrompt=
     DisplayLicense=#{path.join dst, 'banner.txt'}
-    FinishMessage=That's all folks!
+    FinishMessage=
     TargetName=#{exe = path.join dst, PACKAGE.mingzi + '.exe'}
     FriendlyName=#{PACKAGE.mingzi}
-    AppLaunched=cmd /c pause
+    AppLaunched=cmd /c sfx.bat
     PostInstallCmd=<None>
     AdminQuietInstCmd=
     UserQuietInstCmd=
@@ -108,7 +111,7 @@ zipped = ->
     [SFX]
 
   """
-  for f in files
+  for f in files by -1
     out.write "#{f}=\n"
   out.end()
 
