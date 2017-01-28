@@ -45,15 +45,15 @@ after_test:
   - tmp\cli d .
   - tmp\cli ls
   - tmp\cli use x86
-  - tmp\cli o x86
   - node webpack\dist sfx
   - copy /b tmp\sfx\nvm$.exe .\nvm$86.exe
-  - tmp\cli o x64
-  - tmp\cli o x64 .
   - tmp\cli use
   - tmp\cli ls
   - node webpack\dist sfx
   - copy /b tmp\sfx\nvm$.exe .\nvm$64.exe
+  - tmp\cli o
+  - tmp\cli o x86
+  - tmp\cli o x86 .
   - dir %APPDATA%\nvm$
   - dir %APPDATA%\nvm$\that
   - tmp\cli b
