@@ -11,14 +11,11 @@ exports.h = """
   """
 
 exports.$ = (args)->
-  if 1==args.length and '.' == args[0]
-    quiet = 1
-    args = []
   if 'none' == args[0]
     echo "Temporary disabling", PACKAGE.mingzi
     junction()
   else if x = vfilter(args).local().last()
     x.use()
-  else unless quiet
+  else
     throw Error 'Specified Node.js version not installed!'
   return

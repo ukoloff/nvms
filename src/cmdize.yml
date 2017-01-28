@@ -22,19 +22,19 @@
   <<: *cli
   args:
 
-cli:
-  <<: *cli
-
-# Specific commands
-setup:
+:pause: &pause
   <<: *any
   before:
   after: |
     pause
 
+# Specific commands
+
+cli:
+  <<: *cli
+
+setup:
+  <<: *pause
+
 sfx:
-  <<: *any
-  after: |
-    cscript.exe //Nologo //E:JScript "%~f0\..\setup.bat"
-    cscript.exe //Nologo //E:JScript "%~f0\..\bin\cli.bat" use .
-    pause
+  <<: *pause
