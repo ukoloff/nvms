@@ -28,7 +28,7 @@ openssl = (at)->
     return if err
     console.log "Copying OpenSSL"
     openssl = spawn.spawnSync exe, ['version']
-      .stdout.toString()
+      .stdout.toString().trim()
     fs.createReadStream exe
     .pipe fs.createWriteStream path.join dst, cli
 
@@ -100,7 +100,7 @@ zipped = ->
 
         - #{openssl or 'none'}
 
-    See <#{PACKAGE.homepage}> for more information.
+    For more information see: #{PACKAGE.homepage}
   """
 
   out = fs.createWriteStream sed = path.join dst, 'sfx.sed'
