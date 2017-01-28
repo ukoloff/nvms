@@ -4,7 +4,6 @@ Generate distro
 fs = require 'fs'
 path = require 'path'
 spawn = require 'child_process'
-  .spawn
 
 yazl = require 'yazl'
 mkdirp = require 'mkdirp'
@@ -23,10 +22,13 @@ fs.createReadStream path.join dst, '..', extractor = 'sfx.bat'
 .pipe fs.createWriteStream path.join dst, extractor = 'sfx.bat'
 
 openssl = (at)->
+  openssl = 0
   exe = path.join at, cli = 'openssl-cli.exe'
   fs.stat exe, (err)->
     return if err
     console.log "Copying OpenSSL"
+    openssl = spawn.spawnSync exe, ['version']
+      .stdout.toString()
     fs.createReadStream exe
     .pipe fs.createWriteStream path.join dst, cli
 
@@ -94,6 +96,10 @@ zipped = ->
     out.write crlf "    - #{v}\n"
   out.end crlf """
 
+      > OpenSSL
+
+        - #{openssl or 'none'}
+
     See <#{PACKAGE.homepage}> for more information.
   """
 
@@ -132,7 +138,7 @@ zipped = ->
   out.end()
 
   out.on 'close', ->
-    wait spawn 'iexpress', ['/N', sed],
+    wait spawn.spawn 'iexpress', ['/N', sed],
       detached: true
       stdio: 'ignore'
 
