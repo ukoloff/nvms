@@ -301,5 +301,5 @@ to SFX package, by simple installing them
 [AppVeyor]: http://www.appveyor.com/
 [distro]: https://ci.appveyor.com/api/projects/ukoloff/nvms/artifacts/nvm%24.zip?branch=master
 [dev-distro]: https://ci.appveyor.com/api/projects/ukoloff/nvms/artifacts/nvm%24dev.zip?branch=master
-[sfx32]: https://ci.appveyor.com/api/projects/ukoloff/nvms/artifacts/nvm%2486.exe?branch=sfx
-[sfx64]: https://ci.appveyor.com/api/projects/ukoloff/nvms/artifacts/nvm%2464.exe?branch=sfx
+[sfx32]: https://ci.appveyor.com/api/projects/ukoloff/nvms/artifacts/nvm%2486.exe?branch=master
+[sfx64]: https://ci.appveyor.com/api/projects/ukoloff/nvms/artifacts/nvm%2464.exe?branch=master
