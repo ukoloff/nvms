@@ -1,17 +1,16 @@
 ###
 Perform self upgrade
 ###
-echo "Fetching:", url = "#{PACKAGE.homepage}/archive/dist.zip"
-ajax url, zip = file cache, "#{PACKAGE.mingzi}.zip"
+fetch "#{PACKAGE.homepage}/archive/dist.zip", zip = file cache, "#{PACKAGE.mingzi}.zip"
 
 echo "Extracting..."
-# https://github.com/hakobera/nvmw/blob/master/unzip.js
 
 unpack = folder cache, PACKAGE.mingzi
 .mk true
 
+# https://github.com/hakobera/nvmw/blob/master/unzip.js
 unpack.ns()
-.copyHere zip.ns().Items(), 0
+.copyHere zip.ns().Items(), 16 # Respond with "Yes to All" for any dialog box that is displayed
 
 zip.rm()
 
