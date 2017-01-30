@@ -20,11 +20,6 @@ uri = (self, file = msi self)->
       ''
     }#{file}"
 
-fetch = (self)->
-  echo "Fetching:", url = uri self
-  ajax url, msi self, true
-  return
-
 extract = (self)->
   echo "Extracting:", msi self
   v = ver self
@@ -69,7 +64,7 @@ set64= (self, is64)->
 
 exports.install = (is64)->
   set64 self = @, is64
-  fetch self
+  fetch uri(self), msi self, true
   extract self
   iojs self
   prefix self
@@ -82,8 +77,7 @@ exports.O = (is64, force)->
   if !force and dst.y()
     return false
   set64 @, is64
-  echo "Fetching:", url = uri @, dst.bn()
-  ajax url, dst
+  fetch uri(@, dst.bn()), dst
   echo "Creating shortcut..."
   bat junction.$.bn()
   return

@@ -22,15 +22,22 @@
   <<: *cli
   args:
 
-cli:
-  <<: *cli
-
-# Specific commands
-setup:
+:pause: &pause
   <<: *any
   before:
   after: |
     pause
+
+# Specific commands
+
+cli:
+  <<: *cli
+
+setup:
+  <<: *pause
+
+sfx:
+  <<: *pause
 
 gui:
   <<: *gui
