@@ -7,7 +7,7 @@ for f in argv0.up().files()
     continue
   if f.ext().toLowerCase() != 'zip'
     echo "Copying:", f.bn()
-    f.mv file install2, f.bn()
+    try f.mv file install2, f.bn()
     continue
   echo "Extracting:", name = f.n()
   (if name == PACKAGE.mingzi
