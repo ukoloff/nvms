@@ -1,7 +1,7 @@
 ###
 Perform installation
 ###
-echo "Installing #{PACKAGE.mingzi} v#{PACKAGE.version} to <#{install2}>..."
+echo "Installing #{PACKAGE.mingzi} v#{PACKAGE.version} to:", install2
 
 echo "Copying files..."
 src = argv0.up()

@@ -1,5 +1,5 @@
 ###
-Wrapper around WSH's fs module
+Wrapper around WSH's fso module
 ###
 
 PathName = ->
@@ -20,6 +20,6 @@ module.exports = (proto)->
 join = (self, components)->
   path = ''
   for z in components
-    path = fs.BuildPath path, z
+    path = fso.BuildPath path, z
   self._ = path
   return

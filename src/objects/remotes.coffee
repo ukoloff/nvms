@@ -6,14 +6,10 @@ module.exports =
 exports = ->
   r = []
   for k, v of dists
-    if cached f = dpath k
-      tab = f.load()
-    else
-      echo "Fetching:", url = "#{v}index.json"
-      f.save tab = ajax url
-    tab = for z in json2 tab when msi z
-      new Remote z, k
-    r = r.concat tab
+    unless cached f = dpath k
+      fetch "#{v}index.json", f
+    for z in json2 f.load() when msi z
+      r.push new Remote z, k
   r.sort semver.$
 
 dpath = (dist)->
@@ -38,10 +34,7 @@ exports.v = ->
   remote.$[0].join '.'
 
 Remote = (line, dist)->
-  ver = semver line.version
-  @$ = [ver, [dist]]
-  @dist = dist
-  @src = line
+  @$ = [semver((@src = line).version), [@dist = dist]]
   return
 
 Remote:: = remote.proto

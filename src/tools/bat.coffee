@@ -11,13 +11,10 @@ module.exports = exports = (id)->
 
     """
 
-  if file install2, OpenSSL
-  .y()
-    file id, 'openssl.bat'
-    .save """
-      @"%~dp0..\\#{OpenSSL}" %*
+  if (openssl = file install2, OpenSSL).y() and
+    not (bin = file id, 'openssl.exe').y()
+      openssl.cp bin
 
-      """
   nodew id
 
 # Name of OpenSSL binary

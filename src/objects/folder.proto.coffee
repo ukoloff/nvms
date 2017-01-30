@@ -4,22 +4,22 @@ Folder object methods
 
 # Exists ?
 exports.y = ->
-  fs.FolderExists @
+  fso.FolderExists @
 
 # rmdir
 exports.rm = (ensure)->
   unless ensure and not @y()
-    fs.DeleteFolder @
+    fso.DeleteFolder @
   @
 
 # copy
 exports.cp = (to)->
-  fs.CopyFolder @, to
+  fso.CopyFolder @, to
   return
 
 # move
 exports.mv = (to)->
-  fs.MoveFolder @, to
+  fso.MoveFolder @, to
   return
 
 # mkdir -p with optional cleaning
@@ -33,14 +33,14 @@ exports.mk = (clean)->
       q.push f
       f = f.up()
     while f = q.pop()
-      fs.CreateFolder f
+      fso.CreateFolder f
     @
   finally
     @_ = _
 
 # ActiveX Folder object
 exports.$ = ->
-  fs.GetFolder @
+  fso.GetFolder @
 
 children = (list, map)->
   res = []
