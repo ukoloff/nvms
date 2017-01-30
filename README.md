@@ -18,6 +18,7 @@ but totally rewritten using
 - Generates console-less Node.js binary (`nodew.exe`)
 - Can optionally install OpenSSL binary
 - Detects availability of new versions of Node.js and itself
+- One (or more) Node.js versions can be incorporated into installation package
 
 ## Installation
 
@@ -34,7 +35,7 @@ or don't like to use command prompt:
 - Run it
 - It will download full distro, unpack and start installation
 
-Finally, if your browser won't agree to download
+In case your browser won't agree to download
 batch files or run them afterwards,
 you can do the job of `upgrade.bat` yourself:
 
@@ -45,7 +46,13 @@ you can do the job of `upgrade.bat` yourself:
 - Agree
 - Click `setup.bat` again
 
-After installation you should close command prompt (if any)
+Finally, you can download `nvm$` package
+with Node.js incorporated
+([x64][sfx64] or [x86][sfx32])
+and install everything
+requiring no Internet access.
+
+After any installation you should close command prompt (if any)
 and open new one to use `nvm$`.
 
 ## Update
@@ -237,6 +244,37 @@ and take some (*more*) time
 for actual files removal
 (may be 10 minutes or so).
 
+## Building SFX package
+
+To build SFX package
+(containing `nvm$` itself
+and some Node.js versions),
+full repository is needed.
+It works only on Windows so far.
+
+Command to build package is `node webpack\dist [filter]`,
+where `filter` is regular filtering
+expression (just like [ls](#ls) command).
+
+If no filter set,
+active installed version will be packed,
+unless `nvm$ use none` was issued.
+In latter case, latest of installed
+will go into SFX.
+
+When filter is specified,
+all versions, matching it
+will be packed into SFX,
+allowing many (or none)
+Node.js versions available
+after installation.
+So, say `node webpack\dist all`
+to add all versions installed.
+
+You can add some global npm packages
+to SFX package, by simple installing them
+(`npm install -g`) into Node.js to package.
+
 ## Credits
 
   * [Node.js][]
@@ -263,3 +301,5 @@ for actual files removal
 [AppVeyor]: http://www.appveyor.com/
 [distro]: https://ci.appveyor.com/api/projects/ukoloff/nvms/artifacts/nvm%24.zip?branch=master
 [dev-distro]: https://ci.appveyor.com/api/projects/ukoloff/nvms/artifacts/nvm%24dev.zip?branch=master
+[sfx32]: https://ci.appveyor.com/api/projects/ukoloff/nvms/artifacts/nvm%2486.exe?branch=sfx
+[sfx64]: https://ci.appveyor.com/api/projects/ukoloff/nvms/artifacts/nvm%2464.exe?branch=sfx
