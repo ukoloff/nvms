@@ -27,5 +27,6 @@ exports.a = (pane)->
       z = @
       z = z.parentElement until 'TBODY' == z.tagName
       z.nextSibling.className = if @checked then '' else 'hide'
+      @blur()
 
   return

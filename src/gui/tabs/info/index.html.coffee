@@ -18,8 +18,9 @@ module.exports = without -> table ->
     td PACKAGE.version
 
   hdr = (name, content)->
-    tbody -> row -> td colspan: 2, -> label ->
+    tbody -> row -> td colspan: 2, -> label for: "/#{n}", ->
       input
+        id: "/#{n}"
         type: 'checkbox'
         checked: true
       text ' ', name
