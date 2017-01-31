@@ -20,5 +20,5 @@ git 'tag', '-f', vX = "v#{PACKAGE.version}"
 git 'push', '--tags', '--force', 'origin'
 git 'fetch'
 git 'checkout', '-f', 'dist'
-git 'merge', '-X', 'theirs', vX, '-m', vX
+git 'merge', '-X', 'theirs', '--allow-unrelated-histories', vX, '-m', vX
 git 'push'
