@@ -1,7 +1,6 @@
 webpack = require 'webpack'
 
 sources = require './sources'
-cmdize = require './cmdize'
 ugly = require './ugly'
 
 @entry = sources.entry
@@ -55,7 +54,7 @@ stringify = (rec)->
       max_line_len: 128
     compress:
       warnings: false
-  cmdize: cmdize()
+  cmdize: do require './cmdize'
   defines: new webpack.DefinePlugin
     PACKAGE: stringify require '../package'
   globals: new webpack.ProvidePlugin sources.globals
