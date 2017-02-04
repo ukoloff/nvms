@@ -55,6 +55,7 @@ stringify = (rec)->
     compress:
       warnings: false
   cmdize: do require './cmdize'
+  fresh: do require './fresh'
   defines: new webpack.DefinePlugin
     PACKAGE: stringify require '../package'
   globals: new webpack.ProvidePlugin sources.globals
