@@ -1,7 +1,6 @@
 webpack = require 'webpack'
 
 sources = require './sources'
-cmdize = require './cmdize'
 ugly = require './ugly'
 
 wrapAt = 108
@@ -61,7 +60,8 @@ stringify = (rec)->
       keep_quoted_props: true
     compress:
       warnings: false
-  cmdize: cmdize()
+  cmdize: do require './cmdize'
+  fresh: do require './fresh'
   defines: new webpack.DefinePlugin
     PACKAGE: stringify require '../package'
   globals: new webpack.ProvidePlugin sources.globals
