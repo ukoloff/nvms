@@ -13,6 +13,7 @@ exports.a = (pane)->
     sh: sh
     n: activeX "WScript.Network"
     x64: x64
+    a: others.a
 
   require '../local'
     .i list

@@ -2,7 +2,8 @@
 Run in browser
 ###
 
-others.h = document.$
+for k, v of document.$
+  others[k] = v
 
 try
   delete document.$

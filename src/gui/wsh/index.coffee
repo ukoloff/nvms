@@ -15,7 +15,9 @@ d.body.innerHTML = ''
 others.w =
 w = d.$
 
-d.$ = wsh
+d.$ =
+  h: wsh
+  a: admin
 
 w.eval argv0.load()
 
