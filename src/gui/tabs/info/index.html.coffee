@@ -81,4 +81,4 @@ module.exports = without -> table ->
       td @n.UserDomain
     row ->
       th 'Role'
-      td if @a then 'Admin' else 'User'
+      td if @a then 'Administrator' else 'User'
