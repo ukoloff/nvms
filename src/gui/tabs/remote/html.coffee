@@ -8,6 +8,7 @@ module.exports = without ->
     true
   do it = (tree = @, prefix = '')->
     for k, v of tree
+      k = Number k
       leaf = empty v.down
       div prefix, k
       if leaf

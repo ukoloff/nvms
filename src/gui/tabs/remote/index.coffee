@@ -14,7 +14,7 @@ arborize = (list)->
   for z in list by -1
     t = tree
     for n in z.$[0]
-      t = t[n] ||=
+      t = t[" #{n}"] ||=
         best: z
         down: {}
         dists: {}
