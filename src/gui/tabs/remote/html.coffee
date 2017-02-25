@@ -6,13 +6,32 @@ module.exports = without ->
     for k of rec
       return
     true
+  single = (rec)->
+    for k of rec
+      return if result
+      result = k
+    result += ' ' if result
+  n = 0
   do it = (tree = @, prefix = '')->
     for k, v of tree
       k = Number k
       leaf = empty v.down
-      div prefix, k
+      myN = ++n
+      div
+        class: if myN & 1 then 'odd' else 'even'
+        -> input
+          type: 'checkbox'
+          disabled: leaf
+        ' '
+        single v.dists
+        prefix
+        k
+        ' '
+        -> i v.best.$[0].join '.'
       if leaf
         continue
       div
         class: 'indent hide'
         -> it v.down, "#{prefix}#{k}."
+      if n - myN & 1
+        n++
