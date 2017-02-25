@@ -9,7 +9,7 @@ exports.a = (pane)->
   pane.innerHTML = t arborize remotes true
   for cb in $ 'input', pane when not cb.disabled
     cb.onclick = ->
-      div = @parentNode.nextSibling
+      div = @parentNode.parentNode.nextSibling
       k = div.className.split(/\s+/)[0]
       unless @checked
         k += ' hide'

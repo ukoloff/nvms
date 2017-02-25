@@ -19,13 +19,11 @@ module.exports = without ->
       myN = ++n
       div
         class: if myN & 1 then 'odd' else 'even'
-        -> input
-          type: 'checkbox'
-          disabled: leaf
-        ' '
-        single v.dists
-        prefix
-        k
+        -> label ->
+          input
+            type: 'checkbox'
+            disabled: leaf
+          text ' ', single(v.dists), prefix, k
         -> i ' // ', v.best.$[0].join '.'
       if leaf
         continue
