@@ -10,15 +10,15 @@ module.exports = without ->
     for k of rec
       return if result
       result = k
-    result += ' ' if result
+    if result
+      result + ' '
   n = 0
   do it = (tree = @, prefix = '')->
     for k, v of tree
       k = Number k
       leaf = empty v.down
-      myN = ++n
       div
-        class: if myN & 1 then 'odd' else 'even'
+        class: if n++ & 1 then 'odd' else 'even'
         -> label ->
           input
             type: 'checkbox'
@@ -29,6 +29,9 @@ module.exports = without ->
         continue
       div
         class: 'indent hide'
-        -> it v.down, "#{prefix}#{k}."
-      if n - myN & 1
-        n++
+        ->
+          n0 = n
+          it v.down, "#{prefix}#{k}."
+          if n0 - n & 1
+            n++
+    return
