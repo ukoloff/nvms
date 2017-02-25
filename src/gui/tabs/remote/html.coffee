@@ -26,8 +26,7 @@ module.exports = without ->
         single v.dists
         prefix
         k
-        ' '
-        -> i v.best.$[0].join '.'
+        -> i ' // ', v.best.$[0].join '.'
       if leaf
         continue
       div
