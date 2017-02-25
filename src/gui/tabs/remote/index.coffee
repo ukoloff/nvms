@@ -2,11 +2,13 @@
 Remotes tab
 ###
 t = require './html.coffee'
+tHint = require '../local/hint.html'
 
 exports.a = (pane)->
   exports.a = 0
   # Load remotes list without fetch (previously loaded)
-  pane.innerHTML = t arborize remotes true
+  pane.innerHTML = t arborize rs = remotes true
+  exports.$i.innerHTML = tHint rs.length
   for cb in $ 'input', pane when not cb.disabled
     cb.onclick = ->
       div = @parentNode.parentNode.nextSibling
