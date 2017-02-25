@@ -23,9 +23,14 @@ arborize = (list)->
     t = tree
     for n in z.$[0]
       t = t[" #{n}"] ||=
+        n: 0
         best: z
         down: {}
-        dists: {}
-      t.dists[z.dist] = 1
+      t.n++
+      if t.dist != false and t.dist != z.dist
+        t.dist = if t.dist
+          false
+        else
+          z.dist
       t = t.down
   tree

@@ -6,12 +6,6 @@ module.exports = without ->
     for k of rec
       return
     true
-  single = (rec)->
-    for k of rec
-      return if result
-      result = k
-    if result
-      result + ' '
   n = 0
   do it = (tree = @, prefix = '')->
     for k, v of tree
@@ -23,7 +17,13 @@ module.exports = without ->
           input
             type: 'checkbox'
             disabled: leaf
-          text ' ', single(v.dists), prefix, k
+          text ' ',
+            if v.dist then "#{v.dist} "
+            prefix, k
+          if v.n > 1
+            span
+              class: 'hint'
+              v.n
         -> i ' // ', v.best.$[0].join '.'
       if leaf
         continue
