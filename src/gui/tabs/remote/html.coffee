@@ -24,7 +24,18 @@ module.exports = without ->
             span
               class: 'hint'
               v.n
-        -> i ' // ', v.best.$[0].join '.'
+        -> span class: 'ask', ->
+          a
+            href: '#'
+            title: "#{PACKAGE.mingzi} install #{v.best.$[0].join '.'}"
+            'install'
+          if v.best.$[0][0]
+            return
+          text ' or '
+          a
+            href: '#'
+            title: "#{PACKAGE.mingzi} openssl"
+            'openssl'
       if leaf
         continue
       div
