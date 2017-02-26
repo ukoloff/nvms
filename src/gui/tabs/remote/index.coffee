@@ -27,9 +27,9 @@ arborize = (list)->
         best: z
         down: {}
       t.n++
-      if t.dist != false and t.dist != z.dist
+      if z.dist and t.dist != 0 and t.dist != z.dist
         t.dist = if t.dist
-          false
+          0
         else
           z.dist
       t = t.down
