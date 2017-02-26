@@ -8,4 +8,9 @@ module.exports = without ->
       title "#{PACKAGE.mingzi}@#{PACKAGE.version}"
       style -> raw @
       script "document.$=window"
-    body -> div "#{PACKAGE.mingzi} session terminated..."
+    body -> div ->
+      a
+        href: PACKAGE.homepage
+        target: '_blank'
+        PACKAGE.mingzi
+      text " session terminated"
