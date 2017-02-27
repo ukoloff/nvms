@@ -1,6 +1,8 @@
 ###
 Create shortcuts
 ###
+verb = require './verb'
+
 for z in require '.'
   q = sh.CreateShortcut z
   q.TargetPath = 'cmd'
@@ -9,6 +11,4 @@ for z in require '.'
   q.WindowStyle = 7   # Minimized
   q.save()
   # Pin to TaskBar
-  try
-    z.abs().up().ns().ParseName z.bn()
-      .InvokeVerb 'taskbarpin'
+  verb z, 'taskbarpin'
