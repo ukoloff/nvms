@@ -18,7 +18,7 @@ exports.$ = (args)->
   addpath()
   echo "Removing files..."
   junction false
-  require 'self/setup/pif.drop'
+  require 'self/setup/pif/drop'
   require '../zog'
     # ZOG::bye
     .b ''

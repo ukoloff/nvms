@@ -1,7 +1,7 @@
 ###
 Create shortcuts
 ###
-for z in require './pif'
+for z in require '.'
   q = sh.CreateShortcut z
   q.TargetPath = 'cmd'
   q.Arguments = '/c gui.bat'
