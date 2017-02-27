@@ -2,9 +2,13 @@
 Create shortcuts
 ###
 for z in require './pif'
-  z = sh.CreateShortcut z
-  z.TargetPath = 'cmd'
-  z.Arguments = '/c gui.bat'
-  z.WorkingDirectory = install2
-  z.WindowStyle = 7   # Minimized
-  z.save()
+  q = sh.CreateShortcut z
+  q.TargetPath = 'cmd'
+  q.Arguments = '/c gui.bat'
+  q.WorkingDirectory = install2
+  q.WindowStyle = 7   # Minimized
+  q.save()
+  # Pin to TaskBar
+  try
+    z.abs().up().ns().ParseName z.bn()
+      .InvokeVerb 'taskbarpin'
