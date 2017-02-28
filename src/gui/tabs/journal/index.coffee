@@ -36,7 +36,7 @@ echo._ = (line)->
     pane.appendChild z
   if exports.v
     scroll()
-  else
+  else if n > 1 or unseen
     exports.$i.innerHTML = tHint ++unseen
   return
 

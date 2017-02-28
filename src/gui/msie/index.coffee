@@ -12,3 +12,4 @@ catch
 
 require './render'
 require './tabs'
+require './start'
