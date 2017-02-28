@@ -8,7 +8,7 @@ n = unseen = 0
 container = 0
 
 # on active
-exports.a = (pane)->
+exports.a = ->
   unseen = 0
   exports.$i.innerHTML = ''
   unless exports.v
@@ -36,7 +36,7 @@ echo._ = (line)->
     pane.appendChild z
   if exports.v
     scroll()
-  else if n > 1 or unseen
+  else if n > 1
     exports.$i.innerHTML = tHint ++unseen
   return
 
