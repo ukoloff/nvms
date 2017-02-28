@@ -16,6 +16,10 @@ exports.a = (pane)->
       unless @checked
         k += ' hide'
       div.className = k
+  for a in $ 'a', pane
+    a.onclick = ->
+      echo @title
+  return
 
 arborize = (list)->
   tree = {}

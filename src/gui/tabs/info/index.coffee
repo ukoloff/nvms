@@ -20,6 +20,7 @@ exports.a = (pane)->
 
   for z in $ 'a', pane
     z.onclick = ->
+      echo "Open URL:", @href
       run @href
       false
 
