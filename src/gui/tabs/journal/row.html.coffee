@@ -2,6 +2,6 @@
 Journal tab template
 ###
 module.exports = without ->
-  div class: @n & 1 and 'odd' or 'even', ->
-    b @n
-    text '. ', new Date
+  div
+    class: if @n & 1 then 'odd' else 'even'
+    @$
