@@ -12,7 +12,7 @@ exports.a = (pane)->
   showCount list
   for a in $ 'a', pane
     a.onclick = ->
-      echo @title
+      try echo @title
       false
   return
 
