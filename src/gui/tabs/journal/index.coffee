@@ -4,8 +4,27 @@ Journal tab
 t = require './row.html'
 tHint = require '../local/hint.html'
 
-n = unseen = 0
-container = 0
+n = unseen = minute = container = 0
+
+append = (ts, line)->
+  pane = exports.$d
+
+  unless container
+    pane.innerHTML = do without -> div()
+    container = pane.firstChild
+    pane.innerHTML = ''
+
+  container.innerHTML = t
+    n: ++n
+    t: ts
+    $: line
+  for z in container.children
+    pane.appendChild z
+  return
+
+scroll = ->
+  exports.$d.lastChild?.scrollIntoView()
+  return
 
 # on active
 exports.a = ->
@@ -22,24 +41,16 @@ echo._ = (line)->
   if DEBUG
     stdout line
 
-  pane = exports.$d
+  min = new Date now = new Date
+  min.setSeconds 0, 0
+  min0 = min.getTime()
+  if min0 != minute
+    append '', min
+    minute = min0
+  append "#{now.getSeconds()}.#{Math.floor now.getMilliseconds() / 100}", line
 
-  unless container
-    pane.innerHTML = do without -> div()
-    container = pane.firstChild
-    pane.innerHTML = ''
-
-  container.innerHTML = t
-    n: ++n
-    $: line
-  for z in container.children
-    pane.appendChild z
   if exports.v
     scroll()
   else if n > 1
     exports.$i.innerHTML = tHint ++unseen
-  return
-
-scroll = ->
-  exports.$d.lastChild?.scrollIntoView()
   return
