@@ -13,6 +13,7 @@ exports.a = (pane)->
   for a in $ 'a', pane
     a.onclick = ->
       echo @title
+      false
   return
 
 exports.i = showCount = (locals)->
