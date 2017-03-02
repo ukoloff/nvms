@@ -46,7 +46,10 @@ module.exports = without ->
   mini = min.getTime()
   if i.m != mini
     i.m = mini
-    div (-> ts ''), date2str min
+    div
+      class: 'tt'
+      -> ts ''
+      date2str min
 
   div
     class: if i.n++ & 1 then 'odd' else 'even'
