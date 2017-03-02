@@ -33,9 +33,9 @@ echo._ = (line)->
     pane.innerHTML = ''
 
   container.innerHTML = t line
-  ch = for z in container.children
+  ch = for z in container.children by -1
     z
-  for z in ch
+  for z in ch by -1
     pane.appendChild z
 
   if exports.v
