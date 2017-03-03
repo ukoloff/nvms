@@ -1,0 +1,4 @@
+###
+Log start
+###
+echo 'Started'

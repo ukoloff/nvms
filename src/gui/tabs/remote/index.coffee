@@ -6,6 +6,7 @@ tHint = require '../local/hint.html'
 
 exports.a = (pane)->
   exports.a = 0
+  echo "Building remote Node.js version tree"
   # Load remotes list without fetch (previously loaded)
   pane.innerHTML = t arborize rs = remotes true
   exports.$i.innerHTML = tHint rs.length
@@ -16,6 +17,11 @@ exports.a = (pane)->
       unless @checked
         k += ' hide'
       div.className = k
+  for a in $ 'a', pane
+    a.onclick = ->
+      try echo @title
+      false
+  return
 
 arborize = (list)->
   tree = {}

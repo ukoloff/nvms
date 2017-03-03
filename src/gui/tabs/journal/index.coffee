@@ -4,21 +4,42 @@ Journal tab
 t = require './row.html'
 tHint = require '../local/hint.html'
 
-n = 0
-container = 0
+n = unseen = container = 0
+
+scroll = ->
+  exports.$d.lastChild?.scrollIntoView()
+  return
 
 # on active
-exports.a = (pane)->
-  if exports.v
-    return
+exports.a = ->
+  unseen = 0
+  exports.$i.innerHTML = ''
+  unless exports.v
+    scroll()
+  return
+
+if DEBUG
+  stdout = echo._
+
+echo._ = (line)->
+  if DEBUG
+    stdout line
+
+  pane = exports.$d
+
   unless container
     pane.innerHTML = do without -> div()
     container = pane.firstChild
     pane.innerHTML = ''
 
-  exports.$i.innerHTML = tHint ++n
+  container.innerHTML = t line
+  ch = for z in container.children by -1
+    z
+  for z in ch by -1
+    pane.appendChild z
 
-  container.innerHTML = t n: n
-  pane.appendChild z for z in container.children
-  z?.scrollIntoView()
+  if exports.v
+    scroll()
+  else if n++
+    exports.$i.innerHTML = tHint ++unseen
   return

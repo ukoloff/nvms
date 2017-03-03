@@ -10,6 +10,10 @@ exports.c = 1
 exports.a = (pane)->
   pane.innerHTML = t list = locals()
   showCount list
+  for a in $ 'a', pane
+    a.onclick = ->
+      try echo @title
+      false
   return
 
 exports.i = showCount = (locals)->
