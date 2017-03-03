@@ -33,7 +33,7 @@ module.exports = without ->
       }"
 
   # Format timestamp
-  ts = (str, title)->
+  ts = (str = '', title)->
     while str.length < 4
       str = ' ' + str
     tt
@@ -48,7 +48,7 @@ module.exports = without ->
     i.m = mini
     div
       class: 'tt'
-      -> ts ''
+      ts
       date2str min
 
   div
