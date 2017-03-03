@@ -7,5 +7,5 @@ module.exports = exports = (args)->
     args.pop()
     true
   else
-    exports.$ = "`#{PACKAGE.mingzi} #{argv.join ' '} .`"
+    exports.$ = "#{PACKAGE.mingzi} #{argv.join ' '} ."
     false

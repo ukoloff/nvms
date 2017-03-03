@@ -12,10 +12,7 @@ exports.h = """
 
 exports.$ = (args)->
   unless period args
-    echo """
-
-      Say #{period.$} to really remove everything.
-    """
+    echo "\nTo really remove everything say:", period.$
     exit()
   echo "Removing from PATH"
   addpath()

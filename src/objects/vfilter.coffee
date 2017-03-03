@@ -20,7 +20,7 @@ exports = (args)->
       dist = x
     else if (is64 = parse64 arg)?
       $64 = is64
-    else if /^\d/.test arg
+    else if /^v?\d/i.test arg
       ver = semver arg
   new Filter ver, dist, $64
 
@@ -41,4 +41,4 @@ exports.$6 = $6 = do ->
   x = ['x86','x64']
   alt if x64 then x.reverse() else x
 
-exports.$ = "#{alt keys()} [n[.n[.n]]] #{$6}"
+exports.$ = "#{alt keys()} [[v]N[.N[.N]]] #{$6}"

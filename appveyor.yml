@@ -15,10 +15,10 @@ before_test:
 test_script:
 
 after_test:
-  - node_modules/.bin/webpack -d
+  - node webpack -d
   - node webpack/dist
   - 7z a -r nvm$dev.zip ./tmp/dist/*
-  - node_modules/.bin/webpack -p
+  - node webpack -p
   - node webpack/dist
   - 7z a -r nvm$.zip ./tmp/dist/*
   - tmp\cli v

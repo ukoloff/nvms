@@ -21,6 +21,7 @@ module.exports = ->
         x = path.parse dst = z.existsAt
         continue if '.js' != x.ext
         fs.unlink dst, ->
+        fs.unlink "#{dst}.map", ->
         x.base = x.name + '.bat'
 
         for q in dup [x.name, ':*'], debug

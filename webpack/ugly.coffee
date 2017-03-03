@@ -2,7 +2,8 @@
 Patch webpack's UglifyJS plugin
 ###
 
-ujs = require 'webpack/lib/optimize/UglifyJsPlugin'
+ujs = require 'webpack'
+  .optimize.UglifyJsPlugin
 
 module.exports = (options)->
   apply: (compiler)->

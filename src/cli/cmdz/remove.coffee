@@ -20,11 +20,8 @@ exports.$ = (args)->
     all args.slice 1
   else
     one args
-  return if danger
-  echo """
-
-    To actually uninstall say #{period.$}
-    """
+  unless danger
+    echo "\nTo actually uninstall say:", period.$
   return
 
 all = (args)->

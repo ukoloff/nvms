@@ -17,10 +17,16 @@ exports.dec = (str)->
   element.text = ''
   res
 
+# split by 2 chars
+chunk = (str)->
+  i = 0
+  while i < str.length
+    j = i
+    str.substring j, i += 2
+
 # Revert bytes
 revert = (str)->
-  str
-  .match(/../g)
+  chunk str
   .reverse()
   .join ''
 
