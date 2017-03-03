@@ -36,5 +36,5 @@ i.send(null),200!==i.status)throw Error("HTTP error "+i.status+": "+i.statusText
 void e.Close()):i.responseText}}).call(n,r(4),r(12))},,,,,,function(t,n,r){(function(t,n,r,e,o,i){var u,c,f,s;if(t("https://github.com/ukoloff/nvms/archive/dist.zip",s=n(r,"nvm$.zip")),
 e("Extracting..."),f=o(r,"nvm$").mk(!0),f.ns().copyHere(s.ns().Items(),16),s.rm(),c=function(t){var n,r,e,o,i;for(o=t.files(),r=o.length-1;r>=0;r+=-1)if(n=o[r],
 "bat"===n.ext())return n;for(i=t.folders(),e=i.length-1;e>=0;e+=-1)if(n=i[e],n=c(n))return n},!(u=c(f))){try{f.rm()}catch(t){}throw Error("Setup not found");
-}i.Run(u)}).call(n,r(27),r(3),r(15),r(2),r(1),r(8))},,,,,,,,,,,,,,,,,,,,,,,,,,,function(t,n,r){(function(t){t("Installing/upgrading nvm$ v0.9.1...");
+}i.Run(u)}).call(n,r(27),r(3),r(15),r(2),r(1),r(8))},,,,,,,,,,,,,,,,,,,,,,,,,,,function(t,n,r){(function(t){t("Installing/upgrading nvm$ v0.9.2...");
 }).call(n,r(2))}]);
