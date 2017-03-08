@@ -1,7 +1,7 @@
 ###
 Remotes tab
 ###
-t = require './html.coffee'
+t = require './html'
 tHint = require '../local/hint.html'
 
 exports.a = (pane)->
@@ -26,17 +26,17 @@ exports.a = (pane)->
 arborize = (list)->
   tree = {}
   for z in list by -1
-    t = tree
+    q = tree
     for n in z.$[0]
-      t = t[" #{n}"] ||=
+      q = q[" #{n}"] ||=
         n: 0
         best: z
         down: {}
-      t.n++
-      if z.dist and t.dist != 0 and t.dist != z.dist
-        t.dist = if t.dist
+      q.n++
+      if z.dist and q.dist != 0 and q.dist != z.dist
+        q.dist = if q.dist
           0
         else
           z.dist
-      t = t.down
+      q = q.down
   tree
