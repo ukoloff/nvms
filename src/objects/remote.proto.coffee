@@ -25,6 +25,7 @@ extract = (self)->
   v = ver self
   extract2 = folder cache, v
   .rm true
+  # Error in XP: correct syntax is: TARGETDIR="path/to/msi"
   run 1, true, 'msiexec', '/a', msi(self, true), "TARGETDIR=#{extract2}", '/passive'
   self.dst = dst = folder install2, v
   .rm true
