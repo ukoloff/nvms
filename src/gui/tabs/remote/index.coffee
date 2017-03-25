@@ -1,12 +1,17 @@
 ###
 Remotes tab
 ###
-t = require './html.coffee'
+t = require './html'
 tHint = require '../local/hint.html'
 
 exports.a = (pane)->
   exports.a = 0
-  echo "Building remote Node.js version tree"
+  echo s = "Building remote Node.js version tree..."
+  pane.innerHTML = s
+  setTimeout render
+
+render = ->
+  pane = exports.$d
   # Load remotes list without fetch (previously loaded)
   pane.innerHTML = t arborize rs = remotes true
   exports.$i.innerHTML = tHint rs.length
@@ -19,24 +24,24 @@ exports.a = (pane)->
       div.className = k
   for a in $ 'a', pane
     a.onclick = ->
-      try echo @title
+      echo @title
       false
   return
 
 arborize = (list)->
   tree = {}
   for z in list by -1
-    t = tree
+    q = tree
     for n in z.$[0]
-      t = t[" #{n}"] ||=
+      q = q[" #{n}"] ||=
         n: 0
         best: z
         down: {}
-      t.n++
-      if z.dist and t.dist != 0 and t.dist != z.dist
-        t.dist = if t.dist
+      q.n++
+      if z.dist and q.dist != 0 and q.dist != z.dist
+        q.dist = if q.dist
           0
         else
           z.dist
-      t = t.down
+      q = q.down
   tree
