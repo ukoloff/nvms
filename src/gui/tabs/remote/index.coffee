@@ -24,7 +24,7 @@ render = ->
       div.className = k
   for a in $ 'a', pane
     a.onclick = ->
-      try echo @title
+      echo @title
       false
   return
 
