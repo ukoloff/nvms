@@ -24,10 +24,11 @@ extract = (self)->
   echo "Extracting:", msi self
   v = ver self
   extract2 = folder cache, v
-  .rm true
-  run 1, true, 'msiexec', '/a', msi(self, true), "TARGETDIR=#{extract2}", '/passive'
+    .rm true
+  run 1, true, 'msiexec', '/a', msi(self, true),
+    "TARGETDIR=", run._, extract2, '/passive'
   self.dst = dst = folder install2, v
-  .rm true
+    .rm true
   extract2.folders().shift().mv dst
   extract2.rm()
   return
