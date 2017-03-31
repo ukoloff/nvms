@@ -11,7 +11,7 @@ exports.c = 1
 exports.a = (pane)->
   pane.innerHTML = t list = locals()
   showCount list
-  ask.x pane, click, list
+  ask.x pane, click, list.reverse()
   return
 
 exports.i = showCount = (locals)->
