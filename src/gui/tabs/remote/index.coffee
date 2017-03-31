@@ -3,6 +3,7 @@ Remotes tab
 ###
 t = require './html'
 tHint = require '../local/hint.html'
+ask = require '../../ask'
 
 exports.a = (pane)->
   exports.a = 0
@@ -22,10 +23,7 @@ render = ->
       unless @checked
         k += ' hide'
       div.className = k
-  for a in $ 'a', pane
-    a.onclick = ->
-      echo @title
-      false
+  ask.x pane, click, dearb tree
   return
 
 # Build tree of versions
@@ -53,3 +51,7 @@ dearb = (tree)->
   for k, v of tree
     result.push v.best, dearb(v.down)...
   result
+
+# Click handler
+click = (i, node)->
+  echo "REMOTE #{node.$[0].join '.'}[#{i}]"
