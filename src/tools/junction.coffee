@@ -3,7 +3,9 @@ Working with Junction Point(s)
 ###
 
 module.exports = exports = (id = 'none')->
-  run 0, true, (bin = file install2, 'linkd.exe'), link, '/D'
+  unless (bin = file install2, 'linkd.exe').y()
+    throw Error "File not found: #{bin}"
+  run 0, true, bin, link, '/D'
   if false == id
     return
   bat id
