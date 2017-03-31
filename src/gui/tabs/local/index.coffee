@@ -21,3 +21,8 @@ exports.i = showCount = (locals)->
 # Click handler
 click = (i, node)->
   echo "LOCAL #{node.$[0].join '.'}[#{i}]"
+  ask.$
+    one: 'One'
+    two: 'Two'
+    three: 'Three'
+    'Choose'
