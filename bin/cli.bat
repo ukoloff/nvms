@@ -9,27 +9,27 @@ t.Echo(n.join(" "))}}).call(t,e(7))},function(n,t,e){(function(t,e){n.X=t(e)}).c
 n.X=function(n){return t.CreateObject(n)}}).call(t,e(7))},function(n,t,e){(function(t,e){n.X=t(e.SpecialFolders("AppData"),"nvm$").mk();
 }).call(t,e(1),e(8))},function(n,t,e){(function(t){n.X=t("Scripting.FileSystemObject")}).call(t,e(4))},function(n,t){n.X=WScript;
 },function(n,t,e){(function(t){n.X=t("WScript.Shell")}).call(t,e(4))},function(n,t,e){(function(t,e,r,o,i){var u,s;n.X=u=function(n){
-var u;null==n&&(n="none"),t(0,!0,u=e(r,"linkd.exe"),s,"/D"),!1!==n&&(o(n),t(0,!0,u,s,i(r,n)))},u.$=s=i(r,"this")}).call(t,e(11),e(3),e(5),e(24),e(1));
-},function(n,t,e){(function(t,e){var r,o;r=function(){},r.prototype=t,n.X=function(n){var t,e,i,u;t=function(n){o(this,n)},
-t.prototype=u=new r;for(e in n)i=n[e],u[e]=i;return function(){return new t(arguments)}},o=function(n,t){var r,o,i,u;for(i="",r=0,
-o=t.length;r<o;r++)u=t[r],i=e.BuildPath(i,u);n._=i}}).call(t,e(19),e(6))},function(n,t,e){(function(t){var e=[].slice;n.X=function(){
-var n,r,o,i,u,s,a;for(r=1<=arguments.length?e.call(arguments,0):[],o="",a=!1,s=1,i=0,u=r.length;i<u;i++)switch(n=r[i],typeof n){case"boolean":
-a=n;break;case"number":s=n;break;default:/[\s^<|>]/.test(n)&&(n='"'+n+'"'),o&&(o+=" "),o+=n}t.Run(o,s,a)}}).call(t,e(8))},function(n,t,e){
-(function(t){n.X=function(n,e){var r;return r=t("ADODB.Stream"),r.Type=1,r.Open(),r}}).call(t,e(4))},function(n,t){n.X=function(n,t){
-var e,r,o;for("function"!=typeof t&&(o=[]),r=0,e=new Enumerator(n);!e.atEnd();){if(o)o.push(e.item());else if(!1===t(e.item(),r++))return;
-e.moveNext()}return o}},function(n,t,e){(function(n,e){var r,o,i;o=n("Msxml2.DOMDocument").createElement("tmp"),o.dataType="bin.hex",
-t.enc=function(n){var t;return o.nodeTypedValue=n,t=o.text,o.text="",t},t.dec=function(n){var t;return o.text=n,t=o.nodeTypedValue,
-o.text="",t},r=function(n){var t,e,r;for(t=0,r=[];t<n.length;)e=t,r.push(n.substring(e,t+=2));return r},i=function(n){return r(n).reverse().join("");
-},t.i=function(n){return parseInt(i(e.enc(n)),16)}}).call(t,e(4),e(14))},function(n,t,e){(function(t,e){n.X=t(e,"that").mk();
-}).call(t,e(1),e(5))},function(n,t){var e,r,o,t,i;n.X=t=function(n){var t,e,r,o,i;for(r=n.split(/\D+/),o=[],t=0,e=r.length;t<e;t++)i=r[t],
-i.length&&o.push(Number(i));return o},i=function(n,t,e){var r,o,i,u;for(r=o=0,i=t.length;o<i;r=++o)if(u=t[r],null!=u&&!e(n[r],u))return!1;
-return!0},t.m=function(n,t){return i(n,t,function(n,t){return i(n,t,function(n,t){return n===t})})},o=function(n,t){return n===t?0:n<t?-1:1;
-},r=function(n,t,e){var r,o,i,u;for(r=0,o=n.length,i=t.length;;){switch(Number(r<o)+2*Number(r<i)){case 0:return 0;case 1:return 1;
-case 2:return-1;default:if(u=e(n[r],t[r]))return u}r++}},t.cmp=e=function(n,t){return r(n,t,function(n,t){return r(n,t,o)})},t.$=function(n,t){
-return e(n.$,t.$)}},function(n,t,e){(function(n){var e;t.y=function(){return n.FileExists(this)},t.rm=function(t){return t&&!this.y()||n.DeleteFile(this),
-this},t.cp=function(t){n.CopyFile(this,t)},t.mv=function(t){n.MoveFile(this,t)},t.$=function(){return n.GetFile(this)},t.age=function(n){
-var t;return t=this.$().DateLastModified,null!=n?new Date-t>n:t},t.ok=function(n){return this.y()&&!this.age(n)},e=function(t,e,r){
-var o,i,u,s,a;for(a="",i=u=0,s=r.length;u<s;i=++u)o=r[i],a+=",a["+i+"]";return new Function("x,f,a","return x."+t+"TextFile(f"+a+")")(n,e,r);
+var u;if(null==n&&(n="none"),!(u=t(e,"linkd.exe")).y())throw Error("File not found: "+u);r(0,!0,u,s,"/D"),!1!==n&&(o(n),r(0,!0,u,s,i(e,n)));
+},u.$=s=i(e,"this")}).call(t,e(3),e(5),e(11),e(24),e(1))},function(n,t,e){(function(t,e){var r,o;r=function(){},r.prototype=t,n.X=function(n){
+var t,e,i,u;t=function(n){o(this,n)},t.prototype=u=new r;for(e in n)i=n[e],u[e]=i;return function(){return new t(arguments)}},o=function(n,t){
+var r,o,i,u;for(i="",r=0,o=t.length;r<o;r++)u=t[r],i=e.BuildPath(i,u);n._=i}}).call(t,e(19),e(6))},function(n,t,e){(function(t){var e;
+n.X=e=function(){var n,r,o,i,u,s,a;for(r="",a=!1,u=1,o=0,i=arguments.length;o<i;o++)if(n=arguments[o],e._!==n)switch(typeof n){
+case"boolean":a=n;break;case"number":u=n;break;default:n.length&&!/[\s^<|>]/.test(n)||(n='"'+n+'"'),s&&(r+=" "),r+=n,s=1}else s=0;
+t.Run(r,u,a)},e._={}}).call(t,e(8))},function(n,t,e){(function(t){n.X=function(n,e){var r;return r=t("ADODB.Stream"),r.Type=1,
+r.Open(),r}}).call(t,e(4))},function(n,t){n.X=function(n,t){var e,r,o;for("function"!=typeof t&&(o=[]),r=0,e=new Enumerator(n);!e.atEnd();){
+if(o)o.push(e.item());else if(!1===t(e.item(),r++))return;e.moveNext()}return o}},function(n,t,e){(function(n,e){var r,o,i;o=n("Msxml2.DOMDocument").createElement("tmp"),
+o.dataType="bin.hex",t.enc=function(n){var t;return o.nodeTypedValue=n,t=o.text,o.text="",t},t.dec=function(n){var t;return o.text=n,
+t=o.nodeTypedValue,o.text="",t},r=function(n){var t,e,r;for(t=0,r=[];t<n.length;)e=t,r.push(n.substring(e,t+=2));return r},i=function(n){
+return r(n).reverse().join("")},t.i=function(n){return parseInt(i(e.enc(n)),16)}}).call(t,e(4),e(14))},function(n,t,e){(function(t,e){
+n.X=t(e,"that").mk()}).call(t,e(1),e(5))},function(n,t){var e,r,o,t,i;n.X=t=function(n){var t,e,r,o,i;for(r=n.split(/\D+/),
+o=[],t=0,e=r.length;t<e;t++)i=r[t],i.length&&o.push(Number(i));return o},i=function(n,t,e){var r,o,i,u;for(r=o=0,i=t.length;o<i;r=++o)if(u=t[r],
+null!=u&&!e(n[r],u))return!1;return!0},t.m=function(n,t){return i(n,t,function(n,t){return i(n,t,function(n,t){return n===t})})},
+o=function(n,t){return n===t?0:n<t?-1:1},r=function(n,t,e){var r,o,i,u;for(r=0,o=n.length,i=t.length;;){switch(Number(r<o)+2*Number(r<i)){
+case 0:return 0;case 1:return 1;case 2:return-1;default:if(u=e(n[r],t[r]))return u}r++}},t.cmp=e=function(n,t){return r(n,t,function(n,t){
+return r(n,t,o)})},t.$=function(n,t){return e(n.$,t.$)}},function(n,t,e){(function(n){var e;t.y=function(){return n.FileExists(this);
+},t.rm=function(t){return t&&!this.y()||n.DeleteFile(this),this},t.cp=function(t){n.CopyFile(this,t)},t.mv=function(t){n.MoveFile(this,t);
+},t.$=function(){return n.GetFile(this)},t.age=function(n){var t;return t=this.$().DateLastModified,null!=n?new Date-t>n:t},t.ok=function(n){
+return this.y()&&!this.age(n)},e=function(t,e,r){var o,i,u,s,a;for(a="",i=u=0,s=r.length;u<s;i=++u)o=r[i],a+=",a["+i+"]";return new Function("x,f,a","return x."+t+"TextFile(f"+a+")")(n,e,r);
 },t.open=function(){return e("Open",this,arguments)},t.create=function(){return e("Create",this,arguments)},t.load=function(){var n,t;
 return n=this.open(1),t=n.ReadAll(),n.Close(),t},t.save=function(){var n,t,e,r;for(n=this.create(!0),t=0,e=arguments.length;t<e;t++)r=arguments[t],
 n.Write(r);return n.Close()}}).call(t,e(6))},function(n,t,e){(function(n,r){var o;t.y=function(){return n.FolderExists(this)},t.rm=function(t){
@@ -60,12 +60,12 @@ n.Position=t,i(17744===e(4)),n.Position=t+20,i(240===(16|e(2))),e(2),i(779===(76
 t="";t.length<n;)t+=e();return t},e=function(){var n;return n=Math.floor(62*Math.random()),String.fromCharCode(n%26+"Aa0".charCodeAt(n/26));
 }},function(n,t,e){(function(t,r,o){var i,u,s,a,c,l=[].slice;u=e(34),n.X=s=function(n){n.shift()===c&&u[n.shift()].z(n),t();
 },i=function(n){var t,e,r;for(t=1,e=0,r=n.length;r--;)t=(t+n.charCodeAt(r))%65521,e=(e+t)%65521;return e<<16+t},c="<"+i(r.load())+">";
-for(a in u)u[a].z&&(s[a.charAt(0)]=function(n){return function(){var t;t=1<=arguments.length?l.call(arguments,0):[],o.apply(this,[0,r,"v",c,n].concat(t));
-}}(a))}).call(t,e(25),e(22),e(11))},function(n,t,e){(function(t,e,r,o,i,u){var s,a,c;a=/^(\w+)-\D*(\d+(?:[.]\d+)+)-x(\d)/,n.X=function(){
-var n,i,u,l,f,h;for(l=[],h=c(t.$),f=e.folders(),i=0,u=f.length;i<u;i++)n=f[i],a.test(n.bn())&&l.push(new s(h?r(n,h.bn()).y():void 0));
-return null!=h&&h.rm(),l.sort(o.$)},c=function(n){var t,e;if(n.y())for(t=16;--t;)if(e=r(n,i(15)),!e.y())try{return e.create(!0).Close(),
-e}catch(n){}},s=function(n){var t,e;this.active=n,this.path=RegExp.$_,this.dist=t=RegExp.$1,this.x64=e="6"===RegExp.$3,this.$=[o(RegExp.$2),[t,e]];
-},s.prototype=u}).call(t,e(9),e(5),e(3),e(16),e(29),e(36))},function(n,t,e){(function(t,e){var r,o;r="Msxml2.ServerXMLHTTP\nMsxml2.XMLHTTP\nMicrosoft.XMLHTTP".split(/\s+/),
+for(a in u)u[a].z&&(s[a.charAt(0)]=function(n){return function(){o.apply(null,[0,r,"v",c,n].concat(l.call(arguments)))}}(a))}).call(t,e(25),e(22),e(11));
+},function(n,t,e){(function(t,e,r,o,i,u){var s,a,c;a=/^(\w+)-\D*(\d+(?:[.]\d+)+)-x(\d)/,n.X=function(){var n,i,u,l,f,h;for(l=[],
+h=c(t.$),f=e.folders(),i=0,u=f.length;i<u;i++)n=f[i],a.test(n.bn())&&l.push(new s(h?r(n,h.bn()).y():void 0));return null!=h&&h.rm(),
+l.sort(o.$)},c=function(n){var t,e;if(n.y())for(t=16;--t;)if(e=r(n,i(15)),!e.y())try{return e.create(!0).Close(),e}catch(n){}},s=function(n){
+var t,e;this.active=n,this.path=RegExp.$_,this.dist=t=RegExp.$1,this.x64=e="6"===RegExp.$3,this.$=[o(RegExp.$2),[t,e]]},s.prototype=u;
+}).call(t,e(9),e(5),e(3),e(16),e(29),e(36))},function(n,t,e){(function(t,e){var r,o;r="Msxml2.ServerXMLHTTP\nMsxml2.XMLHTTP\nMicrosoft.XMLHTTP".split(/\s+/),
 o=function(){var n,e,o;for(n=0,e=r.length;n<e;n++){o=r[n];try{return t(o)}catch(n){}}throw Error("AJAX not supported!")},n.X=function(n,t){
 var r,i;if(i=o(),i.open("GET",n,!1),i.send(null),200!==i.status)throw Error("HTTP error "+i.status+": "+i.statusText);return t?(r=e(),
 r.Write(i.responseBody),r.SaveToFile(t,2),void r.Close()):i.responseText}}).call(t,e(4),e(12))},function(n,t,e){(function(t){var e;
@@ -75,7 +75,7 @@ which:e(56),www:e(57)}},function(n,t,e){(function(n){var r,o,i;t.q="?",t.t="Show
 t.h="Shows information on individual commands or nvm$ itself.",t.$=function(n){var u,s;return i(),s=e(34),n[0]?(u=t.A.$(n[0]))?void r(u,s[u],n.slice(1)):void e(40).$(n):void o(s);
 },r=function(t,e,r){n("nvm$ "+t+": "+e.t),e.q.length&&n("\nAlias: "+e.q.join(", ")),n("\nUsage: nvm$ "+t+" "+(e._||"")+"\n"),"function"==typeof e.h?e.h(r):e.h&&n(e.h);
 },o=function(t){var e,r;n("Usage: nvm$ <command> [parameter(s)]\n\nCommands:");for(e in t)r=t[e],n("\t"+e+"\t"+r.t);n("\nCommand names may be unambiguously abbreviated (See: nvm$ a).\n\nRun nvm$ ? <command> for more instructions.");
-},i=function(){n("nvm$ v0.9.2: Node Version Manager for M$ Windows\n")},t.i=function(){i(),n("Run nvm$ ? for instructions.")}}).call(t,e(2));
+},i=function(){n("nvm$ v0.9.3: Node Version Manager for M$ Windows\n")},t.i=function(){i(),n("Run nvm$ ? for instructions.")}}).call(t,e(2));
 },function(n,t,e){(function(n,e,r,o){t.use=function(){n("Using:",this.path),e(this.path)},t._=function(){return r(o,this.path)}}).call(t,e(2),e(9),e(1),e(5));
 },,function(n,t,e){(function(n,t,e,r,o,i){var u,s,a,c;if(n("https://github.com/ukoloff/nvms/archive/dist.zip",c=t(e,"nvm$.zip")),
 r("Extracting..."),a=o(e,"nvm$").mk(!0),a.ns().copyHere(c.ns().Items(),16),c.rm(),s=function(n){var t,e,r,o,i;for(o=n.files(),e=o.length-1;e>=0;e+=-1)if(t=o[e],
@@ -92,7 +92,7 @@ l=[];for(u in t)for(p=t[u],c(n=f(u))||e(p+"index.json",n),h=r(n.load()),i=0,s=h.
 }catch(n){}}()}).call(t,e(8))},function(n,t,e){(function(t,e){n.X=t(e.Arguments)}).call(t,e(13),e(7))},function(n,t){n.X=function(n){
 if(n+="",/[^{\[:\s,\]}]/.test(n.replace(/-?\d+(?:[.]\d*)?(?:[eE][-+]?\d+)?|"(?:\\.|[^"\\])*"|\b(?:null|true|false)\b/g,"]")))throw SyntaxError("Invalid JSON");
 return new Function("return ("+n+")")()}},function(n,t,e){(function(t,e,r,o,i,u){var s,a,c,l,f,h,v,p,d;n.X=c=function(){return a()&&v();
-},c.v=function(){var n;if(n=v(),n&&0<t.$(n,l("0.9.2")))return p(n)},c.p=function(){c()&&(d(),d(f()))},a=function(){return!h().ok(2592e5);
+},c.v=function(){var n;if(n=v(),n&&0<t.$(n,l("0.9.3")))return p(n)},c.p=function(){c()&&(d(),d(f()))},a=function(){return!h().ok(2592e5);
 },h=function(){return e(r,".v")},s=function(){return"https://github.com/ukoloff/nvms".replace(/\/\//,"$&api.").replace(/\w\//,"$&repos/")+"/tags?per_page=8";
 },l=function(n){return new o._(t(n))},p=function(n){if(n)return n.$[0].join(".")},f=function(){var n,e,r,o;for(o=i(u(s())),n=e=o.length-1;e>=0;n=e+=-1)r=o[n],
 o[n]=l(r.name);return p(o.sort(t.$).pop())},d=function(n){h().save(n||"","\n\nStart file from non-word character (eg # or ! or ; etc)\nto disable autodetection of nvm$ new version available.\n");
@@ -124,7 +124,7 @@ c(e)},c=function(n){return s?(o("Removing:",n.path),n.active&&i(),void e(30).b(n
 },function(n,t,e){(function(n,e,r){t.t="Use (set default) already installed Node.js version",t._="[ none | "+n.$+" ]",t.h="Make specified Node.js version active for all processes of current user.\n\nOnly installed versions are used. Use `nvm$ install` for new ones.\n\nSay `nvm$ use none` to temporarily disable nvm$.",
 t.$=function(t){var o;if("none"===t[0])e("Temporary disabling","nvm$"),r();else{if(!(o=n(t).local().last()))throw Error("Specified Node.js version not installed!");
 o.use()}}}).call(t,e(20),e(2),e(9))},function(n,t,e){(function(n,r){t.t="Show version",t.h="Displays nvm$ version.",t.$=function(t){
-n("0.9.2"),t.length&&e(30)(t),r()}}).call(t,e(2),e(25))},function(n,t,e){(function(n,e,r){t.q="where",t.t="Display path to current Node.js version",
+n("0.9.3"),t.length&&e(30)(t),r()}}).call(t,e(2),e(25))},function(n,t,e){(function(n,e,r){t.q="where",t.t="Display path to current Node.js version",
 t.h="Shows which folder with Node.js is active for all processes of current user",t.$=function(){var t,o,i,u;for(i=n(),t=0,o=i.length;t<o;t++)if(u=i[t],
 u.active)return void e(u._());e(r.$)}}).call(t,e(31),e(2),e(9))},function(n,t,e){(function(n){t.q="repo",t.t="Open homepage",t.h="Opens nvm$ repository in default browser.",
 t.$=function(){n("https://github.com/ukoloff/nvms")}}).call(t,e(11))},function(n,t,e){(function(n,t){var r,o,i,u,s;o=e(46),o()&&e(30).u(),
@@ -137,8 +137,8 @@ e&&n===e.substring(0,n.length))return!0},u={},i=[],s=this.z;for(o in s)if(l=s[o]
 i.push(c),u[c]=l;break}if(i.length){for(a={},i.sort().reverse(),r=i.length-1;r>=0;r+=-1)o=i[r],a[o]=u[o];return a}}},function(n,t,e){
 (function(n,e,r,o,i,u,s,a,c,l,f,h){var v,p,d,m,g,x,$,y;y=function(n){return n.dist+"-"+n.src.version+"-x"+(n.x64?64:86)},d=function(t,r){
 var o;return o=y(t)+".msi",r?n(e,o):n(o)},x=function(n,t){return null==t&&(t=d(n)),""+r[n.dist]+n.src.version+"/"+(n.x64&&!n.$[0][0]?"x64/":"")+t;
-},v=function(n){var t,r,a;o("Extracting:",d(n)),a=y(n),r=i(e,a).rm(!0),u(1,!0,"msiexec","/a",d(n,!0),"TARGETDIR="+r,"/passive"),n.dst=t=i(s,a).rm(!0),
-r.folders().shift().mv(t),r.rm()},p=function(t){"node"!==t.dist&&(o("Creating shortcut..."),n(t.dst,t.dist+".exe").cp(n(t.dst,"node.exe")));
+},v=function(n){var t,r,a;o("Extracting:",d(n)),a=y(n),r=i(e,a).rm(!0),u(1,!0,"msiexec","/a",d(n,!0),"TARGETDIR=",u._,r,"/passive"),
+n.dst=t=i(s,a).rm(!0),r.folders().shift().mv(t),r.rm()},p=function(t){"node"!==t.dist&&(o("Creating shortcut..."),n(t.dst,t.dist+".exe").cp(n(t.dst,"node.exe")));
 },m=function(t){var e;o("Adjusting NPM prefix..."),e=n(t.dst,"node_modules/npm/npmrc").open(8),e.WriteLine('\n# <hack dirty src="https://github.com/ukoloff/nvms">\nprefix=${APPDATA}\\nvm$\\'+a.$.bn()+"\n# </hack>"),
 e.Close()},$=function(n){var t;o("Using:",t=y(n)),a(t)},g=function(n,t){n.x64="*"===t?null:null!=t?t:c},t.install=function(n){var t;
 g(t=this,n),l(x(t),d(t,!0)),v(t),p(t),m(t),$(t)},t.O=function(t,e){var r;return r=n(s,f.O),!(!e&&r.y())&&(g(this,t),l(x(this,r.bn()),r),
