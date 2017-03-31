@@ -13,7 +13,7 @@ exports.a = (pane)->
 render = ->
   pane = exports.$d
   # Load remotes list without fetch (previously loaded)
-  pane.innerHTML = t arborize rs = remotes true
+  pane.innerHTML = t tree = arborize rs = remotes true
   exports.$i.innerHTML = tHint rs.length
   for cb in $ 'input', pane when not cb.disabled
     cb.onclick = ->
@@ -28,6 +28,7 @@ render = ->
       false
   return
 
+# Build tree of versions
 arborize = (list)->
   tree = {}
   for z in list by -1
@@ -45,3 +46,10 @@ arborize = (list)->
           z.dist
       q = q.down
   tree
+
+# Get versions array from tree
+dearb = (tree)->
+  result = []
+  for k, v of tree
+    result.push v.best, dearb(v.down)...
+  result
