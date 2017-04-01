@@ -10,8 +10,6 @@ current = 0
 
 # Install listener to .ask
 one = (span, fn, data)->
-  if 'ask' != span.className
-    return
   for a, i in $ 'a', span
     a.onclick = do (i)-> ->
       setTimeout ->
@@ -23,7 +21,7 @@ one = (span, fn, data)->
 
 # Install listeners for many .ask
 exports.x = (dom, fn, array)->
-  for span in $ 'span', dom by -1
+  for span in $ 'span', dom by -1 when 'ask' == span.className
     one span, fn, array.pop()
   return
 
