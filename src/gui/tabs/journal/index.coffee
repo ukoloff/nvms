@@ -10,6 +10,22 @@ scroll = ->
   exports.$d.lastChild?.scrollIntoView()
   return
 
+# Append HTML to DOM
+exports.$ = append = (parent, html)->
+  pane = exports.$d
+
+  unless container
+    pane.innerHTML = do without -> div()
+    container = pane.firstChild
+    pane.innerHTML = ''
+
+  container.innerHTML = html
+  ch = for z in container.children by -1
+    z
+  for z in ch by -1
+    parent.appendChild z
+  ch
+
 # on active
 exports.a = ->
   unseen = 0
@@ -25,18 +41,7 @@ echo._ = (line)->
   if DEBUG
     stdout line
 
-  pane = exports.$d
-
-  unless container
-    pane.innerHTML = do without -> div()
-    container = pane.firstChild
-    pane.innerHTML = ''
-
-  container.innerHTML = t line
-  ch = for z in container.children by -1
-    z
-  for z in ch by -1
-    pane.appendChild z
+  append exports.$d, t line
 
   if exports.v
     scroll()
