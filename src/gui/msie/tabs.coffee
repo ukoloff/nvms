@@ -2,6 +2,7 @@
 Initialize tabs engine
 ###
 tabs = require '../tabs'
+ask = require '../ask'
 
 head = $('#head')[0]
 radios = $ 'input', head
@@ -10,6 +11,7 @@ radio = radios[0]
 panes = $ 'div', $('#main')[0]
 
 onclick = ->
+  setTimeout ask.z   # Reset popups
   for k, v of tabs
     if checked = (r = v.$r).checked
       v.$l.className = 'active'
