@@ -20,6 +20,12 @@ module.exports = without ->
           text ' ',
             if v.dist then "#{v.dist} "
             prefix, k
+          if lts = v.best.src.lts
+            text ' '
+            i
+              class: 'lts'
+              title: 'Long Term Support'
+              lts
           if v.n > 1
             span
               class: 'hint'
