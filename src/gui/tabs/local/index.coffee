@@ -18,3 +18,7 @@ exports.a = (pane)->
 exports.i = showCount = (locals)->
   exports.$i.innerHTML = tHint locals.length
   return
+
+# Refresh
+exports.r = ->
+  exports.a exports.$d
