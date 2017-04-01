@@ -4,6 +4,7 @@ Template for "popup"
 module.exports = without (options, title)->
   span
     class: 'ask'
+    -> raw '&iquest;'
     title
     ' '
     ->
