@@ -24,7 +24,7 @@ exports.$ = append = (parent, html)->
     z
   for z in ch by -1
     parent.appendChild z
-  return
+  ch
 
 # on active
 exports.a = ->

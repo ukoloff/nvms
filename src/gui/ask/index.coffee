@@ -10,6 +10,8 @@ current = 0
 
 # Install listener to .ask
 one = (span, fn, data)->
+  if 'ask' != span.className
+    return
   for a, i in $ 'a', span
     a.onclick = do (i)-> ->
       setTimeout ->
@@ -21,12 +23,14 @@ one = (span, fn, data)->
 
 # Install listeners for many .ask
 exports.x = (dom, fn, array)->
-  for span in $ 'span', dom when 'ask' == span.className
-    one span, fn, array.shift()
+  for span in $ 'span', dom by -1
+    one span, fn, array.pop()
   return
 
 # Show "popup"
 exports.$ = (options, title, fn, data)->
   return unless current
   current.className += ' hide'
-  append current.parentNode, t options, title
+  for z in append current.parentNode, t options, title
+    one z, fn, data
+  return

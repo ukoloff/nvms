@@ -10,3 +10,9 @@ module.exports = (i, node)->
     x64: 'x64'
     cancel: 'Oops!'
     'Select'
+    next
+    node
+
+# Next click
+next = (i, node)->
+  echo "R2 #{node.$[0].join '.'}[#{i}]"
