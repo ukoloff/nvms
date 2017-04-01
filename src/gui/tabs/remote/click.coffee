@@ -10,10 +10,11 @@ module.exports = (i, node)->
     next
     node
 
+platforms = [64, 86]
+if x64
+  platforms.reverse()
+
 options = (prefix)->
-  platforms = [64, 86]
-  if x64
-    platforms.reverse()
   r = {}
   for p in platforms by -1
     r["x#{p}"] = "#{PACKAGE.mingzi} #{prefix} x#{p}"
@@ -22,11 +23,11 @@ options = (prefix)->
 
 # Next click
 next = (i, node)->
-  if 2==i
+  if i > 1
     ask.z()
     return
   v = node.$[0].join '.'
-  echo "#{if i then 'OpenSSL' else 'Install'} #{v}"
+  echo "#{node.dist} #{v} x#{platforms[1 - i]}"
   ask.$
     view: "Go to logs"
     stop: "Break!"
