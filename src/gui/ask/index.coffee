@@ -51,7 +51,7 @@ exports.$ = (options, title, fn, data)->
   unless active
     active = current
     current.className += ' hide'
-  popups = append current.parentNode, t options, title
+  popups = append active.parentNode, t options, title
   for z in popups by -1
     one z, fn, data
   return

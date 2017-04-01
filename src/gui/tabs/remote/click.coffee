@@ -5,7 +5,6 @@ ask = require '../../ask'
 
 module.exports = (i, node)->
   v = node.$[0].join '.'
-  echo "REMOTE #{v}[#{i}]"
   ask.$ options(if i then 'openssl' else "install #{v}"),
     "Install #{if i then 'OpenSSL' else node.dist}:"
     next
@@ -23,6 +22,22 @@ options = (prefix)->
 
 # Next click
 next = (i, node)->
-  echo "R2 #{node.$[0].join '.'}[#{i}]"
   if 2==i
     ask.z()
+    return
+  v = node.$[0].join '.'
+  echo "#{if i then 'OpenSSL' else 'Install'} #{v}"
+  ask.$
+    view: "Go to logs"
+    stop: "Break!"
+    "Processing #{v}:"
+    logs
+  return
+
+logs = (i)->
+  ask.z()
+  if i
+    return
+  require '../journal'
+    .$r.click()
+  return
