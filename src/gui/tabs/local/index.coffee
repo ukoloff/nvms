@@ -4,6 +4,7 @@ Locals tab
 t = require './html'
 tHint = require './hint.html'
 ask = require '../../ask'
+click = require './click'
 
 # Clear on hide
 exports.c = 1
@@ -17,12 +18,3 @@ exports.a = (pane)->
 exports.i = showCount = (locals)->
   exports.$i.innerHTML = tHint locals.length
   return
-
-# Click handler
-click = (i, node)->
-  echo "LOCAL #{node.$[0].join '.'}[#{i}]"
-  ask.$
-    one: 'One'
-    two: 'Two'
-    three: 'Three'
-    'Choose'

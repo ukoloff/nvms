@@ -4,6 +4,7 @@ Remotes tab
 t = require './html'
 tHint = require '../local/hint.html'
 ask = require '../../ask'
+click = require './click'
 
 exports.a = (pane)->
   exports.a = 0
@@ -51,7 +52,3 @@ dearb = (tree)->
   for k, v of tree
     result.push v.best, dearb(v.down)...
   result
-
-# Click handler
-click = (i, node)->
-  echo "REMOTE #{node.$[0].join '.'}[#{i}]"
