@@ -9,12 +9,12 @@ t = require './html'
 current = 0
 
 # Install listener to .ask
-one = (span, fn)->
+one = (span, fn, data)->
   for a, i in $ 'a', span
     a.onclick = do (i)-> ->
       setTimeout ->
         current = span
-        fn i
+        fn i, data
         current = 0
       false
   return
@@ -22,11 +22,11 @@ one = (span, fn)->
 # Install listeners for many .ask
 exports.x = (dom, fn, array)->
   for span in $ 'span', dom when 'ask' == span.className
-    one span, do (data = array.shift())-> (i)->
-      fn i, data
+    one span, fn, array.shift()
+  return
 
 # Show "popup"
-exports.$ = (options, title)->
+exports.$ = (options, title, fn, data)->
   return unless current
   current.className += ' hide'
   append current.parentNode, t options, title
