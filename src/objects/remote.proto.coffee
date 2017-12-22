@@ -20,11 +20,18 @@ uri = (self, file = msi self)->
       ''
     }#{file}"
 
+tmp = ->
+  n = 10
+  while n--
+    f = folder install2, '.' + Math.random().toFixed(3).replace(/.*[.]/, '')
+    unless f.y()
+      return f
+  throw Error "Temporary folder not found"
+
 extract = (self)->
   echo "Extracting:", msi self
   v = ver self
-  extract2 = folder cache, v
-    .rm true
+  extract2 = do tmp
   code = run 1, true, 'msiexec', '/a', msi(self, true),
     "TARGETDIR=", run._, extract2, '/qb'
   if code
@@ -50,7 +57,7 @@ prefix = (self)->
   npmrc.WriteLine """
 
     # <hack dirty src="#{PACKAGE.homepage}">
-    prefix=${APPDATA}\\#{PACKAGE.mingzi}\\#{junction.$.bn()}
+    prefix=${USERPROFILE}\\.#{PACKAGE.mingzi}\\#{junction.$.bn()}
     # </hack>
     """
   npmrc.Close()
