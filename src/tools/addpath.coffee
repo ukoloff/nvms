@@ -13,12 +13,15 @@ Rejected by:
 ###
 assign = new Function 'o,k,v', 'o(k)=v'
 
+z=
 module.exports = (add)->
   orig = env key
-  bin = "#{junction.$}"
-  x = for x in orig.split ';' when x not in [bin, add]
+  tail = "#{folder PACKAGE.mingi, junction.$.n()}"
+  other = (s)->
+    s.slice(-tail.length) != tail or /\w$/.test s.slice 0, -tail.length
+  x = for x in orig.split ';' when other x
     x
-  x.unshift bin if add
+  x.unshift junction.$ if add
   x = x.join ';'
   if x != orig
     assign env, key, x
