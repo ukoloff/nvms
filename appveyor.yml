@@ -23,7 +23,7 @@ after_test:
   - 7z a -r nvm$.zip ./tmp/dist/*
   - tmp\cli v
   - reg query HKCU\Environment /v Path /z
-  - tmp\dist\setup
+  - tmp\dist\setup <NUL
   - reg query HKCU\Environment /v Path /z
   - tmp\cli ?
   - tmp\cli ls
