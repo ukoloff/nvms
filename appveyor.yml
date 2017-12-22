@@ -29,9 +29,9 @@ after_test:
   - tmp\cli ls
   - tmp\cli a
   - tmp\cli ls r
-  - tmp\cli i
+  - tmp\cli i lts
   - tmp\cli ls
-  - tmp\cli i x86
+  - tmp\cli i x86 lts
   - tmp\cli ls
   - tmp\cli i i
   - tmp\cli ls

@@ -5,6 +5,7 @@ Parsing Node.js version in command line
 # Prepare for matching local (installed) versions
 exports.local = ->
   @$[1].push @x64
+  @$.pop()
   @
 
 # Get collection to iterate over

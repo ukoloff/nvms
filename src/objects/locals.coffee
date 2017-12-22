@@ -30,7 +30,7 @@ Local = (active)->
   @path = RegExp.$_
   @dist = dist = RegExp.$1
   @x64 = x64 = '6' == RegExp.$3
-  @$ = [semver(RegExp.$2), [dist, x64]]
+  @$ = [semver(RegExp.$2), [dist, x64], []]
   return
 
 Local:: = local.proto
