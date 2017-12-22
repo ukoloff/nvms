@@ -67,7 +67,7 @@ to see whether new version exists
 and prompt to update in that case.
 
 To disable that check,
-find file `%AppData%\nvm$\that\.v`
+find file `%UserProfile%\.nvm$\that\.v`
 and insert into beginning some character
 like `#` or `;` or even `-`.
 
@@ -115,6 +115,7 @@ it is possible to select
 - Distribution (`node` or `iojs`)
 - Platform (`x86` or `x64`)
 - Version (`7` or `4.9` or may be `0.10.27`)
+- LTS flag (`lts` only)
 
 Any parameter can be abbreviated, eg `nvm$ i i`
 is equivalent to `nvm$ install iojs`

@@ -2,7 +2,7 @@
   "name": "nvms",
   "mingzi": "nvm$",
   "private": true,
-  "version": "0.9.3",
+  "version": "0.9.4",
   "description": "Node Version Manager for M$ Windows",
   "scripts": {
     "test": "node webpack -d --watch",
