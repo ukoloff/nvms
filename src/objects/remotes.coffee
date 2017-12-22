@@ -2,11 +2,12 @@
 Get available distributions list
 ###
 
-module.exports = exports = (loaded)->
+module.exports =
+exports = (fast)->
   r = []
   for k, v of dists
     f = dpath k
-    unless loaded or cached f
+    unless fast or cached f
       fetch "#{v}index.json", f
     unless f.y()
       continue
@@ -36,7 +37,7 @@ exports.v = ->
   remote.$[0].join '.'
 
 Remote = (line, dist)->
-  @$ = [semver((@src = line).version), [@dist = dist]]
+  @$ = [semver((@src = line).version), [@dist = dist], [!!line.lts]]
   return
 
 Remote:: = remote.proto

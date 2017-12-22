@@ -10,6 +10,13 @@ module.exports = ->
   for f in install2.folders() when re.test f.bn()
     list.push new Local if tmp then file(f, tmp.bn()).y()
   tmp?.rm()
+
+  ltSet = {}
+  for r in remotes true when r.src.lts
+    ltSet[r.$[0].join '.'] = true
+  for z in list
+    z.$.push [ltSet[z.$[0].join '.']]
+
   list.sort semver.$
 
 rndFile = (path)->
