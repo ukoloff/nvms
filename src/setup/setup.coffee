@@ -17,7 +17,7 @@ unless junction.$.y()
   do junction
 
 echo "Updating PATH..."
-addpath true
+addpath "#{install2.old}"
 echo """
 Installation complete.
 Open new console and run '#{PACKAGE.mingzi} ?' to start.

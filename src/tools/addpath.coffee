@@ -16,7 +16,7 @@ assign = new Function 'o,k,v', 'o(k)=v'
 module.exports = (add)->
   orig = env key
   bin = "#{junction.$}"
-  x = for x in orig.split ';' when x != bin
+  x = for x in orig.split ';' when x not in [bin, add]
     x
   x.unshift bin if add
   x = x.join ';'
