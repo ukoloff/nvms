@@ -13,10 +13,9 @@ Rejected by:
 ###
 assign = new Function 'o,k,v', 'o(k)=v'
 
-z=
 module.exports = (add)->
   orig = env key
-  tail = "#{folder PACKAGE.mingi, junction.$.n()}"
+  tail = "#{folder PACKAGE.mingzi, junction.$.n()}"
   other = (s)->
     s.slice(-tail.length) != tail or /\w$/.test s.slice 0, -tail.length
   x = for x in orig.split ';' when other x
