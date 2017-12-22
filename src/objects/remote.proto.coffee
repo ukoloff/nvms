@@ -25,8 +25,10 @@ extract = (self)->
   v = ver self
   extract2 = folder cache, v
     .rm true
-  run 1, true, 'msiexec', '/a', msi(self, true),
-    "TARGETDIR=", run._, extract2, '/passive'
+  code = run 1, true, 'msiexec', '/a', msi(self, true),
+    "TARGETDIR=", run._, extract2, '/qb'
+  if code
+    throw Error 'Extraction failed'
   self.dst = dst = folder install2, v
     .rm true
   extract2.folders().shift().mv dst

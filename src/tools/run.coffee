@@ -28,7 +28,6 @@ module.exports = exports = ->
           cmdline += a
           space = 1
   sh.Run cmdline, show, wait
-  return
 
 # Special value to glue command line parameters
 exports._ = {}
