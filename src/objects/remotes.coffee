@@ -3,11 +3,14 @@ Get available distributions list
 ###
 
 module.exports =
-exports = ->
+exports = (fast)->
   r = []
   for k, v of dists
-    unless cached f = dpath k
+    f = dpath k
+    unless fast or cached f
       fetch "#{v}index.json", f
+    unless f.y()
+      continue
     for z in json2 f.load() when msi z
       r.push new Remote z, k
   r.sort semver.$

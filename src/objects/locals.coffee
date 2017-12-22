@@ -10,6 +10,13 @@ module.exports = ->
   for f in install2.folders() when re.test f.bn()
     list.push new Local if tmp then file(f, tmp.bn()).y()
   tmp?.rm()
+
+  ltSet = {}
+  for r in remotes false when r.src.lts
+    ltSet[r.$[0].join '.'] = true
+  for z in list
+    z.$.push [ltSet[z.$[0].join '.']]
+
   list.sort semver.$
 
 rndFile = (path)->
@@ -30,7 +37,7 @@ Local = (active)->
   @path = RegExp.$_
   @dist = dist = RegExp.$1
   @x64 = x64 = '6' == RegExp.$3
-  @$ = [semver(RegExp.$2), [dist, x64], []]
+  @$ = [semver(RegExp.$2), [dist, x64]]
   return
 
 Local:: = local.proto
