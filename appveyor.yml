@@ -22,7 +22,9 @@ after_test:
   - node webpack/dist
   - 7z a -r nvm$.zip ./tmp/dist/*
   - tmp\cli v
-  - copy /b bin\* %USERPROFILE%\.nvm$
+  - reg query HKCU\Environment /v Path /z
+  - tmp\dist\setup
+  - reg query HKCU\Environment /v Path /z
   - tmp\cli ?
   - tmp\cli ls
   - tmp\cli a
@@ -58,6 +60,7 @@ after_test:
   - dir %USERPROFILE%\.nvm$\that
   - tmp\cli b
   - tmp\cli b .
+  - reg query HKCU\Environment /v Path /z
 
 artifacts:
   - path: "*.zip"
