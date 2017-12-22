@@ -12,7 +12,7 @@ module.exports = ->
   tmp?.rm()
 
   ltSet = {}
-  for r in remotes false when r.src.lts
+  for r in remotes true when r.src.lts
     ltSet[r.$[0].join '.'] = true
   for z in list
     z.$.push [ltSet[z.$[0].join '.']]
