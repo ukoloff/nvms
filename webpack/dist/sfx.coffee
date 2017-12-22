@@ -16,7 +16,7 @@ console.log "Creating sfx at", dst = path.resolve 'tmp/sfx'
 rm dst
 mkdirp dst
 
-install2 = path.join process.env.APPDATA, PACKAGE.mingzi
+install2 = path.join process.env.USERPROFILE, ".#{PACKAGE.mingzi}"
 
 fs.createReadStream path.join dst, '..', extractor = 'sfx.bat'
 .pipe fs.createWriteStream path.join dst, extractor = 'sfx.bat'
