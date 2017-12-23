@@ -10,6 +10,12 @@ module.exports = without ->
         disabled: true
         checked: z.active
       text ' ', z.path
+      if z.lts
+        text ' '
+        i
+          class: 'lts'
+          title: 'Long Term Support'
+          z.lts
       span class: 'ask', ->
         filter = " #{z.dist} #{z.$[0].join '.'} x#{if z.x64 then 64 else 86}"
         a
