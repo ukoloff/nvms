@@ -258,7 +258,7 @@ analogous to `perlw`, `rubyw`, `pythonw` etc.
 
 ### npx
 
-This is a poor's man of great [npx][] console utility.
+This is a poor man's variation of great [npx][] console utility.
 It is created only for old distros
 missing regular `npx`.
 
