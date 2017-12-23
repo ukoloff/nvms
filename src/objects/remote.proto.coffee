@@ -23,7 +23,7 @@ uri = (self, file = msi self)->
 tmp = ->
   n = 10
   while n--
-    f = folder install2, '.' + Math.random().toFixed(3).replace(/.*[.]/, '')
+    f = folder install2, ".#{rnd 3}"
     unless f.y()
       return f
   throw Error "Temporary folder not found"
