@@ -15,6 +15,12 @@ exports.$ = (args)->
     local args
   return
 
+ltsFormat = (lts)->
+  if lts
+    " \"#{lts}\""
+  else
+    ""
+
 local = (args)->
   n = 0
   total =
@@ -22,7 +28,7 @@ local = (args)->
   .local()
   .each (z)->
     n++
-    echo (if z.active then '>' else '-'), z.path
+    echo (if z.active then '>' else '-'), "#{z.path}#{ltsFormat z.lts}"
   .length
   echo "Listed: #{n} of #{total} installed Node.js version(s)"
   return
@@ -43,7 +49,8 @@ remote = (args)->
       list.push last = z
   .length
   for z in list
-    echo "- [#{z.mnr.length}]\t#{z.dist} #{z.src.version}#{r2s ranges z.mnr}"
+    echo "-", "[#{z.mnr.length}]\t#{z.dist}",
+      "#{z.src.version}#{r2s ranges z.mnr}#{ltsFormat z.src.lts}"
   echo "Listed: #{list.length} line(s) of #{n} version(s) of #{total} total"
   return
 
