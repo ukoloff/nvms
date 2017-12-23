@@ -41,7 +41,7 @@ sfx:
 
 npx:
   <<: *any
-  args: "> %BAT%"
+  args: "%* > %BAT%"
   before: |
     set BAT=%TEMP%\%~n0-%RANDOM%.bat
   after: |

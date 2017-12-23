@@ -2,4 +2,7 @@
 Nano-npx entry point
 ###
 
-echo "echo npx #{PACKAGE.version}"
+unless argv.length
+  require './help'
+else
+  require './setup'
