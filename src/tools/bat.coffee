@@ -11,6 +11,14 @@ module.exports = exports = (id)->
 
     """
 
+  npx = file id, 'npx.cmd'
+  unless npx.y()
+    echo "Creating:", npx.bn()
+    npx.save """
+      @"%~dp0..\\npx.bat" %*
+
+    """
+
   if (openssl = file install2, OpenSSL).y() and
     not (bin = file id, 'openssl.exe').y()
       openssl.cp bin
