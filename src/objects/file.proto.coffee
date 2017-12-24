@@ -26,7 +26,7 @@ exports.mv = (to)->
 exports.$ = ->
   fso.GetFile @
 
-# mtime or older than...
+# File size
 exports.sz = ->
   @$().Size
 
