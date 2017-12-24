@@ -23,7 +23,7 @@ uri = (self, file = msi self)->
 tmp = ->
   n = 10
   while n--
-    f = folder install2, '.' + Math.random().toFixed(3).replace(/.*[.]/, '')
+    f = folder install2, ".#{rnd 3}"
     unless f.y()
       return f
   throw Error "Temporary folder not found"
@@ -35,6 +35,7 @@ extract = (self)->
   code = run 1, true, 'msiexec', '/a', msi(self, true),
     "TARGETDIR=", run._, extract2, '/qb'
   if code
+    extract2.rm()
     throw Error 'Extraction failed'
   self.dst = dst = folder install2, v
     .rm true
@@ -72,9 +73,14 @@ set64= (self, is64)->
   self.x64 = if '*' == is64 then null else is64 ? x64
   return
 
+# MSI exists and not empty
+available = (dst)->
+  dst.y() and dst.sz() > 1e6
+
 exports.install = (is64)->
   set64 self = @, is64
-  fetch uri(self), msi self, true
+  unless available dst = msi self, true
+    fetch uri(self), dst
   extract self
   iojs self
   prefix self
