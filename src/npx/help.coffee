@@ -2,8 +2,6 @@
 No command line parameters
 ###
 
-echo "exit"
-
 wsh.Stderr.Writeline """
   #{PACKAGE.mingzi} v#{PACKAGE.version}: #{PACKAGE.description}
 
