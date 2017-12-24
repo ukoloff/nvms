@@ -27,6 +27,10 @@ exports.$ = ->
   fso.GetFile @
 
 # mtime or older than...
+exports.sz = ->
+  @$().Size
+
+# mtime or older than...
 exports.age = (age)->
   mtime = @$().DateLastModified
   if age?
