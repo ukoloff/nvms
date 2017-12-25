@@ -245,6 +245,27 @@ and take some (*more*) time
 for actual files removal
 (may be 10 minutes or so).
 
+## Extra binaries
+
+`nvm$` creates two additional binaries
+and places them into it's `PATH`.
+
+### nodew
+
+This is regular `node.exe` that has no console window
+(black flash),
+analogous to `perlw`, `rubyw`, `pythonw` etc.
+
+### npx
+
+This is a poor man's variation of great [npx][] console utility.
+It is created only for old distros
+missing regular `npx`.
+
+This limited edition can only run locally installed scripts.
+It never installs anything
+neither permanently nor temporarily.
+
 ## Building SFX package
 
 To build SFX package
@@ -291,6 +312,7 @@ to SFX package, by simple installing them
 
 [Node.js]: http://nodejs.org/
 [io.js]: https://iojs.org/
+[npx]: https://www.npmjs.com/package/npx
 [Windows Script Host]: https://en.wikipedia.org/wiki/Windows_Script_Host
 [nvm]: https://github.com/creationix/nvm
 [nvmw]: https://github.com/hakobera/nvmw
@@ -300,7 +322,7 @@ to SFX package, by simple installing them
 [cmdizer]: http://www.dostips.com/forum/viewtopic.php?p=37780#p37780
 [NTFS junction point]: https://en.wikipedia.org/wiki/NTFS_junction_point
 [AppVeyor]: http://www.appveyor.com/
-[distro]: https://ci.appveyor.com/api/projects/ukoloff/nvms/artifacts/nvm%24.zip?branch=master
-[dev-distro]: https://ci.appveyor.com/api/projects/ukoloff/nvms/artifacts/nvm%24dev.zip?branch=master
-[sfx32]: https://ci.appveyor.com/api/projects/ukoloff/nvms/artifacts/nvm%2486.exe?branch=master
-[sfx64]: https://ci.appveyor.com/api/projects/ukoloff/nvms/artifacts/nvm%2464.exe?branch=master
+[distro]: https://ci.appveyor.com/api/projects/ukoloff/nvms/artifacts/nvm$.zip?branch=master
+[dev-distro]: https://ci.appveyor.com/api/projects/ukoloff/nvms/artifacts/nvm$dev.zip?branch=master
+[sfx32]: https://ci.appveyor.com/api/projects/ukoloff/nvms/artifacts/nvm$86.exe?branch=master
+[sfx64]: https://ci.appveyor.com/api/projects/ukoloff/nvms/artifacts/nvm$64.exe?branch=master
