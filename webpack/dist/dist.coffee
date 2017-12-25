@@ -19,6 +19,7 @@ cp 'README.md'
 cp 'bin/linkd.exe'
 cp "tmp/cli.bat"
 cp "tmp/gui.bat"
+cp "tmp/npx.bat"
 cp "tmp/upgrade.bat"
 cp "./tmp/setup.bat"
 
