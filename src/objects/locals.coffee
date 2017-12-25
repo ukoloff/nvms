@@ -13,9 +13,9 @@ module.exports = ->
 
   ltSet = {}
   for r in remotes true when r.src.lts
-    ltSet[r.$[0].join '.'] = true
+    ltSet[r.$[0].join '.'] = r.src.lts
   for z in list
-    z.$.push [ltSet[z.$[0].join '.']]
+    z.$.push [!!(z.lts = ltSet[z.$[0].join '.'])]
 
   list.sort semver.$
 

@@ -38,3 +38,14 @@ setup:
 
 sfx:
   <<: *pause
+
+npx:
+  <<: *any
+  args: "%* > %BAT%"
+  before: |
+    set BAT=%TEMP%\%~n0-%RANDOM%.bat
+  after: |
+    call %BAT%
+    del /F /Q %BAT%
+    %*
+
