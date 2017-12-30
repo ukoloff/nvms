@@ -24,7 +24,7 @@ after_test:
   - tmp\cli v
   - reg query HKCU\Environment /v Path /z
   # - ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
-  - timeout 3
+  # - timeout 3
   - tmp\dist\setup <NUL
   - reg query HKCU\Environment /v Path /z
   - tmp\cli ?
