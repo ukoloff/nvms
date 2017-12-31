@@ -23,3 +23,5 @@ echo """
 Installation complete.
 Open new console and run '#{PACKAGE.mingzi} ?' to start.
 """
+
+try run 0, file(install2, 'cli.bat'), 'l', 'r'
