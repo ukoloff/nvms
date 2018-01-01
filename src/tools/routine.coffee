@@ -11,7 +11,7 @@ module.exports = ->
   do chain = ->
     me = $: ->
       stop = steps.length
-      ->
+      mark ->
         runner start, stop, arguments
     methods = 'sa'  # .sync() & .async()
     i = methods.length
@@ -22,7 +22,35 @@ module.exports = ->
           if step[c]
             steps.push step = {}
           step[c] = callback
-          return
+          return @
+        return
     me
 
-runner = (args)->    
+proto = {}
+
+mark = (fn)->
+  fn:: = proto
+
+marked = (fn)->
+  proto == fn::
+
+runner = (start, stop, args)->    
+  args = args.slice()
+  if 'function' == typeof args[args.length-1]
+    callback = args.pop()
+
+  # Sync case
+  while start < stop
+    step = steps[start]
+    asyncArgs = args
+    if step.s 
+      asyncArgs = step.s.apply(proto, args)
+      if false == asyncArgs
+        continue
+      asyncArgs ?= args
+      if 'object' != typeof asyncArgs
+        asyncArgs = [asyncArgs]
+    unless step.a
+      continue
+    step.a.apply(proto, asyncArgs)
+  return
