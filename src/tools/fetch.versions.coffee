@@ -2,22 +2,14 @@
 Fetch all remote version info
 ###
 
-z =  routine()
-
-dpath = (dist)->
-  file cache, "#{dist}.json"
-
-cached = (f)->
-  f.ok 1000*60*60*24
+module.exports = (self =  routine()).$()
 
 for k of dists
   do (k)->
-    z
+    self
     .s ->
-      if cached f = dpath k
+      if file(cache, f = "#{k}.json").ok 1000*60*60*24
         false
       else
-        ["#{dists[k]}index.json", f.bn()]
+        ["#{dists[k]}index.json", f]
     .a fetch
-
-module.exports = z.$()
