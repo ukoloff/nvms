@@ -9,27 +9,27 @@ exports = ->
   stop = 0
   start = steps.length
 
-  do chain = ->
-    me = $: ->
-      mark ->
-        runner start, stop, arguments
-    methods = 'sa'  # .sync() & .async()
-    i = methods.length
-    while --i > 0
-      do (c = methods.substr(i, 1))->
-        me[c] = (callback)->
-          if not stop or (step = steps[steps.length-1])[c]
-            steps.push step = {}
-            stop = steps.length
-          step[c] = callback
-          return @
-        return
-    me
+  me = $: ->
+    mark ->
+      runner start, stop, arguments
+  methods = 'sa'  # .sync() & .async()
+  i = methods.length
+  while --i >= 0
+    do (c = methods.substr(i, 1))->
+      me[c] = (callback)->
+        if not stop or (step = steps[steps.length-1])[c]
+          steps.push step = {}
+          stop = steps.length
+        step[c] = callback
+        return @
+      return
+  me
 
 proto = {}
 
 mark = (fn)->
   fn:: = proto
+  fn
 
 marked = (fn)->
   proto == fn::

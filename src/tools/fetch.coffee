@@ -2,7 +2,7 @@
 HTTP Get & store
 ###
 
-module.exports = 
+module.exports =
 routine()
 .s (url, dst)->
   echo "Fetching:", url
