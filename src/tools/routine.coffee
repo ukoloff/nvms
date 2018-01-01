@@ -4,7 +4,7 @@ Sync & async routine execution
 steps = []
 
 # Create new routine
-module.exports = 
+module.exports =
 exports = ->
   stop = 0
   start = steps.length
@@ -34,7 +34,15 @@ mark = (fn)->
 marked = (fn)->
   proto == fn::
 
-runner = (start, stop, args)->    
+guard = (fn)->
+  try
+    do fn
+    true
+  catch error
+    echo "FAIL: #{error.message}"
+    return
+
+runner = (start, stop, args)->
   self = {}
   args = [].slice.call(args)
   if 'function' == typeof args[args.length-1]
@@ -52,8 +60,10 @@ runner = (start, stop, args)->
 
       # Synchronous step
       asyncArgs = args
-      if step.s 
-        asyncArgs = step.s.apply self, args
+      if step.s
+        return false unless guard ->
+          asyncArgs = step.s.apply self, args
+
         if false == asyncArgs
           continue
         asyncArgs ?= args
@@ -65,24 +75,30 @@ runner = (start, stop, args)->
         continue
       unless callback
         # Synchronous invocation
-        step.a.apply self, asyncArgs
+        result = true
+        return false unless guard ->
+          result = step.a.apply self, asyncArgs
+        if not result and marked step.a
+          return false
         continue
-      
+
       # Real async
-      if marked step.a 
+      if marked step.a
         # Nested routine
         step.a.apply self, asyncArgs.concat [waitFor]
         return
-    
+
       asyncArgs = [argv0, '', routine.cookie(), start-1].concat asyncArgs
-      proc = sh.Exec "cscript.exe //Nologo //E:JScript #{("\"#{arg}\"" for arg in asyncArgs).join(' ')}"
+      proc = sh.Exec "cscript.exe //Nologo //E:JScript#{
+        (" \"#{arg}\"" for arg in asyncArgs).join('')}"
       exports._?.push ->
-        unless proc.Status 
+        unless proc.Status
           return
         waitFor !proc.ExitCode
         true
       return
 
     if callback
+      callback true
       return
     true
