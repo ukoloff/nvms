@@ -4,13 +4,13 @@ Sync & async routine execution
 steps = []
 
 # Create new routine
-module.exports = ->
+module.exports = 
+exports = ->
+  stop = 0
   start = steps.length
-  steps.push {}
 
   do chain = ->
     me = $: ->
-      stop = steps.length
       mark ->
         runner start, stop, arguments
     methods = 'sa'  # .sync() & .async()
@@ -18,9 +18,9 @@ module.exports = ->
     while --i > 0
       do (c = methods.substr(i, 1))->
         me[c] = (callback)->
-          step = steps[steps.length-1]
-          if step[c]
+          if not stop or (step = steps[steps.length-1])[c]
             steps.push step = {}
+            stop = steps.length
           step[c] = callback
           return @
         return
@@ -35,22 +35,54 @@ marked = (fn)->
   proto == fn::
 
 runner = (start, stop, args)->    
-  args = args.slice()
+  self = {}
+  args = [].slice.call(args)
   if 'function' == typeof args[args.length-1]
     callback = args.pop()
 
-  # Sync case
-  while start < stop
-    step = steps[start]
-    asyncArgs = args
-    if step.s 
-      asyncArgs = step.s.apply(proto, args)
-      if false == asyncArgs
+  waitFor = (success)->
+    unless success
+      callback success
+      return
+    do walk
+
+  do walk = ->
+    while start < stop
+      step = steps[start++]
+
+      # Synchronous step
+      asyncArgs = args
+      if step.s 
+        asyncArgs = step.s.apply self, args
+        if false == asyncArgs
+          continue
+        asyncArgs ?= args
+        if 'object' != typeof asyncArgs
+          asyncArgs = [asyncArgs]
+
+      # Asynchronous step
+      unless step.a
         continue
-      asyncArgs ?= args
-      if 'object' != typeof asyncArgs
-        asyncArgs = [asyncArgs]
-    unless step.a
-      continue
-    step.a.apply(proto, asyncArgs)
-  return
+      unless callback
+        # Synchronous invocation
+        step.a.apply self, asyncArgs
+        continue
+      
+      # Real async
+      if marked step.a 
+        # Nested routine
+        step.a.apply self, asyncArgs.concat [waitFor]
+        return
+    
+      asyncArgs = [argv0, '', routine.cookie(), start-1].concat asyncArgs
+      proc = sh.Exec "cscript.exe //Nologo //E:JScript #{("\"#{arg}\"" for arg in asyncArgs).join(' ')}"
+      exports._?.push ->
+        unless proc.Status 
+          return
+        waitFor !proc.ExitCode
+        true
+      return
+
+    if callback
+      return
+    true
