@@ -5,6 +5,8 @@ Fire callbacks
 routine._ = []
 
 module.exports = ->
-  routine._ = for callback in routine._ when not callback()
-    callback
+  was = routine._
+  routine._ = will = []
+  for callback in was when not callback()
+    will.push callback
   return
