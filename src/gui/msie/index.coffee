@@ -10,6 +10,7 @@ try
 catch
   document.$ = others.x
 
+require '../req'
 require './render'
 require './tabs'
 require './start'

@@ -102,3 +102,16 @@ runner = (start, stop, args)->
       callback true
       return
     true
+
+# Check command line & run async step
+exports.$ = (register)->
+  unless '' == argv[0] and /^\d+$/.test(argv[2]) and routine.cookie() == argv[1]
+    return
+
+  register?()
+
+  try
+    steps[argv[2]].a.apply {}, argv.slice 3
+    exit 0
+  catch err
+    exit 1
