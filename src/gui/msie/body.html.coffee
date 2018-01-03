@@ -20,6 +20,7 @@ module.exports = without ->
           type: 'radio'
           name: '.'
           value: n
+          accesskey: k.slice 0, 1
         text ' ', k.replace /./, (s)-> s.toUpperCase()
         span()
     return
