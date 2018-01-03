@@ -13,7 +13,7 @@ module.exports = exports = (id)->
 
   npx = file id, 'npx.cmd'
   unless npx.y()
-    echo "Creating:", npx.bn()
+    echo "Creating:", npx.bn 2
     npx.save """
       @"%~dp0..\\npx.bat" %*
 
