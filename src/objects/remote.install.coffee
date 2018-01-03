@@ -24,7 +24,7 @@ module.exports = routine()
   else
     [
       "#{dists[remote.dist]}#{remote.src.version}/#{
-      if is64 and not self.$[0][0]
+      if is64 and not remote.$[0][0]
         'x64/'
       else
         ''
