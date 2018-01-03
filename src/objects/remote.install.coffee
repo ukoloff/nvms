@@ -47,27 +47,29 @@ module.exports = routine()
     extract2.rm()
   return
 .s (remote)->
-  return if 'node' == remote.dist
+  return if nodew.n == remote.dist
   f = folder install2, @ver
-  dst = file f, "#{remote.dist}.exe"
-  echo "Creating:", dst.bn 2
-  dst.cp file f, "node.exe"
+  unless (src = file f, remote.dist + nodew.x).y()
+    return
+  if (dst = file f, nodew.n + nodew.x).y()
+    return
+  echo "Alias:", dst.bn 2
+  src.cp dst
   return
 .s ->
   echo "Adjusting NPM prefix..."
   npmrc =
-  file install2, @ver, 'node_modules/npm/npmrc'
-  .open 8
+  file install2, v = @ver, 'node_modules/npm/npmrc'
+    .open 8
   npmrc.WriteLine """
 
     # <hack dirty src="#{PACKAGE.homepage}">
-    prefix=${USERPROFILE}\\.#{PACKAGE.mingzi}\\#{junction.$.bn()}
+    prefix=${USERPROFILE}\\#{junction.$.bn 2}
     # </hack>
     """
   npmrc.Close()
-  return
-.s ->
-  echo "Using:", v = @ver
+
+  echo "Using:", v
   junction v
   return
 .$()
