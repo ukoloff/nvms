@@ -20,11 +20,11 @@ module.exports = exports = (id)->
     """
 
   if (openssl = file install2, OpenSSL).y() and
-    not (bin = file id, 'openssl.exe').y()
+    not (bin = file id, "openssl#{nodew.x}").y()
       openssl.cp bin
 
   nodew id
 
 # Name of OpenSSL binary
 exports.O =
-OpenSSL = 'openssl-cli.exe'
+OpenSSL = "openssl-cli#{nodew.x}"

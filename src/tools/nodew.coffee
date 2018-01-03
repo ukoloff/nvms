@@ -2,13 +2,11 @@
 Create console-less nodew.exe
 https://metacpan.org/source/SREZIC/Tk-804.032/exetype
 ###
-ok = ->
-  true
-
-module.exports = (path)->
-  unless (src = file path, 'node.exe').y()
+module.exports = 
+exports = (path)->
+  unless (src = file path, name + ext).y()
     return
-  if (dst = file path, 'nodew.exe').y()
+  if (dst = file path, "#{name}w#{ext}").y()
     return
 
   stream = binstream()
@@ -41,3 +39,13 @@ module.exports = (path)->
     echo "Invalid EXE:", src
 
   stream.Close()
+
+ok = ->
+  true
+
+for k of dists
+  exports.n = name = k
+  break
+
+exports.x = ext = '.exe'
+  
