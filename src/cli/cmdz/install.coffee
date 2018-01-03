@@ -23,5 +23,6 @@ exports.$ = (args)->
       local.use()
       return
 
-  x.install filter.x64
+  # x.install filter.x64
+  remote.install x, filter.x64
   return

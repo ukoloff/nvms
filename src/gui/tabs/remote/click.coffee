@@ -68,6 +68,9 @@ reinstall = (i, node)->
         .use()
     when 1
       echo "Would install #{node.dist} #{node.$[0].join '.'} x#{if node.x64 then 64 else 86}"
+      require '../journal'
+        .$r.click()
+      remote.install node, node.x64, iDone
   ask.z()
   return
 
@@ -81,3 +84,6 @@ options = (prefix)->
     r["x#{p}"] = "#{PACKAGE.mingzi} #{prefix} x#{p}"
   r.cancel = 'No, thanks!'
   r
+
+iDone = (success)->
+  echo "Installation", if success then "succeeded" else "failed"
