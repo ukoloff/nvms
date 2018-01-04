@@ -4,13 +4,13 @@ Parsing Node.js version in command line
 keys = ->
   k for k of dists
 
-ltstring = ['lts']
+ltstring = 'lts'
 
 # Parser itself
 module.exports =
 exports = (args)->
-  ks = new abbrev keys()
-  ltsa = new abbrev ltstring
+  ks = abbrev keys()
+  ltsa = abbrev ltstring
   for arg in args
     if x = ks.$ arg
       dist = x
@@ -36,4 +36,4 @@ exports.$6 = $6 = do ->
   x = ['x86','x64']
   alt if x64 then x.reverse() else x
 
-exports.$ = "#{alt keys()} [[v]N[.N[.N]]] #{$6} #{alt ltstring}"
+exports.$ = "#{alt keys()} [[v]N[.N[.N]]] #{$6} #{alt [ltstring]}"

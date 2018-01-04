@@ -8,6 +8,5 @@ module.exports = (semver, dist, x64, lts)->
   self
 
 Filter = ->
-  return
 
 Filter:: = require './proto'
