@@ -39,7 +39,7 @@ guard = (fn)->
     do fn
     true
   catch error
-    echo "FAIL: #{error.message}"
+    echo "FAIL:", error.message
     return
 
 runner = (start, stop, args)->

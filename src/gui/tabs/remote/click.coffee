@@ -48,7 +48,8 @@ installed = (i, node)->
   if i > 1
     ask.z()
     return
-  if node.local (if i then !x64 else x64)
+  node = remotes.x node, if i then !x64 else x64
+  if remotes.L node
     filter = " #{node.$[0].join '.'} x#{platforms[1 - i]}"
     ask.$
       use: "#{PACKAGE.mingzi} use#{filter}"
@@ -64,13 +65,13 @@ installed = (i, node)->
 reinstall = (i, node)->
   switch i
     when 0
-      node.local node.x64
+      remotes.L node
         .use()
     when 1
       echo "Would install #{node.dist} #{node.$[0].join '.'} x#{if node.x64 then 64 else 86}"
       require '../journal'
         .$r.click()
-      remote.install node, node.x64, iDone
+      remotes.i node, iDone
   ask.z()
   return
 

@@ -2,5 +2,4 @@
 Requesites
 ###
 
-fetch.versions
-remote.install
+remotes
