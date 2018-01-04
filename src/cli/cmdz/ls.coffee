@@ -1,3 +1,5 @@
+vfilter = require '../vfilter'
+
 exports.q = 'list'
 
 exports.t = 'List available Node.js versions'

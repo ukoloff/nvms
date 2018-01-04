@@ -1,3 +1,5 @@
+vfilter = require '../vfilter'
+
 exports.t = 'Install some version of Node.js'
 
 exports._ = "#{vfilter.$} [.]"

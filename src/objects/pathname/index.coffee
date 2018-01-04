@@ -3,7 +3,7 @@ Wrapper around WSH's fso module
 ###
 
 PathName = ->
-PathName:: = pathname.proto
+PathName:: = require './proto'
 
 # Build constructor for child class
 module.exports = (proto)->

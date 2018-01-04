@@ -37,7 +37,7 @@ api = ->
 
 # Build vfilter from string
 filter = (str)->
-  new vfilter._ semver str
+  vfilter semver str
 
 # Convert vfilter back to string
 vvv = (filter)->

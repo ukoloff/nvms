@@ -1,6 +1,8 @@
+vFilter = require '../vfilter'
+
 exports.t = 'Install OpenSSL utility'
 
-exports._ = "#{vfilter.$6} [.]"
+exports._ = "#{vFilter.$6} [.]"
 
 exports.h = """
   Install openssl.exe precompiled for Node.js project
@@ -10,10 +12,10 @@ exports.h = """
 exports.$ = (args)->
   force = period args
   remote =
-  new vfilter._ [0]
+  vfilter [0]
   .last()
   unless remote
     throw Error 'Appropriate Node.js version not found!'
-  if false == remote.O vfilter.x64(args[0]), force
+  if false == remote.O vFilter.x64(args[0]), force
     echo "OpenSSL is already installed. To reinstall say:", period.$
   return
