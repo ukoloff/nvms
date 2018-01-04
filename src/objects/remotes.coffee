@@ -125,7 +125,7 @@ exports.i = routine()
   npmrc.Close()
 
   # Use!
-  junction vid(self), true
+  junction vid self
   return
 .$()
 
