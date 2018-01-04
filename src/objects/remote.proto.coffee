@@ -68,8 +68,7 @@ prefix = (self)->
   return
 
 use = (self)->
-  echo "Using:", v = ver self
-  junction v
+  junction ver(self), true
   return
 
 set64= (self, is64)->

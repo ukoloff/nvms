@@ -3,8 +3,7 @@ Methods for locally installed versions
 ###
 
 exports.use = ->
-  echo "Using:", @path
-  junction @path
+  junction @path, true
   return
 
 # Full path to local folder
