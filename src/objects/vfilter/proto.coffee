@@ -10,9 +10,9 @@ exports.local = ->
 # Get collection to iterate over
 collection = (filter)->
   do if filter.$[1].length > 1
-    require './locals'
+    require '../locals'
   else
-    require './remotes'
+    require '../remotes'
 
 # Check for match
 match = (self, ver)->

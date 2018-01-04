@@ -6,7 +6,7 @@ Filter = (semver, dist, x64, lts)->
   @x64 = x64
   return
 
-Filter:: = vfilter.proto
+Filter:: = require './proto'
 
 keys = ->
   k for k of dists
