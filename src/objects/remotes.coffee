@@ -128,3 +128,19 @@ exports.i = routine()
   junction vid(self), true
   return
 .$()
+
+# OpenSSL installed?
+exports.O = ->
+  file install2, bat.O
+    .y()
+
+# Install OpenSSL
+exports.S = routine()
+.s (self)->
+  ["#{uri self}#{bat.O}", file '..', bat.O]
+.a fetch
+.s ->
+  echo "Creating shortcut..."
+  bat junction.$.bn()
+  return
+.$()
