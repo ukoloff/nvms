@@ -1,10 +1,10 @@
 ###
-Parsing Node.js version in command line
+Node.js version filter by semver, dist, platform and LTS flag
 ###
 
 # Prepare for matching local (installed) versions
 exports.local = ->
-  @$[1].push @x64
+  @$[1][1] = @x64
   @
 
 # Get collection to iterate over

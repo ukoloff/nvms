@@ -1,3 +1,5 @@
+vfilter = require '../vfilter'
+
 exports.t = 'Install OpenSSL utility'
 
 exports._ = "#{vfilter.$6} [.]"
@@ -10,7 +12,7 @@ exports.h = """
 exports.$ = (args)->
   force = period args
   remote =
-  new vfilter._ [0]
+  vfilter [0]
   .last()
   unless remote
     throw Error 'Appropriate Node.js version not found!'

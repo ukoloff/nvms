@@ -1,3 +1,5 @@
+vfilter = require '../vfilter'
+
 exports.t = 'Use (set default) already installed Node.js version'
 
 exports._ = "[ none | #{vfilter.$} ]"

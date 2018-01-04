@@ -1,3 +1,5 @@
+vfilter = require '../vfilter'
+
 exports.q = 'uninstall drop'
 
 exports.t = 'Remove one or several Node.js version(s)'
