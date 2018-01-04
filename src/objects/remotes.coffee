@@ -104,7 +104,7 @@ exports.i = routine()
   # Alias for iojs.exe
   return if nodew.n == self.dist
   home = vid self, true
-  unless (src = file home, remote.dist + nodew.x).y()
+  unless (src = file home, self.dist + nodew.x).y()
     return
   if (dst = file home, nodew.n + nodew.x).y()
     return
