@@ -24,7 +24,7 @@ exports.$ = (args)->
   if not force
     if local = remotes.L rem
       echo "#{local.path} is installed. To reinstall say:", period.$
-      local.use()
+      locals.u local
       return
 
   remotes.i rem
