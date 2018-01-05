@@ -30,9 +30,7 @@ module.exports = without -> table ->
     td "x", if x64 then 64 else 86
 
   hdr 'Node.js', ->
-    for z in @l when z.active
-      active = z
-      break
+    active = @_
     row ->
       th 'Active'
       td active?.$[0].join('.') or '-'
@@ -48,8 +46,7 @@ module.exports = without -> table ->
         platform active.x64
     row ->
       th 'Path'
-      td '', active?._() or @$
-      # alert active?._()
+      td @p
 
   hdr 'OS', ->
     keyvals = (rec)->

@@ -21,7 +21,7 @@ use = (i, node)->
   ask.z()
   if i
     return
-  node.use()
+  locals.u node
   require '.'
     .r()
   return
