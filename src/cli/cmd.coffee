@@ -1,8 +1,12 @@
 ###
 Commands engine
 ###
-abr = do abbrev
 cmdz  = require './cmdz'
+
+# Run asynchrnous step if needed
+do routine.$
+
+abr = do abbrev
 
 # Convert aliases member to array
 aliases = (str)->

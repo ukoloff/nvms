@@ -2,4 +2,4 @@
 Requesites
 ###
 
-remotes
+locals

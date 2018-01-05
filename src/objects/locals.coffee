@@ -52,3 +52,30 @@ exports.f = (self = do exports.a)->
     folder install2, self.path
   else
     junction.$
+
+rimraf = routine()
+.a (path)->
+  folder install2, path
+    .rm true
+.$()
+
+# Remove installed version
+exports.r = routine()
+.s (self)->
+  echo "Removing:", self.path
+  if self.active
+    junction()
+  self.path
+.a rimraf
+.$()
+
+# Uninstall everything
+exports.b = routine()
+.s ->
+  echo "Cleaning PATH"
+  addpath()
+  junction false
+  echo "Removing:", install2
+  ''
+.a rimraf
+.$()

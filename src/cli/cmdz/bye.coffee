@@ -14,14 +14,7 @@ exports.$ = (args)->
   unless period args
     echo "\nTo really remove everything say:", period.$
     exit()
-  echo "Removing from PATH"
-  addpath()
-  echo "Removing files..."
-  junction false
-  require 'self/setup/pif/drop'
-  require '../zog'
-    # ZOG::bye
-    .b ''
+  locals.b ->
   echo """
 
     Fare thee well! and if for ever,
@@ -30,8 +23,3 @@ exports.$ = (args)->
   """
   exit()
   return  # NOOP
-
-# ZOG command: Remove folder
-exports.z = (path)->
-  folder install2, path[0]
-  .rm true
