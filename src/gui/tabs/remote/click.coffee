@@ -92,3 +92,5 @@ options = (prefix)->
 
 iDone = (success)->
   echo "Installation", if success then "succeeded" else "failed"
+  require '../local'
+    .$r.click()

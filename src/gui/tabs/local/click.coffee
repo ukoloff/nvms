@@ -26,13 +26,15 @@ use = (i, node)->
     .r()
   return
 
-# Remove. To be implemented
+# Remove
 drop = (i, node)->
+  ask.z()
   if i
-    ask.z()
     return
-  ask.$
-    cancel: "Oops!"
-    'Under construction...'
-    ask.z
+  require '../journal'
+    .$r.click()
+  locals.r node, (success)->
+    echo "Removal", if success then 'succeeded' else 'failed'
+    require '.'
+      .$r.click()
   return

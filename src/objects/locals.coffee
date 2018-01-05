@@ -62,6 +62,8 @@ rimraf = routine()
 # Remove installed version
 exports.r = routine()
 .s (self)->
+  unless self
+    return false
   echo "Removing:", self.path
   if self.active
     junction()

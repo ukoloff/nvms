@@ -87,6 +87,8 @@ exports.i = routine()
     ["#{uri self}#{msi self}", msi self]
 .a fetch
 .s (self)->
+  require './locals'
+    .r localFor self
   echo "Extracting:", msi self
   vid self
 .a (vid)->

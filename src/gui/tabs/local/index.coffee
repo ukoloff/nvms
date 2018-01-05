@@ -15,8 +15,8 @@ exports.a = (pane)->
   ask.x pane, click, list.reverse()
   return
 
-exports.i = showCount = (locals)->
-  exports.$i.innerHTML = tHint locals.length
+exports.i = showCount = (locs = locals())->
+  exports.$i.innerHTML = tHint locs.length
   return
 
 # Refresh
