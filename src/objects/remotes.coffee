@@ -130,12 +130,12 @@ exports.i = routine()
 .$()
 
 # OpenSSL installed?
-exports.O = ->
+exports.Y = ->
   file install2, bat.O
     .y()
 
 # Install OpenSSL
-exports.S = routine()
+exports.O = routine()
 .s (self)->
   ["#{uri self}#{bat.O}", file '..', bat.O]
 .a fetch

@@ -11,12 +11,12 @@ exports.h = """
 # Node.js v0.*.* contains OpenSSL binary
 exports.$ = (args)->
   force = period args
-  if not force and remotes.O()
+  if not force and remotes.Y()
     echo "OpenSSL is already installed. To reinstall say:", period.$
     return
   remote = vfilter [0]
     .last()
   unless remote
     throw Error 'Appropriate Node.js version not found!'
-  remotes.S remote
+  remotes.O remote
   return

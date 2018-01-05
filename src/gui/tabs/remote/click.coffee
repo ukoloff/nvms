@@ -10,7 +10,7 @@ module.exports = (i, node)->
     install node
 
 openssl = (node)->
-  if remotes.O()
+  if remotes.Y()
     ask.$
       reinstall: 'nvm$ openssl .'
       cancel: 'Oops!'
@@ -36,7 +36,7 @@ sslZ = (i, node)->
   if i < 2
     node = remotes.x node, if i then !x64 else x64
     echo "Would install OpenSSL x#{platforms[1 - i]} from Node #{node.$[0].join '.'}"
-    remotes.S node, iDone
+    remotes.O node, iDone
     require '../journal'
       .$r.click()
   return
