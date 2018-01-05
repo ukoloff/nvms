@@ -6,7 +6,7 @@ exports = (fast)->
   unless fast
     do fetch.versions
   r = []
-  for k, v of dists when (f = file cache, "#{k}.json").y()
+  for k, v of dists when (f = file cache, k + fetch.versions.x).y()
     for z in json2 f.load() when msiAvailable z
       r.push
         $: [semver(z.version), [k], [!!z.lts]]
