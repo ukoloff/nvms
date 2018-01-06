@@ -44,7 +44,7 @@ exports.a = (list = exports())->
 
 # Use
 exports.u = (self)->
-  junction self.path
+  junction self?.path
 
 # Full path
 exports.f = (self = do exports.a)->
