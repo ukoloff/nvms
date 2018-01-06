@@ -43,7 +43,7 @@ sslZ = (i, node)->
 
 # Choose platform
 install = (node)->
-  ask.$ options("install #{node.$[0].join '.'}"),
+  ask.$ options("install #{node.dist} #{node.$[0].join '.'}"),
     "Install #{node.dist}:"
     installed
     node
@@ -54,7 +54,7 @@ installed = (i, node)->
     return
   node = remotes.x node, if i then !x64 else x64
   if remotes.L node
-    filter = " #{node.$[0].join '.'} x#{platforms[1 - i]}"
+    filter = " #{node.dist} #{node.$[0].join '.'} x#{platforms[1 - i]}"
     ask.$
       use: "#{PACKAGE.mingzi} use#{filter}"
       reinstall: "#{PACKAGE.mingzi} install#{filter} ."

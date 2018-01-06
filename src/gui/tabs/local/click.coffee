@@ -5,11 +5,12 @@ ask = require '../../ask'
 
 module.exports = (i, node)->
   verb = if i then 'Remove' else 'Use'
+  command = if node
+    "#{node.dist} #{node.$[0].join '.'} x#{if node.x64 then 64 else 86}"
+  else
+    "none"
   ask.$
-    yes: "#{PACKAGE.mingzi} #{
-      verb.toLowerCase()} #{
-      node.$[0].join '.'} x#{
-      if node.x64 then 64 else 86}"
+    yes: "#{PACKAGE.mingzi} #{verb.toLowerCase()} #{command}"
     no: 'Oops!'
     verb
     if i then drop else use

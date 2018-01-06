@@ -33,7 +33,7 @@ module.exports = without ->
         -> span class: 'ask', ->
           a
             href: '#'
-            title: "#{PACKAGE.mingzi} install #{v.best.$[0].join '.'}"
+            title: "#{PACKAGE.mingzi} install #{v.best.dist} #{v.best.$[0].join '.'}"
             'install'
           if v.best.$[0][0]
             return

@@ -3,8 +3,11 @@ Locals tab template
 ###
 module.exports = without ->
   n = 0
+  none = true
   for z in @ by -1
     div class: n++ & 1 && 'odd' or 'even', ->
+      if z.active
+        none = false
       input
         type: 'radio'
         disabled: true
@@ -27,3 +30,15 @@ module.exports = without ->
           href: '#'
           title: "#{PACKAGE.mingzi} remove#{filter}"
           'remove'
+  # none
+  div class: n & 1 && 'odd' or 'even', ->
+    input
+      type: 'radio'
+      disabled: true
+      checked: none
+    text ' none'
+    span class: 'ask', ->
+      a
+        href: '#'
+        title: "#{PACKAGE.mingzi} use none"
+        'use'
