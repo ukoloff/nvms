@@ -67,16 +67,15 @@ installed = (i, node)->
   return
 
 reinstall = (i, node)->
+  ask.z()
   switch i
     when 0
-      remotes.L node
-        .use()
+      locals.u remotes.L node
     when 1
-      echo "Would install #{node.dist} #{node.$[0].join '.'} x#{if node.x64 then 64 else 86}"
+      echo "Install:",  "#{node.dist} #{node.$[0].join '.'} x#{if node.x64 then 64 else 86}"
       require '../journal'
         .$r.click()
       remotes.i node, iDone
-  ask.z()
   return
 
 platforms = [64, 86]

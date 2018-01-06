@@ -59,6 +59,8 @@ load = ->
     return unless success
     do render
     exports.a = 0
+    # Fetch nvm$ version too
+    require('self/upgrade/sensor') ->
 
 do deferred ->
   exports.$d.innerHTML = 'Loading versions info...'
