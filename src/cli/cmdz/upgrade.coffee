@@ -6,7 +6,3 @@ exports.h = """
 
 exports.$ = ->
   require 'self/upgrade/upgrade'
-
-# ZOG command: Fetch latest version from GitHub
-exports.z = require 'self/upgrade/sensor'
-  .p

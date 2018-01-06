@@ -4,7 +4,8 @@ Commands engine
 cmdz  = require './cmdz'
 
 # Run asynchrnous step if needed
-do routine.$
+routine.$ ->
+  require 'self/upgrade/sensor'
 
 abr = do abbrev
 

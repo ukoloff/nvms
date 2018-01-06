@@ -108,6 +108,7 @@ exports.$ = (register)->
   unless '' == argv[0] and /^\d+$/.test(argv[2]) and routine.cookie() == argv[1]
     return
 
+  echo._ = ->
   register?()
 
   try
