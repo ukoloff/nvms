@@ -1,3 +1,5 @@
+require 'self/upgrade/sensor'
+
 exports.t = "Upgrade #{PACKAGE.mingzi} itself"
 
 exports.h = """
