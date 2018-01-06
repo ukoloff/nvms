@@ -10,9 +10,9 @@ exports.a = (pane)->
   exports.a = 0
   echo s = "Building remote Node.js version tree..."
   pane.innerHTML = s
-  setTimeout render
+  do render
 
-render = ->
+render = deferred ->
   pane = exports.$d
   # Load remotes list without fetch (previously loaded)
   pane.innerHTML = t tree = arborize rs = remotes true

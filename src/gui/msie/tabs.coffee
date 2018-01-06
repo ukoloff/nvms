@@ -11,7 +11,7 @@ radio = radios[0]
 panes = $ 'div', $('#main')[0]
 
 onclick = ->
-  setTimeout ask.z   # Reset popups
+  do deferred ask.z   # Reset popups
   for k, v of tabs
     if checked = (r = v.$r).checked
       v.$l.className = 'active'
