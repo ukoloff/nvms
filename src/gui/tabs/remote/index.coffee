@@ -6,16 +6,10 @@ tHint = require '../local/hint.html'
 ask = require '../../ask'
 click = require './click'
 
-exports.a = (pane)->
-  exports.a = 0
-  echo s = "Building remote Node.js version tree..."
-  pane.innerHTML = s
-  do render
-
 render = deferred ->
-  pane = exports.$d
-  # Load remotes list without fetch (previously loaded)
-  pane.innerHTML = t tree = arborize rs = remotes true
+  unless (rs = remotes true).length
+    return
+  (pane = exports.$d).innerHTML = t tree = arborize rs
   exports.$i.innerHTML = tHint rs.length
   for cb in $ 'input', pane when not cb.disabled
     cb.onclick = ->
@@ -52,3 +46,22 @@ dearb = (tree)->
   for k, v of tree
     result.push v.best, dearb(v.down)...
   result
+
+loading = 0
+
+exports.a =
+load = ->
+  if loading
+    return
+  loading++
+  fetch.versions (success)->
+    loading--
+    return unless success
+    do render
+    exports.a = 0
+
+do deferred ->
+  exports.$d.innerHTML = 'Loading versions info...'
+  do load
+  if exports.a
+    do render
