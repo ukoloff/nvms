@@ -1,18 +1,18 @@
 ###
-Parsing Node.js version in command line
+Node.js version filter by semver, dist, platform and LTS flag
 ###
 
 # Prepare for matching local (installed) versions
 exports.local = ->
-  @$[1].push @x64
+  @$[1][1] = @x64
   @
 
 # Get collection to iterate over
 collection = (filter)->
   do if filter.$[1].length > 1
-    require './locals'
+    require '../locals'
   else
-    require './remotes'
+    require '../remotes'
 
 # Check for match
 match = (self, ver)->

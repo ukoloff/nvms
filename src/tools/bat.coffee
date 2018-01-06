@@ -13,18 +13,18 @@ module.exports = exports = (id)->
 
   npx = file id, 'npx.cmd'
   unless npx.y()
-    echo "Creating:", npx.bn()
+    echo "Creating:", npx.bn 2
     npx.save """
       @"%~dp0..\\npx.bat" %*
 
     """
 
   if (openssl = file install2, OpenSSL).y() and
-    not (bin = file id, 'openssl.exe').y()
+    not (bin = file id, "openssl#{nodew.x}").y()
       openssl.cp bin
 
   nodew id
 
 # Name of OpenSSL binary
 exports.O =
-OpenSSL = 'openssl-cli.exe'
+OpenSSL = "openssl-cli#{nodew.x}"

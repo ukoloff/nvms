@@ -44,10 +44,13 @@ extract = (self)->
   return
 
 iojs = (self)->
-  return if 'node' == self.dist
-  echo "Creating shortcut..."
-  file self.dst, "#{self.dist}.exe"
-  .cp file self.dst, "node.exe"
+  return if nodew.n == self.dist
+  unless (src = file self.dst, self.dist + nodew.x).y()
+    return
+  if (dst = file self.dst, nodew.n + nodew.x).y()
+    return
+  echo "Alias:", dst.bn 2
+  src.cp dst
   return
 
 prefix = (self)->
@@ -101,6 +104,6 @@ exports.O = (is64, force)->
 # Find local version matching
 exports.local = (is64)->
   set64 @, is64
-  new vfilter._ @$[0], @dist, @x64
+  vfilter @$[0], @dist, @x64
   .local()
   .last()

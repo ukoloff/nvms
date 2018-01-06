@@ -1,7 +1,7 @@
 ###
 Commands engine
 ###
-abr = new abbrev
+abr = do abbrev
 cmdz  = require './cmdz'
 
 # Convert aliases member to array

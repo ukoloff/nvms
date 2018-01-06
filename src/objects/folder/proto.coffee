@@ -49,7 +49,7 @@ children = (list, map)->
   res
 
 exports.files = ->
-  children @$().Files, require './file'
+  children @$().Files, require '../file'
 
 exports.folders = ->
-  children @$().SubFolders, require './folder'
+  children @$().SubFolders, require '.'

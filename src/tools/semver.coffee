@@ -6,7 +6,7 @@ module.exports = exports = (str)->
   for z in str.split /\D+/ when z.length
     Number z
 
-matchArray = (test, pattern, eq)->
+matchArray = (test = [], pattern, eq)->
   for z, i in pattern when z?
     return false if !eq test[i], z
   true
