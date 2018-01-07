@@ -14,9 +14,11 @@ but totally rewritten using
 
 - Written in JavaScript itself (well, JScript)
 - Adds single entry to PATH environment variable
-- Creates `node.exe` for iojs distributions (along with `iojs.exe`)
-- Generates console-less Node.js binary (`nodew.exe`)
-- Can optionally install OpenSSL binary
+- Creates additional utilities:
+    * `node.exe` for iojs distributions (along with `iojs.exe`)
+    * Console-less Node.js binary (`nodew.exe`)
+    * Restricted version of `npx` script
+    * Can optionally install OpenSSL binary
 - Detects availability of new versions of Node.js and itself
 - One (or more) Node.js versions can be incorporated into installation package
 
@@ -213,7 +215,7 @@ into its PATH.
 Like `install` command,
 platform can be specified.
 Other filters (version number for instance)
-are meaningless and ignored.
+are meaningless hense ignored.
 
 #### abbrev
 
