@@ -62,7 +62,7 @@ load = ->
     # Fetch nvm$ version too
     require('self/upgrade/sensor') ->
 
-do deferred ->
+defer ->
   exports.$d.innerHTML = 'Loading versions info...'
   do load
   if exports.a

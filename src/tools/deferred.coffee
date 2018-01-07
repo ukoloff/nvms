@@ -1,11 +1,11 @@
 ###
-setTimeout wrapper
+Function to be called later
 ###
 
 module.exports = (fn)->
   self = @
   args = arguments
   ->
-    setTimeout ->
+    defer ->
       fn.apply self, args
       return

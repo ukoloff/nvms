@@ -29,7 +29,7 @@ exports.z = reset = ->
 one = (span, fn, data)->
   for a, i in $ 'a', span
     a.onclick = do (i)-> ->
-      do deferred ->
+      defer ->
         unless span in popups
           reset()
         current = span
