@@ -9,7 +9,7 @@ module.exports = (i, node)->
     "#{node.dist} #{node.$[0].join '.'} x#{if node.x64 then 64 else 86}"
   else
     "none"
-  ask.$
+  ask
     yes: "#{PACKAGE.mingzi} #{verb.toLowerCase()} #{command}"
     no: 'Oops!'
     verb
@@ -19,7 +19,7 @@ module.exports = (i, node)->
 
 # Use
 use = (i, node)->
-  ask.z()
+  ask()
   if i
     return
   locals.u node
@@ -29,7 +29,7 @@ use = (i, node)->
 
 # Remove
 drop = (i, node)->
-  ask.z()
+  ask()
   if i
     return
   require '../journal'

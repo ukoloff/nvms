@@ -11,7 +11,7 @@ module.exports = (i, node)->
 
 openssl = (node)->
   if remotes.Y()
-    ask.$
+    ask
       reinstall: 'nvm$ openssl .'
       cancel: 'Oops!'
       'OpenSSL installed...'
@@ -24,15 +24,15 @@ openssl = (node)->
 # Choose platform for OpenSSL
 sslX = (i, node)->
   if i
-    ask.z()
+    ask()
     return
-  ask.$ options('openssl'),
+  ask options('openssl'),
     "Install OpenSSL:"
     sslZ
     node
 
 sslZ = (i, node)->
-  ask.z()
+  ask()
   if i < 2
     node = remotes.x node, if i then !x64 else x64
     echo "Would install OpenSSL x#{platforms[1 - i]} from Node #{node.$[0].join '.'}"
@@ -43,19 +43,19 @@ sslZ = (i, node)->
 
 # Choose platform
 install = (node)->
-  ask.$ options("install #{node.dist} #{node.$[0].join '.'}"),
+  ask options("install #{node.dist} #{node.$[0].join '.'}"),
     "Install #{node.dist}:"
     installed
     node
 
 installed = (i, node)->
   if i > 1
-    ask.z()
+    ask()
     return
   node = remotes.x node, if i then !x64 else x64
   if remotes.L node
     filter = " #{node.dist} #{node.$[0].join '.'} x#{platforms[1 - i]}"
-    ask.$
+    ask
       use: "#{PACKAGE.mingzi} use#{filter}"
       reinstall: "#{PACKAGE.mingzi} install#{filter} ."
       cancel: "Oops!"
@@ -67,7 +67,7 @@ installed = (i, node)->
   return
 
 reinstall = (i, node)->
-  ask.z()
+  ask()
   switch i
     when 0
       locals.u remotes.L node

@@ -18,7 +18,7 @@ render =  ->
       unless @checked
         k += ' hide'
       div.className = k
-  ask.x pane, click, dearb tree
+  ask.$ pane, click, dearb tree
   return
 
 # Build tree of versions

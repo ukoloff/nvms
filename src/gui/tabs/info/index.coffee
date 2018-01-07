@@ -28,7 +28,7 @@ exports.a = (pane)->
       run @href
       false
 
-  ask.x pane, sure, [upgrade, bye]
+  ask.$ pane, sure, [upgrade, bye]
 
   # Start accordions
   for z in $ 'input', pane
@@ -41,12 +41,12 @@ exports.a = (pane)->
   return
 
 sure = (i, fn)->
-  ask.$
+  ask
     yes: 'Go ahead!'
     no: "Nope!"
     'Are you sure:'
     (i)->
-      ask.z()
+      ask()
       unless i
         do fn
       return
