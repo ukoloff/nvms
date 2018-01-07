@@ -9,8 +9,8 @@ click = require './click'
 render = deferred ->
   unless (rs = remotes true).length
     return
-  (pane = exports.$d).innerHTML = t tree = arborize rs
   exports.$i.innerHTML = tHint rs.length
+  (pane = exports.$d).innerHTML = t tree = arborize rs
   for cb in $ 'input', pane when not cb.disabled
     cb.onclick = ->
       div = @parentNode.parentNode.nextSibling

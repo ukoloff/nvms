@@ -48,6 +48,30 @@ module.exports = without -> table ->
       th 'Path'
       td @p
 
+  hdr 'Upgrade', ->
+    row ->
+      th PACKAGE.mingzi
+      td 'Latest, no need to upgrade:', ->
+        span
+          class: 'ask'
+          -> a
+            href: '#'
+            'anyway'
+    row ->
+      th 'Current'
+      td ->
+    row ->
+      th 'LTS'
+      td ->
+    row ->
+      th -> s 'install'
+      td "Remove #{PACKAGE.mingzi} & #{@c} Node.js:", ->
+        span
+          class: 'ask'
+          -> a
+            href: '#'
+            'uninstall'
+
   hdr 'OS', ->
     keyvals = (rec)->
       for k, v of rec

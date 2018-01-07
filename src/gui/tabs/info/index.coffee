@@ -8,6 +8,7 @@ exports.c = 1   # Clear on leave
 exports.a = (pane)->
   pane.innerHTML = t
     _: active = locals.a list = locals()
+    c: list.length
     p: "#{locals.f active}"
     d: dists
     sh: sh
