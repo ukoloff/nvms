@@ -4,6 +4,7 @@
   "private": true,
   "version": "0.9.6",
   "description": "Node Version Manager for M$ Windows",
+  "main": "webpack",
   "scripts": {
     "test": "node webpack -d --watch",
     "start": "node webpack -p"
