@@ -15,11 +15,6 @@ exports.$ = (args)->
     echo "\nTo really remove everything say:", period.$
     exit()
   locals.b ->
-  echo """
-
-    Fare thee well! and if for ever,
-    Still for ever, fare thee well!
-
-  """
+  echo byron
   exit()
   return  # NOOP

@@ -6,7 +6,7 @@ tHint = require '../local/hint.html'
 ask = require '../../ask'
 click = require './click'
 
-render = deferred ->
+render =  ->
   unless (rs = remotes true).length
     return
   exports.$i.innerHTML = tHint rs.length
@@ -61,9 +61,12 @@ load = ->
     exports.a = 0
     # Fetch nvm$ version too
     require('self/upgrade/sensor') ->
+    return
+  return
 
 defer ->
-  exports.$d.innerHTML = 'Loading versions info...'
+  exports.$d.innerHTML = do require './splash.html'
   do load
   if exports.a
     do render
+  return
