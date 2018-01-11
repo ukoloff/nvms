@@ -18,6 +18,7 @@ render =  ->
       unless @checked
         k += ' hide'
       div.className = k
+      return
   ask.$ pane, click, dearb tree
   return
 
@@ -38,6 +39,11 @@ arborize = (list)->
         else
           z.dist
       q = q.down
+  do zebra = (tree, even = false)->
+    for k, v of tree
+      v._ = even
+      zebra v.down, even = !even
+    return
   tree
 
 # Get versions array from tree
