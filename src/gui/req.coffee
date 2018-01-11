@@ -3,4 +3,4 @@ Requesites
 ###
 
 locals
-require 'self/upgrade/sensor'
+require 'self/upgrade/req'

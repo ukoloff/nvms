@@ -52,10 +52,7 @@ sure = (i, fn)->
       return
 
 upgrade = ->
-  echo "Would upgrade"
+  require './upgrade'
 
 bye = ->
-  locals.b ->
-  dom.body.innerHTML = require('./bye.html') byron
-  defer exit
-  return
+  require './bye'
