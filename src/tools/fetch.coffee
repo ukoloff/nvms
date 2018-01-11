@@ -1,7 +1,13 @@
 ###
 HTTP Get & store
 ###
-module.exports = (url, dst)->
+
+module.exports =
+routine()
+.s (url, dst)->
   echo "Fetching:", url
-  ajax url, dst
   return
+.a (url, dst)->
+  ajax url, file cache, dst
+  return
+.$()

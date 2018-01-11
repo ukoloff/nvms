@@ -6,7 +6,7 @@ t = require './index.html'
 css = require '../css/minimal'
 
 others.d =
-d = msie().Document
+d = (ie = msie()).Document
 d.open()
 d.write t css
 d.close()
@@ -18,6 +18,7 @@ w = d.$
 d.$ =
   h: wsh
   a: admin
+  e: ie
 
 w.eval argv0.load()
 

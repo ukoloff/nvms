@@ -1,3 +1,5 @@
+vfilter = require '../vfilter'
+
 exports.t = 'Use (set default) already installed Node.js version'
 
 exports._ = "[ none | #{vfilter.$} ]"
@@ -12,10 +14,9 @@ exports.h = """
 
 exports.$ = (args)->
   if 'none' == args[0]
-    echo "Temporary disabling", PACKAGE.mingzi
     junction()
-  else if x = vfilter(args).local().last()
-    x.use()
+  else if loc = vfilter(args).local().last()
+    locals.u loc
   else
     throw Error 'Specified Node.js version not installed!'
   return

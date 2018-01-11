@@ -30,9 +30,7 @@ module.exports = without -> table ->
     td "x", if x64 then 64 else 86
 
   hdr 'Node.js', ->
-    for z in @l when z.active
-      active = z
-      break
+    active = @_
     row ->
       th 'Active'
       td active?.$[0].join('.') or '-'
@@ -48,8 +46,31 @@ module.exports = without -> table ->
         platform active.x64
     row ->
       th 'Path'
-      td '', active?._() or @$
-      # alert active?._()
+      td @p
+
+  hdr 'Upgrade', ->
+    row ->
+      th PACKAGE.mingzi
+      td 'Latest, no need to upgrade:', ->
+        span
+          class: 'ask'
+          -> a
+            href: '#'
+            'anyway'
+    row ->
+      th 'Current'
+      td ->
+    row ->
+      th 'LTS'
+      td ->
+    row ->
+      th -> s 'install'
+      td "Remove #{PACKAGE.mingzi} & #{@c} Node.js:", ->
+        span
+          class: 'ask'
+          -> a
+            href: '#'
+            'uninstall'
 
   hdr 'OS', ->
     keyvals = (rec)->

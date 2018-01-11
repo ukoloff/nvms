@@ -11,12 +11,16 @@ exports.abs = ->
 
 # Parent folder
 exports.up = ->
-  folder = require './folder'
+  folder = require '../folder'
   folder fso.GetParentFolderName @
 
 # Base name (name + ext)
-exports.bn = ->
-  fso.GetFileName @
+exports.bn = (count)->
+  tail = fso.GetFileName @
+  while --count > 0
+    p = do require '.' unless p    
+    tail = "#{p (z = (z or @).up()).bn(), tail}"
+  tail 
 
 # Name (without extension)
 exports.n = ->

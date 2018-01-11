@@ -2,23 +2,24 @@
 Check whether update is available
 ###
 
-module.exports = exports = ->
-  # Allow to ping for new version?
-  expired() and read()
+module.exports = 
+exports = routine()
+.s ->
+  if expired() and read()
+    []
+  else
+    false
+.a ->
+  write latest()
+  fetch.versions()
+  return
+.$()
 
 # Is new version available?
 exports.v = ->
   ver = read()
   if ver and 0 < semver.$ ver, filter PACKAGE.version
     vvv ver
-
-# Ping for new version
-# To be run in the backgroung
-exports.p = ->
-  return unless exports()
-  write() # Emulate touch
-  write latest()
-  return
 
 # Is file old?
 expired = ->
@@ -37,7 +38,7 @@ api = ->
 
 # Build vfilter from string
 filter = (str)->
-  new vfilter._ semver str
+  vfilter semver str
 
 # Convert vfilter back to string
 vvv = (filter)->

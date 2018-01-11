@@ -6,17 +6,11 @@ tHint = require '../local/hint.html'
 ask = require '../../ask'
 click = require './click'
 
-exports.a = (pane)->
-  exports.a = 0
-  echo s = "Building remote Node.js version tree..."
-  pane.innerHTML = s
-  setTimeout render
-
-render = ->
-  pane = exports.$d
-  # Load remotes list without fetch (previously loaded)
-  pane.innerHTML = t tree = arborize rs = remotes true
+render =  ->
+  unless (rs = remotes true).length
+    return
   exports.$i.innerHTML = tHint rs.length
+  (pane = exports.$d).innerHTML = t tree = arborize rs
   for cb in $ 'input', pane when not cb.disabled
     cb.onclick = ->
       div = @parentNode.parentNode.nextSibling
@@ -24,7 +18,7 @@ render = ->
       unless @checked
         k += ' hide'
       div.className = k
-  ask.x pane, click, dearb tree
+  ask.$ pane, click, dearb tree
   return
 
 # Build tree of versions
@@ -52,3 +46,27 @@ dearb = (tree)->
   for k, v of tree
     result.push v.best, dearb(v.down)...
   result
+
+loading = 0
+
+exports.a =
+load = ->
+  if loading
+    return
+  loading++
+  fetch.versions (success)->
+    loading--
+    return unless success
+    do render
+    exports.a = 0
+    # Fetch nvm$ version too
+    require('self/upgrade/sensor') ->
+    return
+  return
+
+defer ->
+  exports.$d.innerHTML = do require './splash.html'
+  do load
+  if exports.a
+    do render
+  return

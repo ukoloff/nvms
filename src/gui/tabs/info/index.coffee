@@ -2,33 +2,57 @@
 Info tab
 ###
 t = require './index.html'
+ask = require '../../ask'
 
 exports.c = 1   # Clear on leave
 
 exports.a = (pane)->
   pane.innerHTML = t
-    l: list = locals()
-    $: junction.$
+    _: active = locals.a list = locals()
+    c: list.length
+    p: "#{locals.f active}"
     d: dists
     sh: sh
     n: activeX "WScript.Network"
     x64: x64
     a: others.a
 
+  # Show locals count
   require '../local'
     .i list
 
-  for z in $ 'a', pane
+  # Open URLs in browser
+  for z in $ 'a', pane when z.target
     z.onclick = ->
       echo "Open URL:", @href
       run @href
       false
 
+  ask.$ pane, sure, [upgrade, bye]
+
+  # Start accordions
   for z in $ 'input', pane
     z.onclick = ->
-      z = @
+      z = self = @
       z = z.parentElement until 'TBODY' == z.tagName
-      z.nextSibling.className = if @checked then '' else 'hide'
-      @blur()
+      z.nextSibling.className = if self.checked then '' else 'hide'
+      self.blur()
 
   return
+
+sure = (i, fn)->
+  ask
+    yes: 'Go ahead!'
+    no: "Nope!"
+    'Are you sure:'
+    (i)->
+      ask()
+      unless i
+        do fn
+      return
+
+upgrade = ->
+  require './upgrade'
+
+bye = ->
+  require './bye'

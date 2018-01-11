@@ -1,23 +1,16 @@
 ###
 Parsing Node.js version in command line
 ###
-Filter = (semver, dist, x64, lts)->
-  @$ = [semver or [], [dist], [lts]]
-  @x64 = x64
-  return
-
-Filter:: = vfilter.proto
-
 keys = ->
   k for k of dists
 
-ltstring = ['lts']
+ltstring = 'lts'
 
 # Parser itself
 module.exports =
 exports = (args)->
-  ks = new abbrev keys()
-  ltsa = new abbrev ltstring
+  ks = abbrev keys()
+  ltsa = abbrev ltstring
   for arg in args
     if x = ks.$ arg
       dist = x
@@ -27,10 +20,7 @@ exports = (args)->
       ver = semver arg
     else if ltsa.$ arg
       lts = true
-  new Filter ver, dist, $64, lts
-
-# export constructor
-exports._ = Filter
+  vfilter ver, dist, $64, lts
 
 # Parse x86|x64
 exports.x64 =
@@ -46,4 +36,4 @@ exports.$6 = $6 = do ->
   x = ['x86','x64']
   alt if x64 then x.reverse() else x
 
-exports.$ = "#{alt keys()} [[v]N[.N[.N]]] #{$6} #{alt ltstring}"
+exports.$ = "#{alt keys()} [[v]N[.N[.N]]] #{$6} #{alt [ltstring]}"

@@ -12,11 +12,11 @@ exports.c = 1
 exports.a = (pane)->
   pane.innerHTML = t list = locals()
   showCount list
-  ask.x pane, click, list.reverse()
+  ask.$ pane, click, list.reverse().concat(0)
   return
 
-exports.i = showCount = (locals)->
-  exports.$i.innerHTML = tHint locals.length
+exports.i = showCount = (locs = locals())->
+  exports.$i.innerHTML = tHint locs.length
   return
 
 # Refresh

@@ -8,6 +8,7 @@ module.exports = exports = (id = 'none')->
   run 0, true, bin, link, '/D'
   if false == id
     return
+  echo "Using:", id
   bat id
   run 0, true, bin, link, folder install2, id
   return

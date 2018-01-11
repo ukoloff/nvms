@@ -10,8 +10,8 @@ module.exports = (i, node)->
     install node
 
 openssl = (node)->
-  if (file install2, bat.O).y()
-    ask.$
+  if remotes.Y()
+    ask
       reinstall: 'nvm$ openssl .'
       cancel: 'Oops!'
       'OpenSSL installed...'
@@ -24,33 +24,38 @@ openssl = (node)->
 # Choose platform for OpenSSL
 sslX = (i, node)->
   if i
-    ask.z()
+    ask()
     return
-  ask.$ options('openssl'),
+  ask options('openssl'),
     "Install OpenSSL:"
     sslZ
     node
 
 sslZ = (i, node)->
-  ask.z()
+  ask()
   if i < 2
+    node = remotes.x node, if i then !x64 else x64
     echo "Would install OpenSSL x#{platforms[1 - i]} from Node #{node.$[0].join '.'}"
+    remotes.O node, iDone
+    require '../journal'
+      .$r.click()
   return
 
 # Choose platform
 install = (node)->
-  ask.$ options("install #{node.$[0].join '.'}"),
+  ask options("install #{node.dist} #{node.$[0].join '.'}"),
     "Install #{node.dist}:"
     installed
     node
 
 installed = (i, node)->
   if i > 1
-    ask.z()
+    ask()
     return
-  if node.local (if i then !x64 else x64)
-    filter = " #{node.$[0].join '.'} x#{platforms[1 - i]}"
-    ask.$
+  node = remotes.x node, if i then !x64 else x64
+  if remotes.L node
+    filter = " #{node.dist} #{node.$[0].join '.'} x#{platforms[1 - i]}"
+    ask
       use: "#{PACKAGE.mingzi} use#{filter}"
       reinstall: "#{PACKAGE.mingzi} install#{filter} ."
       cancel: "Oops!"
@@ -62,13 +67,15 @@ installed = (i, node)->
   return
 
 reinstall = (i, node)->
+  ask()
   switch i
     when 0
-      node.local node.x64
-        .use()
+      locals.u remotes.L node
     when 1
-      echo "Would install #{node.dist} #{node.$[0].join '.'} x#{if node.x64 then 64 else 86}"
-  ask.z()
+      echo "Install:",  "#{node.dist} #{node.$[0].join '.'} x#{if node.x64 then 64 else 86}"
+      require '../journal'
+        .$r.click()
+      remotes.i node, iDone
   return
 
 platforms = [64, 86]
@@ -81,3 +88,8 @@ options = (prefix)->
     r["x#{p}"] = "#{PACKAGE.mingzi} #{prefix} x#{p}"
   r.cancel = 'No, thanks!'
   r
+
+iDone = (success)->
+  echo "Installation", if success then "succeeded" else "failed"
+  require '../local'
+    .$r.click()

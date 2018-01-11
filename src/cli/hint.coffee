@@ -4,10 +4,8 @@ Check all updates
 
 sensor = require 'self/upgrade/sensor'
 
-if sensor()
-  require './zog'
-    # ZOG::upgrade
-    .u()
+# Run background update if neccessary
+sensor ->
 
 x = {}
 if v = sensor.v()

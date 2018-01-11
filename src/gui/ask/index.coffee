@@ -18,7 +18,7 @@ drop = ->
   return
 
 # Reset popups
-exports.z = reset = ->
+reset = ->
   drop()
   if active
     active.className = active.className.split(/\s+/)[0]
@@ -29,24 +29,26 @@ exports.z = reset = ->
 one = (span, fn, data)->
   for a, i in $ 'a', span
     a.onclick = do (i)-> ->
-      setTimeout ->
+      defer ->
         unless span in popups
           reset()
         current = span
-        fn i, data
-        current = 0
+        try
+          fn i, data
+        finally
+          current = 0
+        return
       false
   return
 
-# Install listeners for many .ask
-exports.x = (dom, fn, array)->
-  for span in $ 'span', dom by -1 when 'ask' == span.className
-    one span, fn, array.pop()
-  return
-
 # Show "popup"
-exports.$ = (options, title, fn, data)->
-  return unless current
+module.exports =
+exports = (options, title, fn, data)->
+  unless options
+    reset()
+    return
+  unless current
+    return
   drop()
   unless active
     active = current
@@ -54,4 +56,10 @@ exports.$ = (options, title, fn, data)->
   popups = append active.parentNode, t options, title
   for z in popups by -1
     one z, fn, data
+  return
+
+# Install listeners for many .ask
+exports.$ = (dom, fn, array)->
+  for span in $ 'span', dom by -1 when 'ask' == span.className
+    one span, fn, array.pop()
   return
