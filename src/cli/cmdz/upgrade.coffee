@@ -7,4 +7,6 @@ exports.h = """
   """
 
 exports.$ = ->
-  require 'self/upgrade/upgrade'
+  do require 'self/upgrade/upgrade'
+  exit 0
+  return
