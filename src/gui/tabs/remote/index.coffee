@@ -6,20 +6,36 @@ tHint = require '../local/hint.html'
 ask = require '../../ask'
 click = require './click'
 
-render =  ->
+render = ->
   unless (rs = remotes true).length
     return
   exports.$i.innerHTML = tHint rs.length
-  (pane = exports.$d).innerHTML = t tree = arborize rs
-  for cb in $ 'input', pane when not cb.disabled
-    cb.onclick = ->
-      div = @parentNode.parentNode.nextSibling
-      k = div.className.split(/\s+/)[0]
-      unless @checked
-        k += ' hide'
-      div.className = k
+  renderList arborize rs
+  return
+
+renderList = (node, el = exports.$d)->
+  el.innerHTML = t node
+  i = 0
+  cbs = $ 'input', el
+  remotes = []
+  for k, v of node
+    remotes.push v.best
+    do (v, cb = cbs[i++])->
+      if cb.disabled
+        return
+      cb.onclick = ->
+        defer ask
+        div = cb.parentNode.parentNode.nextSibling
+        if v
+          renderList v.down, div
+        v = 0
+        k = div.className.split(/\s+/)[0]
+        unless cb.checked
+          k += ' hide'
+        div.className = k
+        return
       return
-  ask.$ pane, click, dearb tree
+  ask.$ el, click, remotes
   return
 
 # Build tree of versions
@@ -27,9 +43,10 @@ arborize = (list)->
   tree = {}
   for z in list by -1
     q = tree
-    for n in z.$[0]
+    for n, depth in z.$[0]
       q = q[" #{n}"] ||=
         n: 0
+        d: depth + 1
         best: z
         down: {}
       q.n++
@@ -45,13 +62,6 @@ arborize = (list)->
       zebra v.down, even = !even
     return
   tree
-
-# Get versions array from tree
-dearb = (tree)->
-  result = []
-  for k, v of tree
-    result.push v.best, dearb(v.down)...
-  result
 
 loading = 0
 
