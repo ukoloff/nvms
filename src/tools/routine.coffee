@@ -89,7 +89,7 @@ runner = (start, stop, args)->
         return
 
       asyncArgs = [argv0, '', routine.cookie(), start-1].concat asyncArgs
-      proc = sh.Exec "wscript.exe /B //E:JScript#{
+      proc = sh.Exec "wscript.exe //B //E:JScript#{
         (" \"#{arg}\"" for arg in asyncArgs).join('')}"
       exports._?.push ->
         unless proc.Status
