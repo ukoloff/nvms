@@ -15,6 +15,5 @@ module.exports = ->
   wsh.Sleep 3000
 
   try src.rm true
-  finally
-    exit()
+  exit()
   return
