@@ -63,3 +63,37 @@ exports.$ = (dom, fn, array)->
   for span in $ 'span', dom by -1 when 'ask' == span.className
     one span, fn, array.pop()
   return
+
+cancelHint = 'No, thanks!'
+
+# Select x86/x64
+exports.x = (title, cmd, callback)->
+  platforms = [64, 86]
+  if x64
+    platforms.reverse()
+  options = {}
+  for p in platforms by -1
+    options["x#{p}"] = "#{PACKAGE.mingzi} #{cmd} x#{p}"
+  options.cancel = cancelHint
+
+  exports options, title, (i)->
+    if i > 1
+      defer exports
+      return
+    callback not i != not x64
+    return
+  return
+
+# Select yes/no
+exports.y = (title, cmd, callback)->
+  exports
+    yes: "#{PACKAGE.mingzi} #{cmd}"
+    no: cancelHint
+    "#{title}:"
+    (i)->
+      if i
+        defer exports
+        return
+      do callback
+      return
+  return

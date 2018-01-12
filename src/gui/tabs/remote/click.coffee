@@ -4,92 +4,72 @@ Remotes processing
 ask = require '../../ask'
 
 module.exports = (i, node)->
-  if i
-    openssl node
-  else
-    install node
+  (if i then openssl else install) node
+  return
 
 openssl = (node)->
   if remotes.Y()
-    ask
-      reinstall: 'nvm$ openssl .'
-      cancel: 'Oops!'
-      'OpenSSL installed...'
-      sslX
-      node
-  else
-    sslX 0, node
+    ask.y 'OpenSSL installed. Reinstall', "openssl .", ->
+      sslPlatform node
+      return
+    return
+  sslPlatform node
   return
 
 # Choose platform for OpenSSL
-sslX = (i, node)->
-  if i
-    ask()
-    return
-  ask options('openssl'),
-    "Install OpenSSL:"
-    sslZ
-    node
-
-sslZ = (i, node)->
-  ask()
-  if i < 2
-    node = remotes.x node, if i then !x64 else x64
-    echo "Would install OpenSSL x#{platforms[1 - i]} from Node #{node.$[0].join '.'}"
-    remotes.O node, iDone
-    require '../journal'
-      .$r.click()
+sslPlatform = (node)->
+  ask.x "Install OpenSSL", "openssl", (is64)->
+    defer ask
+    node = remotes.x node, is64
+    echo "Install:", "OpenSSL"
+    defer ->
+      require '../journal'
+        .$r.click()
+      return
+    remotes.O node, (success)->
+      echo if success then "OpenSSL installed" else "Failed to install OpenSSL"
+      return
   return
 
-# Choose platform
+vid = (remote)->
+  "#{
+    remote.dist} #{
+    remote.$[0].join '.'}#{
+    if remote.x64? then " x#{
+      if remote.x64 then 64 else 86
+    }" else ""
+    }"
+
+# Choose platform for Node to install
 install = (node)->
-  ask options("install #{node.dist} #{node.$[0].join '.'}"),
-    "Install #{node.dist}:"
-    installed
-    node
-
-installed = (i, node)->
-  if i > 1
-    ask()
+  ask.x "Install #{vid node}", "install #{vid node}", (is64)->
+    if remotes.L node = remotes.x node, is64
+      ask
+        use: "#{PACKAGE.mingzi} use #{vid node}"
+        reinstall: "#{PACKAGE.mingzi} install #{vid node} ."
+        cancel: "Never mind"
+        'Installed:'
+        reinstall
+        node
+    else
+      reinstall 1, node
     return
-  node = remotes.x node, if i then !x64 else x64
-  if remotes.L node
-    filter = " #{node.dist} #{node.$[0].join '.'} x#{platforms[1 - i]}"
-    ask
-      use: "#{PACKAGE.mingzi} use#{filter}"
-      reinstall: "#{PACKAGE.mingzi} install#{filter} ."
-      cancel: "Oops!"
-      'Installed...'
-      reinstall
-      node
-  else
-    reinstall 1, node
-  return
 
 reinstall = (i, node)->
-  ask()
+  defer ask
   switch i
     when 0
       locals.u remotes.L node
     when 1
-      echo "Install:",  "#{node.dist} #{node.$[0].join '.'} x#{if node.x64 then 64 else 86}"
-      require '../journal'
-        .$r.click()
-      remotes.i node, iDone
+      echo "Install:",  "#{vid node}"
+      defer ->
+        require '../journal'
+          .$r.click()
+        return
+      remotes.i node, (success)->
+        echo "#{if success then "Installed" else "Failed to install"}: #{vid node}"
+        defer ->
+          require '../local'
+            .$r.click()
+          return
   return
-
-platforms = [64, 86]
-if x64
-  platforms.reverse()
-
-options = (prefix)->
-  r = {}
-  for p in platforms by -1
-    r["x#{p}"] = "#{PACKAGE.mingzi} #{prefix} x#{p}"
-  r.cancel = 'No, thanks!'
-  r
-
-iDone = (success)->
-  echo "Installation", if success then "succeeded" else "failed"
-  require '../local'
-    .$r.click()

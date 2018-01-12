@@ -9,29 +9,21 @@ module.exports = (i, node)->
     "#{node.dist} #{node.$[0].join '.'} x#{if node.x64 then 64 else 86}"
   else
     "none"
-  ask
-    yes: "#{PACKAGE.mingzi} #{verb.toLowerCase()} #{command}"
-    no: 'Oops!'
-    verb
-    if i then drop else use
-    node
+  ask.y verb, "#{verb.toLowerCase()} #{command}", ->
+    defer ask
+    (if i then drop else use) node
+    return
   return
 
 # Use
-use = (i, node)->
-  ask()
-  if i
-    return
+use = (node)->
   locals.u node
   require '.'
     .r()
   return
 
 # Remove
-drop = (i, node)->
-  ask()
-  if i
-    return
+drop = (node)->
   require '../journal'
     .$r.click()
   locals.r node, (success)->
