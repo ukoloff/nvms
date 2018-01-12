@@ -1,6 +1,6 @@
 wnd.onunload = ->
   echo 'Bye!' if DEBUG
-  exit 0
+  exit()
 
 t = require './body.html'
 css = require "../css"

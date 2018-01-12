@@ -112,6 +112,6 @@ exports.$ = (register)->
 
   try
     steps[argv[2]].a.apply {}, argv.slice 3
-    exit 0
-  catch err
+    exit()
+  catch
     exit 1

@@ -8,5 +8,5 @@ exports.h = """
 
 exports.$ = ->
   do require 'self/upgrade/upgrade'
-  exit 0
+  exit()
   return
