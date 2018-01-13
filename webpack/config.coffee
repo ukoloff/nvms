@@ -58,4 +58,5 @@ stringify = (rec)->
   fresh: do require './fresh'
   defines: new webpack.DefinePlugin
     PACKAGE: stringify require '../package'
+    BUILD_ID: JSON.stringify require('./rnd') 5
   globals: new webpack.ProvidePlugin sources.globals
