@@ -21,7 +21,7 @@ exports.$ = (args)->
 
   if not force
     if local = x.local filter.x64
-      echo "#{local.path} is installed. To reinstall say:", period.$
+      echo "#{local.path} is installed. To reinstall say:", period.$()
       local.use()
       return
 

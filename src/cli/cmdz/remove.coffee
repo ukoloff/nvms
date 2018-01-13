@@ -23,7 +23,7 @@ exports.$ = (args)->
   else
     one args
   unless danger
-    echo "\nTo actually uninstall say:", period.$
+    echo "\nTo actually uninstall say:", period.$()
   return
 
 all = (args)->

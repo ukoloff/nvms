@@ -15,7 +15,7 @@ exports.$ = (args)->
     exit()
 
   unless (up = up[key]).a or force
-    echo "Upgrade not needed. To force upgrade say:", period.$
+    echo "Upgrade not needed. To force upgrade say:", period.$()
     exit()
 
   echo "Upgrading:", up.n, '->', up.v or latestStr
