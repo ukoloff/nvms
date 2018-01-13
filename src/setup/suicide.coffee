@@ -2,18 +2,19 @@
 Remove setup files
 ###
 module.exports = ->
-  src = argv0.up()
+  fire = "#{PACKAGE.name}-dist" == (src = argv0.up()).bn()
 
-  unless "#{PACKAGE.name}-dist" == src.bn()
-    return ->
+  unless wsh.Interactive
+    # Running in the background
+    if fire and 1 == argv.length and uniqid() == argv[0]
+      wsh.Sleep 3000
+      try src.rm true
+    exit()
 
-  if wsh.Interactive
-    return ->
-      run 0, 'wscript', '//B', '//E:JScript', argv0
+  # Normal run
+  if fire
+    ->
+      run 0, 'wscript', '//B', '//E:JScript', argv0, uniqid()
       return
-
-  wsh.Sleep 3000
-
-  try src.rm true
-  exit()
-  return
+  else
+    ->
