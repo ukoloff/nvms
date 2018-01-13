@@ -88,7 +88,7 @@ runner = (start, stop, args)->
         step.a.apply self, asyncArgs.concat [waitFor]
         return
 
-      asyncArgs = [argv0, '', routine.cookie(), start-1].concat asyncArgs
+      asyncArgs = [argv0, '', uniqid(), start-1].concat asyncArgs
       proc = sh.Exec "wscript.exe //B //E:JScript#{
         (" \"#{arg}\"" for arg in asyncArgs).join('')}"
       exports._?.push ->
