@@ -18,11 +18,15 @@ exports.$ = (args)->
     echo "Upgrade not needed. To force upgrade say:", period.$()
     exit()
 
-  echo "Upgrading:", up.n, '->', up.v or latestStr
+  echo "Upgrading:", up.N, '->', up.v or latestStr
+  if up.n
+    require 'self/upgrade/upgrade'
+  else
+    unless up.r
+      throw Error "Unknown Node.js version"
+    up.r.install vfilter.x64 args[1]
   exit()
   return
-
-  # require 'self/upgrade/upgrade'
 
 # ZOG command: Fetch latest version from GitHub
 exports.z = require 'self/upgrade/sensor'
@@ -33,7 +37,7 @@ info = (empty)->
   result = {}
   for k, v of sensor.u empty
     result[if v.n then 'self' else k.toLowerCase()] = v
-    v.n ||= k
+    v.N = v.n or k
   result
 
 keys = (rec)->
@@ -73,6 +77,6 @@ hintLine = (info)->
     info.k
     if info.a then '' else '.'
     "\t//"
-    info.n
+    info.N
     '->'
     info.v or latestStr
