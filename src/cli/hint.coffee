@@ -9,14 +9,13 @@ if sensor()
     # ZOG::upgrade
     .u()
 
-x = {}
-if v = sensor.v()
-  x.upgrade = "New version v#{v}"
-if v = remotes.v()
-  x.install = "Node.js version v#{v}"
+# Show upgarde info
+upgrade = ''
+for k, v of sensor.u() when v.a
+  upgrade += "#{v.n or k}->#{v.v}; "
 
-for k, v of x
-  unless updates
-    echo()
-    updates = true
-  echo "// Update: #{v} available. Upgrade with: #{PACKAGE.mingzi} #{k}"
+if upgrade
+  echo """
+
+  // Upgrade #{upgrade}See: #{PACKAGE.mingzi} upgrade
+  """
