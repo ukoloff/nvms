@@ -9,7 +9,7 @@ if sensor()
     # ZOG::upgrade
     .u()
 
-# Show upgarde info
+# Show upgrade info
 upgrade = ''
 for k, v of sensor.u() when v.a
   upgrade += "#{v.n or k}->#{v.v}; "
