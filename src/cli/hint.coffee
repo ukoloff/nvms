@@ -12,7 +12,7 @@ if sensor()
 # Show upgrade info
 upgrade = ''
 for k, v of sensor.u() when v.a
-  upgrade += "#{v.n or k} -> #{v.v}; "
+  upgrade += "#{v.N} -> #{v.v}; "
 
 if upgrade
   echo """
