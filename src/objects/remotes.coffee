@@ -29,13 +29,6 @@ cachedAll = ->
 msi = (line)->
   ~line.files.join().indexOf '-msi'
 
-# Latest version available to upgrade to
-exports.v = ->
-  return unless cachedAll()
-  return unless remote = exports().pop()
-  return if remote.local '*'
-  remote.$[0].join '.'
-
 Remote = (line, dist)->
   @$ = [semver((@src = line).version), [@dist = dist], [!!line.lts]]
   return

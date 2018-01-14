@@ -1,38 +1,20 @@
 ###
 Remove setup files
 ###
-magic = "#{PACKAGE.name}-dist"
-ext = ".source"
-src = argv0.up()
-
 module.exports = ->
-  unless magic == src.bn().substring 0, magic.length
-    return ->
+  fire = "#{PACKAGE.name}-dist" == (src = argv0.up()).bn()
 
-  ini = file "#{argv0}#{ext}"
+  unless wsh.Interactive
+    # Running in the background
+    if fire and 1 == argv.length and uniqid() == argv[0]
+      wsh.Sleep 3000
+      try src.rm true
+    exit()
 
-  unless ini.y()
-    return prepare
-
-  wsh.Sleep 3000
-  # Actual remove
-
-  try
-    folder ini.load()
-    .rm true
-
-  src.rm true
-
-  exit()
-  return
-
-prepare = ->
-  tmp = folder cache, "#{magic}-#{rnd 8}"
-  .mk true
-
-  argv0.cp me2 = file tmp, argv0.bn()
-  file "#{me2}#{ext}"
-  .save src
-  run 0, me2
-
-  return
+  # Normal run
+  if fire
+    ->
+      run 0, 'wscript', '//B', '//E:JScript', argv0, uniqid()
+      return
+  else
+    ->

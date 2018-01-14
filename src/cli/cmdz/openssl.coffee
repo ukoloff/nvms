@@ -17,5 +17,5 @@ exports.$ = (args)->
   unless remote
     throw Error 'Appropriate Node.js version not found!'
   if false == remote.O vFilter.x64(args[0]), force
-    echo "OpenSSL is already installed. To reinstall say:", period.$
+    echo "OpenSSL is already installed. To reinstall say:", period.$()
   return
