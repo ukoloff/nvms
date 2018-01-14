@@ -14,9 +14,11 @@ but totally rewritten using
 
 - Written in JavaScript itself (well, JScript)
 - Adds single entry to PATH environment variable
-- Creates `node.exe` for iojs distributions (along with `iojs.exe`)
-- Generates console-less Node.js binary (`nodew.exe`)
-- Can optionally install OpenSSL binary
+- Creates additional utilities:
+    * `node.exe` for iojs distributions (along with `iojs.exe`)
+    * Console-less Node.js binary (`nodew.exe`)
+    * Restricted version of `npx` script
+    * Can optionally install OpenSSL binary
 - Detects availability of new versions of Node.js and itself
 - One (or more) Node.js versions can be incorporated into installation package
 
@@ -60,7 +62,7 @@ and open new one to use `nvm$`.
 For new version of `nvm$` to install
 just repeat installation steps above.
 
-This can be done with `nvm$ upgrade` command.
+This can be done with `nvm$ upgrade self` command.
 
 `nvm$` will periodically check its repo
 to see whether new version exists
@@ -192,7 +194,7 @@ For security reasons,
 this command,
 or else it will refuse to proceed.
 
-Eg, `nvm$ d .` (`drop` is alias for `remove`)
+Eg, `nvm$ d .` (`drop` is alias for [remove](#remove))
 will remove one (minimal) version.
 `nvm$ d all i .` will remove all iojs versions.
 
@@ -213,7 +215,7 @@ into its PATH.
 Like `install` command,
 platform can be specified.
 Other filters (version number for instance)
-are meaningless and ignored.
+are meaningless hense ignored.
 
 #### abbrev
 
@@ -225,10 +227,17 @@ Plain `nvm$ a` shows *all* abbreviations.
 
 #### upgrade
 
-Downloads latest version of `nvm$` itself
-and installs it.
+Upgrades `nvm$` itself and/or Node.js
+(current or LTS).
 
-To upgrade Node.js, run `nvm$ i` (for [install](#install)).
+Self upgrade is `nvm$ upgrade self`.
+
+For upgrading Node.js specify `node` or `lts`
+and (optionally) platform
+(`x86` or `x64`).
+These arguments will be
+passed to regular
+[install](#install) command.
 
 #### www
 
