@@ -3,6 +3,7 @@ Info tab
 ###
 t = require './index.html'
 ask = require '../../ask'
+sensor = require 'self/upgrade/sensor'
 
 exports.c = 1   # Clear on leave
 
@@ -12,6 +13,7 @@ exports.a = (pane)->
     c: list.length
     p: "#{locals.f active}"
     d: dists
+    u: up = sensor.u()
     sh: sh
     n: activeX "WScript.Network"
     x64: x64
@@ -28,7 +30,7 @@ exports.a = (pane)->
       run @href
       false
 
-  ask.$ pane, sure, [upgrade, bye]
+  ask.$ pane, upgrade, values(up).concat false
 
   # Start accordions
   for z in $ 'input', pane
@@ -40,19 +42,13 @@ exports.a = (pane)->
 
   return
 
-sure = (i, fn)->
-  ask
-    yes: 'Go ahead!'
-    no: "Nope!"
-    'Are you sure:'
-    (i)->
-      ask()
-      unless i
-        do fn
-      return
+values = (rec)->
+  for k, v of rec
+    v
 
-upgrade = ->
-  require './upgrade'
-
-bye = ->
-  require './bye'
+upgrade = (i, rec)->
+  unless rec
+    do require './bye'
+    return
+  (if rec.n then require './upgrade' else require './install') rec
+  return

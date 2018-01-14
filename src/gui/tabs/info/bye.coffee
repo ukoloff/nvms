@@ -1,6 +1,11 @@
 ###
 Complete uninstall
 ###
-locals.b ->
-dom.body.innerHTML = require('./bye.html') byron
-defer exit
+ask = require '../../ask'
+
+module.exports = ->
+  ask.y "Kill'em all", "bye", ->
+    defer ask
+    locals.b ->
+    dom.body.innerHTML = require('./bye.html') byron
+    defer exit
