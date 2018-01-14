@@ -62,7 +62,7 @@ and open new one to use `nvm$`.
 For new version of `nvm$` to install
 just repeat installation steps above.
 
-This can be done with `nvm$ upgrade` command.
+This can be done with `nvm$ upgrade self` command.
 
 `nvm$` will periodically check its repo
 to see whether new version exists
@@ -194,7 +194,7 @@ For security reasons,
 this command,
 or else it will refuse to proceed.
 
-Eg, `nvm$ d .` (`drop` is alias for `remove`)
+Eg, `nvm$ d .` (`drop` is alias for [remove](#remove))
 will remove one (minimal) version.
 `nvm$ d all i .` will remove all iojs versions.
 
@@ -227,10 +227,17 @@ Plain `nvm$ a` shows *all* abbreviations.
 
 #### upgrade
 
-Downloads latest version of `nvm$` itself
-and installs it.
+Upgrades `nvm$` itself and/or Node.js
+(current or LTS).
 
-To upgrade Node.js, run `nvm$ i` (for [install](#install)).
+Self upgrade is `nvm$ upgrade self`.
+
+For upgrading Node.js specify `node` or `lts`
+and (optionally) platform
+(`x86` or `x64`).
+These arguments will be
+passed to regular
+[install](#install) command.
 
 #### www
 

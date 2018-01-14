@@ -17,12 +17,6 @@ exports = (fast)->
 msiAvailable = (line)->
   ~line.files.join().indexOf '-msi'
 
-# Latest version available to upgrade to
-exports.v = ->
-  return unless remote = exports(true).pop()
-  return if localFor remote
-  remote.$[0].join '.'
-
 # Extend with platform flag (x86/x64)
 exports.x = (self, is64 = x64)->
   r = {}
@@ -34,9 +28,11 @@ exports.x = (self, is64 = x64)->
 # Find (one of) local versions installed
 exports.L =
 localFor = (self)->
+  unless self
+    return
   vfilter self.$[0], self.dist, self.x64
-  .local()
-  .last()
+    .local()
+    .last()
 
 # Full version ID, eg node-v9.3.0-x86
 vid = (self, full)->

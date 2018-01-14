@@ -12,7 +12,7 @@ exports.h = """
 
 exports.$ = (args)->
   unless period args
-    echo "\nTo really remove everything say:", period.$
+    echo "\nTo really remove everything say:", period.$()
     exit()
   locals.b ->
   echo byron

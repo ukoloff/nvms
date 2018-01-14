@@ -12,7 +12,7 @@ exports.h = """
 exports.$ = (args)->
   force = period args
   if not force and remotes.Y()
-    echo "OpenSSL is already installed. To reinstall say:", period.$
+    echo "OpenSSL is already installed. To reinstall say:", period.$()
     return
   remote = vfilter [0]
     .last()

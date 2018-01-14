@@ -2,7 +2,7 @@
 Check whether update is available
 ###
 
-module.exports = 
+module.exports =
 exports = routine()
 .s ->
   if expired() and read()
@@ -14,12 +14,6 @@ exports = routine()
   fetch.versions()
   return
 .$()
-
-# Is new version available?
-exports.v = ->
-  ver = read()
-  if ver and 0 < semver.$ ver, filter PACKAGE.version
-    vvv ver
 
 # Is file old?
 expired = ->
@@ -74,3 +68,37 @@ read = ->
   .shift()
   unless /^\W/.test s
     filter s
+
+# Upgrade info
+exports.u = (empty)->
+  if empty
+    rems = []
+  else
+    self = read()
+    rems = remotes true
+      .reverse()
+  reorganize
+    self:
+      n: PACKAGE.mingzi
+      v: vvv self
+      a: self and 0 < semver.$ self, filter PACKAGE.version
+    Node: node2upgrade rems[0]
+    LTS: node2upgrade LTS rems
+
+node2upgrade = (remote)->
+  v: vvv remote
+  a: remotes.L remote
+  r: remote
+
+LTS = (rems)->
+  for r in rems when r.src.lts
+    return r
+  return
+
+reorganize = (info)->
+  result = {}
+  for k, v of info
+    v.K = k
+    v.N = v.n or k
+    result[v.k = k.toLowerCase()] = v
+  result
