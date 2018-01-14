@@ -76,19 +76,29 @@ exports.u = (empty)->
     self = read()
     rems = remotes true
       .reverse()
-  $:
-    n: PACKAGE.mingzi
-    v: vvv self
-    a: self and 0 < semver.$ self, filter PACKAGE.version
-  Node: node2upgrade rems[0]
-  LTS: node2upgrade LTS rems
+  reorganize
+    self:
+      n: PACKAGE.mingzi
+      v: vvv self
+      a: self and 0 < semver.$ self, filter PACKAGE.version
+    Node: node2upgrade rems[0]
+    LTS: node2upgrade LTS rems
 
 node2upgrade = (remote)->
   v: vvv remote
-  a: remote and not remote?.local()
+  a: remote and not remote?.local '*'
   r: remote
 
 LTS = (rems)->
   for r in rems when r.src.lts
     return r
   return
+
+reorganize = (info)->
+  result = {}
+  for k, v of info
+    v.K = k
+    v.N = v.n or k
+    result[v.k = k.toLowerCase()] = v
+  result
+

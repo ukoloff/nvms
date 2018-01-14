@@ -9,7 +9,7 @@ exports.h = """
 
 exports.$ = (args)->
   force = period args
-  up = info()
+  up = sensor.u()
   unless key = abbrev(keys up).$ args[0]
     hint up
     exit()
@@ -22,9 +22,9 @@ exports.$ = (args)->
   if up.n
     require 'self/upgrade/upgrade'
   else
-    unless up.r
-      throw Error "Unknown Node.js version"
-    up.r.install vfilter.x64 args[1]
+    # Delegate to install command
+    require './install'
+      .$ [up.k, args[1], '.']
   exit()
   return
 
@@ -32,20 +32,12 @@ exports.$ = (args)->
 exports.z = require 'self/upgrade/sensor'
   .p
 
-# Fetch upgrade info & rename keys
-info = (empty)->
-  result = {}
-  for k, v of sensor.u empty
-    result[if v.n then 'self' else k.toLowerCase()] = v
-    v.N = v.n or k
-  result
-
 keys = (rec)->
   for k of rec
     k
 
 # Command arguments
-exports._ = "[#{keys(info true).join '|'}] #{vfilter.$6} [.]"
+exports._ = "[#{keys(sensor.u true).join '|'}] #{vfilter.$6} [.]"
 
 hint = (info)->
   avail = []
