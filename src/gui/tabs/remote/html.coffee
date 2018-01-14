@@ -18,7 +18,6 @@ module.exports = without (tree)->
           if v.dist then "#{v.dist} "
           (Number n for n in v.best.$[0].slice 0, v.d).join '.'
         if lts = v.best.src.lts
-          text ' '
           i
             class: 'lts'
             title: 'Long Term Support'

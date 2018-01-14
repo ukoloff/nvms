@@ -53,6 +53,10 @@ module.exports = without -> table ->
       row ->
         th v.N
         td v.v or '?', ->
+          if lts = v.r?.src.lts
+            i
+              class: 'lts'
+              lts
           span
             class: 'ask'
             'Force '

@@ -2,8 +2,12 @@
 Upgrade Node/LTS
 ###
 ask = require '../../ask'
+sensor = require 'self/upgrade/sensor'
 
 module.exports = (up)->
+  # Refresh upgrade info
+  up = sensor.u()[up.k]
+
   unless up.r
     do reload
     return
