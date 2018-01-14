@@ -105,7 +105,7 @@ runner = (start, stop, args)->
 
 # Check command line & run async step
 exports.$ = (register)->
-  unless '' == argv[0] and /^\d+$/.test(argv[2]) and routine.cookie() == argv[1]
+  unless '' == argv[0] and /^\d+$/.test(argv[2]) and uniqid() == argv[1]
     return
 
   register?()
