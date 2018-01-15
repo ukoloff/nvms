@@ -33,14 +33,18 @@ exports.a = (pane)->
   ask.$ pane, upgrade, values(up).concat false
 
   # Start accordions
-  for z in $ 'input', pane
-    z.onclick = ->
-      z = self = @
-      z = z.parentElement until 'TBODY' == z.tagName
-      z.nextSibling.className = if self.checked then '' else 'hide'
+  for z, i in $ 'input', pane
+    z.onclick = do (i)-> ->
+      el = cb = @
+      el = el.parentElement until 'TBODY' == el.tagName
+      el.nextSibling.className = if accordionState[i] = !cb.checked then 'hide' else ''
       self.blur()
-
+      return
+    if accordionState[i]
+      z.click()
   return
+
+accordionState = []
 
 values = (rec)->
   for k, v of rec
