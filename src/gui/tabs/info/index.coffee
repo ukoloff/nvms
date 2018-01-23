@@ -19,10 +19,6 @@ exports.a = (pane)->
     x64: x64
     a: others.a
 
-  # Show locals count
-  require '../local'
-    .i list
-
   # Open URLs in browser
   for z in $ 'a', pane when z.target
     z.onclick = ->

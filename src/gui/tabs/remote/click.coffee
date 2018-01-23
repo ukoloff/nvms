@@ -24,7 +24,7 @@ sslPlatform = (node)->
     echo "Install:", "OpenSSL"
     defer ->
       require '../journal'
-        .$r.click()
+        .T()
       return
     remotes.O node, (success)->
       echo if success then "OpenSSL installed" else "Failed to install OpenSSL"
@@ -64,12 +64,13 @@ reinstall = (i, node)->
       echo "Install:",  "#{vid node}"
       defer ->
         require '../journal'
-          .$r.click()
+          .T()
         return
       remotes.i node, (success)->
         echo "#{if success then "Installed" else "Failed to install"}: #{vid node}"
         defer ->
+          # Update Locals pane
           require '../local'
-            .$r.click()
+            .U()
           return
   return

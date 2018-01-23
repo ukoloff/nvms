@@ -18,16 +18,19 @@ module.exports = (i, node)->
 # Use
 use = (node)->
   locals.u node
-  require '.'
-    .r()
+  do refresh
   return
 
 # Remove
 drop = (node)->
   require '../journal'
-    .$r.click()
+    .T()
   locals.r node, (success)->
     echo "Removal", if success then 'succeeded' else 'failed'
-    require '.'
-      .$r.click()
+    do refresh
+    return
   return
+
+refresh = ->
+  require '.'
+    .U()

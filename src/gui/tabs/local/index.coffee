@@ -9,16 +9,16 @@ click = require './click'
 # Clear on hide
 exports.c = 1
 
-exports.a = (pane)->
-  pane.innerHTML = t list = locals()
-  showCount list
-  ask.$ pane, click, list.reverse().concat(0)
+# Update
+defer exports.U = update = (force)->
+  exports.$i.innerHTML = tHint (list = locals()).length
+  unless force or exports.v
+    return
+  (pane = exports.$d).innerHTML = t list
+  ask.$ pane, click, list.reverse().concat 0
   return
 
-exports.i = showCount = (locs = locals())->
-  exports.$i.innerHTML = tHint locs.length
+# onclick
+exports.a = ->
+  update true
   return
-
-# Refresh
-exports.r = ->
-  exports.a exports.$d

@@ -48,3 +48,7 @@ echo._ = (line)->
   else if n++
     exports.$i.innerHTML = tHint ++unseen
   return
+
+# Bring to top
+exports.T = ->
+  exports.$r.click()
