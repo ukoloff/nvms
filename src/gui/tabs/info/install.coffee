@@ -14,7 +14,6 @@ module.exports = (up)->
     return
 
   ask.x "Install #{up.N}", "upgrade #{up.k}", (is64)->
-    defer ask
     install remotes.x up.r, is64
     return
 
@@ -25,3 +24,5 @@ reload = ->
     fetch.versions ->
       require '.'
         .U()
+    return
+  return

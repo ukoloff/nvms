@@ -5,8 +5,6 @@ ask = require '../../ask'
 
 module.exports = (rec)->
   ask.y "Upgrade #{PACKAGE.mingzi}", "upgrade #{rec.k}", ->
-    defer ask
-
     require '../journal'
       .T()
     echo "Upgrading #{PACKAGE.mingzi} #{PACKAGE.version}..."
