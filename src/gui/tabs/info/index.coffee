@@ -52,3 +52,9 @@ upgrade = (i, rec)->
     return
   (if rec.n then require './upgrade' else require './install') rec
   return
+
+# Refresh
+exports.U = ->
+  if exports.v
+    exports.$r.click()
+  return

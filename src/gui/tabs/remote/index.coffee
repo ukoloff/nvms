@@ -73,6 +73,10 @@ load = ->
   fetch.versions (success)->
     loading--
     return unless success
+    defer ->
+      require '../info'
+        .U()
+      return
     do render
     exports.a = 0
     # Fetch nvm$ version too
