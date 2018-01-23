@@ -57,12 +57,18 @@ module.exports = without -> table ->
             i
               class: 'lts'
               lts
-          span
-            class: 'ask'
-            'Force '
-            -> a
-              href: '#'
-              'upgrade'
+          span class: 'ask', ->
+            if v.a
+              a
+                href: '#'
+                'Upgrade'
+              text '!'
+            else
+              text ' // No need to '
+              a
+                href: "##{/\d{2,}/.exec(Math.random())?[0] or new Date().getTime()}"
+                class: 'un'
+                'upgrade'
     row ->
       th -> s 'install'
       td "Remove #{PACKAGE.mingzi} & #{@c} Node.js:", ->
