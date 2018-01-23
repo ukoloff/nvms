@@ -13,6 +13,9 @@ but totally rewritten using
 ## Advantages
 
 - Written in JavaScript itself (well, JScript)
+- Contains both:
+    * Command line utility `nvm$`
+    * Full featured GUI for all operations (uses MSIE)
 - Adds single entry to PATH environment variable
 - Creates additional utilities:
     * `node.exe` for iojs distributions (along with `iojs.exe`)
