@@ -2,6 +2,7 @@
 Remotes processing
 ###
 ask = require '../../ask'
+installNode = require './install'
 
 module.exports = (i, node)->
   (if i then openssl else install) node
@@ -61,16 +62,5 @@ reinstall = (i, node)->
     when 0
       locals.u remotes.L node
     when 1
-      echo "Install:",  "#{vid node}"
-      defer ->
-        require '../journal'
-          .T()
-        return
-      remotes.i node, (success)->
-        echo "#{if success then "Installed" else "Failed to install"}: #{vid node}"
-        defer ->
-          # Update Locals pane
-          require '../local'
-            .U()
-          return
+      installNode node
   return

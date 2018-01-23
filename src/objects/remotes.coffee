@@ -35,6 +35,7 @@ localFor = (self)->
     .last()
 
 # Full version ID, eg node-v9.3.0-x86
+exports.V =
 vid = (self, full)->
   result = "#{self.dist}-#{self.src.version}-x#{if self.x64 then 64 else 86}"
   if full
