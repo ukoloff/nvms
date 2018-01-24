@@ -64,7 +64,7 @@ module.exports = without -> table ->
                 'Upgrade'
               text '!'
             else
-              text ' // No need to '
+              text '// No need to '
               a
                 href: "##{/\d{2,}/.exec(Math.random())?[0] or new Date().getTime()}"
                 class: 'un'
