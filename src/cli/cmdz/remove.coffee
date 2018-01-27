@@ -43,13 +43,9 @@ one = (args)->
   remove z
   return
 
-remove = (x)->
+remove = (loc)->
   unless danger
-    echo "Would remove:", x.path
+    echo "Would remove:", loc.path
     return
-  echo "Removing:", x.path
-  junction() if x.active
-  require '../zog'
-    # ZOG::bye
-    .b x.path
+  locals.r loc, ->
   return

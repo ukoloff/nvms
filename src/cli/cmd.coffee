@@ -1,8 +1,12 @@
 ###
 Commands engine
 ###
-abr = do abbrev
 cmdz  = require './cmdz'
+
+# Run asynchrnous step if needed
+do routine.$
+
+abyrvalg = do abbrev
 
 # Convert aliases member to array
 aliases = (str)->
@@ -14,11 +18,11 @@ aliases = (str)->
 
 # Initialize abbreviations
 for name, cmd of cmdz
-  cmd.A = abr   # Give command access to abbreviations
-  abr.add name, cmd.q = aliases cmd.q
+  cmd.A = abyrvalg   # Give command access to abbreviations
+  abyrvalg.add name, cmd.q = aliases cmd.q
 
 #Dispatch
-if cmd = cmdz[abr.$ argv[0]]
+if cmd = cmdz[abyrvalg.$ argv[0]]
   if /^[h?]/.test argv[1]
     require './cmdz/help'
       .$ [argv[0]].concat argv.slice 2

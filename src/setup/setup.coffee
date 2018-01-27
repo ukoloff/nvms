@@ -15,6 +15,7 @@ file src, rm = 'README.md'
 echo "Creating shortcuts..."
 unless junction.$.y()
   do junction
+try require './pif/create'
 
 echo "Updating PATH..."
 addpath true

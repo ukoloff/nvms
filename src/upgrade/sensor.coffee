@@ -2,17 +2,18 @@
 Check whether update is available
 ###
 
-module.exports = exports = ->
-  # Allow to ping for new version?
-  expired() and read()
-
-# Ping for new version
-# To be run in the backgroung
-exports.p = ->
-  return unless exports()
-  write() # Emulate touch
+module.exports =
+exports = routine()
+.s ->
+  if expired() and read()
+    []
+  else
+    false
+.a ->
   write latest()
+  fetch.versions()
   return
+.$()
 
 # Is file old?
 expired = ->
@@ -86,7 +87,7 @@ exports.u = (empty)->
 
 node2upgrade = (remote)->
   v: vvv remote
-  a: remote and not remote?.local '*'
+  a: remote and !remotes.L remote
   r: remote
 
 LTS = (rems)->
@@ -101,4 +102,3 @@ reorganize = (info)->
     v.N = v.n or k
     result[v.k = k.toLowerCase()] = v
   result
-

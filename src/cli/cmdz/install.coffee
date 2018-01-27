@@ -16,14 +16,16 @@ exports.h = """
 exports.$ = (args)->
   force = period args
   filter = vfilter args
-  unless x = filter.last()
+  unless rem = filter.last()
     throw Error 'Specified Node.js version not found!'
 
+  rem = remotes.x rem, filter.x64
+
   if not force
-    if local = x.local filter.x64
+    if local = remotes.L rem
       echo "#{local.path} is installed. To reinstall say:", period.$()
-      local.use()
+      locals.u local
       return
 
-  x.install filter.x64
+  remotes.i rem
   return

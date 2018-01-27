@@ -53,3 +53,6 @@ exports.files = ->
 
 exports.folders = ->
   children @$().SubFolders, require '.'
+
+exports.cd = ->
+  sh.CurrentDirectory = @

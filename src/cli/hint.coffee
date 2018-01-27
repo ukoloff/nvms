@@ -4,15 +4,13 @@ Check all updates
 
 sensor = require 'self/upgrade/sensor'
 
-if sensor()
-  require './zog'
-    # ZOG::upgrade
-    .u()
+# Run background update if neccessary
+sensor ->
 
 # Show upgrade info
 upgrade = ''
 for k, v of sensor.u() when v.a
-  upgrade += "#{v.n or k} -> #{v.v}; "
+  upgrade += "#{v.N} -> #{v.v}; "
 
 if upgrade
   echo """

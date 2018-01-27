@@ -39,6 +39,13 @@ setup:
 sfx:
   <<: *pause
 
+gui:
+  <<: *gui
+  args:
+
+gui:debug:
+  <<: *any
+
 npx:
   <<: *any
   args: "%* > %BAT%"
@@ -48,4 +55,3 @@ npx:
     call %BAT%
     del /F /Q %BAT%
     %*
-

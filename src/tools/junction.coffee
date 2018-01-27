@@ -5,7 +5,10 @@ Working with Junction Point(s)
 module.exports = exports = (id = 'none')->
   spawn()
   if false == id
+    if nonASCII
+      try install2.up().cd()
     return
+  echo "Using:", id
   bat id
   spawn folder install2, id
   return
@@ -28,7 +31,7 @@ spawn = (dst)->
   unless (bin = file install2, 'linkd.exe').y()
     throw Error "File not found: #{bin}"
   if nonASCII
-    sh.CurrentDirectory = cache
+    cache.cd()
   run 0, true,
     fixPath bin
     fixPath link

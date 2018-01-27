@@ -13,14 +13,14 @@ before_test:
   - npm -v
 
 test_script:
-
-after_test:
   - node webpack -d
   - node webpack/dist
   - 7z a -r nvm$dev.zip ./tmp/dist/*
   - node webpack -p
   - node webpack/dist
   - 7z a -r nvm$.zip ./tmp/dist/*
+
+after_test:
   - tmp\cli v
   - reg query HKCU\Environment /v Path /z
   # - ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
@@ -40,6 +40,7 @@ after_test:
   - tmp\cli i i
   - tmp\cli ls
   - tmp\cli i 0 x86
+  - tmp\cli i 0 x64
   - tmp\cli ls
   - tmp\cli which
   - tmp\cli use none

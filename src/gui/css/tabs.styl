@@ -1,0 +1,68 @@
+#head
+  position: fixed
+  top: 0
+  -position: absolute
+  -top: expression(eval("document.documentElement.scrollTop"))
+  width: 100%
+  white-space: nowrap
+  background: sky-down
+  background: linear-gradient(to top, sky-down, sky-up)
+  border-bottom: solid tabs-b-color tabs-b-width
+
+  label
+    display: inline-block
+    position: relative
+    top: tabs-b-width
+    background: body-color
+    border: solid tabs-b-color tabs-b-width
+    border-radius: tabs-radius tabs-radius 0 0
+    margin: tabs-margin
+    margin-bottom: 0
+    padding: tabs-padding
+
+    &.active
+      border-bottom: solid body-color tabs-b-width
+      padding-top: tabs-active-padding
+
+  div
+    position: absolute;
+    left: 1ex
+    top: 1em
+    z-index: 1
+    border: solid tabs-b-color tabs-b-width
+    background: sky-up
+    box-shadow: tabs-radius tabs-radius tabs-radius silver
+
+    a
+      display: block
+      padding: 0 tabs-active-padding
+      text-decoration: none
+      color: black
+
+      &:hover
+        background: red
+
+.hint
+  margin-left: tabs-padding
+  padding: 0 tabs-padding
+  color: yellow
+  background: blue
+  border-radius: tabs-padding
+
+#main
+  padding: tabs-active-padding
+
+  table
+    width: 100%
+
+    th
+      width: 1px
+      text-align: right
+
+    label
+      display: block
+      color: red
+
+      &:hover
+        color: navy
+        background: yellow

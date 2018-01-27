@@ -7,8 +7,5 @@ exports.h = """
   """
 
 exports.$ = ->
-  for z in locals() when z.active
-    echo z._()
-    return
-  echo junction.$
+  echo locals.f()
   return

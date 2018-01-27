@@ -20,17 +20,13 @@ exports.$ = (args)->
 
   echo "Upgrading:", up.N, '->', up.v or latestStr
   if up.n
-    require 'self/upgrade/upgrade'
+    do require 'self/upgrade/upgrade'
   else
     # Delegate to install command
     require './install'
       .$ [up.k, args[1], '.']
   exit()
   return
-
-# ZOG command: Fetch latest version from GitHub
-exports.z = require 'self/upgrade/sensor'
-  .p
 
 keys = (rec)->
   for k of rec
