@@ -77,7 +77,7 @@ exports.b = routine()
   echo "Cleaning PATH"
   addpath()
   junction false
-  require 'self/setup/pif/drop'
+  try require 'self/setup/pif/drop'
   echo "Removing:", install2
   ''
 .a rimraf
