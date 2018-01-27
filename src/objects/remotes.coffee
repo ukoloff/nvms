@@ -85,7 +85,7 @@ exports.i = routine()
 .a fetch
 .s (self)->
   require './locals'
-    .r localFor self
+    .r localFor(self), ->
   echo "Extracting:", msi self
   vid self
 .a (vid)->

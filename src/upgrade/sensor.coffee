@@ -87,7 +87,7 @@ exports.u = (empty)->
 
 node2upgrade = (remote)->
   v: vvv remote
-  a: !remotes.L remote
+  a: remote and !remotes.L remote
   r: remote
 
 LTS = (rems)->
