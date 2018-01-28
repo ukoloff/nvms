@@ -15,7 +15,7 @@ exports.a = (pane)->
     d: dists
     u: up = sensor.u()
     sh: sh
-    # n: activeX "WScript.Network"
+    n: activeX "WScript.Network"
     x64: x64
     a: others.a
 
