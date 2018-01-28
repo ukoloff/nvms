@@ -95,7 +95,7 @@ module.exports = without -> table ->
     keyvals
       Owner: 'RegisteredOwner'
       Path: 'SystemRoot'
-
+  return
   hdr 'Names', ->
     row ->
       th 'Host'
