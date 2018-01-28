@@ -2,7 +2,7 @@
   "name": "nvms",
   "mingzi": "nvm$",
   "private": true,
-  "version": "0.10.0",
+  "version": "0.10.1",
   "description": "Node Version Manager for M$ Windows",
   "main": "webpack",
   "scripts": {

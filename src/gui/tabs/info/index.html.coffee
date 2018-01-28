@@ -83,7 +83,7 @@ module.exports = without -> table ->
       for k, v of rec
         row ->
           th k
-          td @sh.RegRead "HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\#{v}"
+          td try @sh.RegRead "HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\#{v}"
       return
     keyvals
       Name: 'ProductName'
