@@ -54,7 +54,7 @@ return o.NameSpace(this._)}}).call(t,r(7),r(30))},30:function(n,t,r){(function(t
 e=function(){var n,r,e;for(n=0,r=o.length;n<r;n++){e=o[n];try{return t(e)}catch(n){}}throw Error("AJAX not supported!");
 },n.X=function(n,t){var o,i;if(i=e(),i.open("GET",n,!1),i.send(null),200!==i.status)throw Error("HTTP error "+i.status+": "+i.statusText);
 return t?(o=r(),o.Write(i.responseBody),o.SaveToFile(t,2),void o.Close()):i.responseText}}).call(t,r(5),r(23));
-},36:function(n,t,r){(function(t){var r,o;o=0,n.X=function(){return o||(o="<XTEtV|"+r(t.load())+">")},r=function(n){
+},36:function(n,t,r){(function(t){var r,o;o=0,n.X=function(){return o||(o="<iJknA|"+r(t.load())+">")},r=function(n){
 var t,r,o;for(t=1,r=0,o=n.length;o--;)t=(t+n.charCodeAt(o))%65521,r=(r+t)%65521;return r<<16+t}}).call(t,r(12));
 },44:function(n,t,r){n.X=function(n){var t;try{n()}catch(n){if(t=n,!t.message)throw t;r(1)("ERROR:",t.message);
 }}},49:function(n,t,r){(function(t,r,o,e,i,u,c){var f,s,l;l="nvm$.zip",s=t(r,"nvm$"),n.X=o().s(function(){
@@ -62,5 +62,5 @@ return["https://github.com/ukoloff/nvms/archive/dist.zip",l]}).a(e).s(function()
 var n;n=u(r,l),s.mk(!0),s.ns().copyHere(n.ns().Items(),16),n.rm()}).s(function(){var n;if(!(n=f(s))){try{s.rm();
 }catch(n){}throw Error("Setup not found")}i("Running:",n.bn()),c.Run(n)}).$(),f=function(n){var t,r,o,e,i;for(e=n.files(),
 r=e.length-1;r>=0;r+=-1)if(t=e[r],"bat"===t.ext())return t;for(i=n.folders(),o=i.length-1;o>=0;o+=-1)if(t=i[o],
-t=f(t))return t}}).call(t,r(3),r(10),r(9),r(24),r(1),r(2),r(4))},111:function(n,t,r){(function(n){n("Installing/upgrading nvm$ v0.10.0...");
+t=f(t))return t}}).call(t,r(3),r(10),r(9),r(24),r(1),r(2),r(4))},111:function(n,t,r){(function(n){n("Installing/upgrading nvm$ v0.10.1...");
 }).call(t,r(1))}});
