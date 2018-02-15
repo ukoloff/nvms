@@ -2,4 +2,4 @@
 setTimeout wrapper
 ###
 
-module.exports = wnd.setTimeout
+module.exports = wnd.setImmediate or wndwnd.setTimeout

@@ -24,8 +24,7 @@ sslPlatform = (node)->
       .T()
     echo "Install:", "OpenSSL"
     node = remotes.x node, is64
-    defer ->
-      return
+    defer ask
     remotes.O node, (success)->
       echo if success then "OpenSSL installed" else "Failed to install OpenSSL"
       return
