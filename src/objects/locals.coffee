@@ -55,8 +55,14 @@ exports.f = (self = do exports.a)->
 
 rimraf = routine()
 .a (path)->
-  folder install2, path
-    .rm true
+  path = folder install2, path
+  attempt = 0
+  loop try
+    path.rm true
+    return
+  catch e
+    if attempt++ > 3
+      throw e
 .$()
 
 # Remove installed version

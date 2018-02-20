@@ -22,10 +22,9 @@ sslPlatform = (node)->
   ask.x "Install OpenSSL", "openssl", (is64)->
     require '../journal'
       .T()
+      # Performs also `defer ask` to remove all popups
     echo "Install:", "OpenSSL"
     node = remotes.x node, is64
-    defer ->
-      return
     remotes.O node, (success)->
       echo if success then "OpenSSL installed" else "Failed to install OpenSSL"
       return
