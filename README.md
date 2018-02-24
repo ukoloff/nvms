@@ -309,6 +309,15 @@ You can add some global npm packages
 to SFX package, by simple installing them
 (`npm install -g`) into Node.js to package.
 
+## Caveats
+
+Many modern antiviruses are very suspicious of non-trivial batch files,
+especially (and surprisingly)
+of extracting msi-files.
+
+So, it's sometimes neccesary to temporarily disable antvirus
+before installing / upgrading Node.js or `nvm$` itself.
+
 ## Credits
 
   * [Node.js][]
