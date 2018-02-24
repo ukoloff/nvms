@@ -11,6 +11,7 @@ module.exports = (rec)->
 
     require('self/upgrade/upgrade') (success)->
       unless success
+        echo "Failed to upgrade"
         return
       dom.body.innerHTML = do require './upgrade.html'
       for z in $ 'a'
