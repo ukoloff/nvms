@@ -22,6 +22,7 @@ test_script:
 
 after_test:
   - tmp\cli v
+  - tmp\cli v > version
   - reg query HKCU\Environment /v Path /z
   - tmp\dist\setup <NUL
   # - ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
@@ -68,6 +69,8 @@ after_test:
   - reg query HKCU\Environment /v Path /z
 
 artifacts:
+  - path: version
+    name: Semver
   - path: "*.zip"
     name: Distro package(s)
   - path: nvm$*.exe
