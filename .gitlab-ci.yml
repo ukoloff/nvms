@@ -20,12 +20,12 @@ pages:
   - node webpack -d
   - node webpack/dist
   - cd tmp/dist
-  - zip -r ../../public/nvm$dev.zip *
+  - zip -r ../../public/nvm\$dev.zip *
   - cd ../..
   - node webpack -p
   - node webpack/dist
   - cd tmp/dist
-  - zip -r ../../public/nvm$.zip *
+  - zip -r ../../public/nvm\$.zip *
   - cd ../..
   - node -p "require('./package').version" > public/version
 
