@@ -5,9 +5,6 @@ cache:
   - node_modules/
 
 pages:
-  only:
-  - gitlab
-
   before_script:
   - node -v
   - npm -v
