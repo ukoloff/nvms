@@ -6,6 +6,7 @@ cache:
 
 pages:
   before_script:
+  - apt-get install -y zip
   - node -v
   - npm -v
   - npm install
