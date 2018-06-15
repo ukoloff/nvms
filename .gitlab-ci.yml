@@ -1,0 +1,29 @@
+image: node:8
+
+cache:
+  paths:
+  - node_modules/
+
+pages:
+  before_script:
+  - node -v
+  - npm -v
+  - npm install
+  - mkdir public
+
+  script:
+  - node webpack -d
+  - node webpack/dist
+  - cd tmp/dist
+  - zip -r ../../public/nvm$dev.zip *
+  - cd ../..
+  - node webpack -p
+  - node webpack/dist
+  - cd tmp/dist
+  - zip -r ../../public/nvm$.zip *
+  - cd ../..
+  - node -p "require('./package').version" > public/version
+
+  artifacts:
+    paths:
+    - public
