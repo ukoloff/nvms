@@ -26,6 +26,7 @@ pages:
   - node webpack/dist
   - cd tmp/dist
   - zip -r ../../public/nvm\$.zip *
+  - cp bin/upgrade.bat ../../public/
   - cd ../..
   - node -p "require('./package').version" > public/version
 

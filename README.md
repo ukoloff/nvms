@@ -1,6 +1,7 @@
 # nvm$
 
-[![Build status](https://ci.appveyor.com/api/projects/status/6o64oaxelmvrs25k?svg=true)](https://ci.appveyor.com/project/ukoloff/nvms)
+[![Build status](https://ci.appveyor.com/api/projects/status/6o64oaxelmvrs25k/branch/master?svg=true)](https://ci.appveyor.com/project/ukoloff/nvms/branch/master)
+[![build status](https://gitlab.com/ukoloff/nvms/badges/master/build.svg)](https://gitlab.com/ukoloff/nvms/pipelines)
 
 Node Version Manager for M$ Windows.
 
@@ -35,7 +36,7 @@ If you have `git` installed:
 If you have got no `git`
 or don't like to use command prompt:
 
-- Download https://github.com/ukoloff/nvms/raw/dist/bin/upgrade.bat
+- Download [upgrade.bat][up.gitlab] ([mirror][up.appveyor])
 - Save it to any folder
 - Run it
 - It will download full distro, unpack and start installation
@@ -44,8 +45,8 @@ In case your browser won't agree to download
 batch files or run them afterwards,
 you can do the job of `upgrade.bat` yourself:
 
-- Download https://github.com/ukoloff/nvms/archive/dist.zip ([mirror][distro])
-- Start downloaded `nvms-dist.zip` (in Explorer)
+- Download [nvm$.zip][dist.gitlab.pages] ([mirror][dist.appveyor])
+- Start downloaded `nvms$.zip` (in Explorer)
 - Click `setup.bat`
 - Windows will prompt to extract all files
 - Agree
@@ -338,3 +339,15 @@ to SFX package, by simple installing them
 [dev-distro]: https://ci.appveyor.com/api/projects/ukoloff/nvms/artifacts/nvm$dev.zip?branch=master
 [sfx32]: https://ci.appveyor.com/api/projects/ukoloff/nvms/artifacts/nvm$86.exe?branch=master
 [sfx64]: https://ci.appveyor.com/api/projects/ukoloff/nvms/artifacts/nvm$64.exe?branch=master
+
+[dist.github]: https://github.com/ukoloff/nvms/archive/dist.zip
+[dist.appveyor]: https://ci.appveyor.com/api/projects/ukoloff/nvms/artifacts/nvm$.zip?branch=master
+[dist.gitlab]: https://gitlab.com/ukoloff/nvms/-/archive/dist/nvms-dist.zip
+[dist.gitlab.pages]: https://ukoloff.gitlab.io/nvms/nvm$.zip
+
+[v.github]: https://api.github.com/repos/ukoloff/nvms/tags
+[v.appveyor]: https://ci.appveyor.com/api/projects/ukoloff/nvms/artifacts/version?branch=master
+[v.gitlab]: https://ukoloff.gitlab.io/nvms/version
+
+[up.appveyor]: https://ci.appveyor.com/api/projects/ukoloff/nvms/artifacts/upgrade.bat?branch=master
+[up.gitlab]: https://ukoloff.gitlab.io/nvms/upgrade.bat
