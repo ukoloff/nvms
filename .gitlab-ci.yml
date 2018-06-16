@@ -5,8 +5,8 @@ cache:
   - node_modules/
 
 pages:
-  # only:
-  # - master
+  only:
+  - master
 
   before_script:
   - apt-get update -qq
