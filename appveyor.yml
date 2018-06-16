@@ -19,6 +19,7 @@ test_script:
   - node webpack -p
   - node webpack/dist
   - 7z a -r nvm$.zip ./tmp/dist/*
+  - copy /b tmp\dist\bin\upgrade.bat .
 
 after_test:
   - tmp\cli v
@@ -75,3 +76,5 @@ artifacts:
     name: Distro package(s)
   - path: nvm$*.exe
     name: SFX installation package(s)
+  - path: upgrade.bat
+    name: Online installer
