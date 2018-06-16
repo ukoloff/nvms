@@ -1,13 +1,20 @@
 ###
 Perform self upgrade
 ###
+locations = require './locations'
+
 zipName = "#{PACKAGE.mingzi}.zip"
 tmpFolder = folder cache, PACKAGE.mingzi
 
 module.exports = routine()
 .s ->
-  ["#{PACKAGE.homepage}/archive/dist.zip", zipName]
-.a fetch
+  echo "Loading:", zipName
+  return
+.a ->
+  for uri in locations zipName
+    if fetch uri, zipName
+      return
+  throw Error "!!!"
 .s ->
   echo "Extracting..."
   return
