@@ -7,7 +7,7 @@ del /F /Q %BAT%
 %*
 goto :EOF */0;
 !function(n){function t(i){if(e[i])return e[i].X;var r=e[i]={X:{},id:i,loaded:!1};return n[i].call(r.X,r,r.X,t),
-r.loaded=!0,r.X}var e={};return t.m=n,t.c=e,t.p="",t(0)}({0:function(n,t,e){e(102)},1:function(n,t,e){(function(t){
+r.loaded=!0,r.X}var e={};return t.m=n,t.c=e,t.p="",t(0)}({0:function(n,t,e){e(104)},1:function(n,t,e){(function(t){
 var e,i=[].slice;n.X=e=function(){var n;n=1<=arguments.length?i.call(arguments,0):[],e._(n.join(" "))},
 e._=function(n){t.Echo(n)}}).call(t,e(6))},2:function(n,t,e){(function(t){n.X=t(e(26))}).call(t,e(11))},
 3:function(n,t,e){(function(t){n.X=t(e(27))}).call(t,e(11))},4:function(n,t,e){(function(t){n.X=t("WScript.Shell");
@@ -37,7 +37,7 @@ return this._=n.GetAbsolutePathName(this),this},t.up=function(){var t;return(t=e
 },t.bn=function(t){var i,r,o;for(r=n.GetFileName(this);--t>0;)i||(i=e(11)()),r=""+i((o=(o||this).up()).bn(),r);
 return r},t.n=function(){return n.GetBaseName(this)},t.ext=function(){return n.GetExtensionName(this)},t.ns=function(){
 return i.NameSpace(this._)}}).call(t,e(7),e(30))},30:function(n,t,e){(function(t){n.X=t("Shell.Application");
-}).call(t,e(5))},101:function(n,t,e){(function(n,t){n.Stderr.Writeline("nvm$ v0.10.2: Node Version Manager for M$ Windows\n\n"+t.n()+": Nano npx\n\nUsage: "+t.n()+" command [parameter(s)]\n\nSee: https://github.com/ukoloff/nvms");
-}).call(t,e(6),e(12))},102:function(n,t,e){(function(n){e(n.length?103:101)}).call(t,e(22))},103:function(n,t,e){
+}).call(t,e(5))},103:function(n,t,e){(function(n,t){n.Stderr.Writeline("nvm$ v0.10.3: Node Version Manager for M$ Windows\n\n"+t.n()+": Nano npx\n\nUsage: "+t.n()+" command [parameter(s)]\n\nSee: https://github.com/ukoloff/nvms");
+}).call(t,e(6),e(12))},104:function(n,t,e){(function(n){e(n.length?105:103)}).call(t,e(22))},105:function(n,t,e){
 (function(n,t){var e,i,r,o;for(r=n("."),o={},i=[];!o[r=r.abs()];)o[r]=!0,e=n(r,"node_modules/.bin").abs(),e.y()&&(i.length||t('cd "'+r+'"'),
 i.push(e)),r=r.up();i.length&&(i.push("%PATH%"),t("set PATH="+i.join(";")))}).call(t,e(3),e(1))}});

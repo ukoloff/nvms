@@ -4,8 +4,8 @@ cscript.exe //Nologo //E:JScript "%~f0"
 pause
 goto :EOF */0;
 !function(n){function t(r){if(e[r])return e[r].X;var o=e[r]={X:{},id:r,loaded:!1};return n[r].call(o.X,o,o.X,t),
-o.loaded=!0,o.X}var e={};return t.m=n,t.c=e,t.p="",t(0)}([function(n,t,e){e(44)(function(){var n;try{n=e(105)();
-}catch(n){}e(59);try{"function"==typeof n&&n()}catch(n){}})},function(n,t,e){(function(t){var e,r=[].slice;n.X=e=function(){
+o.loaded=!0,o.X}var e={};return t.m=n,t.c=e,t.p="",t(0)}([function(n,t,e){e(44)(function(){var n;try{n=e(107)();
+}catch(n){}e(61);try{"function"==typeof n&&n()}catch(n){}})},function(n,t,e){(function(t){var e,r=[].slice;n.X=e=function(){
 var n;n=1<=arguments.length?r.call(arguments,0):[],e._(n.join(" "))},e._=function(n){t.Echo(n)}}).call(t,e(6));
 },function(n,t,e){(function(t){n.X=t(e(26))}).call(t,e(11))},function(n,t,e){(function(t){n.X=t(e(27));
 }).call(t,e(11))},function(n,t,e){(function(t){n.X=t("WScript.Shell")}).call(t,e(5))},function(n,t,e){(function(t){
@@ -56,7 +56,7 @@ n.X=c=function(n){var i,c,f,s,p,h,v;if((h=t(n,a+u)).y()&&!(i=t(n,a+"w"+u)).y())r
 s=function(n){return r.i(v.Read(n))},p=function(n){return v.Position=n,!0},23117===s(2)&&p(60)&&(f=s(4))&&f<v.size&&p(f)&&17744===s(4)&&p(f+20)&&240===(16|s(2))&&l(s(2))&&779===(768|s(2))&&p(c=f+92)&&3===s(2)&&p(c)?(o("Generating:",i.bn(2)),
 v.Write(r.dec("02")),v.SaveToFile(i)):o("Invalid EXE:",h),v.Close()},l=function(){return!0};for(f in i){c.n=a=f;
 break}c.x=u=".exe"}).call(t,e(2),e(23),e(29),e(1),e(20))},,,function(n,t,e){(function(t){var e,r;r=0,n.X=function(){
-return r||(r="<KgyIy|"+e(t.load())+">")},e=function(n){var t,e,r;for(t=1,e=0,r=n.length;r--;)t=(t+n.charCodeAt(r))%65521,
+return r||(r="<zWwBC|"+e(t.load())+">")},e=function(n){var t,e,r;for(t=1,e=0,r=n.length;r--;)t=(t+n.charCodeAt(r))%65521,
 e=(e+t)%65521;return e<<16+t}}).call(t,e(12))},,,function(n,t){n.X=function(n,t){if(n.y())try{n.abs().up().ns().ParseName(n.bn()).InvokeVerb(t);
 }catch(n){}}},,function(n,t,e){(function(t,e){n.X=function(n){var r,o,i,c,u,f;r=t.Environment("User"),i=r(o="Path"),
 u=e.$.bn(2).replace(/^\W+/,""),c=function(n){return n.slice(-u.length)!==u||/\w$/.test(n.slice(0,-u.length))},
@@ -65,12 +65,12 @@ f=f.join(";"),f!==i&&Function("o,k,v","o(k)=v")(r,o,f)}}).call(t,e(4),e(18))},,f
 var o,i,c,u,f;for(n.X=o=["Desktop","StartMenu","AppData"],c=u=o.length-1;u>=0;c=u+=-1)i=o[c],o[c]=t.SpecialFolders(i);
 for((i=e(o.pop(),"Microsoft/Internet Explorer/Quick Launch")).y()&&o.push(i),c=f=o.length-1;f>=0;c=f+=-1)i=o[c],
 o[c]=r(i,"nvm$.lnk")}).call(t,e(4),e(3),e(2))},function(n,t,e){n.X=function(n){var t;try{n()}catch(n){if(t=n,
-!t.message)throw t;e(1)("ERROR:",t.message)}}},,,,,,,,,,,,,,function(n,t,e){(function(n,t){var r,o,i,c,u,f;for(u=e(39),
+!t.message)throw t;e(1)("ERROR:",t.message)}}},,,,,,,,,,,,,,,,function(n,t,e){(function(n,t){var r,o,i,c,u,f;for(u=e(39),
 c=e(43),r=0,o=c.length;r<o;r++)f=c[r],i=n.CreateShortcut(f),i.TargetPath="cmd",i.Arguments="/c gui.bat",i.WorkingDirectory=t,
 i.Description="Node Version Manager for M$ Windows",i.IconLocation="shell32.dll,43",i.WindowStyle=7,i.save(),
-u(f,"taskbarpin")}).call(t,e(4),e(8))},function(n,t,e){(function(n,t,r,o,i,c,u,f){var a,l;n("Installing nvm$ v0.10.2 to:",t),
+u(f,"taskbarpin")}).call(t,e(4),e(8))},function(n,t,e){(function(n,t,r,o,i,c,u,f){var a,l;n("Installing nvm$ v0.10.3 to:",t),
 n("Copying files..."),l=r.up(),o(l,"bin").cp(t),i(l,a="README.md").cp(i(t,a)),n("Creating shortcuts..."),c.$.y()||c();
-try{e(58)}catch(n){}n("Updating PATH..."),u(!0),n("Installation complete.\nOpen new console and run 'nvm$ ?' to start.");
+try{e(60)}catch(n){}n("Updating PATH..."),u(!0),n("Installation complete.\nOpen new console and run 'nvm$ ?' to start.");
 try{f(0,i(t,"cli.bat"),"l","r")}catch(n){}}).call(t,e(1),e(8),e(12),e(3),e(2),e(18),e(41),e(16))},,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,function(n,t,e){
 (function(t,e,r,o,i,c){n.X=function(){var n,u;if(n="nvms-dist"===(u=t.up()).bn(),!e.Interactive){if(n&&1===r.length&&o()===r[0]){
 e.Sleep(3e3);try{u.rm(!0)}catch(n){}}i()}return n?function(){c(0,"wscript","//B","//E:JScript",t,o())}:function(){};
