@@ -279,6 +279,23 @@ This limited edition can only run locally installed scripts.
 It never installs anything
 neither permanently nor temporarily.
 
+## Caveats
+
+Complex batch files are considered a threat nowadays
+by most antivirus software.
+Surprisingly, the most suspicious activity is unpacking MSI-file that
+contains official distro of Node.js.
+
+So, temporarily disabling antivirus software
+just before `nvm$ install` is recommended.
+
+In case you forgot it,
+causing installation to fail,
+immediately disable antivirus
+and repeat installation.
+`nvm$` will skip downloading
+and proceed to unpacking again.
+
 ## Building SFX package
 
 To build SFX package
