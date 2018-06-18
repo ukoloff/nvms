@@ -14,7 +14,7 @@ module.exports = routine()
   for uri in locations zipName
     if fetch uri, zipName
       return
-  throw Error "!!!"
+  throw Error "Cannot load #{zipName}"
 .s ->
   echo "Extracting..."
   return
