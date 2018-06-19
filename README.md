@@ -339,6 +339,7 @@ to SFX package, by simple installing them
   * [webpack][]
   * [cmdizer][]
   * [AppVeyor][]
+  * [GitLab][]
 
 [Node.js]: http://nodejs.org/
 [io.js]: https://iojs.org/
@@ -352,6 +353,8 @@ to SFX package, by simple installing them
 [cmdizer]: http://www.dostips.com/forum/viewtopic.php?p=37780#p37780
 [NTFS junction point]: https://en.wikipedia.org/wiki/NTFS_junction_point
 [AppVeyor]: http://www.appveyor.com/
+[GitLab]: https://gitlab.com/
+
 [distro]: https://ci.appveyor.com/api/projects/ukoloff/nvms/artifacts/nvm$.zip?branch=master
 [dev-distro]: https://ci.appveyor.com/api/projects/ukoloff/nvms/artifacts/nvm$dev.zip?branch=master
 [sfx32]: https://ci.appveyor.com/api/projects/ukoloff/nvms/artifacts/nvm$86.exe?branch=master
@@ -368,3 +371,6 @@ to SFX package, by simple installing them
 
 [up.appveyor]: https://ci.appveyor.com/api/projects/ukoloff/nvms/artifacts/upgrade.bat?branch=master
 [up.gitlab]: https://ukoloff.gitlab.io/nvms/upgrade.bat
+
+[repo.github]: git@github.com:ukoloff/nvms.git
+[repo.gitlab]: git@gitlab.com:ukoloff/nvms.git
