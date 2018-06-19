@@ -99,7 +99,8 @@ reorganize = (info)->
 
 touch = ->
   try
-    path()
+    f = path()
       .open 8, true
-      .Write '\n'
+    f.Write '\n'
+    f.Close()
   return
