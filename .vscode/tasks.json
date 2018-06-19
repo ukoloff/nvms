@@ -22,7 +22,11 @@
                 ".",
                 "-p"
             ],
-            "problemMatcher": []
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
         },
         {
             "label": "Make dist",

@@ -7,18 +7,19 @@ module.exports =
 exports = routine()
 .s ->
   if expired() and read()
+    do touch
     []
   else
     false
 .a ->
-  write latest()
+  try write latest()
   fetch.versions()
   return
 .$()
 
 # Is file old?
 expired = ->
-  !path().ok 1000*60*60*24*3
+  !path().ok 1000*60*60*24*0.9
 
 # Path to file with latest version
 path = ->
@@ -95,3 +96,11 @@ reorganize = (info)->
     v.N = v.n or k
     result[v.k = k.toLowerCase()] = v
   result
+
+touch = ->
+  try
+    f = path()
+      .open 8, true
+    f.Write '\n'
+    f.Close()
+  return
