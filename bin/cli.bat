@@ -41,19 +41,19 @@ if(o)o.push(r.item());else if(!1===t(r.item(),e++))return;r.moveNext()}return o}
 (function(t){var r;n.X=r=function(){var n,e,o,i,u,c,a;for(e="",a=!1,u=1,o=0,i=arguments.length;o<i;o++)if(n=arguments[o],
 r._!==n)switch(typeof n){case"boolean":a=n;break;case"number":u=n;break;default:n.length&&!/[\s^<|>]/.test(n)||(n='"'+n+'"'),
 c&&(e+=" "),e+=n,c=1}else c=0;return t.Run(e,u,a)},r._={}}).call(t,r(4))},function(n,t,r){(function(t,e,o,i,u,c,a,f,s,l,v,h,p,d,m,g,x,$){
-var y,b,w,S,E,N,j,T;n.X=y=function(n){var r,a,f,s,l,v,h,p;n||t(),l=[];for(f in e)if(h=e[f],(r=o(i,f+t.x)).y())for(v=u(r.load()),
+var y,b,w,S,E,N,j,F;n.X=y=function(n){var r,a,f,s,l,v,h,p;n||t(),l=[];for(f in e)if(h=e[f],(r=o(i,f+t.x)).y())for(v=u(r.load()),
 a=0,s=v.length;a<s;a++)p=v[a],S(p)&&l.push({$:[c(p.version),[f],[!!p.lts]],dist:f,src:p});return l.sort(c.$)},
 S=function(n){return~n.files.join().indexOf("-msi")},y.x=function(n,t){var r,e,o;null==t&&(t=a),e={};for(r in n)o=n[r],
-e[r]=o;return e.x64=t,e},y.L=b=function(n){if(n)return f(n.$[0],n.dist,n.x64).local().last()},y.V=T=function(n,t){
-var r;return r=n.dist+"-"+n.src.version+"-x"+(n.x64?64:86),t?s(l,r):r},w=function(n,t){var r;return r=T(n)+".msi",
+e[r]=o;return e.x64=t,e},y.L=b=function(n){if(n)return f(n.$[0],n.dist,n.x64).local().last()},y.V=F=function(n,t){
+var r;return r=n.dist+"-"+n.src.version+"-x"+(n.x64?64:86),t?s(l,r):r},w=function(n,t){var r;return r=F(n)+".msi",
 t?o(i,r):r},E=function(n){var t;return t=w(n,!0),t.y()&&t.sz()>1e6},j=function(n){return""+e[n.dist]+n.src.version+"/"+(n.x64&&!n.$[0][0]?"x64/":"");
 },N=function(){var n,t;for(t=10;t--;)if(n=s(l,"."+v(3)),!n.y())return n;throw Error("Temporary folder not found");
 },y.i=h().s(function(n){return!E(n)&&[""+j(n)+w(n),w(n)]}).a(p).s(function(n){return r(13).r(b(n),function(){}),
-d("Extracting:",w(n)),T(n)}).a(function(n){var t,r;r=N();try{if(m(1,!0,"msiexec","/a",o(i,n)+".msi","TARGETDIR=",m._,r,"/qb"))throw Error("Extraction failed");
-t=s(l,n).rm(!0),r.folders().shift().mv(t)}finally{r.rm()}}).s(function(n){var t,r,e;g.n!==n.dist&&(r=T(n,!0),
+d("Extracting:",w(n)),F(n)}).a(function(n){var t,r;r=N();try{if(m(1,!0,"msiexec","/a",o(i,n)+".msi","TARGETDIR=",m._,r,"/qb"))throw Error("Extraction failed");
+t=s(l,n).rm(!0),r.folders().shift().mv(t)}finally{r.rm()}}).s(function(n){var t,r,e;g.n!==n.dist&&(r=F(n,!0),
 (e=o(r,n.dist+g.x)).y()&&((t=o(r,g.n+g.x)).y()||(d("Alias:",t.bn(2)),e.cp(t))))}).s(function(n){var t;d("Adjusting NPM prefix..."),
-t=o(T(n,!0),"node_modules/npm/npmrc").open(8),t.WriteLine('\n# <hack dirty src="https://github.com/ukoloff/nvms">\nprefix=${USERPROFILE}\\'+x.$.bn(2)+"\n# </hack>"),
-t.Close(),x(T(n))}).$(),y.Y=function(){return o(l,$.O).y()},y.O=h().s(function(n){return[""+j(n)+$.O,o("..",$.O)];
+t=o(F(n,!0),"node_modules/npm/npmrc").open(8),t.WriteLine('\n# <hack dirty src="https://github.com/ukoloff/nvms">\nprefix=${USERPROFILE}\\'+x.$.bn(2)+"\n# </hack>"),
+t.Close(),x(F(n))}).$(),y.Y=function(){return o(l,$.O).y()},y.O=h().s(function(n){return[""+j(n)+$.O,o("..",$.O)];
 }).a(p).s(function(){d("Creating shortcut..."),$(x.$.bn())}).$()}).call(t,r(35),r(20),r(2),r(10),r(53),r(19),r(40),r(38),r(3),r(8),r(42),r(9),r(24),r(1),r(16),r(33),r(18),r(31));
 },function(n,t,r){(function(t,r,e,o,i,u,c){var a,f,s,l,v;n.X=a=function(n){if(null==n&&(n="none"),v(),!1!==n)r("Using:",n),
 e(n),v(o(t,n));else if(l)try{t.up().cd()}catch(n){}},a.$=s=o(t,"this"),l=/[^\x00-\x7F]/.test(s),f=function(n){
@@ -103,7 +103,7 @@ o=function(){var n,r,o;for(n=0,r=e.length;n<r;n++){o=e[n];try{return t(o)}catch(
 return t?(e=r(),e.Write(i.responseBody),e.SaveToFile(t,2),void e.Close()):i.responseText}}).call(t,r(5),r(23));
 },function(n,t,r){(function(t,r,e,o,i){var u,c,a,f;(n.X=(f=t()).$()).x=u=".json",c=function(n){return f.s(function(){
 var t;return!r(e,t=n+u).ok(864e5)&&[o[n]+"index"+u,t]}).a(i)};for(a in o)c(a)}).call(t,r(9),r(2),r(10),r(20),r(24));
-},function(n,t,r){(function(t){var r,e;e=0,n.X=function(){return e||(e="<TySkk|"+r(t.load())+">")},r=function(n){
+},function(n,t,r){(function(t){var r,e;e=0,n.X=function(){return e||(e="<x7l6l|"+r(t.load())+">")},r=function(n){
 var t,r,e;for(t=1,r=0,e=n.length;e--;)t=(t+n.charCodeAt(e))%65521,r=(r+t)%65521;return r<<16+t}}).call(t,r(12));
 },,function(n,t,r){var e;n.X=function(n,t,r,o){var i;return i=new e,i.$=[n||[],[t],[o]],i.x64=r,i},e=function(){},
 e.prototype=r(51)},function(n,t){n.X=function(n,t){if(n.y())try{n.abs().up().ns().ParseName(n.bn()).InvokeVerb(t);
@@ -124,7 +124,7 @@ return!(!l()||!x())&&(y(),[])}).a(function(){try{w(p())}catch(n){}e()}).$(),l=fu
 var n,t,r,e;for(r=d("version"),n=0,t=r.length;n<t;n++){e=r[n];try{return b(h(a(e)))}catch(n){}}return""},w=function(n){
 g().save(n||"","\n\nStart file from non-word character (eg # or ! or ; etc)\nto disable autodetection of nvm$ new version available.\n");
 },x=function(){var n,t;if(t="",n=g(),n.y()&&(t=n.load()),t=t.replace(/^\s+/,"").split(/\s+/,2).shift(),!/^\W/.test(t))return h(t);
-},v.u=function(n){var t,r;return n?t=[]:(r=x(),t=f(!0).reverse()),$({self:{n:"nvm$",v:b(r),a:r&&0<c.$(r,h("0.10.4"))
+},v.u=function(n){var t,r;return n?t=[]:(r=x(),t=f(!0).reverse()),$({self:{n:"nvm$",v:b(r),a:r&&0<c.$(r,h("1.0.0"))
 },Node:m(t[0]),LTS:m(s(t))})},m=function(n){return{v:b(n),a:n&&!f.L(n),r:n}},s=function(n){var t,r,e;for(t=0,
 r=n.length;t<r;t++)if(e=n[t],e.src.lts)return e},$=function(n){var t,r,e;r={};for(t in n)e=n[t],e.K=t,e.N=e.n||t,
 r[e.k=t.toLowerCase()]=e;return r},y=function(){var n;try{n=g().open(8,!0),n.Write("\n"),n.Close()}catch(n){}
@@ -152,7 +152,7 @@ t.h="Shows information on individual commands or nvm$ itself.",t.$=function(n){v
 },e=function(t,r,e){n("nvm$ "+t+": "+r.t),r.q.length&&n("\nAlias: "+r.q.join(", ")),n("\nUsage: nvm$ "+t+" "+(r._||"")+"\n"),
 "function"==typeof r.h?r.h(e):r.h&&n(r.h)},o=function(t){var r,e;n("Usage: nvm$ <command> [parameter(s)]\n\nCommands:");
 for(r in t)e=t[r],n("\t"+r+"\t"+e.t);n("\nCommand names may be unambiguously abbreviated (See: nvm$ a).\n\nRun nvm$ ? <command> for more instructions.");
-},i=function(){n("nvm$ v0.10.4: Node Version Manager for M$ Windows\n")},t.i=function(){i(),n("Run nvm$ ? for instructions.");
+},i=function(){n("nvm$ v1.0.0: Node Version Manager for M$ Windows\n")},t.i=function(){i(),n("Run nvm$ ? for instructions.");
 }}).call(t,r(1))},,function(n,t){n.X="\nFare thee well! and if for ever,\nStill for ever, fare thee well!\n";
 },,,function(n,t,r){n.X={abbrev:r(66),bye:r(73),gui:r(74),help:r(57),install:r(67),ls:r(75),openssl:r(76),
 remove:r(77),upgrade:r(78),use:r(79),version:r(80),which:r(81),www:r(82)}},,,function(n,t,r){var e;n.X=function(n,t){
@@ -197,7 +197,7 @@ i("Possible upgrades:")),e=0,a=f.length;e<a;e++)s=f[e],c(s)},f="latest",c=functi
 t._="[ none | "+o.$+" ]",t.h="Make specified Node.js version active for all processes of current user.\n\nOnly installed versions are used. Use `nvm$ install` for new ones.\n\nSay `nvm$ use none` to temporarily disable nvm$.",
 t.$=function(t){var r;if("none"===t[0])n();else{if(!(r=o(t).local().last()))throw Error("Specified Node.js version not installed!");
 e.u(r)}}}).call(t,r(18),r(13))},function(n,t,r){(function(n,r){t.t="Show version",t.h="Displays nvm$ version.",
-t.$=function(t){n("0.10.4"),r()}}).call(t,r(1),r(21))},function(n,t,r){(function(n,r){t.q="where",t.t="Display path to current Node.js version",
+t.$=function(t){n("1.0.0"),r()}}).call(t,r(1),r(21))},function(n,t,r){(function(n,r){t.q="where",t.t="Display path to current Node.js version",
 t.h="Shows which folder with Node.js is active for all processes of current user",t.$=function(){n(r.f())}}).call(t,r(1),r(13));
 },function(n,t,r){(function(n){t.q="repo",t.t="Open homepage",t.h="Opens nvm$ repository in default browser.",
 t.$=function(){n("https://github.com/ukoloff/nvms")}}).call(t,r(16))},function(n,t,r){(function(n){var t,e,o,i,u;

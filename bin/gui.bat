@@ -139,7 +139,7 @@ o=function(){var n,r,o;for(n=0,r=e.length;n<r;n++){o=e[n];try{return t(o)}catch(
 return t?(e=r(),e.Write(i.responseBody),e.SaveToFile(t,2),void e.Close()):i.responseText}}).call(t,r(5),r(23));
 },function(n,t,r){(function(t,r,e,o,i){var u,c,a,f;(n.X=(f=t()).$()).x=u=".json",c=function(n){return f.s(function(){
 var t;return!r(e,t=n+u).ok(864e5)&&[o[n]+"index"+u,t]}).a(i)};for(a in o)c(a)}).call(t,r(9),r(2),r(10),r(20),r(24));
-},function(n,t,r){(function(t){var r,e;e=0,n.X=function(){return e||(e="<TySkk|"+r(t.load())+">")},r=function(n){
+},function(n,t,r){(function(t){var r,e;e=0,n.X=function(){return e||(e="<x7l6l|"+r(t.load())+">")},r=function(n){
 var t,r,e;for(t=1,r=0,e=n.length;e--;)t=(t+n.charCodeAt(e))%65521,r=(r+t)%65521;return r<<16+t}}).call(t,r(12));
 },function(n,t,r){(function(t,e,o){var i,u,c,a,f,l,s,d,p,h,v=[].indexOf||function(n){for(var t=0,r=this.length;t<r;t++)if(t in this&&this[t]===n)return t;
 return-1};u=r(50).$,h=r(84),a=i=0,d=[],f=function(){var n,t;for(n=d.length-1;n>=0;n+=-1){t=d[n];try{t.parentNode.removeChild(t);
@@ -169,7 +169,7 @@ return!(!s()||!g())&&(y(),[])}).a(function(){try{k(h())}catch(n){}e()}).$(),s=fu
 var n,t,r,e;for(r=v("version"),n=0,t=r.length;n<t;n++){e=r[n];try{return $(p(a(e)))}catch(n){}}return""},k=function(n){
 x().save(n||"","\n\nStart file from non-word character (eg # or ! or ; etc)\nto disable autodetection of nvm$ new version available.\n");
 },g=function(){var n,t;if(t="",n=x(),n.y()&&(t=n.load()),t=t.replace(/^\s+/,"").split(/\s+/,2).shift(),!/^\W/.test(t))return p(t);
-},d.u=function(n){var t,r;return n?t=[]:(r=g(),t=f(!0).reverse()),b({self:{n:"nvm$",v:$(r),a:r&&0<c.$(r,p("0.10.4"))
+},d.u=function(n){var t,r;return n?t=[]:(r=g(),t=f(!0).reverse()),b({self:{n:"nvm$",v:$(r),a:r&&0<c.$(r,p("1.0.0"))
 },Node:m(t[0]),LTS:m(l(t))})},m=function(n){return{v:$(n),a:n&&!f.L(n),r:n}},l=function(n){var t,r,e;for(t=0,
 r=n.length;t<r;t++)if(e=n[t],e.src.lts)return e},b=function(n){var t,r,e;r={};for(t in n)e=n[t],e.K=t,e.N=e.n||t,
 r[e.k=t.toLowerCase()]=e;return r},y=function(){var n;try{n=x().open(8,!0),n.Write("\n"),n.Close()}catch(n){}
@@ -219,7 +219,7 @@ type:"radio",name:".",value:r,accesskey:t.slice(0,1)}),text(" ",t.replace(/./,fu
 })),span()})}),div({id:"main"},function(){var n,t;t=0;for(n in this)div()})})}).call(t,r(25))},function(n,t,r){
 (function(n,t,e,o){var i,u,c,a;t.onunload=function(){return n()},c=r(85),i=r(118),a=r(71),u=e("style")[0],u.styleSheet?u.styleSheet.cssText=i:(u.innerHTML="",
 u.appendChild(o.createTextNode(i))),o.body.innerHTML=c(a)}).call(t,r(21),r(70),r(48),r(56))},function(n,t,r){
-(function(n,t){n("nvm$ v0.10.4 started"),setInterval(t,100)}).call(t,r(1),r(112))},function(n,t,r){(function(n,t){
+(function(n,t){n("nvm$ v1.0.0 started"),setInterval(t,100)}).call(t,r(1),r(112))},function(n,t,r){(function(n,t){
 var e,o,i,u,c,a,f,l,s,d,p,h,v,m,x,g,b,y;b=r(71),o=r(37),i=n("#head")[0],v=n("input",i),m=[],h=v[0],d=n("div",n("#main")[0]),
 s=function(){var n,r,e,i;t(o);for(r in b){if(i=b[r],n=(e=i.$r).checked){i.$l.className="active",i.$d.className="",
 e.blur();try{"function"==typeof i.a&&i.a(i.$d)}catch(n){}}else i.$l.className="",i.$d.className="hide",i.c&&(i.$d.innerHTML="");
@@ -233,7 +233,7 @@ return t.b(function(){}),o.body.innerHTML=r(91)(e),i(u)})}}).call(t,r(13),r(59),
 n=0,t=e.length;n<t;n++)r=e[n],r&&div(r)})})}).call(t,r(25))},function(n,t,r){(function(t){n.X=t(function(){
 return table(function(){var n,t,r,e;return t=0,e=function(n){return tr({"class":1&t++&&"odd"||"even"},n)},e(function(){
 return th("nvm$"),td(function(){return a({href:"https://github.com/ukoloff/nvms",target:"_blank"},"Node Version Manager for M$ Windows");
-})}),e(function(){return th("Version"),td("0.10.4")}),n=function(n,r){return tbody(function(){return e(function(){
+})}),e(function(){return th("Version"),td("1.0.0")}),n=function(n,r){return tbody(function(){return e(function(){
 return td({colspan:2},function(){return label({"for":"/"+t},function(){return input({id:"/"+t,type:"checkbox",
 checked:!0}),text(" ",n)})})})}),tbody(r)},r=function(n){return td("x",n?64:86)},n("Node.js",function(){var n;
 return n=this._,e(function(){return th("Active"),td((null!=n?n.$[0].join("."):void 0)||"-")}),n&&(e(function(){
@@ -253,10 +253,10 @@ td(this.n.UserDomain)}),e(function(){return th("Role"),td(this.a?"Administrator"
 n.r?u.x("Install "+n.N,"upgrade "+n.k,function(r){c(t.x(n.r,r))}):void a()},a=function(){u.y("Information not loaded. Load","list remote",function(){
 e(u),o("Load Node versions"),i(function(){return r(63).U()})})}}).call(t,r(17),r(32),r(1),r(35))},function(n,t,r){
 (function(t,e,o,i,u,c,a,f,l){var s;s=r(37),n.X=function(n){return s.y("Upgrade nvm$","upgrade "+n.k,function(){
-return r(50).T(),t("Upgrading nvm$ 0.10.4..."),r(49)(function(n){var s,d,p,h;if(!n)return void t("Failed: nvm$ upgrade");
+return r(50).T(),t("Upgrading nvm$ 1.0.0..."),r(49)(function(n){var s,d,p,h;if(!n)return void t("Failed: nvm$ upgrade");
 for(e.body.innerHTML=r(95)(),p=o("a"),s=0,d=p.length;s<d;s++)h=p[s],h.onclick=function(){return i(function(){
 return u(0,c(a,f.bn())),l.e.Quit()}),!1}})})}}).call(t,r(1),r(56),r(48),r(32),r(16),r(2),r(8),r(12),r(15))},function(n,t,r){
-(function(t){n.X=t(function(){return div({"class":"splash"},"nvm$ 0.10.4 upgraded",br,function(){return a({
+(function(t){n.X=t(function(){return div({"class":"splash"},"nvm$ 1.0.0 upgraded",br,function(){return a({
 href:"#"},"Restart")})})}).call(t,r(25))},function(n,t,r){(function(t){n.X=t(function(){var n,t,r,e,o,u,c;
 i.n||(i.n=0),e=function(n){return("0"+Math.floor(n)).slice(-2)},c=function(n){var t;return t=Math.abs(n),"GMT"+(n<0?"+":"-")+e(t/60)+e(t%60);
 },n=function(n){return n.getFullYear()+"-"+e(1+n.getMonth())+"-"+e(n.getDate())+" "+e(n.getHours())+":"+e(n.getMinutes())+":"+e(n.getSeconds())+" "+c(n.getTimezoneOffset());
@@ -286,7 +286,7 @@ return span({"class":"ask"},function(){if(a({href:"#",title:"nvm$ install "+o.be
 },"install"),!o.best.$[0][0])return text(" or "),a({href:"#",title:"nvm$ openssl"},"openssl")})}),e||div({"class":"indent"
 })})}).call(t,r(25))},function(n,t,r){(function(t){n.X=t(function(){return div({"class":"splash"},"Wait for loading Node.js versions...");
 })}).call(t,r(25))},function(n,t,r){(function(t){n.X=t(function(){return tag("!DOCTYPE",!0)({html:!0}),
-html(function(){return head(function(){return title("nvm$@0.10.4"),style(function(){return raw(this)}),script("document.$=window");
+html(function(){return head(function(){return title("nvm$@1.0.0"),style(function(){return raw(this)}),script("document.$=window");
 }),body(function(){return div(function(){return a({href:"https://github.com/ukoloff/nvms",target:"_blank"},"nvm$"),
 text(" session terminated")})})})})}).call(t,r(25))},,,,,,,,function(n,t){n.X=!GetObject("winmgmts://./root/default:StdRegProv").EnumKey(1<<31|3,"S-1-5-20");
 },function(n,t,r){(function(t,r){n.X=function(){var n;for(n=t("InternetExplorer.Application"),n.ToolBar=!1,
