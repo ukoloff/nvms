@@ -3,6 +3,8 @@ version: 1.0.{build}-{branch}
 cache:
   - node_modules
 
+shallow_clone: true
+
 install:
   - npm install
 
