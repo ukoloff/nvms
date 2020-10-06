@@ -1,3 +1,3 @@
-import 'coffee-script/register'
+import 'livescript'
 
 export default require('./rollup/config')
