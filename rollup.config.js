@@ -1,2 +1,3 @@
-require('coffee-script/register')
-module.exports = require('./rollup/config')
+import 'coffee-script/register'
+
+export default require('./rollup/config')
