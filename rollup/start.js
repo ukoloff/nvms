@@ -1,1 +1,3 @@
-console.log("Hello, world!")
+console.log("Hello, "
++ PACKAGE.mingzi +
+" v" + PACKAGE.version + "!")
