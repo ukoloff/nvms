@@ -14,14 +14,14 @@ jobs:
       uses: actions/setup-node@v1
     -
       name: Discover NPM cache
-      id: npmcache
+      id: npm-cache
       run:  echo "::set-output name=path::$(npm config get cache)"
       shell: bash
     -
       uses: actions/cache@v2
       with:
         key: ${{ runner.os }}-npm-cache
-        path: ${{ steps.npmcache.outputs.path }}
+        path: ${{ steps.npm-cache.outputs.path }}
     -
       run:  npm install
     -
