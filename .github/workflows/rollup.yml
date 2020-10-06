@@ -13,12 +13,13 @@ jobs:
       name: Setup node
       uses: actions/setup-node@v1
     -
-      uses: actions/cache@v2
-      with:
-        key: ${{ runner.os }}-npm-cache
-        path: ${{ env.APPDATA }}/npm-cache
-    -
-      run:  npm install
+      uses: bahmutov/npm-install@v1
+    #   uses: actions/cache@v2
+    #   with:
+    #     key: ${{ runner.os }}-npm-cache
+    #     path: ${{ env.APPDATA }}/npm-cache
+    # -
+    #   run:  npm install
     -
       name: Build with Rollup
       run:  npm run build
