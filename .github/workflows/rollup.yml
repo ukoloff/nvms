@@ -17,16 +17,13 @@ jobs:
       id: npmcache
       run:  echo "::set-output name=path::$(npm config get cache)"
       shell: bash
-
-    - name: View it
-      run:  echo ${{ steps.npmcache.outputs.path }}
-
-    #   uses: actions/cache@v2
-    #   with:
-    #     key: ${{ runner.os }}-npm-cache
-    #     path: ${{ env.APPDATA }}/npm-cache
-    # -
-    #   run:  npm install
+    -
+      uses: actions/cache@v2
+      with:
+        key: ${{ runner.os }}-npm-cache
+        path: ${{ steps.npmcache.outputs.path }}
+    -
+      run:  npm install
     -
       name: Build with Rollup
       run:  npm run build
