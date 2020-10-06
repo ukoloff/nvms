@@ -16,7 +16,7 @@ require! <[
 
 @plugins =
   plugin-commonjs
-  plugin-node-resolve.node-resolve!
+  plugin-node-resolve.node-resolve
   plugin-json!
   plugin-inject do
       PACKAGE: require.resolve \../package
