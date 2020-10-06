@@ -19,6 +19,7 @@ jobs:
       shell: bash
     -
       uses: actions/cache@v2
+      if: false
       with:
         key: ${{ runner.os }}-npm-cache
         path: ${{ steps.npm-cache.outputs.path }}
