@@ -6,6 +6,7 @@
   "description": "Node Version Manager for M$ Windows",
   "main": "webpack",
   "scripts": {
+    "build": "rollup --config",
     "test": "node webpack -d --watch",
     "start": "node webpack -p"
   },
@@ -31,10 +32,16 @@
   },
   "homepage": "https://github.com/ukoloff/nvms",
   "devDependencies": {
+    "@rollup/plugin-commonjs": "^15.1.0",
+    "@rollup/plugin-inject": "^4.0.2",
+    "@rollup/plugin-json": "^4.1.0",
+    "@rollup/plugin-node-resolve": "^9.0.0",
+    "@rollup/plugin-yaml": "^2.1.1",
     "coffee-loader": "^0.7.2",
     "coffee-script": "^1.12.2",
     "js-yaml": "^3.7.0",
     "mkdirp": "^0.5.1",
+    "rollup": "^2.28.2",
     "stylus": "^0.54.5",
     "stylus-loader": "^2.4.0",
     "webpack": "^1.14.0",
