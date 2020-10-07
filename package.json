@@ -44,6 +44,8 @@
     "livescript": "^1.6.0",
     "mkdirp": "^0.5.1",
     "rollup": "^2.28.2",
+    "rollup-plugin-progress": "^1.1.2",
+    "rollup-plugin-sizes": "^1.0.3",
     "rollup-plugin-uglify": "^6.0.4",
     "stylus": "^0.54.5",
     "stylus-loader": "^2.4.0",

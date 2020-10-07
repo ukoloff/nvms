@@ -6,6 +6,8 @@ require! <[
   rollup-plugin-uglify
   ./livescript
   ./coffee
+  rollup-plugin-sizes
+  rollup-plugin-progress
 ]>
 
 @input = \rollup/start
@@ -24,6 +26,8 @@ extensions = <[ .js .ls .coffee ]>
   coffee!
   plugin-commonjs {extensions}
   plugin-node-resolve.node-resolve {extensions}
+  rollup-plugin-sizes!
+  rollup-plugin-progress!
   plugin-inject do
       PACKAGE: require.resolve \../package
   rollup-plugin-uglify.uglify do
