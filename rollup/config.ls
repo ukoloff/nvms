@@ -4,6 +4,8 @@ require! <[
   @rollup/plugin-node-resolve
   @rollup/plugin-json
   rollup-plugin-uglify
+  rollup-plugin-sizes
+  rollup-plugin-progress
 ]>
 
 @input = \rollup/start.js
@@ -18,6 +20,8 @@ require! <[
   plugin-commonjs
   plugin-node-resolve.node-resolve
   plugin-json!
+  rollup-plugin-sizes!
+  rollup-plugin-progress!
   plugin-inject do
       PACKAGE: require.resolve \../package
   rollup-plugin-uglify.uglify do
