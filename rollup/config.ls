@@ -30,8 +30,8 @@ extensions = <[ .js .ls .coffee ]>
   rollup-plugin-progress!
   plugin-inject do
       PACKAGE: require.resolve \../package
-  rollup-plugin-uglify.uglify do
-    output:
-      max_line_len: 60
-      keep_quoted_props: true
+  # rollup-plugin-uglify.uglify do
+  #   output:
+  #     max_line_len: 60
+  #     keep_quoted_props: true
   ...
