@@ -4,9 +4,11 @@ require! <[
   @rollup/plugin-node-resolve
   @rollup/plugin-json
   rollup-plugin-uglify
+  ./livescript
+  ./coffee
 ]>
 
-@input = \rollup/start.js
+@input = \rollup/start
 
 @output =
   dir: \tmp/
@@ -14,10 +16,14 @@ require! <[
   strict: false
   # exports: 'default'
 
+extensions = <[ .js .ls .coffee ]>
+
 @plugins =
-  plugin-commonjs
-  plugin-node-resolve.node-resolve
   plugin-json!
+  livescript!
+  coffee!
+  plugin-commonjs {extensions}
+  plugin-node-resolve.node-resolve {extensions}
   plugin-inject do
       PACKAGE: require.resolve \../package
   rollup-plugin-uglify.uglify do
