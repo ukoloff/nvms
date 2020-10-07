@@ -7,6 +7,7 @@
   "main": "webpack",
   "scripts": {
     "build": "rollup --config",
+    "rebuild": "rollup --config --watch",
     "test": "node webpack -d --watch",
     "start": "node webpack -p"
   },
