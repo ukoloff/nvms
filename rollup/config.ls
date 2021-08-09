@@ -14,6 +14,7 @@ require! <[
 
 @output =
   dir: \tmp/
+  name: \Oops
   format: \iife
   strict: false
   # exports: 'default'
@@ -29,7 +30,7 @@ extensions = <[ .js .ls .coffee ]>
   rollup-plugin-sizes!
   rollup-plugin-progress!
   plugin-inject do
-      PACKAGE: require.resolve \../package
+      PACKAGE: [require.resolve(\../package), '*']
   # rollup-plugin-uglify.uglify do
   #   output:
   #     max_line_len: 60
